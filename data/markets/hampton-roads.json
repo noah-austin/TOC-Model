@@ -1,0 +1,1164 @@
+{
+  "id": "hampton-roads",
+  "name": "Hampton Roads (Norfolk / Virginia Beach / Chesapeake), VA",
+  "state": "VA",
+  "counties": [
+    {
+      "name": "Norfolk city",
+      "fips": "51710",
+      "tier": "primary"
+    },
+    {
+      "name": "Virginia Beach city",
+      "fips": "51810",
+      "tier": "primary"
+    },
+    {
+      "name": "Chesapeake city",
+      "fips": "51550",
+      "tier": "primary"
+    },
+    {
+      "name": "Newport News city",
+      "fips": "51700",
+      "tier": "secondary"
+    },
+    {
+      "name": "Hampton city",
+      "fips": "51650",
+      "tier": "secondary"
+    }
+  ],
+  "local_company": "Patuxent Roofing - Norfolk office (PAX Services Group)",
+  "researched_on": "2026-09-28",
+  "research_limitations": "The session's egress proxy blocked every host except GitHub (raw.githubusercontent.com) and package registries; hazards.fema.gov, fema.gov, bls.gov, noaa.gov, broker sites and all contractor sites returned 403. Primary datasets (FEMA NRI v1.20, NOAA HURDAT2, BLS PPI, ICC IEBC text) were therefore obtained from GitHub mirrors and parsed directly. Market figures (cost/sf, cap rates) come only from WebSearch result summaries (pages not opened) and carry low confidence. The session's WebSearch budget was exhausted before insurance, roof-life, nor'easter, corrosion and location-factor searches could be run; those fields are null.",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 9.0,
+      "low": 6.5,
+      "high": 12.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Schoenherr Roofing - 2025 TPO cost guide ($6.50-$11.50/sf installed)",
+          "url": "https://www.schoenherrroofing.com/blog/2025-tpo-roofing-cost-value-pros-cons/"
+        },
+        {
+          "name": "General Roofing Co. - TPO cost per sq ft 2026 ($8-$10.50 planning number)",
+          "url": "https://generalroof.com/tpo-roofing-cost-per-square-foot/"
+        },
+        {
+          "name": "Roof Observations - Virginia roof cost guide 2026 (TPO $5-$15/sf in VA)",
+          "url": "https://roofobservations.com/virginia-roof-cost-guide/"
+        },
+        {
+          "name": "The Roofing Brief - commercial roof replacement cost 2026 (TPO $7-12, 60-mil MA $7.00-8.50)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "RoofReplacementCost.ai - commercial roofing costs 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        }
+      ],
+      "note": "Midpoint of the most commonly cited commercial range ($6.50-$11.50, 2025); high end $12 reflects $7-12 (2026) ranges and tear-off. Virginia-wide range cited as wide as $5-$15. Several sources note tear-off/disposal adds ~$1-$3/sf (asbestos abatement +$3-$6/sf) and it is often unclear whether quoted ranges include tear-off; the high end is chosen to cover tear-off. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    },
+    "epdm": {
+      "value": 7.5,
+      "low": 5.0,
+      "high": 10.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "FoxHaven Roofing - flat roof replacement cost 2025 (EPDM $5-$9)",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        },
+        {
+          "name": "The Roofing Brief - commercial roof replacement cost 2026 (EPDM $6-10; 60-mil $6.00-7.50)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Roof Observations - Virginia roof cost guide 2026 (EPDM $4.50-$11.50 in VA)",
+          "url": "https://roofobservations.com/virginia-roof-cost-guide/"
+        }
+      ],
+      "note": "Cited ranges: $5-$9, $6-$10, standard 60-mil w/ insulation $6.00-$7.50; VA $4.50-$11.50. Several sources note tear-off/disposal adds ~$1-$3/sf (asbestos abatement +$3-$6/sf) and it is often unclear whether quoted ranges include tear-off; the high end is chosen to cover tear-off. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    },
+    "mod_bit": {
+      "value": 8.0,
+      "low": 4.0,
+      "high": 12.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "General Roofing Co. - modified bitumen roof cost 2026",
+          "url": "https://generalroof.com/modified-bitumen-roof-cost/"
+        },
+        {
+          "name": "FoxHaven Roofing - flat roof replacement cost 2025",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        },
+        {
+          "name": "WeatherShield Roofers - flat roof replacement cost guide 2026",
+          "url": "https://weathershieldroofers.com/blog/flat-roof-replacement-cost-guide/"
+        }
+      ],
+      "note": "Cited ranges disagree: $4-$8/sf in one guide vs $8-$12/sf for a basic system in another; value is the shared boundary. Several sources note tear-off/disposal adds ~$1-$3/sf (asbestos abatement +$3-$6/sf) and it is often unclear whether quoted ranges include tear-off; the high end is chosen to cover tear-off. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    },
+    "bur": {
+      "value": 10.0,
+      "low": 7.0,
+      "high": 14.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide - Built-up roofing guide 2026 (BUR $7-$11/sf)",
+          "url": "https://commercialroofguide.com/guides/built-up-roofing/"
+        },
+        {
+          "name": "West Roofing Systems - cost to restore gravel BUR (full tear-off & replace $8-$14/sf)",
+          "url": "https://www.westroofingsystems.com/cost-restore-commercial-gravel-built-up-roof"
+        },
+        {
+          "name": "Flat Roofing Insights - BUR guide 2025 ($6-$11/sf)",
+          "url": "https://flatroofinginsights.com/built-up-roofing-guide/"
+        }
+      ],
+      "note": "New BUR $6/7-$11/sf; full tear-off and replacement of gravel BUR $8-$14/sf; value near midpoint of tear-off+replace range. Several sources note tear-off/disposal adds ~$1-$3/sf (asbestos abatement +$3-$6/sf) and it is often unclear whether quoted ranges include tear-off; the high end is chosen to cover tear-off. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    },
+    "metal": {
+      "value": 15.0,
+      "low": 12.0,
+      "high": 18.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "WeatherShield Roofers / FoxHaven flat-roof cost guides (standing seam $12-$18+/sf)",
+          "url": "https://weathershieldroofers.com/blog/flat-roof-replacement-cost-guide/"
+        },
+        {
+          "name": "FoxHaven Roofing - flat roof replacement cost 2025",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        }
+      ],
+      "note": "Standing-seam metal cited at $12-$18+/sf; value = midpoint. Structural/retrofit framing over low-slope not included. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    },
+    "coating_restoration": {
+      "value": 5.0,
+      "low": 2.0,
+      "high": 7.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "West Roofing Systems - cost of silicone roof coating system ($3.50-$7.00/sf, 2026)",
+          "url": "https://www.westroofingsystems.com/cost-of-silicone-roof-coating-system"
+        },
+        {
+          "name": "Great Lakes Commercial Roofing - commercial roof coating cost 2025 ($2-$7/sf)",
+          "url": "https://greatlakescommercialroofingllc.com/commercial-roof-coating-cost/"
+        },
+        {
+          "name": "Unicoat - commercial roof restoration costs ($4-$10/sf)",
+          "url": "https://unicoatroof.com/commercial-roof-restoration-costs-and-timelines/"
+        },
+        {
+          "name": "West Roofing Systems - ballpark cost to restore commercial metal roof ($2.50-$5.00/sf)",
+          "url": "https://www.westroofingsystems.com/ballpark-cost-restore-commercial-metal-roof"
+        }
+      ],
+      "note": "Restoration (not tear-off): commercial coating typically $2-$7/sf; silicone $3.50-$7.00; some restoration packages quoted $4-$10/sf incl. repairs/wet-insulation replacement. Figures taken from WebSearch result summaries on 2026-09-28; the pages themselves could not be opened (egress proxy blocked all non-GitHub hosts), so the attribution of each figure to one URL is approximate. National/Virginia contractor & cost-guide sites, not Hampton Roads bid data."
+    }
+  },
+  "location_cost_factor": {
+    "value": null,
+    "low": null,
+    "high": null,
+    "unit": "index (national=1.00)",
+    "as_of": "",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "Virginia DMAS - RS Means data 2024 (PDF found in search; not opened)",
+        "url": "https://www.dmas.virginia.gov/media/kbubj1qy/rs-means-data-2024.pdf"
+      },
+      {
+        "name": "Instant Roofer - Norfolk roof replacement costs (AI-generated residential page)",
+        "url": "https://www.instantroofer.com/virginia-roof-replacement-cost/norfolk/"
+      }
+    ],
+    "note": "No RSMeans City Cost Index value for Norfolk (3-digit ZIP 233-235) could be opened. A Virginia DMAS PDF containing RSMeans data exists but was not reachable. A residential cost site (search summary only) claims Norfolk roofing labor runs 5-12% above inland Virginia due to salt air and wind-code demands - not used as a value (unsourced methodology, residential)."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.4,
+      "low": 4.4,
+      "high": 9.0,
+      "unit": "%/yr",
+      "as_of": "2025-04",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X Roofing contractors, nonresidential building work (monthly, Jan 2008-Apr 2025), scraped copy on GitHub, downloaded",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "BLS series PCU23816X23816X (official; not opened, egress blocked)",
+          "url": "https://data.bls.gov/timeseries/PCU23816X23816X"
+        }
+      ],
+      "note": "NATIONAL index, not Hampton Roads. BLS PPI Roofing contractors, nonresidential building work: Apr 2015 126.7 -> Apr 2025 215.584 = 5.46%/yr CAGR; annual-average 2014->2024 (124.51->209.91) = 5.36%/yr. Low = 2008-2025 full-series CAGR 4.4-4.5%; high = Apr 2020->Apr 2025 CAGR 8.96% (post-COVID surge: +9.2% 2021, +21.1% 2022, +9.0% 2023, +3.1% 2024 Dec/Dec). Pre-2020 growth was only ~1-3.6%/yr."
+    },
+    "annual_pct_20yr": {
+      "value": 4.5,
+      "low": 2.4,
+      "high": 5.4,
+      "unit": "%/yr",
+      "as_of": "2025-04",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X Roofing contractors, nonresidential building work (monthly, Jan 2008-Apr 2025), scraped copy on GitHub, downloaded",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "BLS series PCU23816X23816X (official; not opened, egress blocked)",
+          "url": "https://data.bls.gov/timeseries/PCU23816X23816X"
+        }
+      ],
+      "note": "NATIONAL. The PCU23816X series only begins in 2008, so a true 20-yr figure is unavailable; value is the longest available CAGR, Apr 2008 102.3 -> Apr 2025 215.584 = 4.48%/yr over 17 years (annual avg 2008->2024 = 4.39%). Low = 2008->2019 annual-avg CAGR 2.40% (pre-COVID regime); high = 10-yr CAGR 5.4%."
+    }
+  },
+  "perils": [
+    {
+      "peril": "Tropical storm / hurricane (wind)",
+      "annual_frequency": {
+        "value": 0.24,
+        "low": 0.18,
+        "high": 0.76,
+        "unit": "events/yr",
+        "as_of": "2024 season",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+            "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+          },
+          {
+            "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+            "url": "https://www.nhc.noaa.gov/data/#hurdat"
+          },
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "HURDAT2 analysis centered on downtown Norfolk (36.85N, 76.29W), 1975-2024: 12 tropical cyclones at tropical-storm strength (>=34 kt) passed within 50 nm = 0.24/yr; within 100 nm: 38 at TS strength (0.76/yr) and 9 at hurricane strength (0.18/yr). Longer 1851-2024 record gives 0.26/yr (TS within 50 nm) and 0.21/yr (hurricane within 100 nm). FEMA NRI hurricane annualized frequency for Norfolk = 0.237 (VB 0.243, Chesapeake 0.242). Implication: ~4.8 tropical-storm-or-stronger passages within 50 nm, and ~3.6 hurricanes within 100 nm, over a 20-year roof life. Max wind is the storm's peak intensity inside the radius, not the wind measured at the site."
+      },
+      "severity_note": "Direct hits are rare: since 1975 only Charley 1986 (70 kt) and Irene 2011 (65 kt) were at hurricane strength within 50 nm; Isabel 2003 (65 kt, closest 68 nm) and Floyd 1999 were within 100 nm. Hurricane dominates NRI building loss for every jurisdiction (Norfolk building EAL $13.0M/yr). ASCE 7-22 Risk Cat II basic wind speed for Norfolk ZIPs is reported at roughly 120-125 mph (eastern VA 115-130 mph) - per search summary of windloadcalc.com, not verified against the ASCE Hazard Tool.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 13042145.0,
+      "sources": [
+        {
+          "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+          "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+        },
+        {
+          "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+          "url": "https://www.nhc.noaa.gov/data/#hurdat"
+        },
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "windloadcalc.com Virginia wind load calculator, ASCE 7-22 per-ZIP (search summary only)",
+          "url": "https://windloadcalc.com/virginia-wind-load-calculator/"
+        }
+      ]
+    },
+    {
+      "peril": "Strong wind (non-tropical: thunderstorm / high wind)",
+      "annual_frequency": {
+        "value": 0.499,
+        "low": 0.499,
+        "high": 0.633,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "FEMA NRI strong-wind annualized frequency, Norfolk (value); range across the five jurisdictions 0.499 (Norfolk) - 0.633 (Newport News). ~10-13 recorded strong-wind events per 20 years. Nor'easter wind is partly captured here; no separate nor'easter frequency could be sourced."
+      },
+      "severity_note": "NRI rates Norfolk 'Relatively Moderate' (building EAL ~$0.40M/yr) but Virginia Beach and Chesapeake 'Very Low'. Individual events mostly cause flashing/edge-metal and perimeter membrane damage rather than full blow-offs.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 399409.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Nor'easter (extratropical coastal storm)",
+      "annual_frequency": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "",
+        "confidence": "low",
+        "sources": [],
+        "note": "Not sourced. Intended sources (NWS Wakefield climatology, NCEI Storm Events, Hirsch/Davis nor'easter climatologies) were unreachable (egress blocked, WebSearch budget exhausted). Partial proxies: NRI coastal-flooding (3.6/yr), strong-wind (0.5/yr) and winter-weather (2.9/yr) frequencies."
+      },
+      "severity_note": "Nor'easters drive prolonged wind-driven rain, tidal flooding and wind loads; not separately quantified here.",
+      "fema_nri_rating": null,
+      "fema_nri_expected_annual_loss_building_usd": null,
+      "sources": []
+    },
+    {
+      "peril": "Hail",
+      "annual_frequency": {
+        "value": 1.289,
+        "low": 1.289,
+        "high": 2.035,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI hail annualized frequency (event-days of any reported hail); range 1.29 (Norfolk) - 2.03 (Newport News). Most reports are small hail; low roof-damage relevance compared with wind."
+      },
+      "severity_note": "All five jurisdictions 'Relatively Low'; Norfolk building EAL ~$0.44M/yr.",
+      "fema_nri_rating": "Relatively Low",
+      "fema_nri_expected_annual_loss_building_usd": 441005.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Tornado",
+      "annual_frequency": {
+        "value": 0.038,
+        "low": 0.038,
+        "high": 0.197,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI tornado annualized frequency; Norfolk 0.038 up to Virginia Beach 0.197. Tropical-cyclone-spawned tornadoes are common in the region."
+      },
+      "severity_note": "Low probability, high severity; Norfolk building EAL ~$1.35M/yr ('Relatively Moderate').",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 1349474.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Winter weather (snow/ice accumulation)",
+      "annual_frequency": {
+        "value": 2.85,
+        "low": 2.85,
+        "high": 3.804,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI winter weather annualized frequency; range 2.85 (Norfolk) - 3.80 (Newport News)."
+      },
+      "severity_note": "Very small building EAL (~$13k/yr Norfolk); relevant mainly for ponding/drain freeze on poorly drained low-slope roofs.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 13019.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Ice storm",
+      "annual_frequency": {
+        "value": 0.483,
+        "low": 0.483,
+        "high": 1.418,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI ice storm annualized frequency; range 0.48 (Norfolk) - 1.42 (Newport News)."
+      },
+      "severity_note": "Norfolk building EAL ~$0.22M/yr.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 218058.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Coastal flooding (storm surge / tidal)",
+      "annual_frequency": {
+        "value": 3.647,
+        "low": 3.433,
+        "high": 3.687,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI coastal flooding annualized frequency (3.4-3.7/yr across jurisdictions)."
+      },
+      "severity_note": "Norfolk is 'Relatively High' (building EAL ~$2.9M/yr). Affects buildings/contents more than roofs, but relevant to insurance and asset value.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 2880351.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Lightning",
+      "annual_frequency": {
+        "value": 40.7,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI lightning annualized frequency (flash-based; not comparable to storm-event counts)."
+      },
+      "severity_note": "Norfolk and Virginia Beach rated 'Relatively High' for lightning; small building EAL (~$45k/yr Norfolk). Roof-top equipment/fire risk.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 45196.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  ],
+  "significant_wind_events_20yr": {
+    "value": 4.8,
+    "low": 3.6,
+    "high": 15.2,
+    "unit": "events per 20 yrs",
+    "as_of": "2024",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+        "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+      },
+      {
+        "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+        "url": "https://www.nhc.noaa.gov/data/#hurdat"
+      },
+      {
+        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ],
+    "note": "Derived: tropical storms/hurricanes within 50 nm of Norfolk 0.24/yr x 20 = 4.8 (value); low = hurricanes within 100 nm 0.18/yr x 20 = 3.6; high = TS-strength systems within 100 nm 0.76/yr x 20 = 15.2. Adding NRI non-tropical strong-wind events (0.50/yr) would add ~10 more lower-severity events. Not all passages damage roofs; this is an exposure count, not a claim count."
+  },
+  "fema_nri": {
+    "county": "Norfolk (City), VA - FIPS 51710",
+    "nri_version": "December 2025",
+    "overall_risk_rating": "Relatively Moderate",
+    "overall_risk_score": 81.2,
+    "eal_rating": "Relatively Low",
+    "eal_total_usd": 45699250.0,
+    "eal_building_usd": 34217663.0,
+    "building_value_usd": 42208348266.0,
+    "social_vulnerability_rating": "Relatively Low",
+    "community_resilience_rating": "Relatively High",
+    "hazards": {
+      "hail": {
+        "rating": "Relatively Low",
+        "risk_score": 68.8,
+        "annualized_frequency": 1.289,
+        "eal_building_usd": 441005.0
+      },
+      "strong_wind": {
+        "rating": "Relatively Moderate",
+        "risk_score": 71.4,
+        "annualized_frequency": 0.499,
+        "eal_building_usd": 399409.0
+      },
+      "tornado": {
+        "rating": "Relatively Moderate",
+        "risk_score": 74.1,
+        "annualized_frequency": 0.038,
+        "eal_building_usd": 1349474.0
+      },
+      "hurricane": {
+        "rating": "Relatively Moderate",
+        "risk_score": 92.9,
+        "annualized_frequency": 0.237,
+        "eal_building_usd": 13042145.0
+      },
+      "winter_weather": {
+        "rating": "Relatively Moderate",
+        "risk_score": 69.8,
+        "annualized_frequency": 2.85,
+        "eal_building_usd": 13019.0
+      },
+      "ice_storm": {
+        "rating": "Relatively Moderate",
+        "risk_score": 69.6,
+        "annualized_frequency": 0.483,
+        "eal_building_usd": 218058.0
+      },
+      "riverine_flooding": {
+        "rating": "Relatively Moderate",
+        "risk_score": 75.3,
+        "annualized_frequency": 1.821,
+        "eal_building_usd": 14841709.0,
+        "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+      },
+      "coastal_flooding": {
+        "rating": "Relatively High",
+        "risk_score": 82.4,
+        "annualized_frequency": 3.647,
+        "eal_building_usd": 2880351.0
+      },
+      "heat_wave": {
+        "rating": "Relatively Moderate",
+        "risk_score": 88.2,
+        "annualized_frequency": 6.191,
+        "eal_building_usd": 178.0
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "risk_score": 87.8,
+        "annualized_frequency": 40.699,
+        "eal_building_usd": 45196.0
+      },
+      "cold_wave": {
+        "rating": "Relatively Moderate",
+        "risk_score": 70.4,
+        "annualized_frequency": 0.471,
+        "eal_building_usd": 13945.0
+      }
+    },
+    "sources": [
+      {
+        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ]
+  },
+  "fema_nri_other_jurisdictions": {
+    "51810": {
+      "county": "Virginia Beach (City), VA - FIPS 51810",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Low",
+      "overall_risk_score": 57.9,
+      "eal_rating": "Relatively Low",
+      "eal_total_usd": 30603931.0,
+      "eal_building_usd": 16594048.0,
+      "building_value_usd": 28263710357.0,
+      "social_vulnerability_rating": "Very Low",
+      "community_resilience_rating": "Very High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 54.7,
+          "annualized_frequency": 1.371,
+          "eal_building_usd": 483098.0
+        },
+        "strong_wind": {
+          "rating": "Very Low",
+          "risk_score": 14.2,
+          "annualized_frequency": 0.534,
+          "eal_building_usd": 45945.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "risk_score": 66.7,
+          "annualized_frequency": 0.197,
+          "eal_building_usd": 897487.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "risk_score": 88.9,
+          "annualized_frequency": 0.243,
+          "eal_building_usd": 8796033.0
+        },
+        "winter_weather": {
+          "rating": "Relatively Low",
+          "risk_score": 37.3,
+          "annualized_frequency": 2.88,
+          "eal_building_usd": 6566.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Low",
+          "risk_score": 43.1,
+          "annualized_frequency": 0.736,
+          "eal_building_usd": 17782.0
+        },
+        "riverine_flooding": {
+          "rating": "Very Low",
+          "risk_score": 27.9,
+          "annualized_frequency": 1.321,
+          "eal_building_usd": 4668328.0,
+          "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 67.4,
+          "annualized_frequency": 3.433,
+          "eal_building_usd": 779408.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Moderate",
+          "risk_score": 91.7,
+          "annualized_frequency": 6.068,
+          "eal_building_usd": 33.0
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "risk_score": 86.5,
+          "annualized_frequency": 40.246,
+          "eal_building_usd": 21436.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 56.1,
+          "annualized_frequency": 0.463,
+          "eal_building_usd": 2722.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "51550": {
+      "county": "Chesapeake (City), VA - FIPS 51550",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Low",
+      "overall_risk_score": 80.9,
+      "eal_rating": "Relatively Moderate",
+      "eal_total_usd": 56184827.0,
+      "eal_building_usd": 47258185.0,
+      "building_value_usd": 45171334203.0,
+      "social_vulnerability_rating": "Very Low",
+      "community_resilience_rating": "Very High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 61.4,
+          "annualized_frequency": 1.439,
+          "eal_building_usd": 494387.0
+        },
+        "strong_wind": {
+          "rating": "Very Low",
+          "risk_score": 9.5,
+          "annualized_frequency": 0.555,
+          "eal_building_usd": 16277.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "risk_score": 71.8,
+          "annualized_frequency": 0.156,
+          "eal_building_usd": 1344900.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "risk_score": 92.0,
+          "annualized_frequency": 0.242,
+          "eal_building_usd": 13649932.0
+        },
+        "winter_weather": {
+          "rating": "Relatively Low",
+          "risk_score": 36.1,
+          "annualized_frequency": 3.441,
+          "eal_building_usd": 12504.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Low",
+          "risk_score": 46.5,
+          "annualized_frequency": 0.878,
+          "eal_building_usd": 38782.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 82.9,
+          "annualized_frequency": 1.321,
+          "eal_building_usd": 28383844.0,
+          "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 80.6,
+          "annualized_frequency": 3.647,
+          "eal_building_usd": 2325684.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Moderate",
+          "risk_score": 88.1,
+          "annualized_frequency": 6.877,
+          "eal_building_usd": 59.0
+        },
+        "lightning": {
+          "rating": "Relatively Low",
+          "risk_score": 53.8,
+          "annualized_frequency": 42.257,
+          "eal_building_usd": 53542.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 45.6,
+          "annualized_frequency": 0.474,
+          "eal_building_usd": 4387.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "51700": {
+      "county": "Newport News (City), VA - FIPS 51700",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Low",
+      "overall_risk_score": 72.2,
+      "eal_rating": "Relatively Low",
+      "eal_total_usd": 31722164.0,
+      "eal_building_usd": 23336388.0,
+      "building_value_usd": 32927309475.0,
+      "social_vulnerability_rating": "Relatively Low",
+      "community_resilience_rating": "Relatively High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 60.6,
+          "annualized_frequency": 2.035,
+          "eal_building_usd": 272964.0
+        },
+        "strong_wind": {
+          "rating": "Relatively Moderate",
+          "risk_score": 78.9,
+          "annualized_frequency": 0.633,
+          "eal_building_usd": 214865.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "risk_score": 74.1,
+          "annualized_frequency": 0.064,
+          "eal_building_usd": 1142893.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "risk_score": 88.3,
+          "annualized_frequency": 0.225,
+          "eal_building_usd": 5660783.0
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "risk_score": 85.5,
+          "annualized_frequency": 3.804,
+          "eal_building_usd": 6498.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "risk_score": 80.8,
+          "annualized_frequency": 1.418,
+          "eal_building_usd": 439446.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Low",
+          "risk_score": 71.4,
+          "annualized_frequency": 1.0,
+          "eal_building_usd": 14133662.0,
+          "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Low",
+          "risk_score": 60.2,
+          "annualized_frequency": 3.672,
+          "eal_building_usd": 504101.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Moderate",
+          "risk_score": 83.7,
+          "annualized_frequency": 6.203,
+          "eal_building_usd": 139.0
+        },
+        "lightning": {
+          "rating": "Relatively Moderate",
+          "risk_score": 76.4,
+          "annualized_frequency": 41.953,
+          "eal_building_usd": 41242.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 64.6,
+          "annualized_frequency": 0.47,
+          "eal_building_usd": 10904.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "51650": {
+      "county": "Hampton (City), VA - FIPS 51650",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Low",
+      "overall_risk_score": 61.7,
+      "eal_rating": "Relatively Low",
+      "eal_total_usd": 23378367.0,
+      "eal_building_usd": 17072629.0,
+      "building_value_usd": 22102825432.0,
+      "social_vulnerability_rating": "Relatively Low",
+      "community_resilience_rating": "Very High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 43.4,
+          "annualized_frequency": 1.514,
+          "eal_building_usd": 144697.0
+        },
+        "strong_wind": {
+          "rating": "Relatively Moderate",
+          "risk_score": 62.7,
+          "annualized_frequency": 0.536,
+          "eal_building_usd": 131335.0
+        },
+        "tornado": {
+          "rating": "Relatively Low",
+          "risk_score": 56.1,
+          "annualized_frequency": 0.055,
+          "eal_building_usd": 480584.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "risk_score": 85.4,
+          "annualized_frequency": 0.232,
+          "eal_building_usd": 4011278.0
+        },
+        "winter_weather": {
+          "rating": "Relatively Low",
+          "risk_score": 30.2,
+          "annualized_frequency": 3.648,
+          "eal_building_usd": 4196.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "risk_score": 63.4,
+          "annualized_frequency": 0.741,
+          "eal_building_usd": 159799.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Low",
+          "risk_score": 62.6,
+          "annualized_frequency": 0.857,
+          "eal_building_usd": 9386153.0,
+          "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 80.4,
+          "annualized_frequency": 3.687,
+          "eal_building_usd": 2233384.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 78.8,
+          "annualized_frequency": 6.083,
+          "eal_building_usd": 91.0
+        },
+        "lightning": {
+          "rating": "Relatively Moderate",
+          "risk_score": 64.3,
+          "annualized_frequency": 38.874,
+          "eal_building_usd": 25516.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 56.6,
+          "annualized_frequency": 0.474,
+          "eal_building_usd": 7323.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%/yr",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [],
+      "note": "Not sourced. Planned sources (Virginia SCC Bureau of Insurance, CIAB quarterly P&C market survey, Marsh Global Insurance Market Index, WTW/Amwins/RPS market outlooks) were all blocked by the egress proxy and WebSearch budget was exhausted before these searches ran."
+    },
+    "roof_age_underwriting": {
+      "text": "Not researched successfully in this session (sources unreachable). Needs Virginia-specific carrier guidelines or broker commentary on roof-age limits, ACV-vs-RCV roof settlement and roof-condition inspections for coastal commercial risks.",
+      "sources": []
+    },
+    "wind_hail_deductible_norms": {
+      "text": "Not researched successfully in this session. Coastal Virginia commercial policies commonly carry separate named-storm/wind deductibles expressed as a percent of insured value, but no source could be opened to confirm typical percentages; treat as an open question.",
+      "sources": []
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": 7.5,
+      "low": 7.5,
+      "high": 7.9,
+      "unit": "%",
+      "as_of": "2026-Q1",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Apartment Loan Store - Cap Rates in Norfolk, Virginia (aggregator page quoting Cushman & Wakefield and CBRE figures)",
+          "url": "https://apartmentloanstore.com/norfolk/virginia/cap-rate"
+        }
+      ],
+      "note": "Norfolk industrial sales: cap rates across all types/classes averaged 7.5% in Q1 2026, down from 7.9% in Q4 2025 (value = latest; range = the two quarters). For context, CBRE's H1 2026 national survey puts core industrial near 5.2% (https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026, search summary), so the local figure likely reflects smaller/older product. Obtained only via WebSearch result summaries of an aggregator page (apartmentloanstore.com) that attributes the figures to Cushman & Wakefield / CBRE; neither the aggregator nor the underlying broker report could be opened (egress blocked). Treat as indicative only; verify against C&W|Thalhimer, Colliers or CBRE Hampton Roads reports before client use."
+    },
+    "office": {
+      "value": 7.9,
+      "low": 7.6,
+      "high": 9.4,
+      "unit": "%",
+      "as_of": "2026-Q1",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Apartment Loan Store - Cap Rates in Norfolk, Virginia (aggregator page quoting Cushman & Wakefield and CBRE figures)",
+          "url": "https://apartmentloanstore.com/norfolk/virginia/cap-rate"
+        }
+      ],
+      "note": "Hampton Roads/Norfolk office, attributed to Cushman & Wakefield: single-tenant net-lease office 7.9% (value), Class A 7.6%, Class B 8.0%, Class C 8.70%-9.40% (high). A separate CommercialCafe-derived summary cited average office cap rates of 7.7% (Norfolk) and 8.06% (Virginia Beach). Obtained only via WebSearch result summaries of an aggregator page (apartmentloanstore.com) that attributes the figures to Cushman & Wakefield / CBRE; neither the aggregator nor the underlying broker report could be opened (egress blocked). Treat as indicative only; verify against C&W|Thalhimer, Colliers or CBRE Hampton Roads reports before client use."
+    },
+    "retail": {
+      "value": 6.55,
+      "low": 6.44,
+      "high": 6.8,
+      "unit": "%",
+      "as_of": "2026-Q1",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Apartment Loan Store - Cap Rates in Norfolk, Virginia (aggregator page quoting Cushman & Wakefield and CBRE figures)",
+          "url": "https://apartmentloanstore.com/norfolk/virginia/cap-rate"
+        }
+      ],
+      "note": "Norfolk retail, attributed to CBRE Q1 2026: large retail centers 6.55% (value), small strip centers 6.44% (low), single-tenant net lease 6.80% (high). Regional retail vacancy was ~4.5% in Q4 2025 (CBRE Hampton Roads retail figures, search summary: https://www.cbre.com/insights/figures/hampton-roads-retail-figures-q4-2025). Obtained only via WebSearch result summaries of an aggregator page (apartmentloanstore.com) that attributes the figures to Cushman & Wakefield / CBRE; neither the aggregator nor the underlying broker report could be opened (egress blocked). Treat as indicative only; verify against C&W|Thalhimer, Colliers or CBRE Hampton Roads reports before client use."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [],
+      "note": "Not sourced in this session (NRCA, RCI, manufacturer and FM Global sources unreachable; WebSearch budget exhausted). Contractor pages seen in cost searches quote TPO 20-30 yr lifespans, but not maintained-vs-neglected comparisons, so no value is set."
+    },
+    "reactive": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [],
+      "note": "Not sourced; see maintained."
+    },
+    "climate_note": "Hampton Roads is a humid subtropical coastal climate with salt-laden air, frequent tropical-storm/nor'easter wind-driven rain and (per NRI) 'Relatively High' lightning and coastal-flood exposure in Norfolk. Salt-air corrosion of fasteners, edge metal, RTU curbs and metal roofs, and UV/heat aging of membranes are expected to shorten life, but no quantified source was obtained this session."
+  },
+  "code_triggers": {
+    "text": "Virginia enforces the Uniform Statewide Building Code (USBC), whose Part I Virginia Construction Code and Part II Virginia Existing Building Code (VEBC) are based on the ICC I-codes (current cycle believed to be the 2021 editions; Virginia amendments NOT verified this session). Model 2021 IEBC provisions (read directly): Sec. 705 (General) - reroofing materials/methods must comply with IBC Ch. 15, but existing low-slope roofs need not meet the 1/4:12 (2%) minimum slope, and need not add secondary (overflow) drains/scuppers if positive drainage exists; existing secondary drains may not be removed. Sec. 705 (Roof replacement) - roof replacement means removal of ALL existing layers down to the deck. Sec. 705 (Roof recover) - recover (overlay) is permitted per manufacturer instructions; coatings over BUR, mod bit, single-ply, SPF and metal are allowed without tear-off. Sec. 705 (Roof recover exceptions) - recover is PROHIBITED where the existing roof is water-soaked or deteriorated so it is not an adequate base, where the covering is slate/clay/cement/asbestos-cement tile, or where the roof already has two or more applications of any roof covering. Sec. 705 (Reinstallation of materials) - rusted/damaged flashing, edge metal and drain outlets may not be reinstalled; BUR aggregate may not be reused. Sec. 706 (Structural) - if an alteration raises gravity load >5%, structure must be upgraded, except a second roof layer of <=3 psf over a single existing layer. Sec. 706 (Roof diaphragms resisting wind loads in high-wind regions) - where >50% of roofing is removed and Vult >130 mph, roof diaphragm and roof-to-wall connections must be evaluated (Norfolk-area Vult is reported at ~120-125 mph, so this likely does not trigger - verify by site). Energy: IEBC Sec. 708 (Energy conservation, minimum requirements) requires Level 1 alterations (which include reroofing) to meet IECC requirements 'as they relate to new construction only', i.e., a roof replacement generally must bring above-deck insulation up to current IECC/Virginia energy-code roof R-values; the specific R-value and any Virginia amendments/exceptions were NOT verified this session. Note: the damage-percentage 'replace whole roof' rule (e.g., Florida's 25% rule) is not a model-IEBC provision; no Virginia equivalent was found.",
+    "sources": [
+      {
+        "name": "2021 International Existing Building Code, Ch. 7 (Alterations - Level 1), Sections 705-708 - ICC model text as published in thexqin/us-building-codes-dataset (Texas adoption, unamended ICC text), downloaded and read",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/texas/iebc-2021/chapter-7-alterations-level-1.csv"
+      },
+      {
+        "name": "2021 IEBC Ch. 2 definitions (Reroofing, Roof Recover, Roof Replacement)",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/texas/iebc-2021/chapter-2-definitions.csv"
+      },
+      {
+        "name": "Virginia DHCD - Uniform Statewide Building Code (not opened; egress blocked)",
+        "url": "https://www.dhcd.virginia.gov/codes"
+      }
+    ]
+  },
+  "open_questions": [
+    "Confirm Virginia's current USBC cycle (2021 VCC/VEBC vs 2024) and any Virginia amendments to IEBC Sections 705, 706 and 708 and to IECC roof-replacement insulation requirements (C503.3.1 equivalent), including exceptions for tapered insulation at drains/parapets.",
+    "Obtain the RSMeans City Cost Index (or Gordian location factor) for Norfolk 3-digit ZIPs 233-235; the Virginia DMAS 2024 RSMeans PDF may contain it.",
+    "Get Patuxent Roofing Norfolk's own bid history ($/sf by system) to replace the national contractor-blog ranges.",
+    "Virginia commercial property rate trend 2022-2026 and coastal named-storm / wind deductible norms (percent of TIV) - query brokers or VA SCC Bureau of Insurance.",
+    "Roof-age underwriting practices of carriers writing Hampton Roads commercial property (age cut-offs, ACV roof endorsements, inspection requirements).",
+    "Verify cap rates directly from C&W|Thalhimer, Colliers and CBRE Hampton Roads Q2 2026 reports; current values come from an aggregator page via search summaries.",
+    "Source maintained-vs-reactive roof life in humid coastal climates (NRCA, RCI/IIBEC, FM Global, manufacturer warranty data) and a quantified salt-air corrosion effect.",
+    "Nor'easter frequency for Hampton Roads (NWS Wakefield / NCEI Storm Events) to complement HURDAT2 tropical counts.",
+    "Confirm site-specific ASCE 7-22 wind speeds via the ASCE Hazard Tool for typical client addresses (Norfolk, VB, Chesapeake) and whether any exceed the 130 mph IEBC Sec. 706 diaphragm-evaluation trigger.",
+    "Note NRI building value for Virginia Beach ($28.3B) is lower than Norfolk ($42.2B) despite larger population - confirm this is an NRI v1.20 data artifact before using EAL-per-building-value comparisons."
+  ]
+}
