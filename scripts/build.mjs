@@ -33,9 +33,42 @@ const MARKETS = [
 ].filter((m) => existsSync(join(ROOT, `data/markets/${m.id}.json`)));
 const MARKET_IDS = MARKETS.map((m) => m.id);
 const SYSTEMS = ['tpo', 'epdm', 'mod_bit', 'bur', 'metal', 'coating_restoration'];
-const CAP_KEYS = ['industrial', 'office', 'retail'];
+const CAP_KEYS = ['industrial', 'office', 'retail', 'multifamily', 'medical_office', 'mixed_use'];
 // NRI hazards that damage roofs. Flooding, heat and lightning are excluded.
 const ROOF_PERILS = ['hail', 'strong_wind', 'tornado', 'hurricane', 'winter_weather', 'ice_storm'];
+
+
+// Property types. Research values (leak-consequence multipliers, extra cap rates)
+// come from data/property_types.json; `story` is the type-specific takeaway on page 2.
+const PROPERTY_TYPES = [
+  { id: 'industrial', label: 'Warehouse / Industrial', capRateKey: 'industrial' },
+  { id: 'office', label: 'Office', capRateKey: 'office' },
+  { id: 'retail', label: 'Retail', capRateKey: 'retail' },
+  { id: 'multifamily', label: 'Multi-Family', capRateKey: 'multifamily',
+    story: '<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Catching roof problems early keeps units occupied.' },
+  { id: 'mixed', label: 'Mixed Use', capRateKey: 'mixed_use',
+    story: '<b>Two kinds of tenants protected.</b> A leak can shut the ground-floor retail and damage the offices or apartments above. Planned care protects both income streams.' },
+  { id: 'medical', label: 'Medical / Institutional', capRateKey: null,
+    story: '<b>Operations keep running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment. Planned care keeps the roof from interrupting patient care.' },
+  { id: 'k12', label: 'K-12 / Education', capRateKey: null,
+    story: '<b>A predictable budget line.</b> PaxSeal turns unplanned emergency repairs into a fixed annual cost the board can plan for, and keeps leaks from closing classrooms.' },
+];
+const propertyResearch = existsSync(join(ROOT, 'data/property_types.json')) ? readJson('data/property_types.json') : { types: {}, cap_rates_by_market: {} };
+function buildPropertyTypes() {
+  return Object.fromEntries(PROPERTY_TYPES.map((t) => {
+    const r = propertyResearch.types?.[t.id] || {};
+    const m = r.leak_consequence_multiplier;
+    return [t.id, {
+      label: t.label,
+      status: 'v1',
+      capRateKey: t.capRateKey,
+      leakMultiplier: typeof m?.value === 'number' ? m.value : 1,
+      leakConfidence: m?.confidence || null,
+      leakBasis: m?.note ? String(m.note).split(/(?<=\.)\s/)[0] : null,
+      story: t.story || null,
+    }];
+  }));
+}
 
 const median = (xs) => {
   const s = xs.filter((x) => typeof x === 'number').sort((a, b) => a - b);
@@ -52,7 +85,7 @@ function buildDefaults() {
   const sysMedian = Object.fromEntries(SYSTEMS.map((s) =>
     [s, median(MARKET_IDS.map((id) => markets[id].replacement_cost_per_sqft?.[s]?.value))]));
   const capMedian = Object.fromEntries(CAP_KEYS.map((k) =>
-    [k, median(MARKET_IDS.map((id) => markets[id].cap_rates?.[k]?.value))]));
+    [k, median(MARKET_IDS.map((id) => (markets[id].cap_rates?.[k] ?? propertyResearch.cap_rates_by_market?.[id]?.[k])?.value))]));
 
   // Replacement costs track local labor and materials, so prefer same-state markets.
   // Needs at least two same-state values, so one market's number is never copied as-is.
@@ -80,10 +113,18 @@ function buildDefaults() {
     }
     const capRates = {};
     for (const k of CAP_KEYS) {
-      const v = m.cap_rates?.[k];
+      const v = m.cap_rates?.[k] ?? propertyResearch.cap_rates_by_market?.[id]?.[k];
       capRates[k] = typeof v?.value === 'number'
         ? { value: v.value, source: 'market', confidence: v.confidence || 'low' }
         : { value: capMedian[k], source: 'fallback: median of other markets', confidence: 'low' };
+    }
+
+    // Mixed use rarely has its own published cap rate: blend the market's retail,
+    // office and multi-family rates when no direct figure exists.
+    if (capRates.mixed_use.value == null) {
+      const parts = ['retail', 'office', 'multifamily'].map((k) => capRates[k].value).filter((x) => typeof x === 'number');
+      if (parts.length) capRates.mixed_use = { value: Math.round(parts.reduce((a, x) => a + x, 0) / parts.length * 100) / 100,
+        source: 'fallback: blend of retail, office and multi-family rates', confidence: 'low' };
     }
 
     out[id] = {
@@ -122,15 +163,7 @@ function buildDefaults() {
       metal: { label: 'Metal', lifeYears: life.metal.value },
       coating_restoration: { label: 'Coating / Restoration', lifeYears: life.coating_restoration.value },
     },
-    propertyTypes: {
-      industrial: { label: 'Warehouse / Industrial', capRateKey: 'industrial', status: 'v1' },
-      office: { label: 'Office', capRateKey: 'office', status: 'v1' },
-      retail: { label: 'Retail', capRateKey: 'retail', status: 'v1' },
-      medical: { label: 'Medical / Institutional', capRateKey: null, status: 'in development' },
-      k12: { label: 'K-12 / Education', capRateKey: null, status: 'in development' },
-      multifamily: { label: 'Multi-Family', capRateKey: null, status: 'in development' },
-      mixed: { label: 'Mixed Use', capRateKey: null, status: 'in development' },
-    },
+    propertyTypes: buildPropertyTypes(),
     markets: out,
   };
 }

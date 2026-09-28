@@ -36,38 +36,66 @@
   "propertyTypes": {
     "industrial": {
       "label": "Warehouse / Industrial",
+      "status": "v1",
       "capRateKey": "industrial",
-      "status": "v1"
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": null
     },
     "office": {
       "label": "Office",
+      "status": "v1",
       "capRateKey": "office",
-      "status": "v1"
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": null
     },
     "retail": {
       "label": "Retail",
+      "status": "v1",
       "capRateKey": "retail",
-      "status": "v1"
-    },
-    "medical": {
-      "label": "Medical / Institutional",
-      "capRateKey": null,
-      "status": "in development"
-    },
-    "k12": {
-      "label": "K-12 / Education",
-      "capRateKey": null,
-      "status": "in development"
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": null
     },
     "multifamily": {
       "label": "Multi-Family",
-      "capRateKey": null,
-      "status": "in development"
+      "status": "v1",
+      "capRateKey": "multifamily",
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": "<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Catching roof problems early keeps units occupied."
     },
     "mixed": {
       "label": "Mixed Use",
+      "status": "v1",
+      "capRateKey": "mixed_use",
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": "<b>Two kinds of tenants protected.</b> A leak can shut the ground-floor retail and damage the offices or apartments above. Planned care protects both income streams."
+    },
+    "medical": {
+      "label": "Medical / Institutional",
+      "status": "v1",
       "capRateKey": null,
-      "status": "in development"
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": "<b>Operations keep running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment. Planned care keeps the roof from interrupting patient care."
+    },
+    "k12": {
+      "label": "K-12 / Education",
+      "status": "v1",
+      "capRateKey": null,
+      "leakMultiplier": 1,
+      "leakConfidence": null,
+      "leakBasis": null,
+      "story": "<b>A predictable budget line.</b> PaxSeal turns unplanned emergency repairs into a fixed annual cost the board can plan for, and keeps leaks from closing classrooms."
     }
   },
   "markets": {
@@ -138,6 +166,21 @@
         "retail": {
           "value": 6.55,
           "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "multifamily": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "medical_office": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "mixed_use": {
+          "value": 7.23,
+          "source": "fallback: blend of retail, office and multi-family rates",
           "confidence": "low"
         }
       }
@@ -210,6 +253,21 @@
           "value": 6.55,
           "source": "fallback: median of other markets",
           "confidence": "low"
+        },
+        "multifamily": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "medical_office": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "mixed_use": {
+          "value": 7.23,
+          "source": "fallback: blend of retail, office and multi-family rates",
+          "confidence": "low"
         }
       }
     },
@@ -280,6 +338,21 @@
         "retail": {
           "value": 6.55,
           "source": "market",
+          "confidence": "low"
+        },
+        "multifamily": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "medical_office": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "mixed_use": {
+          "value": 7.23,
+          "source": "fallback: blend of retail, office and multi-family rates",
           "confidence": "low"
         }
       }
@@ -352,6 +425,21 @@
           "value": 6.55,
           "source": "fallback: median of other markets",
           "confidence": "low"
+        },
+        "multifamily": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "medical_office": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "mixed_use": {
+          "value": 7.46,
+          "source": "fallback: blend of retail, office and multi-family rates",
+          "confidence": "low"
         }
       }
     },
@@ -422,6 +510,21 @@
         "retail": {
           "value": 6.55,
           "source": "market",
+          "confidence": "low"
+        },
+        "multifamily": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "medical_office": {
+          "value": null,
+          "source": "fallback: median of other markets",
+          "confidence": "low"
+        },
+        "mixed_use": {
+          "value": 7.03,
+          "source": "fallback: blend of retail, office and multi-family rates",
           "confidence": "low"
         }
       }

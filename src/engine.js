@@ -26,6 +26,8 @@
 
     // Cost of fixing a defect reactively vs catching it on a planned visit.
     // national.json reactive_to_planned_repair_cost_multiplier. Low (range 1.8-5).
+    // Scaled per property type by its leak-consequence multiplier
+    // (data/property_types.json): a leak costs more in a hospital than a warehouse.
     reactiveRepairMultiplier: 3.0,
 
     // Planned-visit repair need for a new roof, % of replacement cost per year,
@@ -85,8 +87,11 @@
     var costPerSqft = num(raw.costPerSqft, market.replacementCostPerSqft[system].value);
     var replacementCost = num(raw.replacementCost, area * costPerSqft);
     var fee = num(raw.annualFee, defaults.fee.baseUsd + defaults.fee.perSqftUsd * area);
-    var capKey = defaults.propertyTypes[propType].capRateKey;
-    var capRate = capKey ? num(raw.capRate, market.capRates[capKey].value) : null;
+    var pt = defaults.propertyTypes[propType];
+    // Cap-rate valuation only applies to income property. For owner-occupied types
+    // (schools, hospitals) it is off unless the rep enters a cap rate.
+    var capDefault = pt.capRateKey && market.capRates[pt.capRateKey] ? market.capRates[pt.capRateKey].value : null;
+    var capRate = num(raw.capRate, capDefault);
 
     return {
       market: market,
@@ -94,6 +99,7 @@
       system: system,
       systemLife: defaults.systems[system].lifeYears,
       propertyType: propType,
+      leakMultiplier: num(pt.leakMultiplier, 1),
       area: area,
       costPerSqft: costPerSqft,
       replacementCost: replacementCost,
@@ -146,7 +152,7 @@
         var repairNeed = C * price * (cfg.baseRepairPctOfReplacement / 100) *
           Math.pow(1 + cfg.repairAgeGrowthPct / 100, roofAge);
         row.repairs = planned ? repairNeed * (1 - cfg.feeCoversRepairShare)
-                              : repairNeed * cfg.reactiveRepairMultiplier;
+                              : repairNeed * cfg.reactiveRepairMultiplier * inp.leakMultiplier;
       }
 
       row.storm = C * price * (inp.stormLossPct / 100) * (planned ? 1 : cfg.reactiveStormMultiplier);
@@ -231,6 +237,11 @@
         replacementCostAtHorizon: replacementCurve[H],
         plannedReplacementYear: planned.replacementYears[0] || null,
         reactiveReplacementYear: reactive.replacementYears[0] || null,
+        // Unplanned spending (repairs + storm damage) avoided over the horizon: the
+        // headline for owner-occupied property where cap-rate value doesn't apply.
+        unplannedSpendAvoided:
+          reactive.rows.reduce(function (a, r) { return a + r.repairs + r.storm; }, 0) -
+          planned.rows.reduce(function (a, r) { return a + r.repairs + r.storm; }, 0),
         expectedStormLoss20yr: {
           planned: planned.rows.reduce(function (a, r) { return a + r.storm; }, 0),
           reactive: reactive.rows.reduce(function (a, r) { return a + r.storm; }, 0)
