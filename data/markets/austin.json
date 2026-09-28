@@ -1,0 +1,798 @@
+{
+  "id": "austin",
+  "name": "Austin, TX (Austin-Round Rock-San Marcos metro)",
+  "state": "TX",
+  "counties": [
+    {
+      "name": "Travis",
+      "fips": "48453",
+      "role": "primary"
+    },
+    {
+      "name": "Williamson",
+      "fips": "48491",
+      "role": "secondary"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "research_status": "PARTIAL - hazard data and cost escalation are primary-source; replacement cost, location factor, insurance, cap rates, roof life and code text could not be sourced because the session's network egress was restricted to GitHub/package registries. See open_questions.",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "TPO: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+    },
+    "epdm": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "EPDM: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+    },
+    "mod_bit": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "Modified bitumen: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+    },
+    "bur": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "BUR: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+    },
+    "metal": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "Metal (low-slope standing seam / retrofit): no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+    },
+    "coating_restoration": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        },
+        {
+          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+        },
+        {
+          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
+          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+        }
+      ],
+      "note": "Coating/restoration: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges. No coating/restoration $/sq ft lead was seen at all (only a $0.50-1.50/sq ft reflective-coating add-on figure in a national snippet)."
+    }
+  },
+  "location_cost_factor": {
+    "value": null,
+    "low": null,
+    "high": null,
+    "unit": "index (national = 1.00)",
+    "as_of": "2026",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "RSMeans City Cost Index (paywalled; host blocked)",
+        "url": "https://www.rsmeans.com/rsmeans-city-cost-index"
+      },
+      {
+        "name": "Third-party ZIP-to-metro multiplier table claiming RSMeans CCI basis (not primary; not used)",
+        "url": "https://raw.githubusercontent.com/francis4531/Offerwise/main/zip_cost_data.py"
+      }
+    ],
+    "note": "No primary value obtained. RSMeans CCI is paywalled and blocked. A hobby GitHub table (Offerwise zip_cost_data.py) lists 0.88 for Austin ZIP prefixes 786/787, citing 'RSMeans CCI 2025/2026' plus BLS wages and Angi rate studies; its derivation is not documented, it is not roofing-specific, so it is NOT used as the value. Use 1.00 only as a neutral placeholder until an RSMeans roofing-division (07) CCI for Austin is obtained."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 6.0,
+      "low": 5.4,
+      "high": 6.0,
+      "unit": "%/yr",
+      "as_of": "2026-08",
+      "confidence": "high",
+      "sources": [
+        {
+          "name": "BLS PPI by Industry: Roofing Contractors, Nonresidential Building Work (PCU23816X23816X), Dec 2007=100, national (FRED page; host blocked from this session)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        },
+        {
+          "name": "BLS PCU23816X23816X monthly series 2008-01..2025-04, GitHub scrape of BLS data (file actually parsed)",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "BLS PCU23816X23816X 24-month values 2024-09..2026-08 (latest 232.226, Aug 2026), GitHub scrape (file actually parsed)",
+          "url": "https://raw.githubusercontent.com/evilb1000/breaking-ground/main/nextjs-breaking-ground/src/data/insights-sparklines.json"
+        }
+      ],
+      "note": "CAGR of BLS PPI PCU23816X23816X (national, NSA): Aug 2016 = 129.1 -> Aug 2026 = 232.226 gives 6.05%/yr (Aug 2026 is likely preliminary). Low = Apr 2015 126.7 -> Apr 2025 215.584 = 5.46%/yr. Heavily shaped by the 2021-2023 jump (Apr 2021 146.2 -> Apr 2023 206.307, +41%). NATIONAL index; no Austin- or Texas-specific roofing index exists in PPI. The two GitHub scrapes differ by <0.1% on overlapping months (BLS revisions)."
+    },
+    "annual_pct_20yr": {
+      "value": 4.5,
+      "low": 2.4,
+      "high": 4.6,
+      "unit": "%/yr",
+      "as_of": "2026-08",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI by Industry: Roofing Contractors, Nonresidential Building Work (PCU23816X23816X), Dec 2007=100, national (FRED page; host blocked from this session)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        },
+        {
+          "name": "BLS PCU23816X23816X monthly series 2008-01..2025-04, GitHub scrape of BLS data (file actually parsed)",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "BLS PCU23816X23816X 24-month values 2024-09..2026-08 (latest 232.226, Aug 2026), GitHub scrape (file actually parsed)",
+          "url": "https://raw.githubusercontent.com/evilb1000/breaking-ground/main/nextjs-breaking-ground/src/data/insights-sparklines.json"
+        }
+      ],
+      "note": "PCU23816X23816X only begins Dec 2007 (=100), so a full 20-yr CAGR is impossible; value uses the longest window available: Aug 2008 106.1 -> Aug 2026 232.226 = 4.45%/yr (18 yrs); Dec 2007 base 100 -> Aug 2026 = 4.62%/yr (high). Low = pre-COVID trend Aug 2008 106.1 -> Aug 2019 = 2.39%/yr, representing a return to pre-2020 escalation. National index."
+    }
+  },
+  "perils": [
+    {
+      "peril": "hail",
+      "annual_frequency": {
+        "value": 0.47,
+        "low": 0.23,
+        "high": 1.07,
+        "unit": "hail-days/yr in Travis County (county-wide, not per building)",
+        "as_of": "1996-2025",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          },
+          {
+            "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          }
+        ],
+        "note": "NCEI Storm Events, Travis County (STATE_FIPS 48, CZ 453), 1996-2025 (30 yrs). Distinct dates with >=2.0 in hail reported anywhere in the county: 14 (0.47/yr) -> ~9 per 20-yr roof life. Low = >=2.5 in: 7 days (0.23/yr, ~5 per 20 yrs). High = >=1.75 in: 32 days (1.07/yr, ~21 per 20 yrs). >=1.0 in: 75 days (2.50/yr, ~50 per 20 yrs; 271 reports). Williamson: >=1 in 81 days (2.70/yr), >=2 in 18 days (0.60/yr), >=1.75 in 33 days. Both counties combined: >=2 in 28 days (0.93/yr). These are COUNTY-WIDE occurrences; any single building is hit far less often (Travis is ~1,000 sq mi and hail swaths are narrow). For per-building expected loss use the NRI ratio instead: hail EAL $23.9M/yr on $189.5B building exposure = ~0.013% of building value per year."
+      },
+      "severity_note": "Hail is Austin's dominant roof peril. NCEI-recorded property damage from hail 1996-2025: Travis ~$562M, Williamson ~$300M, dominated by a few events: 24 Sep 2023 (4.0 in Williamson / 3.0 in Travis, $300M each county as recorded), 25 Mar 2009 (3.0-3.5 in, $160M Travis), 25 Mar 2005 (2.0 in, $100M Travis). Largest stones 4.0 in (14 May 2008, 24 Sep 2023, 30 May 2024). Decade trend (Travis+Williamson >=2 in hail-days): 6 (1996-2005), 10 (2006-15), 12 (2016-25). NCEI damage figures are rough estimates.",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 23947322,
+      "sources": [
+        {
+          "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+        }
+      ]
+    },
+    {
+      "peril": "severe_thunderstorm_wind",
+      "annual_frequency": {
+        "value": 0.5,
+        "low": 0.5,
+        "high": 1.3,
+        "unit": "damaging-wind days/yr in Travis County (county-wide)",
+        "as_of": "1996-2025",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          },
+          {
+            "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          }
+        ],
+        "note": "NCEI Storm Events Travis County 1996-2025: distinct dates with Thunderstorm Wind >=65 kt (SPC 'significant' threshold): 15 (0.50/yr, ~10 per 20 yrs); >=58 kt: 39 days (1.30/yr); >=50 kt (severe): 86 days (2.87/yr). Magnitudes mix measured and estimated gusts. Value/low = >=65 kt; high = >=58 kt."
+      },
+      "severity_note": "Wind drives perimeter/corner membrane and flashing failures and coping/RTU-curb damage on low-slope roofs. NRI 'Strong Wind' (a different, non-convective NCEI category) has much lower EAL ($0.78M/yr).",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 782638,
+      "sources": [
+        {
+          "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+        }
+      ]
+    },
+    {
+      "peril": "tornado",
+      "annual_frequency": {
+        "value": 0.52,
+        "low": 0.33,
+        "high": 0.52,
+        "unit": "events/yr (NRI) / tornado days per yr (NCEI)",
+        "as_of": "2023 (NRI) / 1996-2025 (NCEI)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          },
+          {
+            "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          }
+        ],
+        "note": "Value = NRI TRND_AFREQ for Travis 0.523/yr (1950-2021). Low = NCEI 1996-2025 EF1+/F1+ tornado days in Travis: 10 in 30 yrs (0.33/yr). NCEI: 26 tornado reports on 15 days in Travis ($20.9M), 32 on 20 days in Williamson ($112.2M)."
+      },
+      "severity_note": "Low probability for any one building but NRI rates Travis 'Very High' with $17.9M/yr building EAL, second only to hail.",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 17906081,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        }
+      ]
+    },
+    {
+      "peril": "winter_storm_ice",
+      "annual_frequency": {
+        "value": 0.7,
+        "low": 0.55,
+        "high": 1.18,
+        "unit": "events/yr",
+        "as_of": "1996-2025 (NCEI) / 2023 (NRI)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          },
+          {
+            "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+          }
+        ],
+        "note": "NCEI Winter Storm days in Travis 1996-2025: 21 (0.70/yr). NRI Ice Storm AFREQ 0.553/yr (1946-2014) = low; NRI Winter Weather AFREQ 1.176/yr (2005-2021) = high. NCEI Winter Storm property damage Travis $58.1M incl. Feb 2021 (Winter Storm Uri) and Feb 2023 ice storm."
+      },
+      "severity_note": "Ice loading, freeze damage to rooftop plumbing/sprinklers and ponding/ice dams at drains; interior water damage dominates cost. NRI building EAL small (Winter Weather $0.19M, Ice Storm $0.71M/yr) but roof-related interior losses in Feb 2021 were significant.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 711555,
+      "sources": [
+        {
+          "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+        }
+      ]
+    },
+    {
+      "peril": "heat_uv",
+      "annual_frequency": {
+        "value": 0.43,
+        "low": null,
+        "high": null,
+        "unit": "heat-wave events/yr (NRI)",
+        "as_of": "2023",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+            "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          },
+          {
+            "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          }
+        ],
+        "note": "NRI HWAV_AFREQ Travis 0.433/yr (2005-2021). NCEI Heat/Excessive Heat event-days in Travis 1996-2025: 20. Heat/UV is a continuous aging stressor rather than a discrete event; frequency is informational and should NOT be used as a damage-event rate. Its effect belongs in roof_life_years."
+      },
+      "severity_note": "Accelerates membrane aging, plasticizer loss, coating chalking and thermal-cycling fatigue at seams/flashings. NRI building EAL ~$49/yr (NRI does not model it).",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 49,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023), county table NRI_Table_Counties.csv (official download page; host blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "Unmodified copy of the FEMA NRI v1.19.0 county CSV on GitHub (the file actually parsed; NRI_VER='March 2023')",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 NRI_HazardInfo.csv (periods of record per hazard), GitHub copy",
+          "url": "https://raw.githubusercontent.com/jasminextan/Telecom_NatDisaster/main/data/NRI_Table_Counties/NRI_HazardInfo.csv"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database, bulk details CSVs (official; host blocked from this session)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "Unmodified copies of NCEI StormEvents_details-ftp_v1.0_d1996..d2025 (creation dates c2026-03 to c2026-05) on GitHub (the files actually parsed)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        }
+      ]
+    }
+  ],
+  "fema_nri": {
+    "county": "Travis County, TX (FIPS 48453)",
+    "overall_risk_rating": "Relatively High",
+    "risk_score_national_percentile": 96.9,
+    "eal_building_all_hazards_usd": 58735540,
+    "building_exposure_usd": 189538566798,
+    "nri_version": "1.19.0 (March 2023)",
+    "hazards": {
+      "hail": {
+        "rating": "Very High",
+        "annualized_frequency": 3.7927,
+        "eal_building_usd": 23947322
+      },
+      "strong_wind": {
+        "rating": "Relatively High",
+        "annualized_frequency": 1.6158,
+        "eal_building_usd": 782638
+      },
+      "tornado": {
+        "rating": "Very High",
+        "annualized_frequency": 0.5231,
+        "eal_building_usd": 17906081
+      },
+      "hurricane": {
+        "rating": "Relatively Low",
+        "annualized_frequency": 0.0347,
+        "eal_building_usd": 5033938
+      },
+      "winter_weather": {
+        "rating": "Relatively High",
+        "annualized_frequency": 1.1765,
+        "eal_building_usd": 185826
+      },
+      "ice_storm": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.5525,
+        "eal_building_usd": 711555
+      },
+      "riverine_flooding": {
+        "rating": "Relatively High",
+        "annualized_frequency": 5.875,
+        "eal_building_usd": 6714461
+      },
+      "coastal_flooding": {
+        "rating": "Not Applicable",
+        "annualized_frequency": null,
+        "eal_building_usd": null
+      },
+      "heat_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.4334,
+        "eal_building_usd": 49
+      }
+    },
+    "note": "Ratings are NRI hazard risk ratings (<HAZ>_RISKR). annualized_frequency = events/yr per NRI methodology (hail/strong wind 1986-2021, tornado 1950-2021, winter weather & heat wave 2005-2021, ice storm 1946-2014, riverine flooding 1996-2019). eal_building_usd = expected annual loss to building value for ALL buildings in the county (all occupancies), not commercial roofs specifically. Coastal flooding is 'Not Applicable'. Heat wave is rated 'Relatively High' but NRI assigns only ~$49/yr building EAL: NRI does not model heat/UV roof aging, which is the main climate driver of roof life here. FEMA released NRI v1.20 (Dec 2025); v1.20 values could not be retrieved (hazards.fema.gov blocked) and may differ.",
+    "secondary_county_williamson": {
+      "county": "Williamson County, TX (FIPS 48491)",
+      "overall_risk_rating": "Relatively Moderate",
+      "risk_score_national_percentile": 87.4,
+      "eal_building_all_hazards_usd": 13102729,
+      "building_exposure_usd": 86573802776,
+      "nri_version": "1.19.0 (March 2023)",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.8816,
+          "eal_building_usd": 43057
+        },
+        "strong_wind": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 1.7414,
+          "eal_building_usd": 237531
+        },
+        "tornado": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.594,
+          "eal_building_usd": 5695652
+        },
+        "hurricane": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.0384,
+          "eal_building_usd": 2876650
+        },
+        "winter_weather": {
+          "rating": "Very High",
+          "annualized_frequency": 1.2384,
+          "eal_building_usd": 11348
+        },
+        "ice_storm": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.6486,
+          "eal_building_usd": 131532
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 4.0833,
+          "eal_building_usd": 392216
+        },
+        "coastal_flooding": {
+          "rating": "Not Applicable",
+          "annualized_frequency": null,
+          "eal_building_usd": null
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.4334,
+          "eal_building_usd": 1119
+        }
+      }
+    }
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%/yr premium change",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Texas Department of Insurance (blocked)",
+          "url": "https://www.tdi.texas.gov/"
+        },
+        {
+          "name": "Marsh Global Insurance Market Index (blocked)",
+          "url": "https://www.marsh.com/en/services/international-placement-services/insights/global-insurance-market-index.html"
+        },
+        {
+          "name": "Amwins State of the Market (blocked)",
+          "url": "https://www.amwins.com/resources-insights/state-of-the-market"
+        }
+      ],
+      "note": "No value. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+    },
+    "roof_age_underwriting": {
+      "text": "NOT RESEARCHED (sources unreachable). To confirm: whether Texas commercial carriers apply ACV-only or scheduled roof-payment endorsements above a roof-age threshold, typical thresholds (years), cosmetic-damage exclusions for metal roofs, and requirements for roof inspection/condition reports at binding or renewal. No claims are made here.",
+      "sources": [
+        {
+          "name": "Texas Department of Insurance (blocked)",
+          "url": "https://www.tdi.texas.gov/"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "NOT RESEARCHED (sources unreachable). To confirm: typical named-peril / wind-hail percentage deductibles (as % of insured value) for Central Texas commercial property vs coastal TWIA territory (Travis and Williamson are NOT in the TWIA catastrophe area). No percentage is asserted here.",
+      "sources": [
+        {
+          "name": "Texas Windstorm Insurance Association (blocked)",
+          "url": "https://www.twia.org/"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "CBRE U.S. Cap Rate Survey (blocked)",
+          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+        },
+        {
+          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
+          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+        }
+      ],
+      "note": "No value for Austin industrial. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+    },
+    "office": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "CBRE U.S. Cap Rate Survey (blocked)",
+          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+        },
+        {
+          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
+          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+        }
+      ],
+      "note": "No value for Austin office. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+    },
+    "retail": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "CBRE U.S. Cap Rate Survey (blocked)",
+          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+        },
+        {
+          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
+          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+        }
+      ],
+      "note": "No value for Austin retail. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "NRCA (blocked)",
+          "url": "https://www.nrca.net/"
+        }
+      ],
+      "note": "No value. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Candidate sources: NRCA/IIBEC studies, manufacturer warranty terms, national.json cross-market evidence."
+    },
+    "reactive": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "NRCA (blocked)",
+          "url": "https://www.nrca.net/"
+        }
+      ],
+      "note": "No value. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+    },
+    "climate_note": "Qualitative only (no sourced number): Austin combines high summer heat/UV (NRI Heat Wave 'Relatively High'), frequent large hail (NRI Hail 'Very High', ~0.5 >=2-in hail-days/yr county-wide) and occasional hard freezes/ice (Feb 2021, Feb 2023). These favor faster membrane/coating aging than cooler climates and make hail, not age, the most common trigger for early replacement. Check data/national.json for cross-market maintained-vs-reactive life evidence."
+  },
+  "code_triggers": {
+    "text": "NOT VERIFIED THIS SESSION (codes.iccsafe.org, austintexas.gov and library.municode.com were blocked). Items to confirm against the City of Austin's adopted code editions and local amendments: (1) which IBC/IEBC/IECC edition Austin currently enforces (Austin moved to the 2021 I-codes; check whether a 2024 adoption has taken effect); (2) IEBC/IBC re-roofing section: recover prohibited where the existing roof is water-soaked/deteriorated or already has two or more applications of roof covering (model-code language as recalled by the analyst - verify), which forces full tear-off on many older reactive-maintenance roofs; (3) IECC C503 'roof replacement' provision requiring insulation above deck to meet current prescriptive R-values when the roof covering is replaced on insulation-above-deck assemblies (verify edition-specific exceptions and required R-value for Climate Zone 2A, the zone for Travis/Williamson - verify); (4) any Austin Energy Green Building / cool-roof reflectance requirements on commercial re-roofs; (5) whether Williamson-County cities (Round Rock, Georgetown, Cedar Park) differ.",
+    "sources": [
+      {
+        "name": "City of Austin Development Services - building codes (blocked)",
+        "url": "https://www.austintexas.gov/department/building-technical-codes"
+      },
+      {
+        "name": "ICC 2021 International Existing Building Code (blocked)",
+        "url": "https://codes.iccsafe.org/content/IEBC2021P1"
+      },
+      {
+        "name": "ICC 2021 International Energy Conservation Code (blocked)",
+        "url": "https://codes.iccsafe.org/content/IECC2021P1"
+      }
+    ]
+  },
+  "open_questions": [
+    "Network egress in this session allowed only GitHub and package registries; re-run the non-hazard sections from an environment that can reach rsmeans.com, bls.gov/fred, broker/brokerage sites, tdi.texas.gov, nrca.net, iccsafe.org and austintexas.gov.",
+    "Replacement $/sq ft by system: open the lead pages listed in each note (and ideally get 2-3 Austin contractor bids or PAX's own job-cost history) and enter low/medium-confidence ranges.",
+    "Location cost factor: obtain RSMeans 2025/2026 CCI for Austin (division 07 Thermal & Moisture Protection, and weighted average).",
+    "Cap rates for Austin industrial/office/retail: CBRE H1 2026 Cap Rate Survey, Cushman & Wakefield Austin MarketBeat Q2 2026, JLL, Marcus & Millichap.",
+    "Texas commercial property insurance: rate trend 2022-2026 (TDI data, Marsh/WTW/Amwins reports), roof-age ACV/roof-schedule thresholds, wind/hail % deductibles for non-coastal Central Texas.",
+    "Roof life maintained vs reactive in hot climates: NRCA/IIBEC/manufacturer or FM Global evidence (may be covered in data/national.json).",
+    "Update FEMA NRI values from v1.19.0 (March 2023) to v1.20 (December 2025) once hazards.fema.gov is reachable.",
+    "Per-building hail probability: county-wide hail-day counts overstate a single site's exposure; decide whether the model should use NRI EAL ratio (hail EAL / building value ~0.013%/yr) or a point-probability from SPC gridded hail climatology (e.g., probability of >=2-in hail within 25 mi).",
+    "Storm Events 'damage property' figures for 24 Sep 2023 ($300M recorded in each of Travis and Williamson) should be cross-checked against insurer/TDI loss data.",
+    "Confirm City of Austin's current adopted I-code editions and local amendments for re-roof (recover limits, insulation upgrade R-value for Climate Zone 2A, cool-roof requirements)."
+  ]
+}
