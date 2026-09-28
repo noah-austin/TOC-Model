@@ -73,17 +73,20 @@ This is the branded, printable, self-contained HTML page described in the handof
 6. **The PaxSeal fee has to appear in the planned scenario.** Otherwise the comparison is not honest.
 7. **Use real replacement cost, not $100K.** $100K is fine as a demo default.
 
-## 4. Markets (v1)
+## 4. Markets
 
-| Market | Area covered | Counties / cities researched | Likely primary perils |
+| Market | Area covered | Primary county (FEMA NRI) | Main roof perils |
 |---|---|---|---|
-| Austin | Austin metro, TX | Travis, Williamson | Hail, severe thunderstorm wind, heat/UV |
-| San Antonio | San Antonio metro, TX | Bexar, Comal, Guadalupe | Hail, severe thunderstorm wind, heat/UV |
-| Hampton Roads | Norfolk / Virginia Beach, VA | Norfolk, Virginia Beach, Chesapeake, Newport News, Hampton | Hurricane/tropical storm, nor'easters, coastal wind, salt air |
-| Laurel | Baltimore–Washington corridor, MD | Prince George's, Anne Arundel, Howard | Thunderstorm wind/derecho, snow/ice, freeze-thaw |
-| Culbertson | Northern Virginia (Manassas-based Culbertson Co.) | Prince William, Manassas, Fairfax, Loudoun | Thunderstorm wind/derecho, snow/ice, freeze-thaw |
+| Austin | Austin metro, TX | Travis | Hail, tornado, heat/UV |
+| San Antonio | San Antonio metro, TX | Bexar | Hail, tornado, heat/UV |
+| Waco | Waco / Killeen–Temple, TX | McLennan | Hail, tornado, thunderstorm wind |
+| West Palm Beach | Palm Beach County, FL | Palm Beach | Hurricane wind, wind-driven rain, UV |
+| Hampton Roads | Norfolk / Virginia Beach, VA | Norfolk | Hurricane/tropical storm, nor'easters, salt air |
+| Culbertson | Northern Virginia (Manassas-based Culbertson Co.) | Prince William | Thunderstorm wind/derecho, snow/ice |
+| Laurel | Baltimore–Washington corridor, MD | Prince George's | Thunderstorm wind/derecho, snow load |
+| Millersville | Annapolis–Baltimore, MD | Anne Arundel | Thunderstorm wind, tropical remnants, bay flooding |
 
-Waco, West Palm Beach and Millersville are out of scope for v1. Specific customer addresses can refine the county-level data later.
+Specific customer addresses can refine the county-level data later.
 
 Per-market research lives in `docs/research/<market>.md`. The data the model reads is in `data/markets/<market>.json` (schema: `data/markets/SCHEMA.md`). Cross-market evidence (maintained vs reactive life, repair cost multipliers, PPI escalation, program pricing benchmarks) is in `data/national.json` and `docs/research/national.md`.
 

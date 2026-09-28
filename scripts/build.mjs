@@ -21,8 +21,12 @@ const MARKETS = [
   { id: 'san-antonio', shortName: 'San Antonio', region: 'Texas', perils: {
     headline: 'Hail and tornado',
     events: 'Baseball-size hail somewhere in Bexar County about once every 3 years (NOAA); April 2016 storm ≈ $1.4B damage' } },
-  { id: 'waco', shortName: 'Waco', region: 'Texas', perils: null },
-  { id: 'west-palm-beach', shortName: 'West Palm Beach', region: 'Florida', perils: null },
+  { id: 'waco', shortName: 'Waco', region: 'Texas', perils: {
+    headline: 'Hail, tornado and thunderstorm wind',
+    events: '~16 roof-damaging storm days (hail 1"+ or wind 65+ kt) somewhere in McLennan County per 20 years (NOAA 1996–2025)' } },
+  { id: 'west-palm-beach', shortName: 'West Palm Beach', region: 'Florida', perils: {
+    headline: 'Hurricane wind and wind-driven rain',
+    events: '~2.4 hurricanes and ~5.6 tropical storms or stronger within 50 nm of West Palm Beach per 20 years (NOAA HURDAT2 1975–2024)' } },
   { id: 'hampton-roads', shortName: 'Hampton Roads', region: 'Virginia', perils: {
     headline: 'Hurricane / tropical-storm wind',
     events: '~4.8 tropical storms or stronger within 50 nm of Norfolk per 20 years (NOAA HURDAT2 1975–2024)' } },
@@ -59,11 +63,15 @@ function buildDefaults() {
   const capMedian = Object.fromEntries(CAP_KEYS.map((k) =>
     [k, median(MARKET_IDS.map((id) => markets[id].cap_rates?.[k]?.value))]));
 
+  // Replacement costs track local labor and materials, so prefer same-state markets.
+  const regionMedian = (s, region) => median(MARKETS.filter((m) => m.region === region)
+    .map((m) => markets[m.id].replacement_cost_per_sqft?.[s]?.value));
+
   const out = {};
   for (const { id, shortName, region, perils } of MARKETS) {
     const m = markets[id];
     const nri = m.fema_nri;
-    const exposure = nri.building_exposure_usd ?? nri.building_value_usd;
+    const exposure = nri.building_value_usd;
     const eal = ROOF_PERILS.reduce((a, h) => a + (nri.hazards?.[h]?.eal_building_usd || 0), 0);
 
     const replacementCostPerSqft = {};
@@ -71,7 +79,9 @@ function buildDefaults() {
       const v = m.replacement_cost_per_sqft?.[s];
       replacementCostPerSqft[s] = typeof v?.value === 'number'
         ? { value: v.value, source: 'market', confidence: v.confidence || 'low' }
-        : { value: sysMedian[s], source: 'fallback: median of other markets', confidence: 'low' };
+        : regionMedian(s, region) != null
+          ? { value: regionMedian(s, region), source: `fallback: median of other ${region} markets`, confidence: 'low' }
+          : { value: sysMedian[s], source: 'fallback: median of other markets', confidence: 'low' };
     }
     const capRates = {};
     for (const k of CAP_KEYS) {

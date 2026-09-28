@@ -94,33 +94,33 @@
       },
       "replacementCostPerSqft": {
         "tpo": {
-          "value": 9,
-          "source": "fallback: median of other markets",
+          "value": 12.5,
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         },
         "epdm": {
-          "value": 7.75,
-          "source": "fallback: median of other markets",
+          "value": 9.75,
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         },
         "mod_bit": {
-          "value": 9.5,
-          "source": "fallback: median of other markets",
+          "value": 10.25,
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         },
         "bur": {
-          "value": 8.75,
-          "source": "fallback: median of other markets",
+          "value": 7.5,
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         },
         "metal": {
-          "value": 15,
-          "source": "fallback: median of other markets",
+          "value": 15.75,
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         },
         "coating_restoration": {
           "value": 3.5,
-          "source": "fallback: median of other markets",
+          "source": "fallback: median of other Texas markets",
           "confidence": "low"
         }
       },
@@ -219,7 +219,7 @@
       "shortName": "Waco",
       "region": "Texas",
       "nriCounty": "McLennan County, TX (48309)",
-      "nriVersion": "1.20 (NRI_VER = 'December 2025')",
+      "nriVersion": "December 2025",
       "nriOverall": "Relatively Moderate",
       "nriRatings": {
         "hail": "Relatively Moderate",
@@ -229,10 +229,10 @@
         "winter_weather": "Relatively Low",
         "ice_storm": "Relatively Moderate"
       },
-      "nriBuildingLossPct": 0.015315330416237045,
+      "nriBuildingLossPct": 0.0153153304107792,
       "perils": {
-        "headline": "Storm exposure",
-        "events": "See FEMA National Risk Index ratings below"
+        "headline": "Hail, tornado and thunderstorm wind",
+        "events": "~16 roof-damaging storm days (hail 1\"+ or wind 65+ kt) somewhere in McLennan County per 20 years (NOAA 1996–2025)"
       },
       "replacementCostPerSqft": {
         "tpo": {
@@ -289,7 +289,7 @@
       "name": "West Palm Beach, FL",
       "shortName": "West Palm Beach",
       "region": "Florida",
-      "nriCounty": "Palm Beach County, FL - FIPS 12099",
+      "nriCounty": "Palm Beach County, FL (12099)",
       "nriVersion": "December 2025",
       "nriOverall": "Relatively High",
       "nriRatings": {
@@ -300,10 +300,10 @@
         "winter_weather": null,
         "ice_storm": null
       },
-      "nriBuildingLossPct": 0.09784271965437398,
+      "nriBuildingLossPct": 0.09784271990453774,
       "perils": {
-        "headline": "Storm exposure",
-        "events": "See FEMA National Risk Index ratings below"
+        "headline": "Hurricane wind and wind-driven rain",
+        "events": "~2.4 hurricanes and ~5.6 tropical storms or stronger within 50 nm of West Palm Beach per 20 years (NOAA HURDAT2 1975–2024)"
       },
       "replacementCostPerSqft": {
         "tpo": {

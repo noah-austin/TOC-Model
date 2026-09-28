@@ -68,8 +68,11 @@ def main(csv_path, only=None):
             "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. "
                     "annualized_frequency = county-wide events/yr, not hits on one building.",
         }
-        if old.get("nri_version") and old.get("nri_version") != r["NRI_VER"]:
-            data["fema_nri"]["previous_version"] = old.get("nri_version")
+        # Keep the research's own NRI notes and extra fields (secondary counties, percentiles)
+        # for reference. They may come from an older release, so they sit apart from the live values.
+        prior = old.get("research_fields") or {k: v for k, v in old.items() if k != "hazards"}
+        if prior:
+            data["fema_nri"]["research_fields"] = prior
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
         print(f"{market:16s} {data['fema_nri']['county']:40s} {r['NRI_VER']}  risk={r['RISK_RATNG']}")
 

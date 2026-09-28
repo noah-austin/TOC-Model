@@ -519,48 +519,46 @@
   ],
   "fema_nri": {
     "county": "McLennan County, TX (48309)",
-    "nri_version": "1.20 (NRI_VER = 'December 2025')",
     "overall_risk_rating": "Relatively Moderate",
-    "overall_risk_score": 91.22,
-    "eal_rating": "Relatively Moderate",
-    "eal_building_total_usd": 36841218,
-    "eal_total_all_consequences_usd": 84482866,
-    "building_value_usd": 56240347194,
+    "risk_score": 91.22137404580153,
+    "nri_version": "December 2025",
+    "building_value_usd": 56240347194.0,
+    "eal_building_all_hazards_usd": 36841218.12123625,
     "hazards": {
       "hail": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 4.6784,
-        "eal_building_usd": 1126838
+        "annualized_frequency": 4.678399301405645,
+        "eal_building_usd": 1126837.5019113193
       },
       "strong_wind": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 2.0568,
-        "eal_building_usd": 487329
+        "annualized_frequency": 2.056811646875446,
+        "eal_building_usd": 487329.46495078976
       },
       "tornado": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.7145,
-        "eal_building_usd": 5296612
+        "annualized_frequency": 0.714506925001479,
+        "eal_building_usd": 5296612.373979999
       },
       "hurricane": {
         "rating": "Relatively Low",
-        "annualized_frequency": 0.0459,
-        "eal_building_usd": 1596238
+        "annualized_frequency": 0.045909899337148,
+        "eal_building_usd": 1596237.8466049612
       },
       "winter_weather": {
         "rating": "Relatively Low",
-        "annualized_frequency": 3.1053,
-        "eal_building_usd": 69795
+        "annualized_frequency": 3.105263157894738,
+        "eal_building_usd": 69794.63589956598
       },
       "ice_storm": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.8952,
-        "eal_building_usd": 36583
+        "annualized_frequency": 0.895207271891905,
+        "eal_building_usd": 36583.17358385484
       },
       "riverine_flooding": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 2.2857,
-        "eal_building_usd": 26650933
+        "annualized_frequency": 2.285714285714286,
+        "eal_building_usd": 26650932.669200037
       },
       "coastal_flooding": {
         "rating": "Not Applicable",
@@ -569,162 +567,193 @@
       },
       "heat_wave": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 16.9474,
-        "eal_building_usd": 644
+        "annualized_frequency": 16.947368421052623,
+        "eal_building_usd": 643.8632551777466
+      },
+      "cold_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.68421052631579,
+        "eal_building_usd": 112442.15938394493
+      },
+      "lightning": {
+        "rating": "Very High",
+        "annualized_frequency": 51.493673981793485,
+        "eal_building_usd": 53031.5759642582
       }
-    },
-    "secondary_counties": {
-      "Bell (48027)": {
-        "overall_risk_rating": "Relatively Moderate",
-        "overall_risk_score": 91.13,
-        "building_value_usd": 62242034130,
-        "eal_building_total_usd": 54375897,
-        "hazards": {
-          "hail": {
-            "rating": "Relatively High",
-            "annualized_frequency": 4.1602,
-            "eal_building_usd": 8945567
-          },
-          "strong_wind": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 1.7645,
-            "eal_building_usd": 572451
-          },
-          "tornado": {
-            "rating": "Relatively High",
-            "annualized_frequency": 0.6216,
-            "eal_building_usd": 8859272
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.0412,
-            "eal_building_usd": 1592576
-          },
-          "winter_weather": {
-            "rating": "Relatively High",
-            "annualized_frequency": 3.2105,
-            "eal_building_usd": 185659
-          },
-          "ice_storm": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.8167,
-            "eal_building_usd": 50663
-          },
-          "riverine_flooding": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.0714,
-            "eal_building_usd": 31579512
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 15.3684,
-            "eal_building_usd": 646
-          }
-        }
-      },
-      "Coryell (48099)": {
-        "overall_risk_rating": "Relatively Low",
-        "overall_risk_score": 63.42,
-        "building_value_usd": 8977990571,
-        "eal_building_total_usd": 7941675,
-        "hazards": {
-          "hail": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 4.6789,
-            "eal_building_usd": 722587
-          },
-          "strong_wind": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 1.7455,
-            "eal_building_usd": 108379
-          },
-          "tornado": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.6029,
-            "eal_building_usd": 824229
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.0271,
-            "eal_building_usd": 134404
-          },
-          "winter_weather": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.3684,
-            "eal_building_usd": 15821
-          },
-          "ice_storm": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.8622,
-            "eal_building_usd": 18081
-          },
-          "riverine_flooding": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 1.5357,
-            "eal_building_usd": 5570678
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 11.6316,
-            "eal_building_usd": 71
-          }
-        }
-      }
-    },
-    "v1_19_comparison_mclennan": {
-      "overall_risk_rating": "Relatively Moderate",
-      "hail": {
-        "rating": "Relatively Low",
-        "annualized_frequency": 4.7036,
-        "eal_building_usd": 53076
-      },
-      "tornado": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.7263,
-        "eal_building_usd": 4802436
-      },
-      "winter_weather": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.9288,
-        "eal_building_usd": 12124
-      },
-      "heat_wave": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.805,
-        "eal_building_usd": 1203
-      },
-      "building_value_usd": 50100160431,
-      "eal_building_total_usd": 9312019
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.20 (NRI_VER='December 2025') county table NRI_Table_Counties.csv, unmodified GitHub copy (the file actually parsed; official FEMA host blocked)",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
-      },
-      {
-        "name": "FEMA NRI data dictionary (GitHub copy alongside the v1.20 table)",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
-      },
-      {
-        "name": "FEMA National Risk Index data resources (official download page; blocked from this session)",
+        "name": "FEMA National Risk Index, county table (official)",
         "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "FEMA NRI v1.19.0 (March 2023) county table, GitHub copy (used only for version comparison)",
-        "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
     ],
-    "note": "annualized_frequency = NRI <HAZ>_AFREQ (events/yr); eal_building_usd = <HAZ>_EALB (expected annual loss to ALL building value in the county, all occupancies); rating = <HAZ>_RISKR. Riverine flooding uses the IFLD prefix. building_value_usd = BUILDVALUE; eal_building_total_usd = EAL_VALB. v1.20 vs v1.19 for McLennan: hail EAL rose from $53K to $1.13M/yr (rating Relatively Low -> Relatively Moderate); winter-weather and heat-wave frequencies were redefined (0.93 -> 3.11 and 0.81 -> 16.9); building exposure rose from $50.1B to $56.2B. Hail EAL in McLennan ($1.1M) is far below Travis ($23.9M, v1.19) or Bexar ($28.5M, v1.19) despite similar or higher hail frequency: NRI's loss ratios reflect county loss history and exposure, so the hail rating understates physical hail exposure relative to Bell ($8.9M hail EAL on similar exposure). Tornado ($5.3M) is the largest roof-relevant EAL in McLennan."
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "research_fields": {
+      "county": "McLennan County, TX (48309)",
+      "nri_version": "1.20 (NRI_VER = 'December 2025')",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 91.22,
+      "eal_rating": "Relatively Moderate",
+      "eal_building_total_usd": 36841218,
+      "eal_total_all_consequences_usd": 84482866,
+      "building_value_usd": 56240347194,
+      "secondary_counties": {
+        "Bell (48027)": {
+          "overall_risk_rating": "Relatively Moderate",
+          "overall_risk_score": 91.13,
+          "building_value_usd": 62242034130,
+          "eal_building_total_usd": 54375897,
+          "hazards": {
+            "hail": {
+              "rating": "Relatively High",
+              "annualized_frequency": 4.1602,
+              "eal_building_usd": 8945567
+            },
+            "strong_wind": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 1.7645,
+              "eal_building_usd": 572451
+            },
+            "tornado": {
+              "rating": "Relatively High",
+              "annualized_frequency": 0.6216,
+              "eal_building_usd": 8859272
+            },
+            "hurricane": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 0.0412,
+              "eal_building_usd": 1592576
+            },
+            "winter_weather": {
+              "rating": "Relatively High",
+              "annualized_frequency": 3.2105,
+              "eal_building_usd": 185659
+            },
+            "ice_storm": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 0.8167,
+              "eal_building_usd": 50663
+            },
+            "riverine_flooding": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 3.0714,
+              "eal_building_usd": 31579512
+            },
+            "coastal_flooding": {
+              "rating": "Not Applicable",
+              "annualized_frequency": null,
+              "eal_building_usd": null
+            },
+            "heat_wave": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 15.3684,
+              "eal_building_usd": 646
+            }
+          }
+        },
+        "Coryell (48099)": {
+          "overall_risk_rating": "Relatively Low",
+          "overall_risk_score": 63.42,
+          "building_value_usd": 8977990571,
+          "eal_building_total_usd": 7941675,
+          "hazards": {
+            "hail": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 4.6789,
+              "eal_building_usd": 722587
+            },
+            "strong_wind": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 1.7455,
+              "eal_building_usd": 108379
+            },
+            "tornado": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 0.6029,
+              "eal_building_usd": 824229
+            },
+            "hurricane": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 0.0271,
+              "eal_building_usd": 134404
+            },
+            "winter_weather": {
+              "rating": "Relatively Moderate",
+              "annualized_frequency": 3.3684,
+              "eal_building_usd": 15821
+            },
+            "ice_storm": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 0.8622,
+              "eal_building_usd": 18081
+            },
+            "riverine_flooding": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 1.5357,
+              "eal_building_usd": 5570678
+            },
+            "coastal_flooding": {
+              "rating": "Not Applicable",
+              "annualized_frequency": null,
+              "eal_building_usd": null
+            },
+            "heat_wave": {
+              "rating": "Relatively Low",
+              "annualized_frequency": 11.6316,
+              "eal_building_usd": 71
+            }
+          }
+        }
+      },
+      "v1_19_comparison_mclennan": {
+        "overall_risk_rating": "Relatively Moderate",
+        "hail": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 4.7036,
+          "eal_building_usd": 53076
+        },
+        "tornado": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.7263,
+          "eal_building_usd": 4802436
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.9288,
+          "eal_building_usd": 12124
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.805,
+          "eal_building_usd": 1203
+        },
+        "building_value_usd": 50100160431,
+        "eal_building_total_usd": 9312019
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (NRI_VER='December 2025') county table NRI_Table_Counties.csv, unmodified GitHub copy (the file actually parsed; official FEMA host blocked)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data dictionary (GitHub copy alongside the v1.20 table)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA National Risk Index data resources (official download page; blocked from this session)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "FEMA NRI v1.19.0 (March 2023) county table, GitHub copy (used only for version comparison)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ],
+      "note": "annualized_frequency = NRI <HAZ>_AFREQ (events/yr); eal_building_usd = <HAZ>_EALB (expected annual loss to ALL building value in the county, all occupancies); rating = <HAZ>_RISKR. Riverine flooding uses the IFLD prefix. building_value_usd = BUILDVALUE; eal_building_total_usd = EAL_VALB. v1.20 vs v1.19 for McLennan: hail EAL rose from $53K to $1.13M/yr (rating Relatively Low -> Relatively Moderate); winter-weather and heat-wave frequencies were redefined (0.93 -> 3.11 and 0.81 -> 16.9); building exposure rose from $50.1B to $56.2B. Hail EAL in McLennan ($1.1M) is far below Travis ($23.9M, v1.19) or Bexar ($28.5M, v1.19) despite similar or higher hail frequency: NRI's loss ratios reflect county loss history and exposure, so the hail rating understates physical hail exposure relative to Bell ($8.9M hail EAL on similar exposure). Tornado ($5.3M) is the largest roof-relevant EAL in McLennan."
+    }
   },
   "insurance": {
     "commercial_property_rate_trend_pct": {

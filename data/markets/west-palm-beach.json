@@ -641,96 +641,104 @@
     "note": "HURDAT2, West Palm Beach (26.715N, 80.054W): 6 hurricanes within 50 nm in 1975-2024 (David 1979, Irene 1999, Frances 2004, Jeanne 2004, Katrina 2005, Nicole 2022) = 0.12/yr -> 2.4 per 20 yrs (value, low). 1995-2024: 5 in 30 yrs -> 3.3 per 20 yrs (high). 1851-2024: 26 in 174 yrs -> 3.0 per 20 yrs. Within 100 nm: 0.28/yr (1975-2024) -> 5.6 per 20 yrs, 0.37/yr (1995-2024) -> 7.3. Major (>=96 kt) within 50 nm: 1 since 1975 (Jeanne 2004), 6 since 1851. Intensity is peak intensity inside the radius, not wind at the site."
   },
   "fema_nri": {
-    "county": "Palm Beach County, FL - FIPS 12099",
-    "nri_version": "December 2025",
+    "county": "Palm Beach County, FL (12099)",
     "overall_risk_rating": "Relatively High",
-    "overall_risk_score": 99.2,
-    "eal_rating": "Relatively High",
-    "eal_total_usd": 518587102,
-    "eal_building_usd": 440866970,
-    "building_value_usd": 267806277182,
-    "population": 1489461.0,
-    "social_vulnerability_rating": "Relatively Moderate",
-    "community_resilience_rating": "Relatively Low",
+    "risk_score": 99.20483460559797,
+    "nri_version": "December 2025",
+    "building_value_usd": 267806277182.0,
+    "eal_building_all_hazards_usd": 440866969.93583906,
     "hazards": {
       "hail": {
         "rating": "Relatively Low",
-        "risk_score": 43.9,
-        "annualized_frequency": 0.96,
-        "eal_building_usd": 52460
+        "annualized_frequency": 0.959704069179345,
+        "eal_building_usd": 52459.96553845004
       },
       "strong_wind": {
         "rating": "Relatively High",
-        "risk_score": 93.2,
-        "annualized_frequency": 0.979,
-        "eal_building_usd": 440414
+        "annualized_frequency": 0.978889987958965,
+        "eal_building_usd": 440414.2029164665
       },
       "tornado": {
         "rating": "Relatively High",
-        "risk_score": 93.8,
-        "annualized_frequency": 1.527,
-        "eal_building_usd": 7149683
+        "annualized_frequency": 1.527325325347034,
+        "eal_building_usd": 7149683.313723981
       },
       "hurricane": {
         "rating": "Very High",
-        "risk_score": 99.9,
-        "annualized_frequency": 0.325,
-        "eal_building_usd": 254386388
+        "annualized_frequency": 0.32530079505051,
+        "eal_building_usd": 254386388.1877753
       },
       "winter_weather": {
         "rating": "No Rating",
-        "risk_score": 0.0,
         "annualized_frequency": 0.0,
-        "eal_building_usd": 0
+        "eal_building_usd": 0.0
       },
       "ice_storm": {
         "rating": "Not Applicable",
-        "risk_score": null,
         "annualized_frequency": null,
         "eal_building_usd": null
       },
       "riverine_flooding": {
         "rating": "Relatively High",
-        "risk_score": 98.9,
-        "annualized_frequency": 2.071,
-        "eal_building_usd": 167256815
+        "annualized_frequency": 2.071428571428572,
+        "eal_building_usd": 167256815.32740033
       },
       "coastal_flooding": {
         "rating": "Relatively High",
-        "risk_score": 93.4,
-        "annualized_frequency": 2.91,
-        "eal_building_usd": 6775260
+        "annualized_frequency": 2.909927293448937,
+        "eal_building_usd": 6775260.189629272
       },
       "heat_wave": {
         "rating": "Relatively High",
-        "risk_score": 98.2,
-        "annualized_frequency": 4.672,
-        "eal_building_usd": 840
-      },
-      "lightning": {
-        "rating": "Very High",
-        "risk_score": 99.8,
-        "annualized_frequency": 96.308,
-        "eal_building_usd": 1208113
+        "annualized_frequency": 4.672272365315281,
+        "eal_building_usd": 840.2389180135325
       },
       "cold_wave": {
         "rating": "Relatively High",
-        "risk_score": 92.4,
-        "annualized_frequency": 1.966,
-        "eal_building_usd": 516506
+        "annualized_frequency": 1.966127900747159,
+        "eal_building_usd": 516506.15036861657
+      },
+      "lightning": {
+        "rating": "Very High",
+        "annualized_frequency": 96.30770556918002,
+        "eal_building_usd": 1208113.4034860346
       }
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        "name": "FEMA National Risk Index, county table (official)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
-        "url": "https://hazards.fema.gov/nri/data-resources"
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
     ],
-    "note": "All values parsed from NRI v1.20 county table. 'riverine_flooding' holds v1.20 Inland Flooding (IFLD_*) values, which replaced Riverine Flooding in v1.20. Winter weather has 'No Rating' (zero frequency) and ice storm is 'Not Applicable' for all three counties. Palm Beach overall risk score 99.2 (national percentile-type score); building value (exposure) $267.8B."
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "research_fields": {
+      "county": "Palm Beach County, FL - FIPS 12099",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively High",
+      "overall_risk_score": 99.2,
+      "eal_rating": "Relatively High",
+      "eal_total_usd": 518587102,
+      "eal_building_usd": 440866970,
+      "building_value_usd": 267806277182,
+      "population": 1489461.0,
+      "social_vulnerability_rating": "Relatively Moderate",
+      "community_resilience_rating": "Relatively Low",
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ],
+      "note": "All values parsed from NRI v1.20 county table. 'riverine_flooding' holds v1.20 Inland Flooding (IFLD_*) values, which replaced Riverine Flooding in v1.20. Winter weather has 'No Rating' (zero frequency) and ice storm is 'Not Applicable' for all three counties. Palm Beach overall risk score 99.2 (national percentile-type score); building value (exposure) $267.8B."
+    }
   },
   "fema_nri_other_jurisdictions": {
     "12085": {

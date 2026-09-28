@@ -659,7 +659,29 @@
         "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
     ],
-    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building."
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "research_fields": {
+      "county": "Norfolk (City), VA - FIPS 51710",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 81.2,
+      "eal_rating": "Relatively Low",
+      "eal_total_usd": 45699250.0,
+      "eal_building_usd": 34217663.0,
+      "building_value_usd": 42208348266.0,
+      "social_vulnerability_rating": "Relatively Low",
+      "community_resilience_rating": "Relatively High",
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
   },
   "fema_nri_other_jurisdictions": {
     "51810": {

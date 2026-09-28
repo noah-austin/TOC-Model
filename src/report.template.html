@@ -743,7 +743,7 @@
     var A = [
       ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - c.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs from NRC Canada roof study and manufacturer warranty terms', 'medium'],
       ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing contractors, 2007–2025', raw.escalation ? 'rep' : 'high'],
-      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : 'Median of other PAX markets until local data is added'), repCost ? 'rep' : 'low'],
+      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : (mDefault.source.indexOf(mk.region) > -1 ? 'Median of other ' + mk.region + ' PAX markets' : 'Median of other PAX markets') + ' until local data is added'), repCost ? 'rep' : 'low'],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '× planned', 'Industry estimates; no primary study found', 'low'],
       ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA NRI expected annual building loss from hail, wind, tornado, hurricane and winter weather', 'medium'],
       ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'Estimate from maintenance-program pricing benchmarks' : 'Entered by rep', inp.feeIsEstimate ? 'low' : 'rep']

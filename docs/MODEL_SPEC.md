@@ -36,11 +36,11 @@ Definitions used in the table:
 - **Repair need** = C × (1+e)^t × 1.0% × 1.05^(roof age). This is the cost of fixing defects on a planned visit, and it grows as the roof ages.
 - **Storm loss %** = FEMA NRI expected annual building loss for hail, strong wind, tornado, hurricane, winter weather and ice storm, divided by county building value, then × (0.6 roof share of damage ÷ 0.05 roof share of building value).
 
-Current storm loss % of roof replacement cost per year, by market:
+Current storm loss % of roof replacement cost per year, by market (FEMA NRI December 2025 for every market):
 
-| Austin | San Antonio | Hampton Roads | Laurel | Culbertson |
-|---|---|---|---|---|
-| 0.31% | 0.26% | 0.44% | 0.45% | 0.15% |
+| Austin | San Antonio | Waco | West Palm Beach | Hampton Roads | Culbertson | Laurel | Millersville |
+|---|---|---|---|---|---|---|---|
+| 0.28% | 0.38% | 0.18% | 1.17% | 0.44% | 0.15% | 0.13% | 0.14% |
 
 ## Outputs
 

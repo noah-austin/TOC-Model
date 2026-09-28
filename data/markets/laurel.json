@@ -641,7 +641,24 @@
       }
     ],
     "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
-    "previous_version": "1.19.0 (March 2023)"
+    "research_fields": {
+      "county": "Prince George's County, MD (24033)",
+      "nri_version": "1.19.0 (March 2023)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 94.6,
+      "building_value_usd": 135176296231.0,
+      "eal_building_all_hazards_usd": 52780905.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
   },
   "fema_nri_other_counties": {
     "24003": {

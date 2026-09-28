@@ -847,7 +847,33 @@
       }
     ],
     "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
-    "previous_version": "1.20.0 (December 2025)"
+    "research_fields": {
+      "county": "Anne Arundel County, MD (24003)",
+      "fips": "24003",
+      "nri_version": "1.20.0 (December 2025)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 81.9,
+      "eal_rating": "Relatively Moderate",
+      "building_value_usd": 106907331725.0,
+      "eal_building_all_hazards_usd": 49575492.0,
+      "social_vulnerability_rating": "Very Low",
+      "community_resilience_rating": "Very High",
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ],
+      "note": "'rating' = NRI hazard risk rating (xxxx_RISKR). 'riverine_flooding' holds NRI v1.20 'Inland Flooding' (IFLD), which replaced Riverine Flooding in the Dec 2025 release. cold_wave and lightning added beyond the schema list. Version comparison for Anne Arundel (v1.19.0 Mar 2023 values from laurel.json fema_nri_other_counties -> v1.20.0): overall rating Relatively Moderate -> Relatively Moderate (score 92.0 -> 81.9); building value $95.2B -> $106.9B; all-hazard building EAL $49.0M -> $49.6M; hurricane EAL $36.1M -> $7.9M; coastal flooding EAL $9.40M -> $2.18M; riverine $0.23M -> inland $32.1M; hail Very Low -> Relatively Moderate ($4K -> $1.08M); strong wind Relatively Moderate -> Relatively High; winter weather AF 2.96 -> 9.52. Do not mix v1.19 and v1.20 numbers across markets."
+    }
   },
   "fema_nri_other_counties": {
     "24510": {

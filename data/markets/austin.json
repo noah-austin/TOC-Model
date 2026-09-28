@@ -595,7 +595,70 @@
       }
     ],
     "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
-    "previous_version": "1.19.0 (March 2023)"
+    "research_fields": {
+      "county": "Travis County, TX (FIPS 48453)",
+      "overall_risk_rating": "Relatively High",
+      "risk_score_national_percentile": 96.9,
+      "eal_building_all_hazards_usd": 58735540,
+      "building_exposure_usd": 189538566798,
+      "nri_version": "1.19.0 (March 2023)",
+      "note": "Ratings are NRI hazard risk ratings (<HAZ>_RISKR). annualized_frequency = events/yr per NRI methodology (hail/strong wind 1986-2021, tornado 1950-2021, winter weather & heat wave 2005-2021, ice storm 1946-2014, riverine flooding 1996-2019). eal_building_usd = expected annual loss to building value for ALL buildings in the county (all occupancies), not commercial roofs specifically. Coastal flooding is 'Not Applicable'. Heat wave is rated 'Relatively High' but NRI assigns only ~$49/yr building EAL: NRI does not model heat/UV roof aging, which is the main climate driver of roof life here. FEMA released NRI v1.20 (Dec 2025); v1.20 values could not be retrieved (hazards.fema.gov blocked) and may differ.",
+      "secondary_county_williamson": {
+        "county": "Williamson County, TX (FIPS 48491)",
+        "overall_risk_rating": "Relatively Moderate",
+        "risk_score_national_percentile": 87.4,
+        "eal_building_all_hazards_usd": 13102729,
+        "building_exposure_usd": 86573802776,
+        "nri_version": "1.19.0 (March 2023)",
+        "hazards": {
+          "hail": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 3.8816,
+            "eal_building_usd": 43057
+          },
+          "strong_wind": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 1.7414,
+            "eal_building_usd": 237531
+          },
+          "tornado": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.594,
+            "eal_building_usd": 5695652
+          },
+          "hurricane": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.0384,
+            "eal_building_usd": 2876650
+          },
+          "winter_weather": {
+            "rating": "Very High",
+            "annualized_frequency": 1.2384,
+            "eal_building_usd": 11348
+          },
+          "ice_storm": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.6486,
+            "eal_building_usd": 131532
+          },
+          "riverine_flooding": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 4.0833,
+            "eal_building_usd": 392216
+          },
+          "coastal_flooding": {
+            "rating": "Not Applicable",
+            "annualized_frequency": null,
+            "eal_building_usd": null
+          },
+          "heat_wave": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.4334,
+            "eal_building_usd": 1119
+          }
+        }
+      }
+    }
   },
   "insurance": {
     "commercial_property_rate_trend_pct": {

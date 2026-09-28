@@ -1,4 +1,4 @@
-# Market Comparison (v1 research, round 1)
+# Market Comparison
 
 Researched 2026-09-28. Details and source links are in each market's memo in this folder.
 
@@ -12,20 +12,25 @@ Researched 2026-09-28. Details and source links are in each market's memo in thi
 
 ## Side-by-side
 
-| | Austin | San Antonio | Hampton Roads | Laurel | Culbertson (NoVA) |
-|---|---|---|---|---|---|
-| **Main roof peril** | Hail, tornado | Hail, tornado | Hurricane / tropical wind | Thunderstorm wind / derecho, snow | Thunderstorm wind / derecho, snow |
-| **FEMA NRI overall** | Relatively High | Relatively High | Relatively Moderate | Relatively Moderate | Relatively Moderate |
-| **Hail (NRI)** | Very High | Very High | Relatively Low | Very Low | Relatively Moderate |
-| **Big roof events / 20 yrs** | ~9 days of ≥2" hail county-wide | ~7 baseball-hail events county-wide | ~4.8 tropical storms within 50 nm | ~3.5 major regional events (derived) | not derived |
-| **TPO replacement $/sq ft** | — | 13.50 (7–20) | 9.00 | 7.70 | 9.00 |
-| **Metal $/sq ft** | — | 14.00 | 15.00 | 16.00 | 14.00 |
-| **Location factor** | — | 0.90 (low conf.) | — | — | 1.08 |
-| **Cap rate: industrial** | — | — | 7.5% | 7.7% | 6.4% |
-| **Cap rate: office** | — | — | 7.9% | 7.5% (national) | 8.4% (Class B) |
-| **Cap rate: retail** | — | — | 6.55% | 6.55% | — |
+All eight markets use FEMA National Risk Index **December 2025** county data (refreshed with `scripts/refresh_nri.py`). "—" means no market-specific value was found; the report then uses the median of the other markets and flags it.
 
-— = not found (null in JSON).
+| | Austin | San Antonio | Waco | West Palm Beach | Hampton Roads | Culbertson (N. Virginia) | Laurel | Millersville |
+|---|---|---|---|---|---|---|---|---|
+| **Main roof perils** | Hail and tornado | Hail and tornado | Hail, tornado and thunderstorm wind | Hurricane wind and wind-driven rain | Hurricane / tropical-storm wind | Thunderstorm wind / derecho, snow and ice | Thunderstorm wind / derecho, snow load | Thunderstorm wind, tropical remnants, bay flooding |
+| **FEMA NRI overall** | Relatively High | Relatively High | Relatively Moderate | Relatively High | Relatively Moderate | Relatively Moderate | Relatively Moderate | Relatively Moderate |
+| **Hail (NRI)** | Very High | Very High | Moderate | Low | Low | Moderate | Moderate | Moderate |
+| **Strong wind (NRI)** | High | High | Moderate | High | Moderate | High | High | High |
+| **Tornado (NRI)** | Very High | Very High | High | High | Moderate | Moderate | High | Moderate |
+| **Hurricane (NRI)** | Low | Moderate | Low | Very High | Moderate | Moderate | Moderate | Moderate |
+| **Winter weather (NRI)** | Moderate | High | Low | — | Moderate | High | Very High | High |
+| **Storm loss, % of roof cost/yr** | 0.28% | 0.38% | 0.18% | 1.17% | 0.44% | 0.15% | 0.13% | 0.14% |
+| **TPO $/sq ft** | — | 13.5 | 11.5 | 11 | 9 | 9 | 7.7 | 7.4 |
+| **Metal $/sq ft** | — | 14 | 17.5 | 15 | 15 | 14 | 16 | 16 |
+| **Cap rate: industrial** | — | — | 7.5% | 5.25% | 7.5% | 6.44% | 7.7% | 7.5% |
+| **Cap rate: office** | — | — | 7.9% | 6.6% | 7.9% | 8.36% | 7.5% | 7.5% |
+| **Cap rate: retail** | — | — | 6.13% | 5.5% | 6.55% | — | 6.55% | 7% |
+
+Markets added in round 2 (Waco, West Palm Beach, Millersville) are documented in their own memos. Round-1 memos (Austin, San Antonio, Laurel) quote NRI figures from the older March 2023 release; the JSON files now carry the December 2025 values, with the originals kept under `fema_nri.research_fields`.
 
 ## Values shared by all markets (from `data/national.json`)
 
@@ -48,7 +53,7 @@ Key takeaways for the model:
 ## Inconsistencies to clean up before building the engine
 
 - **Different storm-frequency definitions.** NRI "annualized frequency" counts county-wide event-days (Laurel strong wind = 7/yr), not hits on one building. The engine needs one normalized input per market, e.g. "expected roof-damaging loss as % of replacement cost per year", derived from NRI expected annual loss ÷ building value.
-- **Different FEMA NRI versions.** Culbertson and Hampton Roads used the December 2025 release (v1.20); the others used March 2023 (v1.19). Winter-weather frequency changed a lot between versions, so re-pull every market on v1.20.
+- ~~Different FEMA NRI versions.~~ Resolved: every market now uses the December 2025 release.
 - **Insurance trend.** Laurel stored a cycle average (+7.9%) and Culbertson stored the latest quarter (−6.3%). Replace both with the single national value.
 - **San Antonio TPO $13.50** is well above the other markets ($7.70–9.00) and has a very wide range. It likely includes high-end quotes and needs a sanity check against PAX Texas jobs.
 
