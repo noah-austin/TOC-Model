@@ -1,0 +1,1180 @@
+{
+  "id": "west-palm-beach",
+  "name": "West Palm Beach, FL",
+  "state": "FL",
+  "counties": [
+    {
+      "name": "Palm Beach County",
+      "fips": "12099",
+      "tier": "primary"
+    },
+    {
+      "name": "Martin County",
+      "fips": "12085",
+      "tier": "secondary"
+    },
+    {
+      "name": "Broward County",
+      "fips": "12011",
+      "tier": "secondary"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "research_limitations": "The session's egress proxy blocked every host except GitHub (raw.githubusercontent.com) and package registries: fema.gov, noaa.gov, floridabuilding.org, citizensfla.com, colliers.com, cbre.com, bergercommercial.com, matthews.com, rsmeans.com, usace and all contractor/broker sites returned EGRESS_BLOCKED/403. Primary datasets were obtained from GitHub mirrors and parsed directly: FEMA NRI v1.20 (Dec 2025), NOAA HURDAT2 (1851-2024), NOAA NCEI Storm Events (1996-2025), and the 2023 Florida Building Code (Existing Building ch. 7; Building ch. 2, 15, 16) text. Replacement cost, location factor, insurance and cap-rate figures come only from WebSearch result summaries (pages not opened); attribution of a figure to a specific URL within a result list is approximate, and confidence is capped at low/medium.",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 11.0,
+      "low": 8.0,
+      "high": 14.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Coastal Roofing of South Florida - Commercial roof replacement cost in Palm Beach County 2026 ($80k-$170k per 10,000 sf; most TPO/PVC projects $100k-$140k) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://coastalroofingofsouthflorida.com/blog/commercial-roof-replacement-cost-in-palm-beach-county-2026-pricing-guide-and-budget-planning/"
+        },
+        {
+          "name": "FoxHaven Roofing - TPO roofing cost in South Florida 2026 ($5.50-$9.00 installed; mech-attached 60-mil w/ tapered insulation, cover board, flashing $8-$12) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://foxhavenroof.com/tpo-roofing-cost-south-florida-2026/"
+        }
+      ],
+      "note": "Value = midpoint of the Palm Beach County 'most projects' range for TPO/PVC ($100k-$140k per 10,000 sf = $10-$14/sf, midpoint $12) blended down toward the $8-$12 South Florida full-spec mechanically-attached figure; low 8 = bottom of the $8-12 full-spec range, high 14 = top of the PBC 'most projects' range. Outer PBC range was $8-$17/sf. The $5.50-$9.00 figure likely excludes tear-off/tapered insulation and is not used as the low. Search excerpts only; which figure came from which page in the result list is approximate. Replace with PAX bid data."
+    },
+    "epdm": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "$/sq ft",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search 'commercial TPO roof replacement cost per square foot South Florida' returned no EPDM-specific South Florida figure (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://foxhavenroof.com/tpo-roofing-cost-south-florida-2026/"
+        }
+      ],
+      "note": "No South Florida EPDM replacement price found. Black EPDM is uncommon on new South Florida commercial reroofs (white TPO/PVC, mod bit and coatings dominate per local contractor pages seen in search); use the TPO value as a proxy if the model needs a figure."
+    },
+    "mod_bit": {
+      "value": 12.5,
+      "low": 9.0,
+      "high": 17.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search summary: commercial roof replacement in Palm Beach County $8-$17/sf in 2026 (likely Coastal Roofing of South Florida PBC guide or 561roofers.com) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://coastalroofingofsouthflorida.com/blog/commercial-roof-replacement-cost-in-palm-beach-county-2026-pricing-guide-and-budget-planning/"
+        },
+        {
+          "name": "General Roofing Co. / Roof Observations - modified bitumen cost 2026 (~$9/sf 2-ply no insulation to ~$20/sf 3-ply with R-30 insulation; national) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://generalroof.com/modified-bitumen-roof-cost/"
+        },
+        {
+          "name": "561roofers.com - Commercial roof replacement cost by system and size (West Palm Beach area) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://561roofers.com/commercial-cost/"
+        }
+      ],
+      "note": "No Palm Beach-specific mod-bit number was isolated. Value = midpoint of the Palm Beach County all-system commercial range ($8-$17/sf, midpoint 12.5); low 9 = national 2-ply-no-insulation figure; high 17 = top of the PBC range (the national $20 3-ply/R-30 figure assumes more insulation than Florida's climate zone 1/2 energy code needs - FL energy R-value not verified)."
+    },
+    "bur": {
+      "value": 12.75,
+      "low": 11.0,
+      "high": 14.5,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search summary of Palm Beach County commercial roof cost guides: 'Built-up with cap sheet averages $11-$14.50 per square foot' (probably 561roofers.com or Coastal Roofing of South Florida) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://561roofers.com/commercial-cost/"
+        }
+      ],
+      "note": "Midpoint of the $11-$14.50/sf range quoted for Palm Beach County."
+    },
+    "metal": {
+      "value": 15.0,
+      "low": 13.0,
+      "high": 17.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search summary of Palm Beach County commercial roof cost guides: 'Standing seam metal averages $13-$17 per square foot' (probably 561roofers.com or Coastal Roofing of South Florida) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://561roofers.com/commercial-cost/"
+        }
+      ],
+      "note": "Midpoint of $13-$17/sf quoted for Palm Beach County standing-seam."
+    },
+    "coating_restoration": {
+      "value": 7.0,
+      "low": 5.0,
+      "high": 9.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search summary of Palm Beach County commercial roof cost guides: 'Silicone roof coatings average $5-$9 per square foot' (probably 561roofers.com or Coastal Roofing of South Florida) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://561roofers.com/commercial-cost/"
+        }
+      ],
+      "note": "Midpoint of $5-$9/sf quoted for Palm Beach County silicone restoration. A national search summary gave $2-$4/sf for coating-only (no repairs/prep), so the local figure likely includes prep/repair."
+    }
+  },
+  "location_cost_factor": {
+    "value": 0.96,
+    "low": 0.93,
+    "high": 0.98,
+    "unit": "index (national=1.00)",
+    "as_of": "2024-03",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "USACE DoD Area Cost Factors (ACF) PAX Newsletter 3.2.1, 29 Mar 2024 - Florida state average 0.96, Homestead ARS 0.93, Patrick AFB/SFB 0.98 (search-result excerpt only; page not opened - egress proxy blocked the host)",
+        "url": "https://usace.contentdm.oclc.org/digital/api/collection/p16021coll8/id/4495/download"
+      },
+      {
+        "name": "RSMeans City Cost Index (paywalled; host blocked)",
+        "url": "https://www.rsmeans.com/rsmeans-city-cost-index"
+      }
+    ],
+    "note": "Proxy, same method as culbertson.json: DoD military-construction ACF, not an RSMeans CCI. No Palm Beach installation is listed; value = Florida state average 0.96, bracketed by Homestead (Miami-Dade, 0.93) and Patrick (Brevard, 0.98) which lie ~60 nm south and ~110 nm north of West Palm Beach. Not roofing-specific. RSMeans West Palm Beach (ZIP 334) index not obtained. Contractor pages claim Florida wind-code requirements add 15-30% to roofing costs (HVHZ-specific, and Palm Beach is not HVHZ) - not used."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.75,
+      "low": 2.47,
+      "high": 9.14,
+      "unit": "%/yr",
+      "as_of": "Dec 2015 - Dec 2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "data/national.json cost_escalation.annual_pct_10yr (BLS PPI PCU23816X23816X, Roofing contractors, nonresidential)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "Referenced from data/national.json, not re-derived. NATIONAL index; no Florida/Palm Beach roofing index exists in PPI."
+    },
+    "annual_pct_20yr": {
+      "value": 4.6,
+      "low": 2.91,
+      "high": 5.75,
+      "unit": "%/yr",
+      "as_of": "Dec 2007 - Dec 2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "data/national.json cost_escalation.annual_pct_20yr (BLS PPI PCU23816X23816X)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "Referenced from data/national.json (longest available span, 18 yrs). Recommended 20-yr default. NATIONAL; post-hurricane demand surges in South Florida (e.g., 2004-05) can temporarily push local roofing prices above this trend - not quantified."
+    }
+  },
+  "perils": [
+    {
+      "peril": "Hurricane / tropical storm (wind, wind-driven rain)",
+      "annual_frequency": {
+        "value": 0.28,
+        "low": 0.12,
+        "high": 0.74,
+        "unit": "events/yr (tropical storm or stronger within 50 nm)",
+        "as_of": "1975-2024",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+            "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+          },
+          {
+            "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+            "url": "https://www.nhc.noaa.gov/data/#hurdat"
+          },
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "HURDAT2 centred on downtown West Palm Beach (26.715N, 80.054W), 1975-2024: 14 systems at >=34 kt within 50 nm = 0.28/yr (value); 6 at hurricane strength (>=64 kt) within 50 nm = 0.12/yr (low); 37 at TS strength within 100 nm = 0.74/yr (high); 14 hurricanes within 100 nm = 0.28/yr. 1995-2024: TS+ within 50 nm 0.33/yr, hurricanes within 50 nm 0.167/yr. 1851-2024: TS+ within 50 nm 0.32/yr, hurricanes within 50 nm 0.15/yr. FEMA NRI v1.20 hurricane annualized frequency for Palm Beach County = 0.325/yr (Martin 0.313, Broward 0.290)."
+      },
+      "severity_note": "Hurricane dominates expected building loss: NRI building EAL $254.4M/yr for Palm Beach County (58% of the county's $440.9M total building EAL), rating 'Very High' (score 99.9). Hurricanes within 50 nm since 1950 (HURDAT2 max wind inside radius / closest approach): Cleo 1964 (80 kt/26 nm), Isbell 1964 (80/35), David 1979 (85/30), Irene 1999 (65/19), Frances 2004 (95/30), Jeanne 2004 (105/30), Katrina 2005 (70/39), Nicole 2022 (65/38). Wilma 2005 (95 kt, 60 nm), Irma 2017 (80 kt, 88 nm), Matthew 2016 (115 kt, 57 nm) and Milton 2024 (106 nm, crossed central FL) passed farther away but still affected the county. Historic direct hits: 1928 Okeechobee hurricane (125 kt, 3 nm) and 1949 (115 kt, 7 nm). NWS damage estimates for Palm Beach (search excerpts): Frances $500M, Jeanne $260M (roof damage mainly over Palm Beach County); Wilma caused moderate roof damage to many buildings with 3,600 workplaces reporting damage; Irma gusts 80-90 mph county-wide. NCEI Storm Events show hurricane-level county/zone entries only in 1996-2005 (10 events), none in 2006-2025 - the last 20 years were comparatively quiet, which may understate risk in owners' minds. ASCE 7-22 / FBC 8th ed. Risk Cat II Vult for West Palm Beach reported at ~160-170 mph (search summaries; confirm per parcel on the PBC wind-speed GIS).",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 254386388,
+      "sources": [
+        {
+          "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+          "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+        },
+        {
+          "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+          "url": "https://www.nhc.noaa.gov/data/#hurdat"
+        },
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "NWS Miami - Hurricane Frances/Jeanne local reports (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.weather.gov/mfl/frances"
+        },
+        {
+          "name": "NWS Miami - Hurricane Jeanne (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.weather.gov/mfl/jeanne"
+        },
+        {
+          "name": "Wikipedia - Effects of Hurricane Wilma in Florida (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://en.wikipedia.org/wiki/Effects_of_Hurricane_Wilma_in_Florida"
+        },
+        {
+          "name": "NWS Miami - Hurricane Irma local report (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.weather.gov/mfl/hurricaneirma"
+        },
+        {
+          "name": "windloadcalc.com Florida wind speed by county (ASCE 7-22) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://windloadcalc.com/florida-wind-speed/"
+        },
+        {
+          "name": "Tequesta Roofing - ASCE 7-22 wind load explained for Palm Beach County (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.tequestaroofing.com/asce-7-22-wind-load-explained/"
+        }
+      ]
+    },
+    {
+      "peril": "Strong wind (non-tropical: thunderstorm / high wind)",
+      "annual_frequency": {
+        "value": 0.979,
+        "low": 0.979,
+        "high": 4.53,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20); NCEI 1996-2025",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          }
+        ],
+        "note": "NRI strong-wind annualized frequency 0.979/yr (value). NCEI Storm Events, Palm Beach County 1996-2025: 143 thunderstorm-wind event-days (4.77/yr); days with measured/estimated gust >=50 kt 4.53/yr (high), >=58 kt (severe) 1.07/yr, >=65 kt 0.27/yr."
+      },
+      "severity_note": "NRI 'Relatively High' (score 93.2) but building EAL only $0.44M/yr - frequent, usually minor edge/flashing/RTU damage. Summer convective storms pair with daily wind-driven rain, which exploits open seams/flashings.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 440414,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        }
+      ]
+    },
+    {
+      "peril": "Tornado (incl. hurricane-spawned)",
+      "annual_frequency": {
+        "value": 1.527,
+        "low": null,
+        "high": 2.83,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20); NCEI 1996-2025",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          }
+        ],
+        "note": "NRI tornado annualized frequency 1.53/yr for Palm Beach County (value). NCEI 1996-2025: 102 tornado records on 85 days (2.83/yr, high), almost all EF0/F0-EF1. EF2+: Wellington 2008 (EF2), Boca Raton 2022 (EF2), Palm Beach Gardens 2023 (EF2), Loxahatchee/Wellington 2024-10-09 EF3 during Hurricane Milton ($81.35M property damage in NCEI)."
+      },
+      "severity_note": "NRI 'Relatively High' (score 93.8), building EAL $7.15M/yr. Milton (2024) spawned EF3 tornadoes in Wellington and Palm Beach Gardens - per CBS News excerpt, the only two EF3s in the county in ~17 years.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 7149683,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        },
+        {
+          "name": "WLRN - Tornado spawned by Hurricane Milton ravaged homes in Wellington (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.wlrn.org/hurricane-coverage/2024-10-10/tornado-wellington-milton-palm-beach-county"
+        },
+        {
+          "name": "NWS Miami - Milton tornadoes post-storm report (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.weather.gov/media/mfl/TropicalEventSummary/PSHMFL_2024AL14_Milton_Tornadoes.pdf"
+        }
+      ]
+    },
+    {
+      "peril": "Hail",
+      "annual_frequency": {
+        "value": 0.96,
+        "low": 0.37,
+        "high": 3.13,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20); NCEI 1996-2025",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          }
+        ],
+        "note": "NRI hail annualized frequency 0.96/yr (value). NCEI 1996-2025 Palm Beach County: 94 hail days (3.13/yr, high); >=1.0 in 1.67 days/yr; >=1.75 in 0.37 days/yr (low); largest report 2.0 in (1 day)."
+      },
+      "severity_note": "NRI 'Relatively Low', building EAL $52k/yr. Hail is a minor roof peril here compared with Texas markets.",
+      "fema_nri_rating": "Relatively Low",
+      "fema_nri_expected_annual_loss_building_usd": 52460,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        }
+      ]
+    },
+    {
+      "peril": "Lightning",
+      "annual_frequency": {
+        "value": 96.3,
+        "low": null,
+        "high": null,
+        "unit": "events/yr (NRI lightning-strike frequency index)",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          }
+        ],
+        "note": "NRI lightning annualized frequency 96.3 (Broward 99.4, Martin 89.9); NCEI logged 72 damaging-lightning days in 1996-2025 (2.4/yr)."
+      },
+      "severity_note": "NRI 'Very High' (score 99.8), building EAL $1.21M/yr. Relevant to rooftop equipment and fire, less to membranes.",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 1208113,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        }
+      ]
+    },
+    {
+      "peril": "Inland / riverine flooding (extreme rainfall; roof ponding and drain overload)",
+      "annual_frequency": {
+        "value": 2.071,
+        "low": 1.13,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20 Inland Flooding); NCEI 1996-2025",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+            "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+          },
+          {
+            "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+            "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+          }
+        ],
+        "note": "NRI v1.20 Inland Flooding (IFLD, replaces Riverine) 2.07/yr for Palm Beach County; NCEI flash-flood days 1.13/yr (1996-2025)."
+      },
+      "severity_note": "NRI 'Relatively High', building EAL $167.3M/yr (2nd largest hazard). Mostly ground-level flood loss, but the same rainfall events overload roof drains and scuppers on low-slope roofs; clogged drains are a maintenance item.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 167256815,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NCEI Storm Events Database details files 1996-2025 - unmodified copies on GitHub, parsed (Palm Beach County county/zone records, STATE_FIPS 12)",
+          "url": "https://github.com/RyanFabrick/Storm-Prediction/tree/main/Datasets"
+        },
+        {
+          "name": "NOAA NCEI Storm Events bulk CSV directory (official; not opened, egress blocked)",
+          "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"
+        }
+      ]
+    },
+    {
+      "peril": "Coastal flooding / storm surge",
+      "annual_frequency": {
+        "value": 2.91,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI coastal flooding annualized frequency 2.91/yr."
+      },
+      "severity_note": "NRI 'Relatively High', building EAL $6.78M/yr. Not a roof peril, but coastal salt air accelerates corrosion of fasteners, edge metal and RTU curbs (not quantified).",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 6775260,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Heat wave / UV (membrane aging)",
+      "annual_frequency": {
+        "value": 4.672,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "2025-12 (NRI v1.20)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "NRI heat-wave annualized frequency 4.67/yr."
+      },
+      "severity_note": "NRI 'Relatively High' (score 98.2) but building EAL negligible ($840/yr) - NRI does not model material aging. The roof effect is chronic: year-round UV and surface temperatures (contractor excerpt: dark roofs above 160F in summer) plus humidity shorten membrane life - see roof_life_years.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 840,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  ],
+  "significant_wind_events_20yr": {
+    "value": 5.6,
+    "low": 2.4,
+    "high": 14.8,
+    "unit": "events per 20 yrs",
+    "as_of": "1975-2024",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+        "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+      },
+      {
+        "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+        "url": "https://www.nhc.noaa.gov/data/#hurdat"
+      },
+      {
+        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ],
+    "note": "Comparable to hampton-roads.json: tropical storms/hurricanes within 50 nm of West Palm Beach 0.28/yr x 20 = 5.6 (value); low = hurricanes within 50 nm 0.12/yr x 20 = 2.4; high = TS-strength systems within 100 nm 0.74/yr x 20 = 14.8. Adding NRI non-tropical strong-wind events (0.98/yr) would add ~20 lower-severity events. Exposure count, not a claim count."
+  },
+  "hurricanes_within_50nm_20yr": {
+    "value": 2.4,
+    "low": 2.4,
+    "high": 3.3,
+    "unit": "hurricanes (>=64 kt at any fix within 50 nm) per 20-yr roof life",
+    "as_of": "1975-2024",
+    "confidence": "medium",
+    "sources": [
+      {
+        "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+        "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+      },
+      {
+        "name": "NOAA NHC HURDAT2 official data page (not opened; egress blocked)",
+        "url": "https://www.nhc.noaa.gov/data/#hurdat"
+      }
+    ],
+    "note": "HURDAT2, West Palm Beach (26.715N, 80.054W): 6 hurricanes within 50 nm in 1975-2024 (David 1979, Irene 1999, Frances 2004, Jeanne 2004, Katrina 2005, Nicole 2022) = 0.12/yr -> 2.4 per 20 yrs (value, low). 1995-2024: 5 in 30 yrs -> 3.3 per 20 yrs (high). 1851-2024: 26 in 174 yrs -> 3.0 per 20 yrs. Within 100 nm: 0.28/yr (1975-2024) -> 5.6 per 20 yrs, 0.37/yr (1995-2024) -> 7.3. Major (>=96 kt) within 50 nm: 1 since 1975 (Jeanne 2004), 6 since 1851. Intensity is peak intensity inside the radius, not wind at the site."
+  },
+  "fema_nri": {
+    "county": "Palm Beach County, FL - FIPS 12099",
+    "nri_version": "December 2025",
+    "overall_risk_rating": "Relatively High",
+    "overall_risk_score": 99.2,
+    "eal_rating": "Relatively High",
+    "eal_total_usd": 518587102,
+    "eal_building_usd": 440866970,
+    "building_value_usd": 267806277182,
+    "population": 1489461.0,
+    "social_vulnerability_rating": "Relatively Moderate",
+    "community_resilience_rating": "Relatively Low",
+    "hazards": {
+      "hail": {
+        "rating": "Relatively Low",
+        "risk_score": 43.9,
+        "annualized_frequency": 0.96,
+        "eal_building_usd": 52460
+      },
+      "strong_wind": {
+        "rating": "Relatively High",
+        "risk_score": 93.2,
+        "annualized_frequency": 0.979,
+        "eal_building_usd": 440414
+      },
+      "tornado": {
+        "rating": "Relatively High",
+        "risk_score": 93.8,
+        "annualized_frequency": 1.527,
+        "eal_building_usd": 7149683
+      },
+      "hurricane": {
+        "rating": "Very High",
+        "risk_score": 99.9,
+        "annualized_frequency": 0.325,
+        "eal_building_usd": 254386388
+      },
+      "winter_weather": {
+        "rating": "No Rating",
+        "risk_score": 0.0,
+        "annualized_frequency": 0.0,
+        "eal_building_usd": 0
+      },
+      "ice_storm": {
+        "rating": "Not Applicable",
+        "risk_score": null,
+        "annualized_frequency": null,
+        "eal_building_usd": null
+      },
+      "riverine_flooding": {
+        "rating": "Relatively High",
+        "risk_score": 98.9,
+        "annualized_frequency": 2.071,
+        "eal_building_usd": 167256815
+      },
+      "coastal_flooding": {
+        "rating": "Relatively High",
+        "risk_score": 93.4,
+        "annualized_frequency": 2.91,
+        "eal_building_usd": 6775260
+      },
+      "heat_wave": {
+        "rating": "Relatively High",
+        "risk_score": 98.2,
+        "annualized_frequency": 4.672,
+        "eal_building_usd": 840
+      },
+      "lightning": {
+        "rating": "Very High",
+        "risk_score": 99.8,
+        "annualized_frequency": 96.308,
+        "eal_building_usd": 1208113
+      },
+      "cold_wave": {
+        "rating": "Relatively High",
+        "risk_score": 92.4,
+        "annualized_frequency": 1.966,
+        "eal_building_usd": 516506
+      }
+    },
+    "sources": [
+      {
+        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ],
+    "note": "All values parsed from NRI v1.20 county table. 'riverine_flooding' holds v1.20 Inland Flooding (IFLD_*) values, which replaced Riverine Flooding in v1.20. Winter weather has 'No Rating' (zero frequency) and ice storm is 'Not Applicable' for all three counties. Palm Beach overall risk score 99.2 (national percentile-type score); building value (exposure) $267.8B."
+  },
+  "fema_nri_other_jurisdictions": {
+    "12085": {
+      "county": "Martin County, FL - FIPS 12085",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 94.1,
+      "eal_rating": "Relatively Moderate",
+      "eal_total_usd": 119366015,
+      "eal_building_usd": 106339463,
+      "building_value_usd": 32916776293,
+      "population": 158246.0,
+      "social_vulnerability_rating": "Relatively High",
+      "community_resilience_rating": "Relatively Moderate",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 37.2,
+          "annualized_frequency": 0.844,
+          "eal_building_usd": 5361
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "risk_score": 87.8,
+          "annualized_frequency": 0.782,
+          "eal_building_usd": 845400
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "risk_score": 74.8,
+          "annualized_frequency": 0.424,
+          "eal_building_usd": 1444436
+        },
+        "hurricane": {
+          "rating": "Very High",
+          "risk_score": 98.7,
+          "annualized_frequency": 0.313,
+          "eal_building_usd": 83755735
+        },
+        "winter_weather": {
+          "rating": "No Rating",
+          "risk_score": 0.0,
+          "annualized_frequency": 0.0,
+          "eal_building_usd": 0
+        },
+        "ice_storm": {
+          "rating": "Not Applicable",
+          "risk_score": null,
+          "annualized_frequency": null,
+          "eal_building_usd": null
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 83.3,
+          "annualized_frequency": 0.571,
+          "eal_building_usd": 18206537
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "risk_score": 73.0,
+          "annualized_frequency": 1.13,
+          "eal_building_usd": 928610
+        },
+        "heat_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 67.9,
+          "annualized_frequency": 2.328,
+          "eal_building_usd": 50
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "risk_score": 95.8,
+          "annualized_frequency": 89.851,
+          "eal_building_usd": 78647
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "risk_score": 35.3,
+          "annualized_frequency": 2.301,
+          "eal_building_usd": 7108
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "12011": {
+      "county": "Broward County, FL - FIPS 12011",
+      "nri_version": "December 2025",
+      "overall_risk_rating": "Relatively High",
+      "overall_risk_score": 99.5,
+      "eal_rating": "Relatively High",
+      "eal_total_usd": 647973333,
+      "eal_building_usd": 567182624,
+      "building_value_usd": 301039557625,
+      "population": 1940829.0,
+      "social_vulnerability_rating": "Relatively Moderate",
+      "community_resilience_rating": "Relatively Moderate",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Low",
+          "risk_score": 34.2,
+          "annualized_frequency": 0.786,
+          "eal_building_usd": 61565
+        },
+        "strong_wind": {
+          "rating": "Relatively Moderate",
+          "risk_score": 80.2,
+          "annualized_frequency": 1.017,
+          "eal_building_usd": 422902
+        },
+        "tornado": {
+          "rating": "Relatively High",
+          "risk_score": 96.3,
+          "annualized_frequency": 0.8,
+          "eal_building_usd": 2318155
+        },
+        "hurricane": {
+          "rating": "Very High",
+          "risk_score": 99.8,
+          "annualized_frequency": 0.29,
+          "eal_building_usd": 259673064
+        },
+        "winter_weather": {
+          "rating": "No Rating",
+          "risk_score": 0.0,
+          "annualized_frequency": 0.0,
+          "eal_building_usd": 0
+        },
+        "ice_storm": {
+          "rating": "Not Applicable",
+          "risk_score": null,
+          "annualized_frequency": null,
+          "eal_building_usd": null
+        },
+        "riverine_flooding": {
+          "rating": "Very High",
+          "risk_score": 99.4,
+          "annualized_frequency": 2.464,
+          "eal_building_usd": 285724256
+        },
+        "coastal_flooding": {
+          "rating": "Very High",
+          "risk_score": 97.0,
+          "annualized_frequency": 2.616,
+          "eal_building_usd": 12181090
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "risk_score": 98.8,
+          "annualized_frequency": 5.707,
+          "eal_building_usd": 1167
+        },
+        "lightning": {
+          "rating": "Very High",
+          "risk_score": 100.0,
+          "annualized_frequency": 99.352,
+          "eal_building_usd": 288832
+        },
+        "cold_wave": {
+          "rating": "Relatively High",
+          "risk_score": 95.2,
+          "annualized_frequency": 1.482,
+          "eal_building_usd": 310663
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - unmodified GitHub mirror, downloaded and parsed (NRI_VER field = 'December 2025')",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI data resources (official download page; blocked by egress proxy, not opened)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": -2.7,
+      "low": -16.6,
+      "high": 27.0,
+      "unit": "% premium change, y/y",
+      "as_of": "H1 2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Florida Professionals - 'Big accounts got 2026 insurance relief; Florida small businesses got a bill' (large commercial property -2.7% avg H1 2026; small business +1.1%) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://floridaprofessionals.com/big-accounts-got-2026-insurance-relief-florida-small-businesses-got-a-bill/"
+        },
+        {
+          "name": "American Coastal Insurance (via search summary): Florida commercial (condo-association) property premiums -16.6% y/y through Q1 2026 (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://propertyexemption.com/hoa/blog/florida-association-insurance-premiums-2026"
+        },
+        {
+          "name": "Insurance Journal / Bloomberg - 'Florida's 125% surge in property-insurance bills' (commercial property costs +125% in 5 yrs to 2023, ~27%/yr in the last two years) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.insurancejournal.com/news/southeast/2024/05/20/775000.htm"
+        },
+        {
+          "name": "data/national.json insurance.commercial_property_rate_trend_pct (Marsh US property -13% Q2 2026)",
+          "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"
+        }
+      ],
+      "note": "Value = latest Florida-specific commercial figure found: large commercial property accounts -2.7% on average in H1 2026 (small-business accounts +1.1%). low = American Coastal condo-association book -16.6% y/y Q1 2026 (residential-commercial, not office/industrial/retail). high = the 2022-2023 hard market, when Florida commercial property costs rose ~27%/yr (125% over the five years to 2023). A surplus-lines figure of -47% for 'commercial windstorm and hail' also appeared in a search summary with unclear sourcing - not used. Do NOT extrapolate a negative rate for 20 years: Florida's cycle is catastrophe-driven (hard markets followed 1992, 2004-05 and 2017-22 storms). Citizens 2026: personal multiperil -8.8%, wind-only -5.5%; commercial-residential +7.2% (non-condo multiperil) and +14.4% wind-only; commercial non-residential changes effective 2026-07-01 not quantified in excerpts."
+    },
+    "roof_age_underwriting": {
+      "text": "Florida statute s. 627.7011 bars insurers from refusing or non-renewing a HOMEOWNER policy solely because a roof is under 15 years old and requires them to allow an inspection for roofs 15+ years - this protects residential only, not commercial property. For commercial buildings (search excerpts, low confidence): roof age and condition drive Florida commercial underwriting more than almost any other factor; older roofs draw non-renewals, higher deductibles, or roof surfacing settled at actual cash value (ACV) instead of replacement cost; ACV triggers are typically at 10, 15 or 20 years depending on carrier; private carriers typically tighten at 15-20 years through inspections and ACV shifts; Citizens publishes explicit roof-age rules (reported: 25-yr cap for shingle, 50-yr for tile/metal; ACV at 10 yrs for asphalt shingle - residential/shingle-focused, commercial low-slope rules not found). New policies on older roofs often require a roof inspection or wind-mitigation report; wind-mitigation features (roof deck attachment, roof-to-wall connections, secondary water resistance) earn premium credits under Florida's mandated wind-mitigation discount system. See data/national.json for ISO CP 10 36 (ACV roof surfacing endorsement). Sales implication: a documented biannual PaxSeal inspection record and condition reports directly address the inspection/ACV triggers carriers use.",
+      "sources": [
+        {
+          "name": "Florida Statutes s. 627.7011 (homeowner roof-age protections) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.flsenate.gov/laws/statutes/2022/627.7011"
+        },
+        {
+          "name": "Roofing-IT - Florida roof age rules by insurer (2026) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://roofing-it.com/florida-roof-age-rules-by-insurer"
+        },
+        {
+          "name": "AJ Insurance Services - Florida commercial property insurance, wind ready (roof age drives commercial underwriting) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.ajinsuranceservices.com/business-insurance/commercial-property/"
+        },
+        {
+          "name": "data/national.json insurance.roof_age_underwriting",
+          "url": "https://www.adjustersinternational.com/pubs/adjusting-today/be-aware-of-recent-revisions-to-iso-commercial-property-coverage-forms/"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "Florida commercial property named-storm/hurricane deductibles are percentage-based, typically 2%-10% of insured building value per storm (search excerpts from Florida agency guides); condo/HOA boards commonly choose between 5% and 10% named-storm deductibles. Example: a 5% deductible on a $2M building = $100,000 retained per hurricane. Florida statute requires $500, 2%, 5% and 10% hurricane-deductible options for residential policies (s. 627.701) - commercial deductibles are negotiated. 2026 market softening is bringing 'improved terms and lower deductibles than a year ago' for cat-exposed Florida accounts (broker commentary via search). Implication for the model: a single hurricane can put 2-5%+ of building value (the roof portion included) on the owner before insurance responds, so preventing roof-driven interior water losses has direct cash value.",
+      "sources": [
+        {
+          "name": "Harbour Insurance Agency - Commercial property insurance for hurricane/named-storm risk in Florida (2%-10% of building value) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://harbourinsuranceagency.com/blog/commercial-property-insurance-for-hurricane-named-storm-risk-in-florida/"
+        },
+        {
+          "name": "First Commercial Insurance Advisors (FCIA) - Florida named-storm deductibles explained (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://firstcommfl.com/commercial-property-insurance/florida-named-storm-deductibles/"
+        },
+        {
+          "name": "Worth Insurance - Florida hurricane deductible 2026 guide (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.worthinsurance.com/storm-center/florida-hurricane-deductible"
+        },
+        {
+          "name": "Insurance Journal - Q2 global commercial insurance rates keep dropping (Jul 2026) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.insurancejournal.com/news/national/2026/07/23/878716.htm"
+        }
+      ]
+    },
+    "citizens": {
+      "text": "Citizens Property Insurance Corp. (state insurer of last resort) 2026 rate filing: personal-lines multiperil average -8.8% and wind-only -5.5% (South Florida counties -11% to -14% per one excerpt); commercial-residential multiperil +7.2% (non-condo), +7.7% (condo), wind-only +14.4%/+14.1%; OIR-approved commercial-lines (incl. commercial non-residential) rate and rule changes effective for new and renewal policies on/after 2026-07-01 (amounts vary by risk, occupancy and territory; not quantified). Private carriers were reported undercutting Citizens by 10-20% in South Florida. The 2022-23 reforms (SB 2-A Dec 2022, HB 837 Mar 2023) are credited with bringing 11+ new carriers into Florida.",
+      "sources": [
+        {
+          "name": "Citizens - 2026 rate change (Nov 2025) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.citizensfla.com/-/20251106-2026-rate-change"
+        },
+        {
+          "name": "Citizens - 2026 rate and rule changes (Apr 2026) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.citizensfla.com/-/20260430-2026-rate-and-rule-changes"
+        },
+        {
+          "name": "Florida OIR - update on continued property insurance market stabilization (Oct 2024) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://floir.gov/home/2024/10/10/florida-s-insurance-commissioner-provides-update-on-continued-property-insurance-market-stabilization"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": 5.25,
+      "low": 4.75,
+      "high": 5.75,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Lending Solutions (clscre.com) - West Palm Beach commercial real estate market 2026: industrial 4.75%-5.75% (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://clscre.com/blog/cre-market-report-west-palm-beach-2026.html"
+        },
+        {
+          "name": "Matthews - South Florida industrial market report Q1 2026 (market cap rate 5.4%, avg $279/sf, ~$345M volume) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.matthews.com/insights/south-florida-industrial-q1-2026"
+        },
+        {
+          "name": "Colliers - Palm Beach County industrial Q1 2026 (not opened)",
+          "url": "https://www.colliers.com/en/research/palm-beach/1q26-palm-beach-county-industrial"
+        },
+        {
+          "name": "Berger Commercial - Palm Beach County industrial Q2 2026 (not opened)",
+          "url": "https://bergercommercial.com/palm-beach-county-industrial-market-report-q2-2026/"
+        }
+      ],
+      "note": "Verified only to the extent that two searches returned the same 4.75%-5.75% West Palm Beach industrial range, from a lender blog (clscre.com), not from a broker MarketBeat. Value = midpoint 5.25%. Corroboration: Matthews South Florida Q1 2026 market cap rate 5.4% (inside the range). Another excerpt (unattributed within the list; possibly Miami Real Group or MaxLife) cited South Florida industrial averaging 6.3% and 'typically 5.25%-6.25%' - a sensitivity high of 6.3% is defensible. C&W, CBRE, Colliers and Berger reports could not be opened."
+    },
+    "office": {
+      "value": 6.6,
+      "low": 6.0,
+      "high": 7.25,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Lending Solutions (clscre.com) - West Palm Beach 2026: office 6.00%-7.25% (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://clscre.com/blog/cre-market-report-west-palm-beach-2026.html"
+        },
+        {
+          "name": "Colliers - Palm Beach County office Q1 2026 (not opened)",
+          "url": "https://www.colliers.com/en/research/palm-beach/1q26-palm-beach-county-office"
+        },
+        {
+          "name": "Avison Young - West Palm Beach office market reports (not opened)",
+          "url": "https://www.avisonyoung.us/web/west-palm-beach/office-market-report"
+        }
+      ],
+      "note": "Midpoint (6.625, rounded) of the 6.00%-7.25% West Palm Beach office range in a lender blog. No broker cap-rate figure found; Palm Beach office fundamentals mixed in 2026 (Colliers: negative absorption Q1 2026; CBRE: +27k sf). Suburban/Class B office likely trades above this range."
+    },
+    "retail": {
+      "value": 5.5,
+      "low": 5.0,
+      "high": 6.0,
+      "unit": "%",
+      "as_of": "2026-Q2",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Lending Solutions (clscre.com) - West Palm Beach 2026: retail 5.00%-6.00% (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://clscre.com/blog/cre-market-report-west-palm-beach-2026.html"
+        },
+        {
+          "name": "Matthews - South Florida retail Q2 2026 (average 6.0%) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.matthews.com/insights/south-florida-retail-q2-2026"
+        },
+        {
+          "name": "Colliers - Palm Beach County retail Q2 2026 (vacancy 4.0%, asking $30.14/sf NNN; not opened) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://www.colliers.com/en/research/palm-beach/2q26-palm-beach-county-retail"
+        }
+      ],
+      "note": "Midpoint of the 5.00%-6.00% West Palm Beach retail range (lender blog); excerpt also described Palm Beach County retail as 'grocery-anchored 5s to unanchored strip 6s'. Matthews South Florida retail Q2 2026 average 6.0% = high."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": 20,
+      "low": 15,
+      "high": 25,
+      "unit": "years (low-slope membrane, South Florida)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "FoxHaven Roofing - Commercial roof maintenance: TPO and EPDM on the Treasure Coast ('both systems can last 20+ years with proper maintenance, but both can fail in under ten without it'; recommends twice-annual inspections) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://foxhavenroof.com/commercial-tpo-epdm-roof-maintenance-treasure-coast/"
+        },
+        {
+          "name": "FoxHaven Roofing - Modified bitumen roofing in South Florida (15-20 yrs with proper installation and maintenance) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://foxhavenroof.com/modified-bitumen-roofing-south-florida/"
+        },
+        {
+          "name": "data/national.json maintenance_evidence.roof_life_years.maintained (21 yrs, untraced Firestone/ProLogis figure)",
+          "url": "https://ridgelineroofingcompany.com/how-commercial-roof-maintenance-prevents-leaks/"
+        }
+      ],
+      "note": "Local contractor excerpts: maintained TPO/EPDM '20+ years' (value 20); mod bit 15-20 yrs in South Florida with maintenance (low 15); TPO rated 20-30 yrs (high 25). National default is 21 yrs. The local figure is ~1 yr below national, consistent with the harsher climate. Contractor marketing, low confidence."
+    },
+    "reactive": {
+      "value": 15,
+      "low": 10,
+      "high": 20,
+      "unit": "years (low-slope membrane, South Florida)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Search summary of South Florida commercial roofing pages (ogroof.com / shieldlineroofing.com / pitchcommercial.net result set): 'a TPO or EPDM membrane rated for 20 to 25 years in a moderate climate may deliver 15 to 20 years in South Florida without diligent maintenance, and less than that with deferred attention' (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://ogroof.com/blog-tpo-vs-pvc-vs-epdm-vs-mod-bit"
+        },
+        {
+          "name": "FoxHaven Roofing - Treasure Coast TPO/EPDM maintenance ('can fail in under ten without it') (search-result excerpt only; page not opened - egress proxy blocked the host)",
+          "url": "https://foxhavenroof.com/commercial-tpo-epdm-roof-maintenance-treasure-coast/"
+        },
+        {
+          "name": "data/national.json maintenance_evidence.roof_life_years.reactive (13 yrs)",
+          "url": "https://ridgelineroofingcompany.com/how-commercial-roof-maintenance-prevents-leaks/"
+        }
+      ],
+      "note": "Value 15 = bottom of the '15 to 20 years in South Florida without diligent maintenance' excerpt ('less than that with deferred attention'); low 10 = 'can fail in under ten' without maintenance; high 20 = top of the same excerpt. National default is 13 yrs; for the model, 13-15 are both defensible. Exact attribution of the quoted sentence to one page in the result set is uncertain."
+    },
+    "climate_note": "Humid subtropical/tropical-monsoon coast (Köppen Am/Cfa boundary). Year-round high UV, summer surface temperatures reported above 160F on dark roofs, near-daily summer convective rain with wind-driven rain, biological growth, and salt air near the coast. NRI rates heat wave 'Relatively High', lightning 'Very High', strong wind 'Relatively High', and hurricane 'Very High'. Local contractors state a membrane rated 20-25 yrs in a moderate climate delivers 15-20 yrs in South Florida without diligent maintenance, and recommend twice-annual (spring and fall) inspections timed around hurricane season - which matches the PaxSeal biannual schedule. Ponding water at TPO welds/EPDM seams and clogged drains are cited as the most common preventable early failures."
+  },
+  "code_triggers": {
+    "text": "Florida Building Code 8th Edition (2023), in force statewide; Palm Beach County is NOT in the High-Velocity Hurricane Zone (FBC-B Ch. 2: 'HIGH VELOCITY HURRICANE ZONE. This zone consists of Broward and Miami-Dade counties.' - read directly). HVHZ design wind speeds are fixed by FBC-B 1620.2 (Broward Risk Cat II 170 mph; Miami-Dade 175 mph); Palm Beach uses the ASCE 7-22 map (FBC-B 1609.3, parcel-specific via the county wind-speed GIS; ~160-170 mph Risk Cat II per search summaries) and is largely a wind-borne debris region. Secondary market Broward is HVHZ (FBC-B 1512-1525 roofing rules, product approvals, higher cost). (1) THE 25% RULE - FBC-Existing Building 706.1.1 (read directly): 'Not more than 25 percent of the total roof area or roof section of any existing building or structure shall be repaired, replaced or recovered in any 12-month period unless the roof covering on the entire existing roof system or roof section is replaced or recovered to conform to the requirements of this code.' EXCEPTION (added by SB 4-D, 2022; F.S. 553.844(5)): if the existing roofing system or section was built, repaired or replaced in compliance with the 2007 FBC or later, and 25% or more is being repaired/replaced/recovered, only the repaired portion must meet current code; local governments may not amend this exception. The 2007 FBC took effect 1 Mar 2009 (per search excerpts), so roofs installed before ~2009 still face the all-or-nothing rule: a storm that damages >25% of an old roof section forces full replacement of that section. SALES POINT: a pre-2009 roof is a latent full-replacement liability; a documented, well-maintained post-2009 roof can be repaired in place after a storm. (2) RECOVER VS REPLACE - FBC-EB 706.3: tear-off to deck is required when the existing roof is water-soaked or deteriorated, has two or more coverings, has blisters not cut/secured, or cannot meet FBC 1504.1 securement for a new system attached through it; coatings over SPF and separate structural standing-seam systems are allowed without tear-off. Wet insulation (a typical outcome of deferred leak repair) therefore eliminates the cheaper recover/restoration option. (3) SECONDARY WATER BARRIER & DECK ATTACHMENT - FBC-EB 706.7/706.7.2 require re-nailing of wood decks and a secondary water barrier on reroof of WOOD-deck structures; slopes < 2:12 with a continuous roof system are deemed to comply, and structures originally permitted under the FBC are exempt - so most steel-deck low-slope warehouses/offices are largely unaffected. (4) ROOF-TO-WALL CONNECTIONS - FBC-EB 706.8: on reroof of a wood-deck building in the wind-borne debris region with insured (or just) value >= $300,000, roof-to-wall connections must be improved per 706.8.1, capped at 15% of reroofing cost; exempt if permitted under the FBC. (5) ROOF DIAPHRAGM - FBC-EB 707.3.2: where the structural deck is removed from >30% of the diaphragm and Vult > 115 mph (true for all of Palm Beach County), roof diaphragm, diaphragm-to-framing and roof-to-wall connections must be evaluated and strengthened if below 75% of current wind loads (exempt for buildings permitted under the FBC). Deck corrosion found late (after years of leaks) can trigger this. (6) STRUCTURAL - FBC-EB 707.2: added dead load >5% triggers gravity check, except a second roof layer <= 3 psf over a single existing layer. (7) ENERGY - FBC-EB 708.1: alterations must comply with the FBC-Energy Conservation; the specific reroof insulation requirement (IECC C503-style) and R-value for climate zone 1/2 were NOT verified. (8) Reroofing need not meet the 2% minimum slope if positive drainage exists (FBC-EB 706.1; HVHZ has separate rules). Rusted flashing/edge metal/drain outlets may not be reinstalled (706.5).",
+    "sources": [
+      {
+        "name": "2023 Florida Building Code, Existing Building (8th ed.), Ch. 7 Alterations - Level 1, Secs. 706-708 - up.codes text as published in thexqin/us-building-codes-dataset (downloaded and read)",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/florida/iebc-2023/chapter-7-alterations-level-1.csv"
+      },
+      {
+        "name": "2023 Florida Building Code, Building (8th ed.), Ch. 2 Definitions ('HIGH VELOCITY HURRICANE ZONE. This zone consists of Broward and Miami-Dade counties.') - same dataset, downloaded and read",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/florida/ibc-2023/chapter-2-definitions.csv"
+      },
+      {
+        "name": "2023 Florida Building Code, Building, Ch. 16 (Secs. 1609.3, 1620.2 HVHZ wind speeds) - same dataset, downloaded and read",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/florida/ibc-2023/chapter-16-structural-design.csv"
+      },
+      {
+        "name": "2023 Florida Building Code, Building, Ch. 15 (Sec. 1511 Existing roofing; 1512-1525 HVHZ roofing) - same dataset, downloaded and read",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/florida/ibc-2023/chapter-15-roof-assemblies-and-rooftop-structures.csv"
+      },
+      {
+        "name": "J.S. Held - Florida's 25% roofing rule (search-result excerpt only; page not opened - egress proxy blocked the host)",
+        "url": "https://www.jsheld.com/insights/articles/florida-building-code-25-rule-roofing"
+      },
+      {
+        "name": "Florida Roofing Magazine (FRSA) - Current and coming changes to the '25% Rule' (search-result excerpt only; page not opened - egress proxy blocked the host)",
+        "url": "https://www.floridaroof.com/news/florida-roofing-magazine/12"
+      },
+      {
+        "name": "K. Simon Construction - Florida roof rules (2007 code effective 1 Mar 2009) (search-result excerpt only; page not opened - egress proxy blocked the host)",
+        "url": "https://www.ksimon.com/resources/florida-roof-rules/"
+      },
+      {
+        "name": "Palm Beach County PZB - Ultimate design wind speed maps (Figure 1609.3) (not opened)",
+        "url": "https://discover.pbc.gov/pzb/MapGallery/UltimateDesignWindSpeedMaps_RiskCat_3_4.pdf"
+      }
+    ]
+  },
+  "open_questions": [
+    "Confirm parcel-level ASCE 7-22 / FBC 8th ed. Risk Category II ultimate wind speeds for typical PAX client sites via the Palm Beach County wind-speed GIS (search summaries say ~160-170 mph for coastal West Palm Beach).",
+    "Obtain an RSMeans City Cost Index for West Palm Beach (ZIP 334) and Fort Lauderdale (333); current value is a DoD ACF Florida-average proxy (0.96).",
+    "Replace contractor-blog replacement costs with PAX bid history by system (TPO, mod bit, coatings, metal) for Palm Beach, Martin and Broward (HVHZ premium).",
+    "Get FBC-Energy Conservation 8th ed. reroof insulation requirements (C503.3.x equivalent and roof R-value for climate zone 1/2) and whether tapered insulation/drains get exceptions.",
+    "Florida commercial (office/industrial/retail) property rate trend from a broker (Marsh, WTW, Amwins, CRC) and Citizens commercial non-residential 2026 rate change by territory; current figures mix large-account and condo-association data.",
+    "Typical named-storm deductibles for Palm Beach commercial office/industrial/retail (percent of TIV) and roof-age cut-offs used by carriers writing Palm Beach commercial (e.g., ACV roof endorsements at 10/15/20 yrs, inspection requirements) - confirm with PAX's brokers.",
+    "Verify cap rates from Cushman & Wakefield Palm Beach MarketBeats, CBRE Palm Beach figures, Colliers, Avison Young and Berger Commercial Q2 2026 reports; current values come from a lender blog via search summaries.",
+    "Quantified evidence for maintained vs reactive low-slope roof life in South Florida (manufacturer warranty claim data, RCI/IIBEC, FRSA) beyond contractor marketing.",
+    "Check whether FBC-EB 706.1.1 25%-rule exception applies to roofs permitted between the 2007 FBC adoption and its 1 Mar 2009 effective date, and how local building officials in West Palm Beach document 'built in compliance with the 2007 FBC'.",
+    "NCEI 2005 Wilma entry for Coastal Palm Beach carries $10B property damage, probably a multi-county/zone estimate - do not use as a Palm Beach-only figure."
+  ]
+}
