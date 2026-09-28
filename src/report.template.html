@@ -7,201 +7,259 @@
 <title>Roof Lifecycle Analysis</title>
 <style>
 /*__FONTS__*/
+  /* Single deliberate look: a printed document on a slate desk. */
   :root {
-    --red: #CD163F; --navy: #1C2B39; --gold: #FDB71A; --gold-dark: #DD971A;
-    --gray: #72808A; --gray-light: #D8DCDB; --green: #1A6B3C;
-    --ink: #1C2B39; --ink-2: #46545F; --muted: #6B7882;
-    --bg: #EEF0F0; --paper: #FFFFFF; --rule: #D8DCDB; --grid: #ECEEEE;
+    --red: #CD163F; --red-dark: #A8102F; --navy: #1C2B39;
+    --gold-dark: #DD971A; --green: #1A6B3C;
+    --ink: #1C2B39; --ink-2: #44525D; --muted: #6E7B85; --faint: #98A3AB;
+    --paper: #FFFFFF; --desk: #DDE2E6; --panel: #F7F8F9; --rule: #DCE1E4; --hair: #EBEEF0;
     --planned: #1A6B3C; --reactive: #CD163F; --reference: #8C979F;
-    --green-tint: #EEF6F1; --gold-tint: #FFF8E8;
+    --green-wash: #EAF4EE; --gold-wash: #FFF7E6;
+    --sheet-w: 816px; --sheet-pad: 48px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body { background: var(--bg); color: var(--ink); font: 14px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: var(--desk); color: var(--ink); font: 13px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
   b, strong { font-weight: 700; }
   .num { font-variant-numeric: tabular-nums; }
+  button, input, select { font: inherit; }
+  :focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-  .layout { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 24px; max-width: 1320px; margin: 0 auto; padding: 24px 16px 40px; }
-  @media (max-width: 980px) { .layout { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+  /* ---------- App bar ---------- */
+  .appbar { position: sticky; top: 0; z-index: 20; background: var(--navy); color: #fff; display: flex; align-items: center; gap: 16px; padding: 10px 20px; height: 54px; }
+  .appbar .mark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 12px; letter-spacing: .14em; white-space: nowrap; }
+  .appbar .sep { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
+  .appbar .title { font-size: 13px; font-weight: 600; color: #C5CED4; white-space: nowrap; }
+  .appbar .spacer { flex: 1; }
+  .btn { height: 34px; padding: 0 14px; border-radius: 6px; font-size: 12.5px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,.28); background: transparent; color: #fff; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .btn:hover { background: rgba(255,255,255,.08); }
+  .btn.primary { background: var(--red); border-color: var(--red); }
+  .btn.primary:hover { background: var(--red-dark); }
+  .btn svg { width: 15px; height: 15px; flex: none; }
+  .toast { font-size: 12px; color: #9FD9B4; white-space: nowrap; }
+  @media (max-width: 720px) { .appbar .title, .appbar .sep, .lbl-long, .appbar .mark .word { display: none; } .appbar { padding: 10px 16px; gap: 8px; } .btn { padding: 0 11px; } }
 
-  /* ---------- Inputs panel ---------- */
-  .inputs { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; align-self: start; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; }
-  @media (max-width: 980px) { .inputs { position: static; max-height: none; } }
-  .inputs-head { padding: 16px 18px 12px; border-bottom: 1px solid var(--rule); }
-  .inputs-head h2 { font-size: 15px; margin: 0; font-weight: 800; }
-  .inputs-head p { font-size: 12px; color: var(--muted); margin: 2px 0 0; }
-  .group { border-bottom: 1px solid var(--rule); }
-  .group > summary { list-style: none; cursor: pointer; padding: 12px 18px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); display: flex; justify-content: space-between; align-items: center; }
+  /* ---------- Layout ---------- */
+  .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); align-items: start; }
+  @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+  /* ---------- Builder ---------- */
+  .builder { background: var(--panel); border-right: 1px solid var(--rule); position: sticky; top: 54px; height: calc(100vh - 54px); overflow: auto; }
+  @media (max-width: 1100px) { .builder { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--rule); } }
+  .b-head { padding: 20px 20px 8px; }
+  .b-head h2 { font-size: 15px; font-weight: 800; }
+  .b-head p { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+  .group { border-top: 1px solid var(--rule); }
+  .group > summary { list-style: none; cursor: pointer; padding: 14px 20px 10px; display: flex; align-items: center; gap: 10px; }
   .group > summary::-webkit-details-marker { display: none; }
-  .group > summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); margin-top: -4px; transition: transform .15s; }
-  .group[open] > summary::after { transform: rotate(-135deg); margin-top: 3px; }
-  .group > summary:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
-  .group-body { padding: 0 18px 14px; }
-  .field { margin-bottom: 10px; }
-  .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--ink-2); }
-  .field input, .field select { width: 100%; height: 36px; padding: 0 10px; border: 1px solid #C3C9CC; border-radius: 6px; font: inherit; font-size: 13px; background: #fff; color: var(--ink); }
-  .field input::placeholder { color: #9AA4AB; }
-  .field input:focus, .field select:focus { outline: 2px solid var(--gold-dark); outline-offset: -1px; border-color: var(--gold-dark); }
-  .field input:invalid { border-color: var(--red); }
-  .hint { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+  .group > summary .step { width: 18px; height: 18px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 10px; font-weight: 800; display: grid; place-items: center; flex: none; }
+  .group > summary .gt { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); flex: 1; }
+  .group > summary .chev { width: 7px; height: 7px; border-right: 2px solid var(--faint); border-bottom: 2px solid var(--faint); transform: rotate(45deg); margin-top: -3px; transition: transform .15s; }
+  .group[open] > summary .chev { transform: rotate(-135deg); margin-top: 3px; }
+  .g-body { padding: 2px 20px 16px; display: grid; gap: 10px; }
   .row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
   .field { min-width: 0; }
-  .actions { display: flex; gap: 8px; padding: 14px 18px 4px; flex-wrap: wrap; }
-  button { font: inherit; font-size: 13px; font-weight: 700; border-radius: 6px; height: 38px; padding: 0 14px; cursor: pointer; border: 1px solid var(--navy); background: #fff; color: var(--navy); }
-  button:hover { background: #F4F6F7; }
-  button.primary { background: var(--red); border-color: var(--red); color: #fff; flex: 1; }
-  button.primary:hover { background: #B31237; }
-  button.link { border: 0; background: none; height: auto; padding: 0; color: var(--muted); font-weight: 600; font-size: 12px; text-decoration: underline; }
-  button:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
-  .toast { font-size: 12px; color: var(--green); min-height: 18px; padding: 4px 18px 14px; display: flex; justify-content: space-between; }
+  .field label { display: block; font-size: 11.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 4px; }
+  .field input, .field select { width: 100%; height: 36px; padding: 0 10px; border: 1px solid #C9D0D4; border-radius: 6px; font-size: 13px; background: #fff; color: var(--ink); }
+  .field input::placeholder { color: var(--faint); }
+  .field input:focus, .field select:focus { outline: 2px solid var(--gold-dark); outline-offset: -1px; border-color: var(--gold-dark); }
+  .field input:invalid { border-color: var(--red); }
+  .hint { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .unit { position: relative; }
+  .unit input { padding-right: 50px; }
+  .unit span { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--faint); pointer-events: none; }
+  .b-foot { padding: 12px 20px 24px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .linkish { background: none; border: 0; padding: 0; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: underline; cursor: pointer; }
 
-  /* ---------- Report ---------- */
-  .report { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; min-width: 0; box-shadow: 0 1px 2px rgba(28,43,57,.04); }
-  .rhead { background: var(--navy); color: #fff; padding: 22px 28px 20px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-bottom: 5px solid var(--red); }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .14em; font-size: 12px; color: #fff; }
-  .brand svg { display: block; }
-  .rhead h1 { font-size: 24px; margin: 12px 0 2px; font-weight: 800; letter-spacing: -.01em; }
-  .rhead .sub { color: #BFC8CE; font-size: 13px; }
-  .meta { font-size: 12px; color: #BFC8CE; text-align: right; line-height: 1.7; align-self: flex-end; }
-  .meta b { color: #fff; font-weight: 700; }
-  .rbody { padding: 24px 28px 28px; }
-  @media (max-width: 640px) { .rhead, .rbody { padding-left: 16px; padding-right: 16px; } .meta { text-align: left; } }
-  section { margin-bottom: 28px; }
-  section h2 { font-size: 16px; margin: 0 0 4px; color: var(--navy); font-weight: 800; }
-  section .kicker { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
+  /* ---------- Desk + sheets ---------- */
+  .desk { padding: 32px 24px 56px; display: grid; justify-items: center; gap: 28px; min-width: 0; }
+  @media (max-width: 720px) { .desk { padding: 16px 12px 40px; gap: 16px; } }
+  .sheet { width: 100%; max-width: var(--sheet-w); min-height: 1056px; background: var(--paper); box-shadow: 0 1px 2px rgba(28,43,57,.08), 0 10px 30px rgba(28,43,57,.10); padding: var(--sheet-pad); display: flex; flex-direction: column; gap: 22px; }
+  @media (max-width: 860px) { .sheet { min-height: 0; padding: 28px 20px; gap: 22px; } }
+  .sheet-foot { margin-top: auto; display: flex; justify-content: space-between; gap: 12px; font-size: 10px; color: var(--faint); border-top: 1px solid var(--hair); padding-top: 10px; }
 
-  /* hero */
-  .hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
-  @media (max-width: 720px) { .hero { grid-template-columns: 1fr; } }
-  .hero > div { padding: 18px 20px; }
-  .hero .save { background: var(--green-tint); border-right: 1px solid var(--rule); }
-  @media (max-width: 720px) { .hero .save { border-right: 0; border-bottom: 1px solid var(--rule); } }
-  .hero .k { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-  .hero .big { font-size: 44px; line-height: 1.05; font-weight: 800; color: var(--green); margin: 6px 0 6px; letter-spacing: -.02em; }
-  .hero .mid { font-size: 30px; line-height: 1.1; font-weight: 800; margin: 6px 0 6px; letter-spacing: -.01em; }
-  .hero .d { font-size: 13px; color: var(--ink-2); }
-  .lede { color: var(--ink-2); margin: 0 0 16px; font-size: 14.5px; }
+  /* Masthead */
+  .mast { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding-bottom: 16px; border-bottom: 3px solid var(--red); }
+  @media (max-width: 640px) { .mast { grid-template-columns: 1fr; gap: 12px; } }
+  .mast .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 11px; letter-spacing: .16em; color: var(--navy); }
+  .mast .doc { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 18px; }
+  .mast h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; margin-top: 2px; color: var(--navy); }
+  .mast .who { text-align: right; font-size: 11.5px; max-width: 320px; justify-self: end; color: var(--ink-2); line-height: 1.65; }
+  @media (max-width: 640px) { .mast .who { text-align: left; } }
+  .mast .who b { color: var(--ink); font-size: 13px; }
+  .mast .who .k { color: var(--faint); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
 
-  .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  @media (max-width: 860px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .tile { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; }
-  .tile .k { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; display: flex; align-items: center; gap: 6px; }
-  .tile .v { font-size: 24px; font-weight: 800; margin-top: 4px; letter-spacing: -.01em; }
-  .tile .d { font-size: 12px; color: var(--ink-2); margin-top: 2px; line-height: 1.4; }
-  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex: none; }
+  /* Thesis */
+  .thesis { font-size: 28px; line-height: 1.2; font-weight: 800; letter-spacing: -.02em; color: var(--navy); max-width: 28ch; }
+  .thesis .save { color: var(--green); }
+  @media (max-width: 640px) { .thesis { font-size: 22px; } }
+  .thesis-sub { font-size: 13px; color: var(--ink-2); margin: 10px 0 0; max-width: 68ch; }
 
-  /* chart */
-  .chart-wrap { position: relative; }
-  .chart-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
-  .chart-wrap svg text { font-family: Montserrat, Arial, Helvetica, sans-serif; }
-  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin: 0 0 8px; }
+  /* Spec strip */
+  .spec { display: grid; grid-template-columns: repeat(6, auto); justify-content: space-between; gap: 10px 18px; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  @media (max-width: 760px) { .spec { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .spec div { min-width: 0; }
+  .spec .k { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+  .spec .v { font-size: 13px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .spec .v small { font-weight: 600; color: var(--muted); font-size: 11px; }
+
+  /* Figures */
+  .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  @media (max-width: 760px) { .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; } }
+  .fig { padding: 0 16px; border-left: 1px solid var(--rule); min-width: 0; }
+  .fig:first-child { padding-left: 0; border-left: 0; }
+  @media (max-width: 760px) { .fig:nth-child(3) { padding-left: 0; border-left: 0; } }
+  .fig .k { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .fig .v { font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin-top: 3px; line-height: 1.1; }
+  .fig .v small { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: 0; }
+  .fig .d { font-size: 11px; color: var(--ink-2); margin-top: 4px; line-height: 1.4; }
+  .fig.good .v { color: var(--green); }
+  .sw { width: 9px; height: 9px; border-radius: 2px; display: inline-block; flex: none; }
+
+  /* Sections */
+  .sec { display: grid; gap: 10px; break-inside: avoid; min-width: 0; }
+  .sec-h { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
+  .sec-h h2 { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .sec-h p { margin: 0; font-size: 11px; color: var(--muted); }
+  .legend { display: flex; gap: 6px 16px; flex-wrap: wrap; font-size: 11px; color: var(--ink-2); }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .legend i { display: inline-block; width: 18px; height: 0; border-top: 3px solid; border-radius: 2px; }
-  .legend i.dash { border-top: 2px dashed; width: 24px; }
-  .legend i.dot { width: 9px; height: 9px; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--ink-2); border-radius: 50%; background: var(--ink-2); }
-  .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--rule); border-radius: 8px; box-shadow: 0 6px 20px rgba(28,43,57,.14); padding: 10px 12px; font-size: 12px; min-width: 230px; display: none; z-index: 5; }
-  .tip .t { font-weight: 800; margin-bottom: 6px; }
-  .tip .r { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; line-height: 1.7; }
-  .tip .r span { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); }
-  .tip .r span i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); display: inline-block; }
-  .tip .n { color: var(--muted); font-size: 11px; margin-top: 4px; border-top: 1px solid var(--grid); padding-top: 4px; }
-  .scen { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-  @media (max-width: 720px) { .scen { grid-template-columns: 1fr; } }
-  .scen div { font-size: 12.5px; color: var(--ink-2); padding: 10px 12px; border-radius: 8px; background: #F7F8F8; border-left: 3px solid var(--c); }
-  .scen b { color: var(--ink); }
+  .legend i { display: inline-block; width: 18px; border-top: 3px solid; border-radius: 2px; }
+  .legend i.dash { border-top: 2px dashed; width: 22px; }
+  .legend i.band { width: 14px; height: 10px; border: 0; background: var(--green-wash); border-radius: 2px; box-shadow: inset 0 0 0 1px #BFDCC9; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
-  th, td { padding: 8px 10px; border-bottom: 1px solid var(--grid); text-align: right; }
-  th:first-child, td:first-child { text-align: left; }
-  thead th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); border-bottom: 1px solid var(--rule); font-weight: 700; }
-  tfoot td { font-weight: 800; border-top: 2px solid var(--navy); border-bottom: 0; }
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .chart svg text { font-family: Montserrat, Arial, Helvetica, sans-serif; }
+  .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--rule); border-radius: 8px; box-shadow: 0 8px 24px rgba(28,43,57,.16); padding: 10px 12px; font-size: 11.5px; min-width: 220px; z-index: 5; }
+  .tip .t { font-weight: 800; margin-bottom: 4px; }
+  .tip .r { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; line-height: 1.75; }
+  .tip .r span { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); }
+  .tip .r i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); display: inline-block; }
+  .tip .n { color: var(--muted); font-size: 10.5px; margin-top: 4px; border-top: 1px solid var(--hair); padding-top: 4px; }
+
+  /* Page 2 */
+  .two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; }
+  @media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 8px; border-bottom: 1px solid var(--hair); text-align: right; vertical-align: top; }
+  th:first-child, td:first-child { text-align: left; padding-left: 0; }
+  th:last-child, td:last-child { padding-right: 0; }
+  thead th { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 700; border-bottom: 1px solid var(--rule); }
+  tfoot td { font-weight: 800; border-top: 2px solid var(--navy); border-bottom: 0; font-size: 12.5px; }
   td.pos { color: var(--green); font-weight: 700; }
   td.neg { color: var(--red); font-weight: 700; }
-  td.sub { color: var(--muted); font-size: 12px; }
-
-  .two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; }
-  @media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
-  ul.insights { margin: 0; padding: 0; list-style: none; }
-  ul.insights li { margin: 0 0 10px; padding-left: 18px; position: relative; color: var(--ink-2); }
-  ul.insights li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; background: var(--red); border-radius: 1px; transform: rotate(45deg); }
-  ul.insights b { color: var(--ink); }
-  .risk { border-left: 4px solid var(--gold-dark); background: var(--gold-tint); padding: 12px 14px; border-radius: 0 8px 8px 0; color: var(--ink-2); }
-  .risk b { color: var(--navy); }
-  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-  .pill { font-size: 11px; border: 1px solid var(--rule); background: #fff; border-radius: 999px; padding: 3px 9px; color: var(--ink-2); }
-  .pill b { color: var(--ink); }
-  .pill.hi { border-color: var(--gold-dark); }
-  .src { font-size: 11px; color: var(--muted); margin-top: 8px; }
-  details.more > summary { cursor: pointer; font-weight: 700; color: var(--navy); font-size: 13px; }
-  details.more > summary:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
-  .assume td, .assume th { font-size: 12px; padding: 6px 8px; }
+  .points { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; counter-reset: pt; }
+  .points li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; font-size: 12px; color: var(--ink-2); }
+  .points li::before { counter-increment: pt; content: counter(pt); width: 20px; height: 20px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 10.5px; font-weight: 800; display: grid; place-items: center; margin-top: 1px; }
+  .points b { color: var(--ink); }
+  .risk { background: var(--gold-wash); border-radius: 8px; padding: 16px 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: start; }
+  @media (max-width: 640px) { .risk { grid-template-columns: minmax(0, 1fr); } }
+  .risk p { margin: 0; font-size: 12px; color: var(--ink-2); }
+  .risk p b { color: var(--ink); }
+  .risk .headline { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .ratings { display: grid; grid-template-columns: auto auto; gap: 4px 14px; font-size: 11px; align-content: start; }
+  .ratings .k { color: var(--ink-2); }
+  .ratings .v { font-weight: 700; display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; }
+  .meter { display: inline-flex; gap: 2px; }
+  .meter i { width: 6px; height: 10px; border-radius: 1px; background: #EADFC4; }
+  .meter i.on { background: var(--gold-dark); }
+  .ratings .src { grid-column: 1 / -1; font-size: 10px; color: var(--muted); margin-top: 4px; }
+  .assume td { font-size: 11px; padding-top: 6px; padding-bottom: 6px; }
   .assume td:nth-child(2) { font-weight: 700; white-space: nowrap; }
-  .assume td:nth-child(3), .assume th:nth-child(3), .assume td:last-child, .assume th:last-child { text-align: left; }
+  .assume th:nth-child(3), .assume td:nth-child(3), .assume th:last-child, .assume td:last-child { text-align: left; }
   .assume td:nth-child(3) { color: var(--ink-2); }
-  .table-scroll { overflow-x: auto; }
-  @media (max-width: 640px) { .assume th:nth-child(3), .assume td:nth-child(3) { display: none; } .assume td:first-child::after { content: attr(data-src); display: block; font-size: 11px; color: var(--muted); margin-top: 2px; } }
-  .conf { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 3px; white-space: nowrap; }
-  .conf.high { background: #E3F0E8; color: var(--green); }
-  .conf.medium { background: #FFF1D6; color: #8A5A00; }
-  .conf.low { background: #FBE3E8; color: #A3102F; }
-  .foot { font-size: 11px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; margin-bottom: 0; }
-  .foot p { margin: 0 0 6px; }
-  .flag { color: #8A5A00; font-weight: 700; }
+  @media (max-width: 640px) { .assume th:nth-child(3), .assume td:nth-child(3) { display: none; } .assume td:first-child::after { content: attr(data-src); display: block; font-size: 10.5px; color: var(--muted); margin-top: 2px; } }
+  .conf { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+  .conf.high { background: #E1EFE6; color: var(--green); }
+  .conf.medium { background: #FDF0D5; color: #7F5300; }
+  .conf.low { background: #FBE2E7; color: var(--red-dark); }
+  .conf.rep { background: #E5EAEE; color: var(--navy); }
+  .fine { font-size: 10.5px; color: var(--muted); display: grid; gap: 5px; }
+  .fine p { margin: 0; max-width: 110ch; }
+  .fine .flag { color: #7F5300; font-weight: 700; }
+  .scroll { overflow-x: auto; }
 
-  @page { size: Letter; margin: 0.45in 0.5in; }
+  .appendix { width: 100%; max-width: var(--sheet-w); }
+  .appendix details { background: var(--paper); border-radius: 8px; padding: 14px 18px; box-shadow: 0 1px 2px rgba(28,43,57,.08); }
+  .appendix summary { cursor: pointer; font-weight: 800; color: var(--navy); font-size: 13px; }
+  .appendix table { margin-top: 12px; font-size: 11.5px; }
+  .appendix th, .appendix td { white-space: nowrap; }
+
+  /* Shared-link view */
+  body.report-only .builder { display: none; }
+  body.report-only .layout { grid-template-columns: minmax(0, 1fr); }
+  .only-shared { display: none !important; }
+  body.report-only .only-shared { display: inline-flex !important; }
+  body.report-only .only-builder { display: none !important; }
+
+  /* ---------- Print: each sheet is one Letter page ---------- */
+  @page { size: Letter; margin: 0; }
   @media print {
-    body { background: #fff; font-size: 10.5px; }
-    .inputs, .no-print, .tip { display: none !important; }
-    .layout { display: block; padding: 0; max-width: none; }
-    .report { border: 0; border-radius: 0; box-shadow: none; }
-    .rhead, .hero .save, .risk, .conf, .scen div { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .rhead { padding: 16px 20px; }
-    .rbody { padding: 14px 0 0; }
-    .hero .big { font-size: 34px; }
-    .hero .mid { font-size: 24px; }
-    .tile .v { font-size: 18px; }
-    section { margin-bottom: 16px; break-inside: avoid; }
-    .page2 { break-before: page; }
-    .tiles { grid-template-columns: repeat(4, 1fr); }
-    .hero { grid-template-columns: 1.4fr 1fr; }
-    .hero .save { border-right: 1px solid var(--rule); border-bottom: 0; }
+    body { background: #fff; }
+    .appbar, .builder, .appendix, .tip, .no-print { display: none !important; }
+    .layout { display: block; }
+    .desk { padding: 0; gap: 0; display: block; }
+    .sheet { width: 8.5in; max-width: none; height: 11in; min-height: 0; padding: 0.45in 0.5in; box-shadow: none; break-after: page; overflow: hidden; gap: 16px; }
+    .thesis { font-size: 22px; max-width: 40ch; }
+    .mast .who { max-width: 300px; }
+    .mast h1 { font-size: 24px; }
+    .thesis-sub { font-size: 12px; margin-top: 6px; }
+    .mast .doc { margin-top: 12px; }
+    .mast { padding-bottom: 12px; }
+    .sec { gap: 8px; }
+    .points { gap: 8px; }
+    .points li { font-size: 11.5px; }
+    .risk { padding: 12px 14px; }
+    .assume td { font-size: 10.5px; padding-top: 4px; padding-bottom: 4px; }
+    th, td { padding-top: 5px; padding-bottom: 5px; }
+    .fine { font-size: 10px; }
+    .sheet:last-of-type { break-after: auto; }
+    .mast, .risk, .conf, .points li::before, .legend i.band, .meter i { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .mast { grid-template-columns: 1fr auto; }
+    .mast .who { text-align: right; }
+    .spec { grid-template-columns: repeat(6, auto); }
+    .figs { grid-template-columns: repeat(4, 1fr); }
+    .fig:nth-child(3) { padding-left: 16px; border-left: 1px solid var(--rule); }
     .two { grid-template-columns: 1.15fr 1fr; }
-    .scen { grid-template-columns: 1fr 1fr; }
-    table { font-size: 10px; }
-    th, td { padding: 4px 6px; }
-    .assume td, .assume th { font-size: 9.5px; padding: 3px 6px; }
-    .lede { font-size: 11px; margin-bottom: 10px; }
-    section .kicker { margin-bottom: 6px; }
-    section h2 { font-size: 13px; }
-    ul.insights li { margin-bottom: 5px; }
-    .risk { padding: 8px 10px; }
-    .pills { margin-top: 6px; }
-    .scen div { font-size: 10px; padding: 6px 10px; }
-    .foot { padding-top: 8px; }
+    .risk { grid-template-columns: 1fr auto; }
   }
-  body.report-only .inputs { display: none; }
-  body.report-only .layout { grid-template-columns: minmax(0, 1fr); max-width: 1000px; }
-  .edit-link { display: none; }
-  body.report-only .edit-link { display: block; text-align: center; font-size: 12px; margin-top: 12px; }
-  .edit-link a { color: var(--muted); }
 </style>
 </head>
 <body>
+<header class="appbar">
+  <div class="mark">
+    <svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>
+    <span class="word">SERVICES GROUP</span>
+  </div>
+  <div class="sep"></div>
+  <div class="title">Roof Lifecycle Report</div>
+  <div class="spacer"></div>
+  <span class="toast" id="toast" role="status"></span>
+  <button type="button" class="btn only-shared" id="editBtn">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit inputs</span></button>
+  <button type="button" class="btn only-builder" id="linkBtn">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.8 2.8 0 014 4l-1 1M9 11.5l-1 1a2.8 2.8 0 01-4-4l1-1"/></svg><span>Copy<span class="lbl-long"> report</span> link</span></button>
+  <button type="button" class="btn primary" id="printBtn">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z"/></svg><span>Print<span class="lbl-long"> / PDF</span></span></button>
+</header>
+
 <div class="layout">
-  <form class="inputs" id="form" autocomplete="off" novalidate onsubmit="return false">
-    <div class="inputs-head">
-      <h2>Roof Lifecycle Inputs</h2>
-      <p>Blank fields use the market default shown in gray.</p>
+  <form class="builder" id="form" autocomplete="off" novalidate onsubmit="return false">
+    <div class="b-head">
+      <h2>Build a report</h2>
+      <p>Blank fields use the market default shown in gray. The report updates as you type.</p>
     </div>
 
     <details class="group" open>
-      <summary>Property &amp; roof</summary>
-      <div class="group-body">
+      <summary><span class="step">1</span><span class="gt">Roof</span><span class="chev"></span></summary>
+      <div class="g-body">
         <div class="field"><label for="market">PAX market</label><select id="market" name="market"></select></div>
         <div class="field"><label for="propertyType">Property type</label><select id="propertyType" name="propertyType"></select></div>
         <div class="row2">
-          <div class="field"><label for="area">Roof area (sq ft)</label><input id="area" name="area" type="number" inputmode="numeric" min="1000" max="2000000" step="500"></div>
-          <div class="field"><label for="roofAge">Roof age (yrs)</label><input id="roofAge" name="roofAge" type="number" inputmode="numeric" min="0" max="50" step="1"></div>
+          <div class="field"><label for="area">Roof area</label><div class="unit"><input id="area" name="area" type="number" inputmode="numeric" min="1000" max="2000000" step="500"><span>sq ft</span></div></div>
+          <div class="field"><label for="roofAge">Roof age</label><div class="unit"><input id="roofAge" name="roofAge" type="number" inputmode="numeric" min="0" max="50" step="1"><span>yrs</span></div></div>
         </div>
         <div class="row2">
           <div class="field"><label for="system">Roof system</label><select id="system" name="system"></select></div>
@@ -212,8 +270,8 @@
     </details>
 
     <details class="group" open>
-      <summary>Customer</summary>
-      <div class="group-body">
+      <summary><span class="step">2</span><span class="gt">Customer</span><span class="chev"></span></summary>
+      <div class="g-body">
         <div class="field"><label for="customer">Customer / account</label><input id="customer" name="customer" placeholder="Acme Logistics"></div>
         <div class="field"><label for="property">Property name</label><input id="property" name="property" placeholder="Distribution Center 2"></div>
         <div class="row2">
@@ -228,114 +286,112 @@
     </details>
 
     <details class="group" open>
-      <summary>Costs</summary>
-      <div class="group-body">
+      <summary><span class="step">3</span><span class="gt">Costs</span><span class="chev"></span></summary>
+      <div class="g-body">
         <div class="row2">
-          <div class="field"><label for="costPerSqft">Replacement $/sq ft</label><input id="costPerSqft" name="costPerSqft" type="number" inputmode="decimal" step="0.25" min="0"></div>
-          <div class="field"><label for="replacementCost">or total $</label><input id="replacementCost" name="replacementCost" type="number" inputmode="numeric" step="1000" min="0"></div>
+          <div class="field"><label for="costPerSqft">Replacement cost</label><div class="unit"><input id="costPerSqft" name="costPerSqft" type="number" inputmode="decimal" step="0.25" min="0"><span>$/sq ft</span></div></div>
+          <div class="field"><label for="replacementCost">or total</label><div class="unit"><input id="replacementCost" name="replacementCost" type="number" inputmode="numeric" step="1000" min="0"><span>$</span></div></div>
         </div>
-        <div class="field"><label for="annualFee">PaxSeal annual fee ($)</label><input id="annualFee" name="annualFee" type="number" inputmode="numeric" step="100" min="0">
+        <div class="field"><label for="annualFee">PaxSeal annual fee</label><div class="unit"><input id="annualFee" name="annualFee" type="number" inputmode="numeric" step="100" min="0"><span>$/yr</span></div>
           <div class="hint" id="feeHint"></div></div>
         <div class="row2">
-          <div class="field"><label for="escalation">Cost growth %/yr</label><input id="escalation" name="escalation" type="number" inputmode="decimal" step="0.1" min="0" max="15"></div>
-          <div class="field"><label for="capRate">Cap rate %</label><input id="capRate" name="capRate" type="number" inputmode="decimal" step="0.05" min="1" max="15"></div>
+          <div class="field"><label for="escalation">Cost growth</label><div class="unit"><input id="escalation" name="escalation" type="number" inputmode="decimal" step="0.1" min="0" max="15"><span>%/yr</span></div></div>
+          <div class="field"><label for="capRate">Cap rate</label><div class="unit"><input id="capRate" name="capRate" type="number" inputmode="decimal" step="0.05" min="1" max="15"><span>%</span></div></div>
         </div>
       </div>
     </details>
 
     <details class="group" id="advanced">
-      <summary>Model assumptions</summary>
-      <div class="group-body">
-        <div class="hint" style="margin:0 0 10px">For sales ops. These change the model for this report only and are saved in the report link.</div>
+      <summary><span class="step">4</span><span class="gt">Model assumptions</span><span class="chev"></span></summary>
+      <div class="g-body">
+        <div class="hint" style="margin:0">For sales ops. Changes apply to this report only and are saved in its link.</div>
         <div class="row2">
-          <div class="field"><label for="ext">Life added (yrs)</label><input id="ext" name="ext" type="number" step="1" min="0" max="15"></div>
-          <div class="field"><label for="mult">Reactive repair ×</label><input id="mult" name="mult" type="number" step="0.1" min="1" max="10"></div>
+          <div class="field"><label for="ext">Life added</label><div class="unit"><input id="ext" name="ext" type="number" step="1" min="0" max="15"><span>yrs</span></div></div>
+          <div class="field"><label for="mult">Reactive repairs</label><div class="unit"><input id="mult" name="mult" type="number" step="0.1" min="1" max="10"><span>&times;</span></div></div>
         </div>
-        <div class="field"><label for="repair">Repair need, % of roof cost/yr</label><input id="repair" name="repair" type="number" step="0.1" min="0" max="10">
-          <div class="hint">Planned-visit repair cost for a new roof. It grows 5% per year of roof age.</div></div>
+        <div class="field"><label for="repair">Repair need, new roof</label><div class="unit"><input id="repair" name="repair" type="number" step="0.1" min="0" max="10"><span>%/yr</span></div>
+          <div class="hint">Share of replacement cost spent on planned-visit repairs each year. Grows 5% per year of roof age.</div></div>
       </div>
     </details>
 
-    <div class="actions">
-      <button type="button" class="primary" id="printBtn">Print / Save PDF</button>
-      <button type="button" id="linkBtn">Copy link</button>
-    </div>
-    <div class="toast"><span id="toast" role="status"></span><button type="button" class="link" id="resetBtn">Reset</button></div>
+    <div class="b-foot"><span class="hint" style="margin:0">Model data <span id="builtOn"></span></span><button type="button" class="linkish" id="resetBtn">Reset inputs</button></div>
   </form>
 
-  <div>
-  <main class="report" id="report">
-    <header class="rhead">
-      <div>
-        <div class="brand">
-          <svg width="44" height="22" viewBox="0 0 44 22" aria-hidden="true"><rect width="44" height="22" rx="3" fill="#CD163F"/><text x="22" y="15.5" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="12" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>
-          SERVICES GROUP
-        </div>
-        <h1>Roof Lifecycle Cost Analysis</h1>
-        <div class="sub" id="subtitle"></div>
-      </div>
-      <div class="meta" id="meta"></div>
-    </header>
-
-    <div class="rbody">
-      <section>
-        <p class="lede" id="lede"></p>
-        <div class="hero" id="hero"></div>
-        <div class="tiles" id="tiles"></div>
-      </section>
-
-      <section>
-        <h2>20-year cumulative roof spending</h2>
-        <p class="kicker">Everything the owner spends on the roof, year by year. Jumps are full roof replacements.</p>
-        <div class="legend">
-          <span><i style="border-color:var(--planned)"></i>With PaxSeal planned maintenance</span>
-          <span><i style="border-color:var(--reactive)"></i>Reactive: fix it when it leaks</span>
-          <span><i class="dash" style="border-color:var(--reference)"></i>Price of a new roof that year</span>
-        </div>
-        <div class="chart-wrap" id="chart1"><div class="tip" id="tip1"></div></div>
-        <div class="scen">
-          <div style="--c:var(--planned)"><b>PaxSeal:</b> two inspections a year with minor repairs included, written reports, and an annual planning meeting. Problems are caught while they're small.</div>
-          <div style="--c:var(--reactive)"><b>Reactive:</b> no routine care. Repairs happen after a leak, at emergency rates, and the roof wears out sooner.</div>
-        </div>
-      </section>
-
-      <section class="two page2">
+  <main class="desk" id="desk">
+    <article class="sheet" aria-label="Report page 1">
+      <header class="mast">
         <div>
-          <h2>Where the difference comes from</h2>
-          <p class="kicker">20-year totals, nominal dollars.</p>
+          <div class="brand">
+            <svg width="46" height="23" viewBox="0 0 46 23" aria-hidden="true"><rect width="46" height="23" rx="3" fill="#CD163F"/><text x="23" y="16.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="12.5" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>
+            SERVICES GROUP
+          </div>
+          <div class="doc">PaxSeal&trade; Building Lifecycle Plan</div>
+          <h1>Roof Lifecycle Cost Analysis</h1>
+        </div>
+        <div class="who" id="who"></div>
+      </header>
+
+      <div>
+        <h2 class="thesis" id="thesis"></h2>
+        <p class="thesis-sub" id="thesisSub"></p>
+      </div>
+
+      <div class="spec" id="spec"></div>
+      <div class="figs" id="figs"></div>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Cumulative roof spending, next 20 years</h2><p>Nominal dollars. Vertical jumps are full roof replacements.</p></div>
+        <div class="legend">
+          <span><i style="border-color:var(--planned)"></i>With PaxSeal</span>
+          <span><i style="border-color:var(--reactive)"></i>Reactive</span>
+          <span><i class="dash" style="border-color:var(--reference)"></i>Price of a new roof that year</span>
+          <span><i class="band"></i>Money kept by maintaining</span>
+        </div>
+        <div class="chart" id="chart1"><div class="tip" id="tip1" hidden></div></div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Roof life</h2><p>When each scenario needs a new roof.</p></div>
+        <div class="chart" id="chart2"></div>
+      </section>
+
+      <footer class="sheet-foot"><span id="foot1"></span><span>Page 1 of 2</span></footer>
+    </article>
+
+    <article class="sheet" aria-label="Report page 2">
+      <section class="two">
+        <div class="sec">
+          <div class="sec-h"><h2>Where the savings come from</h2><p>20-year totals</p></div>
           <table id="breakdown"></table>
         </div>
-        <div>
-          <h2>What this means</h2>
-          <p class="kicker">&nbsp;</p>
-          <ul class="insights" id="insights"></ul>
+        <div class="sec">
+          <div class="sec-h"><h2>What this means</h2></div>
+          <ol class="points" id="points"></ol>
         </div>
       </section>
 
-      <section>
-        <h2>Local risk profile</h2>
-        <p class="kicker" id="riskKicker"></p>
+      <section class="sec">
+        <div class="sec-h"><h2>Local risk profile</h2><p id="riskWhere"></p></div>
         <div class="risk" id="risk"></div>
       </section>
 
-      <section>
-        <h2>Key assumptions</h2>
-        <p class="kicker">Confidence reflects how strong the source is. Round-1 research; values will be refined.</p>
-        <div class="table-scroll"><table class="assume" id="assume"></table></div>
+      <section class="sec">
+        <div class="sec-h"><h2>Key assumptions</h2><p>Confidence reflects source strength. Values will be refined as research continues.</p></div>
+        <div class="scroll"><table class="assume" id="assume"></table></div>
       </section>
 
-      <section class="no-print">
-        <details class="more">
-          <summary>Year-by-year table</summary>
-          <div style="overflow-x:auto;margin-top:10px"><table id="yearly"></table></div>
-        </details>
-      </section>
+      <section class="fine" id="fine"></section>
 
-      <section class="foot" id="foot"></section>
+      <footer class="sheet-foot"><span id="foot2"></span><span>Page 2 of 2</span></footer>
+    </article>
+
+    <div class="appendix no-print">
+      <details>
+        <summary>Year-by-year detail</summary>
+        <div class="scroll"><table id="yearly"></table></div>
+      </details>
     </div>
   </main>
-  <div class="edit-link no-print"><a href="#" id="editLink">Edit inputs</a></div>
-  </div>
 </div>
 
 <script>/*__DEFAULTS__*/</script>
@@ -349,7 +405,7 @@
     'ext', 'mult', 'repair'];
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
-  var COLORS = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#6B7882' };
+  var C = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#6E7B85', grid: '#EBEEF0', axis: '#C3CBD0', wash: '#EAF4EE' };
 
   // ---------- formatting ----------
   var MINUS = '−';
@@ -362,9 +418,9 @@
   }
   function pct(n) { return (Math.round(n * 10) / 10).toFixed(1) + '%'; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function yr(y, N) { return y ? 'Year ' + y : 'After year ' + N; }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
-  // ---------- populate selects ----------
+  // ---------- selects ----------
   Object.keys(D.markets).forEach(function (id) { $('market').add(new Option(D.markets[id].shortName, id)); });
   Object.keys(D.propertyTypes).forEach(function (id) {
     var p = D.propertyTypes[id];
@@ -376,6 +432,7 @@
   $('ext').placeholder = CFG.lifeExtensionYears;
   $('mult').placeholder = CFG.reactiveRepairMultiplier.toFixed(1);
   $('repair').placeholder = CFG.baseRepairPctOfReplacement.toFixed(1);
+  $('builtOn').textContent = D.builtOn;
 
   // ---------- URL params -> form ----------
   function applyDefaults() {
@@ -400,7 +457,6 @@
     FIELDS.forEach(function (f) {
       var el = form.elements[f];
       o[f] = el.value.trim();
-      // Ignore out-of-range numbers rather than feeding them to the model.
       if (el.type === 'number' && o[f] !== '' && !el.checkValidity()) o[f] = '';
     });
     return o;
@@ -413,7 +469,7 @@
     return o;
   }
 
-  // ---------- chart ----------
+  // ---------- SVG helpers ----------
   var SVGNS = 'http://www.w3.org/2000/svg';
   function el(tag, attrs, parent, text) {
     var n = document.createElementNS(SVGNS, tag);
@@ -424,102 +480,148 @@
   }
   function niceMax(v) {
     var p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p;
-    return (m <= 1 ? 1 : m <= 1.5 ? 1.5 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 3 ? 3 : m <= 4 ? 4 : m <= 5 ? 5 : m <= 6 ? 6 : m <= 8 ? 8 : 10) * p;
+    var steps = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];
+    for (var i = 0; i < steps.length; i++) if (m <= steps[i]) return steps[i] * p;
+    return 10 * p;
   }
 
-  function drawChart(res) {
+  // Cumulative spending points: spending accrues through the year, replacements jump at year end.
+  function stepPoints(sc) {
+    var pts = [[0, 0]], run = 0;
+    sc.rows.forEach(function (r) {
+      run += r.opex; pts.push([r.year, run]);
+      if (r.replacement) { run += r.replacement; pts.push([r.year, run]); }
+    });
+    return pts;
+  }
+  function valueAt(pts, t) {
+    var v = 0;
+    for (var i = 0; i < pts.length; i++) if (pts[i][0] <= t) v = pts[i][1];
+    return v;
+  }
+  function valueAtInterp(pts, t) {
+    var prev = pts[0];
+    for (var i = 1; i < pts.length; i++) {
+      var p = pts[i];
+      if (p[0] === prev[0]) { if (t >= p[0]) prev = p; continue; }
+      if (t <= p[0]) return prev[1] + (p[1] - prev[1]) * ((t - prev[0]) / (p[0] - prev[0]));
+      prev = p;
+    }
+    return prev[1];
+  }
+
+  function drawSpend(res) {
     var wrap = $('chart1'), tip = $('tip1');
     var old = wrap.querySelector('svg'); if (old) old.remove();
-    var W = 780, H = 330, m = { t: 16, r: 150, b: 30, l: 56 };
+    var W = 720, H = 260, m = { t: 10, r: 120, b: 26, l: 46 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b;
-    var N = res.config.horizonYears;
-    var P = res.planned, R = res.reactive, ref = res.replacementCurve;
-    var planned = [0].concat(P.cumulative), reactive = [0].concat(R.cumulative);
-    var ymax = niceMax(Math.max(reactive[N], planned[N], ref[N]) * 1.04);
-    var x = function (i) { return m.l + (i / N) * iw; };
+    var N = res.config.horizonYears, P = res.planned, R = res.reactive, ref = res.replacementCurve;
+    var pp = stepPoints(P), rp = stepPoints(R);
+    var endP = pp[pp.length - 1][1], endR = rp[rp.length - 1][1];
+    var ymax = niceMax(Math.max(endP, endR, ref[N]) * 1.03);
+    var x = function (t) { return m.l + (t / N) * iw; };
     var y = function (v) { return m.t + ih - (v / ymax) * ih; };
-
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
-      'aria-label': 'Cumulative 20-year roof spending. PaxSeal ' + short(planned[N]) + ', reactive ' + short(reactive[N]) + '. See the year-by-year table for values.' });
+      'aria-label': 'Cumulative roof spending over 20 years: PaxSeal ' + short(endP) + ', reactive ' + short(endR) + '. Year-by-year values are in the detail table.' });
     wrap.insertBefore(svg, tip);
 
     for (var g = 0; g <= 4; g++) {
       var gv = ymax * g / 4;
-      el('line', { x1: m.l, x2: m.l + iw, y1: y(gv), y2: y(gv), stroke: g ? '#ECEEEE' : '#B9C1C6', 'stroke-width': 1 }, svg);
-      el('text', { x: m.l - 10, y: y(gv) + 4, 'text-anchor': 'end', 'font-size': 11, fill: COLORS.muted }, svg, short(gv));
+      el('line', { x1: m.l, x2: m.l + iw, y1: y(gv), y2: y(gv), stroke: g ? C.grid : C.axis, 'stroke-width': 1 }, svg);
+      el('text', { x: m.l - 8, y: y(gv) + 3.5, 'text-anchor': 'end', 'font-size': 10, fill: C.muted }, svg, short(gv));
     }
     for (var i = 0; i <= N; i++) {
-      if (i % 5 === 0) el('text', { x: x(i), y: H - 8, 'text-anchor': 'middle', 'font-size': 11, fill: COLORS.muted }, svg, i === 0 ? 'Today' : 'Yr ' + i);
-      else el('line', { x1: x(i), x2: x(i), y1: m.t + ih, y2: m.t + ih + 4, stroke: '#B9C1C6' }, svg);
+      if (i % 5 === 0) el('text', { x: x(i), y: H - 6, 'text-anchor': 'middle', 'font-size': 10, fill: C.muted }, svg, i === 0 ? 'Today' : 'Year ' + i);
+      else el('line', { x1: x(i), x2: x(i), y1: m.t + ih, y2: m.t + ih + 3, stroke: C.axis }, svg);
     }
 
-    // Spending accrues through the year; a replacement is a vertical jump at year end.
-    function stepPath(sc) {
-      var d = 'M' + x(0) + ' ' + y(0), run = 0;
-      sc.rows.forEach(function (r) {
-        run += r.opex;
-        d += ' L' + x(r.year).toFixed(1) + ' ' + y(run).toFixed(1);
-        if (r.replacement) { run += r.replacement; d += ' L' + x(r.year).toFixed(1) + ' ' + y(run).toFixed(1); }
-      });
-      return d;
-    }
-    el('path', { d: ref.map(function (v, k) { return (k ? 'L' : 'M') + x(k).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' '),
-      fill: 'none', stroke: COLORS.reference, 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, svg);
-    el('path', { d: stepPath(R), fill: 'none', stroke: COLORS.reactive, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, svg);
-    el('path', { d: stepPath(P), fill: 'none', stroke: COLORS.planned, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, svg);
+    function d(pts) { return pts.map(function (p, k) { return (k ? 'L' : 'M') + x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1); }).join(' '); }
+    // Band between the two paths wherever reactive spending is higher.
+    var ts = [];
+    for (var t = 0; t <= N + 1e-9; t += 0.05) ts.push(Math.min(t, N));
+    var top = ts.map(function (t) { return [t, Math.max(valueAtInterp(rp, t), valueAtInterp(pp, t))]; });
+    var bot = ts.map(function (t) { return [t, valueAtInterp(pp, t)]; }).reverse();
+    el('path', { d: d(top) + ' ' + bot.map(function (p) { return 'L' + x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1); }).join(' ') + ' Z', fill: C.wash, stroke: 'none' }, svg);
 
-    // Replacement markers with small labels
-    function markers(sc, series, color, above) {
+    el('path', { d: ref.map(function (v, k) { return (k ? 'L' : 'M') + x(k).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' '), fill: 'none', stroke: C.reference, 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, svg);
+    el('path', { d: d(rp), fill: 'none', stroke: C.reactive, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, svg);
+    el('path', { d: d(pp), fill: 'none', stroke: C.planned, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, svg);
+
+    function markers(sc, pts, color) {
       sc.replacementYears.forEach(function (yv) {
-        var cy = y(series[yv]);
-        el('circle', { cx: x(yv), cy: cy, r: 5, fill: color, stroke: '#fff', 'stroke-width': 2 }, svg);
-        el('text', { x: x(yv) + (above ? -8 : 9), y: cy + (above ? -8 : 20), 'text-anchor': above ? 'end' : 'start', 'font-size': 11, 'font-weight': 700, fill: COLORS.ink }, svg, 'New roof, yr ' + yv);
+        el('circle', { cx: x(yv), cy: y(valueAt(pts, yv)), r: 4.5, fill: color, stroke: '#fff', 'stroke-width': 2 }, svg);
       });
     }
-    markers(R, reactive, COLORS.reactive, true);
-    markers(P, planned, COLORS.planned, false);
+    markers(R, rp, C.reactive); markers(P, pp, C.planned);
 
-    // Direct end labels, nudged apart
     var labels = [
-      { v: reactive[N], text: 'Reactive ' + short(reactive[N]), color: COLORS.reactive },
-      { v: planned[N], text: 'PaxSeal ' + short(planned[N]), color: COLORS.planned },
-      { v: ref[N], text: 'New roof ' + short(ref[N]), color: COLORS.reference }
+      { v: endR, a: 'Reactive', b: short(endR), color: C.reactive },
+      { v: endP, a: 'PaxSeal', b: short(endP), color: C.planned },
+      { v: ref[N], a: 'New roof', b: short(ref[N]), color: C.reference }
     ].map(function (l) { l.y = y(l.v); return l; }).sort(function (a, b) { return a.y - b.y; });
-    for (var k = 1; k < labels.length; k++) if (labels[k].y - labels[k - 1].y < 16) labels[k].y = labels[k - 1].y + 16;
+    for (var k = 1; k < labels.length; k++) if (labels[k].y - labels[k - 1].y < 28) labels[k].y = labels[k - 1].y + 28;
     labels.forEach(function (l) {
-      el('circle', { cx: m.l + iw + 12, cy: l.y, r: 4, fill: l.color }, svg);
-      el('text', { x: m.l + iw + 21, y: l.y + 4, 'font-size': 12, 'font-weight': 700, fill: COLORS.ink }, svg, l.text);
+      el('rect', { x: m.l + iw + 10, y: l.y - 10, width: 3, height: 24, rx: 1.5, fill: l.color }, svg);
+      el('text', { x: m.l + iw + 19, y: l.y, 'font-size': 10, fill: C.muted, 'font-weight': 600 }, svg, l.a);
+      el('text', { x: m.l + iw + 19, y: l.y + 13, 'font-size': 12.5, fill: C.ink, 'font-weight': 800 }, svg, l.b);
     });
 
-    // Hover layer
-    var cross = el('line', { class: 'no-print', y1: m.t, y2: m.t + ih, stroke: COLORS.ink, 'stroke-width': 1, opacity: 0 }, svg);
+    var cross = el('line', { class: 'no-print', y1: m.t, y2: m.t + ih, stroke: C.ink, 'stroke-width': 1, opacity: 0 }, svg);
     var hit = el('rect', { x: m.l - 10, y: 0, width: iw + 20, height: H, fill: 'transparent' }, svg);
     function row(color, label, value) { return '<div class="r" style="--c:' + color + '"><span><i></i>' + label + '</span><b>' + value + '</b></div>'; }
     function move(evt) {
       var r = svg.getBoundingClientRect();
       var px = (evt.clientX - r.left) * (W / r.width);
       var idx = Math.max(0, Math.min(N, Math.round((px - m.l) / iw * N)));
-      cross.setAttribute('x1', x(idx)); cross.setAttribute('x2', x(idx)); cross.setAttribute('opacity', 0.3);
+      cross.setAttribute('x1', x(idx)); cross.setAttribute('x2', x(idx)); cross.setAttribute('opacity', 0.25);
       var html = '<div class="t">' + (idx ? 'Year ' + idx : 'Today') + '</div>' +
-        row(COLORS.planned, 'PaxSeal, to date', money(planned[idx])) +
-        row(COLORS.reactive, 'Reactive, to date', money(reactive[idx])) +
-        row(COLORS.reference, 'New roof would cost', money(ref[idx]));
+        row(C.planned, 'PaxSeal, to date', money(valueAt(pp, idx))) +
+        row(C.reactive, 'Reactive, to date', money(valueAt(rp, idx))) +
+        row(C.reference, 'New roof would cost', money(ref[idx]));
       if (idx) {
         var notes = [];
         if (R.rows[idx - 1].replacement) notes.push('Reactive roof replaced');
         if (P.rows[idx - 1].replacement) notes.push('PaxSeal roof replaced');
-        html += '<div class="n">This year: PaxSeal ' + money(P.rows[idx - 1].total) + ' · Reactive ' + money(R.rows[idx - 1].total) +
+        html += '<div class="n">Spent this year: PaxSeal ' + money(P.rows[idx - 1].total) + ', reactive ' + money(R.rows[idx - 1].total) +
           (notes.length ? '<br>' + notes.join(' · ') : '') + '</div>';
       }
-      tip.innerHTML = html;
-      tip.style.display = 'block';
+      tip.innerHTML = html; tip.hidden = false;
       var sx = x(idx) / W * r.width, left = sx + 14;
       if (left + tip.offsetWidth > r.width) left = sx - tip.offsetWidth - 14;
-      tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '4px';
+      tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '0px';
     }
     hit.addEventListener('mousemove', move);
     hit.addEventListener('touchstart', function (e) { move(e.touches[0]); }, { passive: true });
-    hit.addEventListener('mouseleave', function () { tip.style.display = 'none'; cross.setAttribute('opacity', 0); });
+    hit.addEventListener('mouseleave', function () { tip.hidden = true; cross.setAttribute('opacity', 0); });
+  }
+
+  function drawLife(res) {
+    var wrap = $('chart2');
+    wrap.innerHTML = '';
+    var W = 720, rowH = 32, m = { t: 4, r: 120, b: 22, l: 64 };
+    var N = res.config.horizonYears, iw = W - m.l - m.r;
+    var H = m.t + rowH * 2 + m.b;
+    var x = function (t) { return m.l + (Math.min(t, N) / N) * iw; };
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Roof replacement timing for each scenario.' }, wrap);
+    for (var i = 0; i <= N; i += 5) {
+      el('line', { x1: x(i), x2: x(i), y1: m.t, y2: m.t + rowH * 2, stroke: C.grid }, svg);
+      el('text', { x: x(i), y: H - 6, 'text-anchor': 'middle', 'font-size': 10, fill: C.muted }, svg, i === 0 ? 'Today' : 'Year ' + i);
+    }
+    [['PaxSeal', res.planned, C.planned], ['Reactive', res.reactive, C.reactive]].forEach(function (s, r) {
+      var sc = s[1], cy = m.t + r * rowH + rowH / 2;
+      el('text', { x: 0, y: cy + 4, 'font-size': 11, 'font-weight': 700, fill: C.ink }, svg, s[0]);
+      var starts = [0].concat(sc.replacementYears);
+      starts.forEach(function (st, j) {
+        var end = j + 1 < starts.length ? starts[j + 1] : N, current = j === 0;
+        var x0 = x(st) + (st ? 2 : 0), x1 = x(end) - (end < N ? 2 : 0);
+        if (x1 - x0 < 1) return;
+        el('rect', { x: x0, y: cy - 9, width: x1 - x0, height: 18, rx: 3, fill: s[2], 'fill-opacity': current ? 0.22 : 1 }, svg);
+        if (x1 - x0 > 76) el('text', { x: x0 + 8, y: cy + 3.5, 'font-size': 10, 'font-weight': 700, fill: current ? C.ink : '#fff' }, svg, current ? 'Current roof' : 'New roof');
+      });
+      var first = sc.replacementYears[0];
+      el('text', { x: m.l + iw + 12, y: cy + 4, 'font-size': 11, 'font-weight': 700, fill: C.ink }, svg,
+        first ? 'New roof yr ' + first : 'Lasts past yr ' + N);
+    });
   }
 
   // ---------- render ----------
@@ -529,8 +631,8 @@
     var inp = res.inputs, k = res.kpis, mk = inp.market, c = res.config, N = c.horizonYears;
     var pt = D.propertyTypes[inp.propertyType];
     var P = res.planned, R = res.reactive;
+    var sys = D.systems[inp.system].label;
 
-    // placeholders show the defaults in use
     var mDefault = mk.replacementCostPerSqft[inp.system];
     form.elements.costPerSqft.placeholder = mDefault.value.toFixed(2);
     form.elements.replacementCost.placeholder = Math.round(inp.area * inp.costPerSqft).toLocaleString('en-US');
@@ -538,44 +640,52 @@
     form.elements.escalation.placeholder = D.escalationPct.toFixed(1);
     form.elements.capRate.placeholder = pt.capRateKey ? mk.capRates[pt.capRateKey].value.toFixed(2) : '';
     $('feeHint').textContent = inp.feeIsEstimate
-      ? 'Estimate: $' + D.fee.baseUsd + ' + $' + D.fee.perSqftUsd.toFixed(2) + '/sq ft per year. There is no set PaxSeal price yet.'
+      ? 'Estimated at $' + D.fee.baseUsd + ' + $' + D.fee.perSqftUsd.toFixed(2) + '/sq ft a year until PaxSeal pricing is set.'
       : 'Using the fee you entered.';
 
-    // header
-    $('subtitle').textContent = [raw.property, raw.city, mk.shortName + ' market'].filter(Boolean).join('  ·  ');
+    // masthead
     var dateStr = raw.date ? new Date(raw.date + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-    $('meta').innerHTML =
-      (raw.customer ? 'Prepared for <b>' + esc(raw.customer) + '</b><br>' : '') +
-      (raw.contact ? 'Attn: ' + esc(raw.contact) + '<br>' : '') +
-      (raw.preparedBy ? 'Prepared by <b>' + esc(raw.preparedBy) + '</b><br>' : '') + esc(dateStr);
+    $('who').innerHTML =
+      '<div class="k">Prepared for</div><b>' + esc(raw.customer || 'Customer name') + '</b>' +
+      (raw.contact ? '<br>Attn: ' + esc(raw.contact) : '') +
+      (raw.property || raw.city ? '<br>' + esc([raw.property, raw.city].filter(Boolean).join(', ')) : '') +
+      '<br>' + (raw.preparedBy ? esc(raw.preparedBy) + ' · ' : '') + esc(dateStr);
 
-    // lede + hero
-    $('lede').innerHTML = 'This analysis looks at a <b>' + inp.area.toLocaleString('en-US') + ' sq ft ' + D.systems[inp.system].label +
-      '</b> roof, <b>' + inp.roofAge + ' year' + (inp.roofAge === 1 ? '' : 's') + ' old</b> and in ' + inp.condition + ' condition, on ' +
-      (/^[aeiou]/i.test(pt.label) ? 'an ' : 'a ') + esc(pt.label.toLowerCase()) + ' property. A new roof would cost about <b>' +
-      short(inp.replacementCost) + '</b> today. It compares the next ' + N + ' years with PaxSeal planned maintenance against fixing problems only when they leak.';
+    // thesis
+    var who = raw.customer ? esc(raw.customer) : 'this property';
+    $('thesis').innerHTML = k.savings > 0
+      ? 'Planned maintenance is projected to save ' + who + ' <span class="save">' + short(k.savings) + '</span> on this roof over the next ' + N + ' years.'
+      : 'At these inputs, planned maintenance costs about ' + short(-k.savings) + ' more than reactive repair over ' + N + ' years.';
+    $('thesisSub').innerHTML = 'That is ' + pct(Math.abs(k.savingsPct) * 100) + ' less than the reactive cost, or ' + short(k.npvSavings) +
+      ' in today’s dollars. It compares PaxSeal planned maintenance with fixing problems only after they leak, using ' +
+      esc(mk.shortName) + ' costs and storm history.';
 
-    var heroRight = k.assetValueProtected != null
-      ? '<div class="k">Property value protected</div><div class="mid num">' + short(k.assetValueProtected) + '</div>' +
-        '<div class="d">' + short(k.annualNoiGain) + '/yr better net operating income at a ' + pct(inp.capRatePct) + ' cap rate</div>'
-      : '<div class="k">Return per fee dollar</div><div class="mid num">' + (k.returnPerFeeDollar ? k.returnPerFeeDollar.toFixed(1) + '×' : '—') + '</div><div class="d">Savings ÷ PaxSeal fees</div>';
-    $('hero').innerHTML =
-      '<div class="save"><div class="k">Projected 20-year savings with PaxSeal</div><div class="big num">' + short(k.savings) + '</div>' +
-      '<div class="d"><b>' + pct(k.savingsPct * 100) + '</b> less than reactive · ' + short(k.npvSavings) + ' in today’s dollars</div></div>' +
-      '<div>' + heroRight + '</div>';
-
-    var tiles = [
-      { k: 'PaxSeal net cost', sw: COLORS.planned, v: short(k.plannedNetCost), d: short(P.totalSpend) + ' spent, less ' + short(P.residualValue) + ' of roof life left' },
-      { k: 'Reactive net cost', sw: COLORS.reactive, v: short(k.reactiveNetCost), d: short(R.totalSpend) + ' spent, less ' + short(R.residualValue) + ' of roof life left' },
-      { k: 'Next replacement', v: (k.plannedReplacementYear ? 'Yr ' + k.plannedReplacementYear : '>' + N) + ' <span style="font-size:.6em;color:var(--muted);font-weight:700">vs yr ' + (k.reactiveReplacementYear || '>' + N) + '</span>', d: 'With PaxSeal vs reactive' },
-      { k: 'New roof price', v: k.yearsToDouble ? '2× in ' + Math.round(k.yearsToDouble) + ' yrs' : '—', d: short(inp.replacementCost) + ' today → ' + short(k.replacementCostAtHorizon) + ' in year ' + N }
+    // spec strip
+    var spec = [
+      ['Market', esc(mk.shortName)],
+      ['Property', esc(pt.label.replace(' / Industrial', ''))],
+      ['Roof area', inp.area.toLocaleString('en-US') + ' <small>sq ft</small>'],
+      ['System', esc(sys.replace('Modified Bitumen', 'Mod bit').replace(' / Restoration', ''))],
+      ['Age', inp.roofAge + ' yrs <small>' + cap(inp.condition) + '</small>'],
+      ['New roof today', short(inp.replacementCost)]
     ];
-    $('tiles').innerHTML = tiles.map(function (t) {
-      return '<div class="tile"><div class="k">' + (t.sw ? '<span class="swatch" style="background:' + t.sw + '"></span>' : '') + t.k +
-        '</div><div class="v num">' + t.v + '</div><div class="d">' + t.d + '</div></div>';
+    $('spec').innerHTML = spec.map(function (s) { return '<div><div class="k">' + s[0] + '</div><div class="v num">' + s[1] + '</div></div>'; }).join('');
+
+    // figures
+    var figs = [
+      { k: '<span class="sw" style="background:' + C.planned + '"></span>PaxSeal net cost', v: short(k.plannedNetCost), d: short(P.totalSpend) + ' spent, less ' + short(P.residualValue) + ' roof life left' },
+      { k: '<span class="sw" style="background:' + C.reactive + '"></span>Reactive net cost', v: short(k.reactiveNetCost), d: short(R.totalSpend) + ' spent, less ' + short(R.residualValue) + ' roof life left' },
+      k.assetValueProtected != null
+        ? { k: 'Value protected', v: short(k.assetValueProtected), d: short(k.annualNoiGain) + '/yr more NOI at a ' + pct(inp.capRatePct) + ' cap rate', good: true }
+        : { k: 'Return per fee dollar', v: k.returnPerFeeDollar ? '$' + k.returnPerFeeDollar.toFixed(2) : '—', d: 'Avoided cost for each $1 of PaxSeal fees', good: true },
+      { k: 'New roof price', v: k.yearsToDouble ? '2× <small>in ' + Math.round(k.yearsToDouble) + ' yrs</small>' : '—', d: short(inp.replacementCost) + ' today, ' + short(k.replacementCostAtHorizon) + ' by year ' + N }
+    ];
+    $('figs').innerHTML = figs.map(function (f) {
+      return '<div class="fig' + (f.good ? ' good' : '') + '"><div class="k">' + f.k + '</div><div class="v num">' + f.v + '</div><div class="d">' + f.d + '</div></div>';
     }).join('');
 
-    drawChart(res);
+    drawSpend(res);
+    drawLife(res);
 
     // breakdown
     function sum(rows, key) { return rows.reduce(function (a, r) { return a + r[key]; }, 0); }
@@ -583,74 +693,78 @@
       ['PaxSeal program fees', sum(P.rows, 'fee'), sum(R.rows, 'fee')],
       ['Repairs paid by owner', sum(P.rows, 'repairs'), sum(R.rows, 'repairs')],
       ['Expected storm damage', sum(P.rows, 'storm'), sum(R.rows, 'storm')],
-      ['Roof replacement', sum(P.rows, 'replacement'), sum(R.rows, 'replacement')],
-      ['Credit: roof life left at yr ' + N, -P.residualValue, -R.residualValue]
+      ['Roof replacements', sum(P.rows, 'replacement'), sum(R.rows, 'replacement')],
+      ['Credit for roof life left', -P.residualValue, -R.residualValue]
     ];
-    function cell(v) { return '<td class="' + (v > 0.5 ? 'pos' : v < -0.5 ? 'neg' : '') + '">' + (Math.abs(v) < 0.5 ? '—' : short(v)) + '</td>'; }
+    function amt(v) { return Math.abs(v) < 0.5 ? '—' : short(v); }
+    function cell(v) { return '<td class="' + (v > 0.5 ? 'pos' : v < -0.5 ? 'neg' : '') + '">' + (v > 0.5 ? '+' : '') + amt(v) + '</td>'; }
     $('breakdown').innerHTML = '<thead><tr><th></th><th>PaxSeal</th><th>Reactive</th><th>Savings</th></tr></thead><tbody>' +
-      lines.map(function (l) { return '<tr><td>' + l[0] + '</td><td>' + (l[1] ? short(l[1]) : '—') + '</td><td>' + (l[2] ? short(l[2]) : '—') + '</td>' + cell(l[2] - l[1]) + '</tr>'; }).join('') +
+      lines.map(function (l) { return '<tr><td>' + l[0] + '</td><td>' + amt(l[1]) + '</td><td>' + amt(l[2]) + '</td>' + cell(l[2] - l[1]) + '</tr>'; }).join('') +
       '</tbody><tfoot><tr><td>Net 20-year cost</td><td>' + short(P.netCost) + '</td><td>' + short(R.netCost) + '</td>' + cell(k.savings) + '</tr></tfoot>';
 
-    // insights
-    var ins = [];
+    // points
+    var pts = [];
     if (k.reactiveReplacementYear && (!k.plannedReplacementYear || k.plannedReplacementYear > k.reactiveReplacementYear)) {
-      ins.push('Maintenance pushes the next replacement from <b>year ' + k.reactiveReplacementYear + '</b> to <b>' +
-        (k.plannedReplacementYear ? 'year ' + k.plannedReplacementYear : 'beyond year ' + N) + '</b>, so the owner buys fewer roofs over the period.');
+      pts.push('<b>A later replacement.</b> Maintenance moves the next new roof from year ' + k.reactiveReplacementYear + ' to ' +
+        (k.plannedReplacementYear ? 'year ' + k.plannedReplacementYear : 'beyond year ' + N) + ', so fewer roofs are bought over the period.');
     }
-    if (k.yearsToDouble) ins.push('Roofing costs have grown about ' + pct(inp.escalationPct) + ' a year, so a new roof costs <b>twice as much in about ' +
-      Math.round(k.yearsToDouble) + ' years</b>. Each year of roof life added is worth more over time.');
-    ins.push('Catching problems on a scheduled visit avoids emergency repairs, which cost about <b>' + c.reactiveRepairMultiplier + '×</b> as much. That saves <b>' +
-      short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + '</b> in repairs over ' + N + ' years.');
-    if (k.returnPerFeeDollar > 0) ins.push('Each <b>$1</b> of PaxSeal fees returns about <b>$' + k.returnPerFeeDollar.toFixed(2) + '</b> in avoided cost.');
+    pts.push('<b>Smaller repairs.</b> Problems found on a scheduled visit avoid emergency work, which costs about ' + c.reactiveRepairMultiplier +
+      '× as much. That saves ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + ' in repairs.');
+    if (k.yearsToDouble) pts.push('<b>Waiting gets expensive.</b> Roofing costs have grown about ' + pct(inp.escalationPct) + ' a year, so a new roof doubles in price in about ' +
+      Math.round(k.yearsToDouble) + ' years. Each year of roof life added is worth more over time.');
+    if (k.returnPerFeeDollar > 0) pts.push('<b>The program pays for itself.</b> Each $1 of PaxSeal fees returns about $' + k.returnPerFeeDollar.toFixed(2) + ' in avoided cost.');
     if (inp.roofAge + (c.conditionAgeShift[inp.condition] || 0) >= inp.systemLife - c.lifeExtensionYears) {
-      ins.push('This roof is near the end of its expected life. Maintenance now mainly protects the building until a <b>planned</b> replacement, rather than adding much life.');
+      pts.push('<b>Near end of life.</b> This roof has little service life left. Maintenance now mainly protects the building until a planned replacement.');
     }
-    $('insights').innerHTML = ins.map(function (s) { return '<li>' + s + '</li>'; }).join('');
+    $('points').innerHTML = pts.map(function (s) { return '<li><span>' + s + '</span></li>'; }).join('');
 
     // risk
-    var ratingNames = { hail: 'Hail', strong_wind: 'Strong wind', tornado: 'Tornado', hurricane: 'Hurricane', winter_weather: 'Winter weather', ice_storm: 'Ice storm' };
-    var HIGH = /High/;
-    $('riskKicker').textContent = 'Main roof hazards for ' + mk.shortName + ', with FEMA National Risk Index ratings for ' + mk.nriCounty + '.';
-    $('risk').innerHTML = '<b>' + esc(mk.perils.headline) + '.</b> ' + esc(mk.perils.events) + '. Expected storm damage to this roof over ' + N +
-      ' years: <b>' + short(k.expectedStormLoss20yr.planned) + '</b> if maintained, <b>' + short(k.expectedStormLoss20yr.reactive) +
-      '</b> if neglected. A documented maintenance history also helps when an insurer questions a claim.' +
-      '<div class="pills">' + Object.keys(ratingNames).filter(function (h) { return mk.nriRatings[h]; }).map(function (h) {
-        return '<span class="pill' + (HIGH.test(mk.nriRatings[h]) ? ' hi' : '') + '">' + ratingNames[h] + ': <b>' + esc(mk.nriRatings[h]) + '</b></span>';
-      }).join('') + '</div>';
+    var names = { hail: 'Hail', strong_wind: 'Strong wind', tornado: 'Tornado', hurricane: 'Hurricane', winter_weather: 'Winter weather', ice_storm: 'Ice storm' };
+    var LEVELS = ['Very Low', 'Relatively Low', 'Relatively Moderate', 'Relatively High', 'Very High'];
+    $('riskWhere').textContent = mk.nriCounty;
+    $('risk').innerHTML = '<div><div class="headline">' + esc(mk.perils.headline) + '</div><p>' + esc(mk.perils.events) +
+      '. Expected storm damage to this roof over ' + N + ' years is <b>' + short(k.expectedStormLoss20yr.planned) + '</b> if maintained and <b>' +
+      short(k.expectedStormLoss20yr.reactive) + '</b> if neglected. A documented maintenance history also helps when an insurer questions a claim.</p></div>' +
+      '<div class="ratings">' + Object.keys(names).filter(function (h) { return mk.nriRatings[h]; }).map(function (h) {
+        var lvl = LEVELS.indexOf(mk.nriRatings[h]) + 1;
+        var meter = '<span class="meter" aria-hidden="true">' + [1, 2, 3, 4, 5].map(function (n) { return '<i' + (n <= lvl ? ' class="on"' : '') + '></i>'; }).join('') + '</span>';
+        return '<span class="k">' + names[h] + '</span><span class="v" title="' + esc(mk.nriRatings[h]) + '">' + esc(mk.nriRatings[h].replace('Relatively ', '')) + meter + '</span>';
+      }).join('') + '<span class="src">FEMA National Risk Index rating</span></div>';
 
     // assumptions
     var capSrc = pt.capRateKey ? mk.capRates[pt.capRateKey] : null;
-    var assume = [
-      ['Roof life', inp.systemLife + ' yrs maintained / ' + (inp.systemLife - c.lifeExtensionYears) + ' reactive', 'Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs from NRC Canada roof study and manufacturer warranty terms', 'medium'],
-      ['Roof cost growth', pct(inp.escalationPct) + '/yr', 'BLS Producer Price Index, nonresidential roofing contractors, 2007–2025 (national)', raw.escalation ? 'rep' : 'high'],
-      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', raw.costPerSqft || raw.replacementCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : 'Median of other PAX markets (no local data yet)'), raw.costPerSqft || raw.replacementCost ? 'rep' : 'low'],
+    var repCost = raw.costPerSqft || raw.replacementCost;
+    var A = [
+      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - c.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs from NRC Canada roof study and manufacturer warranty terms', 'medium'],
+      ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing contractors, 2007–2025', raw.escalation ? 'rep' : 'high'],
+      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : 'Median of other PAX markets until local data is added'), repCost ? 'rep' : 'low'],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '× planned', 'Industry estimates; no primary study found', 'low'],
-      ['Storm damage', inp.stormLossPct.toFixed(2) + '% of roof cost/yr', 'FEMA NRI expected annual building loss (hail, wind, tornado, hurricane, winter), ' + mk.nriCounty, 'medium'],
+      ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA NRI expected annual building loss from hail, wind, tornado, hurricane and winter weather', 'medium'],
       ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'Estimate from maintenance-program pricing benchmarks' : 'Entered by rep', inp.feeIsEstimate ? 'low' : 'rep']
     ];
-    if (capSrc) assume.push(['Cap rate', pct(inp.capRatePct), raw.capRate ? 'Entered by rep' : (capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : 'Median of other PAX markets (no local data yet)'), raw.capRate ? 'rep' : 'low']);
-    $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Source</th><th>Confidence</th></tr></thead><tbody>' +
-      assume.map(function (a) {
-        var badge = a[3] === 'rep' ? '<span class="conf high">Rep input</span>' : '<span class="conf ' + a[3] + '">' + a[3] + '</span>';
-        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td><td>' + badge + '</td></tr>';
+    if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), raw.capRate ? 'Entered by rep' : (capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : 'Median of other PAX markets until local data is added'), raw.capRate ? 'rep' : 'low']);
+    $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Basis</th><th>Confidence</th></tr></thead><tbody>' +
+      A.map(function (a) {
+        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td><td><span class="conf ' + a[3] + '">' + (a[3] === 'rep' ? 'Rep input' : a[3]) + '</span></td></tr>';
       }).join('') + '</tbody>';
 
-    // yearly table
-    $('yearly').innerHTML = '<thead><tr><th>Year</th><th>PaxSeal fee</th><th>Repairs</th><th>Storm</th><th>Replacement</th><th>PaxSeal total</th><th>Reactive repairs</th><th>Reactive storm</th><th>Reactive replacement</th><th>Reactive total</th></tr></thead><tbody>' +
+    // fine print + footers
+    var custom = Object.keys(overrides(raw)).length;
+    $('fine').innerHTML =
+      '<p><b>Estimates, not a quote.</b> Projections use ' + esc(mk.shortName) + ' market research and industry data, in nominal dollars; actual costs will differ. ' +
+      (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate and your proposal will state the actual price. ' : '') +
+      'Net cost credits the roof life remaining at year ' + N + '. Property value is the yearly gain in net operating income divided by the cap rate, and applies to income-producing property where the owner pays for the roof.</p>' +
+      (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '');
+    var footText = 'PAX Services Group · Roof Lifecycle Cost Analysis' + (raw.customer ? ' · ' + raw.customer : '');
+    $('foot1').textContent = footText; $('foot2').textContent = footText;
+
+    // appendix
+    $('yearly').innerHTML = '<thead><tr><th>Year</th><th>PaxSeal fee</th><th>Repairs</th><th>Storm</th><th>Replacement</th><th>PaxSeal total</th><th>Reactive repairs</th><th>Storm</th><th>Replacement</th><th>Reactive total</th></tr></thead><tbody>' +
       P.rows.map(function (r, i) {
         var q = R.rows[i];
         return '<tr><td>' + r.year + '</td><td>' + money(r.fee) + '</td><td>' + money(r.repairs) + '</td><td>' + money(r.storm) + '</td><td>' + (r.replacement ? money(r.replacement) : '—') +
           '</td><td><b>' + money(r.total) + '</b></td><td>' + money(q.repairs) + '</td><td>' + money(q.storm) + '</td><td>' + (q.replacement ? money(q.replacement) : '—') + '</td><td><b>' + money(q.total) + '</b></td></tr>';
       }).join('') + '</tbody>';
-
-    // footnote
-    var custom = Object.keys(overrides(raw)).length;
-    $('foot').innerHTML =
-      '<p><b>Estimates, not a quote.</b> These are projections based on ' + esc(mk.shortName) + ' market research and industry data, in nominal dollars. Actual costs will differ. ' +
-      (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate; your proposal will state the actual price. ' : '') +
-      'Net cost credits the roof life remaining at year ' + N + '. Property value = yearly improvement in net operating income ÷ cap rate. It applies to income-producing property where the owner pays for the roof.</p>' +
-      (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '') +
-      '<p>PAX Services Group · PaxSeal™ Building Lifecycle Plan · Model data ' + esc(D.builtOn) + '</p>';
 
     document.title = (raw.customer ? raw.customer + ' – ' : '') + 'Roof Lifecycle Analysis';
   }
@@ -669,17 +783,16 @@
   $('printBtn').addEventListener('click', function () { window.print(); });
   $('linkBtn').addEventListener('click', function () {
     var url = reportUrl();
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(function () { toast('Report link copied.'); }, function () { prompt('Copy this link:', url); });
-    else prompt('Copy this link:', url);
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(function () { toast('Link copied'); }, function () { window.prompt('Copy this link:', url); });
+    else window.prompt('Copy this link:', url);
   });
   $('resetBtn').addEventListener('click', function () {
-    form.reset();
     FIELDS.forEach(function (f) { if (form.elements[f].tagName !== 'SELECT') form.elements[f].value = ''; });
     form.elements.market.value = D.defaultMarket; form.elements.propertyType.value = 'industrial';
     form.elements.system.value = 'tpo'; form.elements.condition.value = 'good';
-    applyDefaults(); render(); toast('Inputs reset.');
+    applyDefaults(); render(); toast('Inputs reset');
   });
-  $('editLink').addEventListener('click', function (e) { e.preventDefault(); document.body.classList.remove('report-only'); });
+  $('editBtn').addEventListener('click', function () { document.body.classList.remove('report-only'); });
   render();
 })();
 </script>
