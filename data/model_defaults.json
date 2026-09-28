@@ -99,27 +99,27 @@
           "confidence": "low"
         },
         "epdm": {
-          "value": 7.75,
+          "value": 7.5,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
         "mod_bit": {
-          "value": 8.75,
+          "value": 8,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
         "bur": {
-          "value": 8.45,
+          "value": 8.75,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
         "metal": {
-          "value": 14.5,
+          "value": 15,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
         "coating_restoration": {
-          "value": 3.75,
+          "value": 3.5,
           "source": "fallback: median of other markets",
           "confidence": "low"
         }
@@ -131,7 +131,7 @@
           "confidence": "low"
         },
         "office": {
-          "value": 7.9,
+          "value": 7.7,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
@@ -202,7 +202,7 @@
           "confidence": "low"
         },
         "office": {
-          "value": 7.9,
+          "value": 7.7,
           "source": "fallback: median of other markets",
           "confidence": "low"
         },
@@ -421,6 +421,77 @@
         },
         "retail": {
           "value": 6.55,
+          "source": "market",
+          "confidence": "low"
+        }
+      }
+    },
+    "millersville": {
+      "id": "millersville",
+      "name": "Millersville, MD (Annapolis–Baltimore)",
+      "shortName": "Millersville",
+      "region": "Maryland",
+      "nriCounty": "Anne Arundel County, MD (24003)",
+      "nriVersion": "1.20.0 (December 2025)",
+      "nriOverall": "Relatively Moderate",
+      "nriRatings": {
+        "hail": "Relatively Moderate",
+        "strong_wind": "Relatively High",
+        "tornado": "Relatively Moderate",
+        "hurricane": "Relatively Moderate",
+        "winter_weather": "Relatively High",
+        "ice_storm": "Relatively Moderate"
+      },
+      "nriBuildingLossPct": 0.011274972263835163,
+      "perils": {
+        "headline": "Thunderstorm wind, tropical remnants, bay flooding",
+        "events": "~2.8 tropical storms within 50 nm of Annapolis per 20 years (NOAA HURDAT2 1975–2024); Isabel (2003) set the Annapolis flood record"
+      },
+      "replacementCostPerSqft": {
+        "tpo": {
+          "value": 7.4,
+          "source": "market",
+          "confidence": "low"
+        },
+        "epdm": {
+          "value": 7,
+          "source": "market",
+          "confidence": "low"
+        },
+        "mod_bit": {
+          "value": 7.5,
+          "source": "market",
+          "confidence": "low"
+        },
+        "bur": {
+          "value": 8.75,
+          "source": "market",
+          "confidence": "low"
+        },
+        "metal": {
+          "value": 16,
+          "source": "market",
+          "confidence": "low"
+        },
+        "coating_restoration": {
+          "value": 3.5,
+          "source": "market",
+          "confidence": "low"
+        }
+      },
+      "capRates": {
+        "industrial": {
+          "value": 7.5,
+          "source": "market",
+          "confidence": "medium"
+        },
+        "office": {
+          "value": 7.5,
+          "source": "market",
+          "confidence": "low"
+        },
+        "retail": {
+          "value": 7,
           "source": "market",
           "confidence": "low"
         }

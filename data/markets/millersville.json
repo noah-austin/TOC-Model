@@ -1,0 +1,1392 @@
+{
+  "id": "millersville",
+  "name": "Millersville, MD (Annapolis–Baltimore)",
+  "state": "MD",
+  "counties": [
+    {
+      "name": "Anne Arundel",
+      "fips": "24003",
+      "role": "primary"
+    },
+    {
+      "name": "Baltimore City",
+      "fips": "24510",
+      "role": "secondary"
+    },
+    {
+      "name": "Baltimore County",
+      "fips": "24005",
+      "role": "secondary"
+    },
+    {
+      "name": "Queen Anne's",
+      "fips": "24035",
+      "role": "secondary"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "research_environment_note": "The research sandbox's egress proxy blocked direct fetches of nearly all web hosts (fema.gov, noaa.gov, cbre.com, klnb.com, commercialroofguide.com, sec.gov, aacounty.org). Computed directly from full data files: FEMA NRI v1.20.0 (Dec 2025) county table (GitHub mirror) and NOAA HURDAT2 1851-2024 (GitHub mirror). Cost escalation is referenced from data/national.json. Insurance, roof life, code and several storm-event facts are reused from data/markets/laurel.json (same Maryland sources). All other figures are search-engine excerpts of the cited pages, traceable to the URL but not verified by a full read; confidence is lowered accordingly. Re-verify before customer use.",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 7.4,
+      "low": 4.0,
+      "high": 12.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Glen Burnie MD (Anne Arundel), Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/glen-burnie/"
+        },
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "Crown Remodeling LLC: Commercial Roofing Annapolis MD (probable origin of the Annapolis single-ply excerpt; exact page among search results not confirmed)",
+          "url": "https://crownremodelingllc.com/commercial-roofing/annapolis-md/"
+        },
+        {
+          "name": "The Roofing Brief: Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "roofreplacementcost.ai: Commercial Roofing Costs Explained 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        }
+      ],
+      "note": "value = midpoint of the Anne Arundel-specific (Glen Burnie) 60-mil TPO range $5.81-8.98/sq ft (Commercial Roof Guide, typical 15,000 sq ft office building). Baltimore page on the same site gives $6.05-9.35. low = bottom of an Annapolis contractor excerpt ('most Annapolis commercial roofs land between $4 and $8 per square foot for single-ply, $6-12 where PVC or a heavier system is specified'); high = top of national 2026 TPO range incl. tear-off ($7-12). Excerpts say final cost depends on tear-off scope and insulation; whether the local ranges include tear-off is not stated clearly, and tear-off/disposal typically adds $1-3/sq ft (see mod_bit note). Insulation upgrade R-25 to R-35 polyiso adds $2.00-3.50/sq ft (Baltimore page, via Laurel research). Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "epdm": {
+      "value": 7.0,
+      "low": 4.0,
+      "high": 10.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roof Cost Guide (2026)",
+          "url": "https://commercialroofguide.com/guides/commercial-roof-cost/"
+        },
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "Crown Remodeling LLC: Commercial Roofing Annapolis MD (probable origin of the Annapolis single-ply excerpt; exact page among search results not confirmed)",
+          "url": "https://crownremodelingllc.com/commercial-roofing/annapolis-md/"
+        },
+        {
+          "name": "roofreplacementcost.ai: Commercial Roofing Costs Explained 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        }
+      ],
+      "note": "value = midpoint of the $5.50-8.50 EPDM range returned for Commercial Roof Guide's Baltimore/cost-guide pages (same figure used in Laurel). low = Annapolis single-ply excerpt low ($4); high = national 2026 EPDM range top incl. tear-off ($6-10). Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "mod_bit": {
+      "value": 7.5,
+      "low": 6.0,
+      "high": 12.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roof Cost Guide (2026)",
+          "url": "https://commercialroofguide.com/guides/commercial-roof-cost/"
+        },
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "The Roofing Brief: Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Veteran Roofing Systems / SolidRock / Puetz 2026 commercial cost guides (search excerpt: tear-off and disposal adds $1-3/sq ft; full replacement incl. tear-off and code insulation $7-16/sq ft)",
+          "url": "https://veteranroofingsystems.com/commercial-roof-replacement-cost-what-to-expect-and-how-to-plan-2026-guide/"
+        }
+      ],
+      "note": "value = midpoint of $6.00-9.00/sq ft (Commercial Roof Guide; excerpt says 'include materials, labor and standard accessories but exclude tear-off, permits and engineering'; it is unclear whether the figure is the Baltimore page or the site's national cost guide). A Baltimore excerpt also cites $7-12 field rate for two-ply mod bit. high = national incl.-tear-off range top ($7-12). If the $6-9 range truly excludes tear-off, add $1-3/sq ft (national excerpt) - i.e. about $7-12, matching the high side. Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "bur": {
+      "value": 8.75,
+      "low": 6.0,
+      "high": 10.5,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roof Cost Guide (2026)",
+          "url": "https://commercialroofguide.com/guides/commercial-roof-cost/"
+        },
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "The Roofing Brief: Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "value = midpoint of $7.00-10.50/sq ft (Commercial Roof Guide, same caveat as mod_bit: excerpt says ranges exclude tear-off). low = national range bottom ($6-10, The Roofing Brief, used in Laurel). Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "metal": {
+      "value": 16.0,
+      "low": 10.0,
+      "high": 22.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roof Cost Guide (2026)",
+          "url": "https://commercialroofguide.com/guides/commercial-roof-cost/"
+        },
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "The Roofing Brief: Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "roofreplacementcost.ai: Commercial Roofing Costs Explained 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        }
+      ],
+      "note": "Standing seam. Commercial Roof Guide excerpt: $10.00-18.00/sq ft (excl. tear-off); a Baltimore excerpt gives $14-22 field rate; national incl.-tear-off 2026 range $14-22. value = midpoint of the pooled $10-22 envelope. Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "coating_restoration": {
+      "value": 3.5,
+      "low": 1.5,
+      "high": 7.0,
+      "unit": "$/sq ft installed (restoration over existing roof, NOT tear-off)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "West Roofing Systems: cost to restore TPO/EPDM with silicone",
+          "url": "https://www.westroofingsystems.com/cost-restore-tpo-epdm-silicone-coating"
+        },
+        {
+          "name": "West Roofing Systems: cost to restore a commercial metal roof",
+          "url": "https://www.westroofingsystems.com/ballpark-cost-restore-commercial-metal-roof"
+        },
+        {
+          "name": "No Tear Off Roofing: Silicone Roof Coating Cost Guide 2026",
+          "url": "https://notearoffroofing.com/silicone-roof-coating-cost/"
+        },
+        {
+          "name": "Great Lakes Commercial Roofing: Commercial roof coating cost 2025",
+          "url": "https://greatlakescommercialroofingllc.com/commercial-roof-coating-cost/"
+        }
+      ],
+      "note": "Reused from Laurel research (same sources; no Annapolis/Baltimore-specific coating price found). Silicone restoration: $2.00-4.50 over TPO/EPDM, $2.50-5.00 over metal, general ranges $1.50-3.50 and $3.50-7.00. value = mid of the single-ply range. Schema asks for tear-off + replace; coating is by definition not a tear-off, so do not use as a replacement cost. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    }
+  },
+  "location_cost_factor": {
+    "value": null,
+    "low": null,
+    "high": null,
+    "unit": "index (national = 1.00)",
+    "as_of": null,
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "RSMeans City Cost Index Q1 2024 change notice (quarterly changes only)",
+        "url": "https://www.rsmeans.com/media/wysiwyg/quarterly_updates/Q1-2024-ChangeNotice.pdf"
+      },
+      {
+        "name": "UFC 3-701-01 DoD Facilities Pricing Guide, Change 7 (Jul 2025), Table of Area Cost Factors",
+        "url": "https://www.wbdg.org/FFC/DOD/UFC/ufc_3_701_01_2022_c7.pdf"
+      }
+    ],
+    "note": "Not found (same result as Laurel: RSMeans CCI paywalled; DoD UFC 3-701-01 area cost factor PDF for Fort Meade/Annapolis not fetchable). The Glen Burnie/Baltimore $/sq ft above are already local, so apply no factor to them."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.75,
+      "low": 2.47,
+      "high": 9.14,
+      "unit": "%/yr",
+      "as_of": "Dec 2015 - Dec 2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X, Roofing Contractors, Nonresidential Building Work (Dec 2007=100), via FRED table",
+          "url": "https://fred.stlouisfed.org/data/PCU23816X23816X"
+        },
+        {
+          "name": "FRED series page",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        },
+        {
+          "name": "AGC PPI Tables (Jan 2026 update) for 2021-2025 annual changes",
+          "url": "https://www.agc.org/sites/default/files/users/user21902/PPI%20Tables%202026_01%20Redo_v2.pdf"
+        }
+      ],
+      "note": "Taken directly from data/national.json (NATIONAL BLS PPI PCU23816X23816X, Roofing Contractors - Nonresidential). No Maryland/Baltimore roofing escalation series exists. Index values from search extracts: Dec 2015 = 128.5, Dec 2025 = 224.789 (Feb 2026 = 224.143). CAGR = (224.789/128.5)^(1/10) - 1 = 5.75%. Annual changes 2021-2025 (AGC): 6.0, 18.8, 14.9, 2.7, 4.2%. Those give an implied Dec 2020 value of about 145.2, so Dec 2015 to Dec 2020 = 2.47%/yr (low) and Dec 2020 to Dec 2025 = 9.14%/yr (high). The 10-yr figure is inflated by the 2022-23 surge. The index covers new nonresidential work plus maintenance and repair."
+    },
+    "annual_pct_20yr": {
+      "value": 4.6,
+      "low": 2.91,
+      "high": 5.75,
+      "unit": "%/yr",
+      "as_of": "Dec 2007 - Dec 2025 (18 yrs; series starts Dec 2007)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X via FRED",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "Taken directly from data/national.json (NATIONAL BLS PPI PCU23816X23816X, Roofing Contractors - Nonresidential). No Maryland/Baltimore roofing escalation series exists. No 20-yr roofing-contractor series exists (it begins Dec 2007 = 100), so the longest available span is used: (224.789/100)^(1/18) - 1 = 4.60%. low = Dec 2007 to implied Dec 2020 (pre-surge) = 2.91%/yr. Recommended forward default for a 20-yr TCO: 4.6% national, before market adjustments."
+    }
+  },
+  "perils": [
+    {
+      "peril": "Severe thunderstorm / straight-line wind (incl. derechos)",
+      "annual_frequency": {
+        "value": 7.7382,
+        "low": 6.5908,
+        "high": 8.1282,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Most frequent roof-damaging peril: perimeter/edge-metal and flashing failures, membrane blow-off, rooftop-unit and debris damage. NRI v1.20 rates strong wind Relatively High in Anne Arundel, Baltimore City and Baltimore County (Queen Anne's Relatively Low). Benchmark: June 29 2012 derecho, 60-90 mph gusts across the Mid-Atlantic (NOAA/NWS; reused from Laurel research). Anne Arundel building EAL $0.92M/yr on $106.9B of buildings (~0.0009%/yr): low severity per building, so the program value is preventing small wind openings from becoming water damage.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 918225.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+          "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+        },
+        {
+          "name": "NOAA SPC: The Ohio Valley / Mid-Atlantic Derecho of June 2012",
+          "url": "https://www.spc.noaa.gov/misc/AbtDerechos/casepages/jun292012page.htm"
+        }
+      ]
+    },
+    {
+      "peril": "Winter weather (snow load, ice dams, freeze-thaw)",
+      "annual_frequency": {
+        "value": 9.5206,
+        "low": 7.6316,
+        "high": 12.5021,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged. NRI v1.20 winter-weather frequencies are ~3x the v1.19 values (Anne Arundel 2.96 -> 9.52), reflecting a methodology/data change between versions, not a climate shift; compare markets only within one NRI version."
+      },
+      "severity_note": "Heavy wet snow and drifting on low-slope roofs cause ponding, drain freeze-up and occasional collapse. Feb 2010 (DR-1875) and Jan 2016 (DR-4261, Anne Arundel designated) were the benchmark events (reused from Laurel research). NRI: Anne Arundel Relatively High; Baltimore City and County Very High.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 71394.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+        },
+        {
+          "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; Anne Arundel designated)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+        }
+      ]
+    },
+    {
+      "peril": "Ice storm",
+      "annual_frequency": {
+        "value": 0.429,
+        "low": 0.429,
+        "high": 1.0255,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Ice loading on roof edges and drains; secondary tree-fall damage. Anne Arundel Relatively Moderate; Baltimore County has the highest frequency in the market (1.03/yr).",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 177418.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Hurricane / tropical-storm remnants (wind)",
+      "annual_frequency": {
+        "value": 0.0941,
+        "low": 0.0941,
+        "high": 0.38,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+            "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+          },
+          {
+            "name": "NOAA NHC HURDAT2 official data page (not reachable from research environment)",
+            "url": "https://www.nhc.noaa.gov/data/#hurdat"
+          }
+        ],
+        "note": "value = Anne Arundel County NRI v1.20 hurricane annualized frequency (0.0941); NRI range across the four counties 0.0941-0.1035. high = HURDAT2 rate of tropical-storm-strength passages within 100 nm of Annapolis 1975-2024 (0.38/yr). HURDAT2 cross-check computed for this memo (center 38.98N 76.49W, Annapolis; any storm status, max interpolated wind inside radius): 1975-2024, 7 storms at >=34 kt passed within 50 nm (0.14/yr: Danielle 1992, Bertha 1996, Ernesto 2006, Hanna 2008, Isaias 2020, Zeta 2020, Ida 2021); 19 within 100 nm (0.38/yr); 3 at hurricane strength within 100 nm (0.06/yr: Gloria 1985, Floyd 1999, Irene 2011). 1851-2024: 0.155/yr (TS within 50 nm), 0.063/yr (hurricane within 100 nm). Isabel 2003 never came within 100 nm of Annapolis (closest ~115 nm) yet produced the record Bay surge. Countywide/area frequency, not per-building damage probability."
+      },
+      "severity_note": "Tropical systems reach this market weakened, but wind-driven rain through failed flashings and edge metal is the main roof mechanism, and embedded tornadoes are common (Ida 2021). NRI v1.20 cut Anne Arundel's hurricane building EAL to $7.93M/yr (v1.19: $36.1M), rating Relatively Moderate. Roughly 3 tropical-storm-strength passages within 50 nm expected per 20-year roof life (HURDAT2, 1975-2024 rate).",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 7932623.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+          "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+        },
+        {
+          "name": "NOAA NHC HURDAT2 official data page (not reachable from research environment)",
+          "url": "https://www.nhc.noaa.gov/data/#hurdat"
+        },
+        {
+          "name": "NWS Service Assessment: Hurricane Isabel, September 18-19, 2003",
+          "url": "https://www.weather.gov/media/publications/assessments/isabel.pdf"
+        },
+        {
+          "name": "NOAA CO-OPS Technical Report 40: Effects of Hurricane Isabel on Water Levels",
+          "url": "https://tidesandcurrents.noaa.gov/publications/techrpt40.pdf"
+        },
+        {
+          "name": "City of Annapolis: Flooding Data (Isabel record 7.2 ft MLLW at Annapolis gauge, per search excerpt)",
+          "url": "https://www.annapolis.gov/1818/Flooding-Data"
+        },
+        {
+          "name": "Wikipedia: Effects of Hurricane Isabel in Maryland and Washington, D.C.",
+          "url": "https://en.wikipedia.org/wiki/Effects_of_Hurricane_Isabel_in_Maryland_and_Washington,_D.C."
+        }
+      ]
+    },
+    {
+      "peril": "Tornado",
+      "annual_frequency": {
+        "value": 0.4297,
+        "low": 0.0696,
+        "high": 0.5008,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Mostly weak, short-track tornadoes embedded in tropical remnants and squall lines. Local benchmark: Sep 1 2021, remnants of Ida produced an EF2 tornado (peak ~125 mph, ~200 yd wide, >11 mi path) from Edgewater into downtown Annapolis, with structural damage to homes, businesses and a school, including a roof torn off at South River High School's stadium concession stand (NWS/news, search excerpts). High per-building severity, very low per-building probability.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 1873605.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NWS Sterling: Remnants of Ida tornadoes (Sep 1 2021)",
+          "url": "https://www.weather.gov/lwx/IdaTors"
+        },
+        {
+          "name": "WUSA9: Annapolis hit with EF-2 tornado, National Weather Service says",
+          "url": "https://www.wusa9.com/article/weather/nws-annapolis-ef-2-tornado/65-b53a7f14-3278-4df2-8280-f7ef215503e8"
+        },
+        {
+          "name": "Washington Post: Inside the Annapolis tornado (Sep 2 2021)",
+          "url": "https://www.washingtonpost.com/weather/2021/09/02/annapolis-tornado-ida-explainer/"
+        }
+      ]
+    },
+    {
+      "peril": "Hail",
+      "annual_frequency": {
+        "value": 3.3835,
+        "low": 2.6014,
+        "high": 3.5996,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "NRI v1.20 raised hail to Relatively Moderate in Anne Arundel, Baltimore City and Baltimore County (building EAL ~$1.1-1.3M/yr each), vs Very Low (~$4K/yr) in v1.19. Still a minor peril relative to wind; not Texas-style hail.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 1080507.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Coastal flooding / storm surge (Chesapeake Bay shoreline)",
+      "annual_frequency": {
+        "value": 3.6581,
+        "low": 3.6548,
+        "high": 3.687,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged. Annapolis-specific tidal data (search excerpts): record 18 high-tide-flood days May 2019-Apr 2020 (previous record 12 in 2018); City Dock floods ~50 times/yr at high tide. These are nuisance tides, not roof events."
+      },
+      "severity_note": "The feature that distinguishes Millersville from Laurel: NRI rates coastal flooding Relatively Moderate in all four counties. Hurricane Isabel (Sep 18-19 2003) drove an unprecedented Chesapeake surge of 7+ ft; the Annapolis gauge recorded its record 7.2 ft MLLW; downtown Annapolis, the Naval Academy and Baltimore's Inner Harbor/Fells Point flooded; ~60 mph gusts and >500,000 customers without power in central MD; ~$820M damage in MD/DC (search excerpts of NWS/Wikipedia). Surge is not a roof peril itself, but surge events coincide with sustained wind and wind-driven rain, and they flood rooftop-equipment electrical feeds and ground-level mechanicals.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 2176813.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NWS Service Assessment: Hurricane Isabel, September 18-19, 2003",
+          "url": "https://www.weather.gov/media/publications/assessments/isabel.pdf"
+        },
+        {
+          "name": "NOAA CO-OPS Technical Report 40: Effects of Hurricane Isabel on Water Levels",
+          "url": "https://tidesandcurrents.noaa.gov/publications/techrpt40.pdf"
+        },
+        {
+          "name": "City of Annapolis: Flooding Data (Isabel record 7.2 ft MLLW at Annapolis gauge, per search excerpt)",
+          "url": "https://www.annapolis.gov/1818/Flooding-Data"
+        },
+        {
+          "name": "Wikipedia: Effects of Hurricane Isabel in Maryland and Washington, D.C.",
+          "url": "https://en.wikipedia.org/wiki/Effects_of_Hurricane_Isabel_in_Maryland_and_Washington,_D.C."
+        },
+        {
+          "name": "NOAA High Tide Flooding Mid-Atlantic fact sheet 2023 / NASA 'Beating Back the Tides' (Annapolis record 18 HTF days May 2019-Apr 2020; prior record 12 in 2018) - search excerpt",
+          "url": "https://www.nasa.gov/missions/goes/beating-back-the-tides/"
+        },
+        {
+          "name": "Union of Concerned Scientists: Sea Level Rise and Tidal Flooding in Annapolis (City Dock floods ~50 times/yr) - search excerpt",
+          "url": "https://www.ucs.org/resources/sea-level-rise-and-tidal-flooding-annapolis-maryland"
+        }
+      ]
+    },
+    {
+      "peril": "Inland (riverine + pluvial) flooding",
+      "annual_frequency": {
+        "value": 3.6429,
+        "low": 1.1786,
+        "high": 5.6429,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.20.0, December 2025 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI v1.20 data dictionary (same mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Anne Arundel County (contains Millersville and Annapolis) NRI annualized frequency; low/high = range across Anne Arundel, Baltimore City, Baltimore County and Queen Anne's. Countywide frequency, NOT the probability that one specific building's roof is damaged. NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD); values shown are IFLD."
+      },
+      "severity_note": "In NRI v1.20 inland flooding is Anne Arundel's largest building EAL ($32.1M/yr, ~65% of the all-hazard building EAL of $49.6M). Pluvial flooding is relevant to roofs through drain/scupper capacity: clogged drains during cloudbursts cause ponding overload. Not otherwise a roof peril.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 32106705.0,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Significant regional roof-damaging event (derived composite)",
+      "annual_frequency": {
+        "value": 0.21,
+        "low": 0.18,
+        "high": 0.35,
+        "unit": "events/yr (regional/local)",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+            "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+          },
+          {
+            "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; Anne Arundel designated)",
+            "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+          },
+          {
+            "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+            "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+          },
+          {
+            "name": "NWS Service Assessment: Hurricane Isabel, September 18-19, 2003",
+            "url": "https://www.weather.gov/media/publications/assessments/isabel.pdf"
+          },
+          {
+            "name": "NWS Sterling: Remnants of Ida tornadoes (Sep 1 2021)",
+            "url": "https://www.weather.gov/lwx/IdaTors"
+          },
+          {
+            "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+            "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+          }
+        ],
+        "note": "Derived, not a published statistic. Documented roof-threatening events affecting Anne Arundel/Baltimore 2003-2026 found in this research: Isabel 2003 (surge + wind), Feb 2010 snowstorms (DR-1875), Jun 2012 derecho, Jan 2016 blizzard (DR-4261), Sep 2021 Ida remnants/Annapolis EF2 tornado = 5 events in 24 years = 0.21/yr (~4 per 20-yr roof life). low = Laurel's 2010-2026 regional count (3 in 17 yrs = 0.18/yr). high = 0.21 + HURDAT2 tropical-storm passages within 50 nm of Annapolis (0.14/yr) = 0.35/yr (~7 per 20 yrs; partly double-counts Ida). Order-of-magnitude input for the 'expected storm events over 20 years' visual, not an actuarial rate."
+      },
+      "severity_note": "Events that generate claims and emergency-repair calls across many buildings at once (contractor surge pricing).",
+      "fema_nri_rating": null,
+      "fema_nri_expected_annual_loss_building_usd": null,
+      "sources": [
+        {
+          "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+        },
+        {
+          "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; Anne Arundel designated)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+        },
+        {
+          "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+          "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+        },
+        {
+          "name": "NWS Service Assessment: Hurricane Isabel, September 18-19, 2003",
+          "url": "https://www.weather.gov/media/publications/assessments/isabel.pdf"
+        },
+        {
+          "name": "NWS Sterling: Remnants of Ida tornadoes (Sep 1 2021)",
+          "url": "https://www.weather.gov/lwx/IdaTors"
+        },
+        {
+          "name": "NOAA NHC HURDAT2 Atlantic best-track 1851-2024 (release 2025-04-04), GitHub mirror downloaded and analyzed",
+          "url": "https://raw.githubusercontent.com/CongGao-CG/HURDAT2kml/main/hurdat2-1851-2024-040425.txt"
+        }
+      ]
+    },
+    {
+      "peril": "Freeze-thaw cycling",
+      "annual_frequency": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "cycles/yr",
+        "as_of": null,
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "NWS Sterling: BWI Normals, Means and Extremes (not reachable)",
+            "url": "https://www.weather.gov/lwx/bwinme"
+          },
+          {
+            "name": "NCEI US Climate Normals 1991-2020 (not reachable)",
+            "url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals"
+          }
+        ],
+        "note": "Not found (same result as Laurel). Searched for BWI 1991-2020 normal 'days with min <= 32F'; figure not surfaced in search results and NOAA hosts blocked. Recommend pulling from NCEI GHCND USW00093721 (BWI) or Annapolis Naval Academy station."
+      },
+      "severity_note": "Chronic, not event-driven: seam, flashing and parapet deterioration; small leaks grow if not maintained. Main climate argument for biannual inspection.",
+      "fema_nri_rating": null,
+      "fema_nri_expected_annual_loss_building_usd": null,
+      "sources": []
+    }
+  ],
+  "fema_nri": {
+    "county": "Anne Arundel County, MD (24003)",
+    "fips": "24003",
+    "nri_version": "1.20.0 (December 2025)",
+    "overall_risk_rating": "Relatively Moderate",
+    "overall_risk_score": 81.9,
+    "eal_rating": "Relatively Moderate",
+    "building_value_usd": 106907331725.0,
+    "eal_building_all_hazards_usd": 49575492.0,
+    "social_vulnerability_rating": "Very Low",
+    "community_resilience_rating": "Very High",
+    "hazards": {
+      "hail": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.3835,
+        "eal_building_usd": 1080507.0
+      },
+      "strong_wind": {
+        "rating": "Relatively High",
+        "annualized_frequency": 7.7382,
+        "eal_building_usd": 918225.0
+      },
+      "tornado": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.4297,
+        "eal_building_usd": 1873605.0
+      },
+      "hurricane": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.0941,
+        "eal_building_usd": 7932623.0
+      },
+      "winter_weather": {
+        "rating": "Relatively High",
+        "annualized_frequency": 9.5206,
+        "eal_building_usd": 71394.0
+      },
+      "ice_storm": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.429,
+        "eal_building_usd": 177418.0
+      },
+      "riverine_flooding": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.6429,
+        "eal_building_usd": 32106705.0
+      },
+      "coastal_flooding": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.6581,
+        "eal_building_usd": 2176813.0
+      },
+      "heat_wave": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 6.2864,
+        "eal_building_usd": 3.0
+      },
+      "cold_wave": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 1.2153,
+        "eal_building_usd": 105354.0
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 39.894,
+        "eal_building_usd": 118140.0
+      }
+    },
+    "sources": [
+      {
+        "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "NRI v1.20 data dictionary (same mirror)",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+      },
+      {
+        "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ],
+    "note": "'rating' = NRI hazard risk rating (xxxx_RISKR). 'riverine_flooding' holds NRI v1.20 'Inland Flooding' (IFLD), which replaced Riverine Flooding in the Dec 2025 release. cold_wave and lightning added beyond the schema list. Version comparison for Anne Arundel (v1.19.0 Mar 2023 values from laurel.json fema_nri_other_counties -> v1.20.0): overall rating Relatively Moderate -> Relatively Moderate (score 92.0 -> 81.9); building value $95.2B -> $106.9B; all-hazard building EAL $49.0M -> $49.6M; hurricane EAL $36.1M -> $7.9M; coastal flooding EAL $9.40M -> $2.18M; riverine $0.23M -> inland $32.1M; hail Very Low -> Relatively Moderate ($4K -> $1.08M); strong wind Relatively Moderate -> Relatively High; winter weather AF 2.96 -> 9.52. Do not mix v1.19 and v1.20 numbers across markets."
+  },
+  "fema_nri_other_counties": {
+    "24510": {
+      "county": "Baltimore City, MD (24510)",
+      "fips": "24510",
+      "nri_version": "1.20.0 (December 2025)",
+      "overall_risk_rating": "Relatively High",
+      "overall_risk_score": 95.0,
+      "eal_rating": "Relatively Moderate",
+      "building_value_usd": 116785448311.0,
+      "eal_building_all_hazards_usd": 70237020.0,
+      "social_vulnerability_rating": "Relatively High",
+      "community_resilience_rating": "Relatively High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.5996,
+          "eal_building_usd": 1160526.0
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "annualized_frequency": 8.1282,
+          "eal_building_usd": 658855.0
+        },
+        "tornado": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.0696,
+          "eal_building_usd": 2158155.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.1035,
+          "eal_building_usd": 9452405.0
+        },
+        "winter_weather": {
+          "rating": "Very High",
+          "annualized_frequency": 10.8309,
+          "eal_building_usd": 36340.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.9529,
+          "eal_building_usd": 108711.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively High",
+          "annualized_frequency": 1.8929,
+          "eal_building_usd": 51512280.0
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.687,
+          "eal_building_usd": 508768.0
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 6.7988,
+          "eal_building_usd": 136.0
+        },
+        "cold_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 1.4951,
+          "eal_building_usd": 2537.0
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "annualized_frequency": 38.6602,
+          "eal_building_usd": 48588.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "24005": {
+      "county": "Baltimore County, MD (24005)",
+      "fips": "24005",
+      "nri_version": "1.20.0 (December 2025)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 94.0,
+      "eal_rating": "Relatively Moderate",
+      "building_value_usd": 161232669669.0,
+      "eal_building_all_hazards_usd": 89901276.0,
+      "social_vulnerability_rating": "Relatively Low",
+      "community_resilience_rating": "Very High",
+      "hazards": {
+        "hail": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.495,
+          "eal_building_usd": 1280220.0
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "annualized_frequency": 7.9927,
+          "eal_building_usd": 1230346.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.5008,
+          "eal_building_usd": 3543971.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.1014,
+          "eal_building_usd": 13023187.0
+        },
+        "winter_weather": {
+          "rating": "Very High",
+          "annualized_frequency": 12.5021,
+          "eal_building_usd": 141734.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 1.0255,
+          "eal_building_usd": 53193.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively High",
+          "annualized_frequency": 5.6429,
+          "eal_building_usd": 62680691.0
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.687,
+          "eal_building_usd": 1578892.0
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 5.3942,
+          "eal_building_usd": 4.0
+        },
+        "cold_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 1.5715,
+          "eal_building_usd": 192681.0
+        },
+        "lightning": {
+          "rating": "Very High",
+          "annualized_frequency": 38.0711,
+          "eal_building_usd": 150674.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "24035": {
+      "county": "Queen Anne's County, MD (24035)",
+      "fips": "24035",
+      "nri_version": "1.20.0 (December 2025)",
+      "overall_risk_rating": "Very Low",
+      "overall_risk_score": 35.6,
+      "eal_rating": "Very Low",
+      "building_value_usd": 10845852138.0,
+      "eal_building_all_hazards_usd": 6865802.0,
+      "social_vulnerability_rating": "Relatively Low",
+      "community_resilience_rating": "Very High",
+      "hazards": {
+        "hail": {
+          "rating": "Very Low",
+          "annualized_frequency": 2.6014,
+          "eal_building_usd": 5466.0
+        },
+        "strong_wind": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 6.5908,
+          "eal_building_usd": 233327.0
+        },
+        "tornado": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.3167,
+          "eal_building_usd": 335111.0
+        },
+        "hurricane": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.0941,
+          "eal_building_usd": 913963.0
+        },
+        "winter_weather": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 7.6316,
+          "eal_building_usd": 14254.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.6008,
+          "eal_building_usd": 31067.0
+        },
+        "riverine_flooding": {
+          "rating": "Very Low",
+          "annualized_frequency": 1.1786,
+          "eal_building_usd": 3902578.0
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.6548,
+          "eal_building_usd": 1014427.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 5.5789,
+          "eal_building_usd": 0.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.7895,
+          "eal_building_usd": 6716.0
+        },
+        "lightning": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 35.9949,
+          "eal_building_usd": 11682.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI v1.20 data dictionary (same mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": 7.9,
+      "low": -13.0,
+      "high": 20.4,
+      "unit": "%/yr premium change",
+      "as_of": "Q1 2023 - Q2 2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "CIAB Q1 2024 survey (commercial property +10.1%; Q1 2023 +20.4%)",
+          "url": "https://www.insurancejournal.com/news/national/2024/05/20/774982.htm"
+        },
+        {
+          "name": "CIAB Q4 2024 survey (commercial property +6.0%; Q3 2024 +7.9%; Q4 2023 +11.8%)",
+          "url": "https://www.insurancejournal.com/news/national/2025/02/20/812606.htm"
+        },
+        {
+          "name": "CIAB Q3 2025 survey (commercial property -0.2%, first decrease since Q2 2017)",
+          "url": "https://www.ciab.com/resources/soft-market-clear-in-q3-2025-according-to-the-council-of-insurance-agents-brokers-quarterly-p-c-market-survey/"
+        },
+        {
+          "name": "CIAB Q1 2026 Market Index (commercial property -5.5%; Q4 2025 -0.7%)",
+          "url": "https://www.ciab.com/api/protected-download/resource/3445"
+        },
+        {
+          "name": "Marsh Global Insurance Market Index Q2 2026 (US property -13%, 8th straight quarterly decline)",
+          "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"
+        }
+      ],
+      "note": "Reused from Laurel research (national CIAB/Marsh data; no Maryland commercial series found). NATIONAL broker survey data; no Maryland-specific commercial property rate series found (Maryland Insurance Administration publishes homeowners, not commercial, rate data). CIAB quarterly average commercial property premium changes: 2023 Q1 +20.4, Q2 +18.3, Q3 +17.1, Q4 +11.8; 2024 Q1 +10.1, Q3 +7.9, Q4 +6.0; 2025 Q2 +1.9, Q3 -0.2, Q4 -0.7; 2026 Q1 -5.5. value = simple mean of those 11 quarters (7.9%), a full hard-to-soft cycle average. low = Marsh US property Q2 2026 (-13%); high = CIAB Q1 2023 (+20.4%). The market is currently soft (falling rates); a forward 20-yr default of 7.9% is aggressive. Consider a lower base trend with the roof-condition penalty doing the work. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "roof_age_underwriting": {
+      "text": "Reused from Laurel research (Maryland statewide). Carriers increasingly treat roof age and condition as a primary factor in insurability, pricing and terms. Common structure: roofs ~0-10 years old at replacement cost; 10+ years moved to a roof payment schedule (prorated by age); ~15+ years may be actual cash value (ACV) only for wind/hail. Maryland brokers note older buildings sometimes need roof (and electrical/plumbing) updates before a carrier will quote. Most published roof-schedule material describes personal lines; commercial roof schedules and ACV roof endorsements exist but thresholds are carrier-specific, so there is no Maryland-published standard. For PaxSeal: documented inspections and repair records are the evidence an underwriter asks for when a roof is past 10 years.",
+      "sources": [
+        {
+          "name": "Gerety Insurance: Maryland Commercial Property Insurance Gaps in 2026",
+          "url": "https://geretyinsurance.com/commercial-property-insurance-maryland-2026-gaps/"
+        },
+        {
+          "name": "Mansfield Insurance: Insurance settlement determined by age of roof (2025)",
+          "url": "https://mansfieldinsagency.com/blog/insurance-settlement-determined-by-age-of-roof/"
+        },
+        {
+          "name": "The Horton Group: Wind/Hail Deductibles and Roof Schedules",
+          "url": "https://www.thehortongroup.com/resources/wind-hail-deductibles-and-roof-schedules-what-you-need-to-know/"
+        },
+        {
+          "name": "Maryland Insurance Administration: homeowners rates (no commercial series)",
+          "url": "https://insurance.maryland.gov/Consumer/Pages/homeowners-rates.aspx"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "Reused from Laurel research, plus Bay-shore specifics. Percentage wind/hail deductibles are common in commercial property: typically 1%-5%, applied per building/location (endorsement removes the per-occurrence deductible), calculated on the building limit or on the loss depending on form (ISO CP 03 21 Windstorm or Hail Percentage Deductible). In this market hail is a Very Low NRI hazard, so the practical issue is named-storm/hurricane and windstorm deductibles for tropical remnants and derechos. No Maryland-specific survey of deductible levels found. For Millersville the Bay shoreline adds named-storm/windstorm deductible and flood questions: a broker page states the Maryland Joint Insurance Association (MDJIA, the state FAIR plan) commercial program applies a 5% windstorm/hail deductible (search excerpt; the '$100,000' qualifier in the excerpt is ambiguous and unverified). Flood (surge) is excluded from commercial property forms and requires NFIP or private flood cover; one consumer site quotes NFIP premiums of $900-2,200/yr for Chesapeake/Anne Arundel shoreline properties (residential-oriented excerpt, low confidence).",
+      "sources": [
+        {
+          "name": "The Horton Group: Wind/Hail Deductibles and Roof Schedules",
+          "url": "https://www.thehortongroup.com/resources/wind-hail-deductibles-and-roof-schedules-what-you-need-to-know/"
+        },
+        {
+          "name": "ISO form CP 03 21 Windstorm or Hail Percentage Deductible",
+          "url": "https://www.insurancexdate.com/insurance-forms/CP/CP-03-21/"
+        },
+        {
+          "name": "ReShield: Wind and Hail Deductibles in Commercial Property",
+          "url": "https://reshield.com/blog/wind-hail-deductibles-commercial-property/"
+        },
+        {
+          "name": "The Allen Thomas Group: Maryland Commercial Property Insurance (MDJIA 5% wind/hail deductible, search excerpt)",
+          "url": "https://allenthomasgroup.com/commercial-insurance/policies/commercial-property-insurance/maryland/"
+        },
+        {
+          "name": "MDJIA: Policies",
+          "url": "https://www.mdjia.org/policies"
+        },
+        {
+          "name": "Cover Forge USA: Maryland Flood Insurance 2026 (search excerpt)",
+          "url": "https://coverforgeusa.com/states/maryland/flood"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": 7.5,
+      "low": 7.5,
+      "high": 7.9,
+      "unit": "%",
+      "as_of": "Q1 2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "NAI KLNB: Maryland Industrial Report Q1 2026 (CoStar data; search excerpt: 'cap rates on all types and classes down to an average of 7.5% from 7.9% in Q4 2025'; BWI/Anne Arundel submarket construction starts)",
+          "url": "https://klnb.com/wp-content/uploads/2026/04/NAIKLNB_MD_Industrial_Q1_2026.pdf"
+        },
+        {
+          "name": "CBRE: Baltimore Industrial Figures Q1 2026 (not reachable)",
+          "url": "https://www.cbre.com/insights/figures/baltimore-industrial-figures-q1-2026"
+        },
+        {
+          "name": "citybiz / REBusinessOnline: Baltimore Industrial Recalibration (cap rates ~7.7%)",
+          "url": "https://www.citybiz.co/article/838401/baltimore-industrial-recalibration-driven-by-new-supply-and-selective-leasing/"
+        },
+        {
+          "name": "Colliers: Maryland Industrial Market Report Q1 2026 (not reachable)",
+          "url": "https://www.colliers.com/en/research/washington-dc/maryland-industrial-market-report-2026-q1"
+        }
+      ],
+      "note": "Baltimore metro / Maryland industrial, all types and classes, Q1 2026 = 7.5% (Q4 2025 = 7.9%). citybiz reported ~7.7%. No BWI/Anne Arundel submarket-specific cap rate was found in any excerpt (CBRE, C&W, JLL, Colliers, MacKenzie pages blocked); BWI Corridor is the metro's core logistics submarket, so it is likely at or below the metro average, but that is judgment, not data. Market context: Greater Baltimore industrial vacancy ~10.4% with ~-1.46M sq ft absorption in Q1 2026, move-outs concentrated in Harford and the 95/BWI corridor; two spec warehouses (231K and 221K sq ft) broke ground in BWI/Anne Arundel. Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "office": {
+      "value": 7.5,
+      "low": 6.0,
+      "high": 10.3,
+      "unit": "%",
+      "as_of": "2026-02",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Marcus & Millichap: 2026 Office Market Outlook (national average office cap rate 7.5%; top assets near 6%)",
+          "url": "https://www.marcusmillichap.com/research/research-brief/2026/02/research-brief-february-2026-office-market-outlook-and-highlights"
+        },
+        {
+          "name": "Brexton CRE: Baltimore's Commercial Real Estate guide (Baltimore cap rates ~5.9% to ~10.3%, all types)",
+          "url": "https://www.brextoncre.com/post/baltimore-commercial-real-estate"
+        },
+        {
+          "name": "Thomas Park Commercial: Q2 2026 Greater Annapolis CRE Market Report (Annapolis office vacancy 6.2%), via citybiz",
+          "url": "https://www.citybiz.co/article/874787/thomas-park-commercial-releases-q2-2026-greater-annapolis-commercial-real-estate-market-report/"
+        },
+        {
+          "name": "Marcus & Millichap: Baltimore 2026 Office Market Report (Baltimore vacancy 15.7% Q1 2026; Southern Anne Arundel ~$150/sq ft typical price)",
+          "url": "https://www.marcusmillichap.com/research/market-report/baltimore/baltimore-2026-investment-forecast-office-market-report"
+        }
+      ],
+      "note": "No Baltimore or Annapolis office cap rate found. value = M&M NATIONAL average (same as Laurel); low = top-asset level; high = top of Baltimore all-property range. Annapolis differs sharply from Baltimore: Greater Annapolis office vacancy 6.2% (Q2 2026) vs Baltimore metro 15.7% (M&M) or 20.6% (CBRE Q1 2026), so Annapolis office likely trades toward the low end of the range; Baltimore suburban office toward the high end. Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "retail": {
+      "value": 7.0,
+      "low": 6.44,
+      "high": 7.3,
+      "unit": "%",
+      "as_of": "Q4 2025 - Q1 2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Federal Realty Q3/Q4 2025 earnings calls: Annapolis Town Center acquired Oct 2025 for $187M at a ~7% unlevered return / initial cash yield 'low 7% range' (search excerpt of transcripts)",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/02/12/federal-realty-frt-q4-2025-earnings-transcript/"
+        },
+        {
+          "name": "Maryland Daily Record: Annapolis Town Center sold for $187M",
+          "url": "https://thedailyrecord.com/2025/10/23/annapolis-town-center-sold-for-187m/"
+        },
+        {
+          "name": "Apartment Loan Store: Cap Rates in Baltimore (cites CBRE Q1 2026: large retail centers 6.55%, small strip 6.44%, STNL 6.80%)",
+          "url": "https://apartmentloanstore.com/baltimore/maryland/cap-rate"
+        },
+        {
+          "name": "Marcus & Millichap 2026 Retail Investment Forecast (national multitenant retail cap rate ~7.3% trailing 12 months)",
+          "url": "https://www.marcusmillichap.com/research/market-report/multiple-markets/2026/2026-us-retail-investment-forecast"
+        }
+      ],
+      "note": "value = the only Anne Arundel retail pricing data point found: Federal Realty's Annapolis Town Center (479K sq ft, Whole Foods-anchored, 89% leased) bought at ~7% initial yield. It is a single, institutional-quality deal, and the REIT's 'unlevered return' wording may not be a strict going-in cap rate. low = CBRE Baltimore small strip (6.44%, second-hand); high = M&M national multitenant average (7.3%). Research-environment note: direct page fetches were blocked by the egress proxy; this figure comes from a search-engine excerpt of the cited page, not a full read of the page."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": 21,
+      "low": 16,
+      "high": 21,
+      "unit": "years",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "GSM Roofing: NRCA preventive-maintenance insights (attributes ~21 yr maintained vs ~13 yr unmaintained to NRCA)",
+          "url": "https://www.gsmroofing.com/news/nrcas-preventive-maintenance-tips-prolonging-the-life-of-commercial-roofs/"
+        },
+        {
+          "name": "North American Roofing: How long does a commercial roof last?",
+          "url": "https://naroofing.com/blog/how-long-does-a-commercial-roof-last/"
+        },
+        {
+          "name": "NRC Canada: Effective roof management - understanding the life cycle of your roof systems",
+          "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"
+        }
+      ],
+      "note": "Reused from Laurel research (not climate- or market-specific). value = the ~21 years commonly attributed to NRCA for a maintained low-slope membrane roof (secondary attribution; primary NRCA document not located). low = 13 yr reactive x 1.25, using NRC Canada's 'up to 25%' preventive-maintenance life extension (semiannual inspections + post-storm checks). Not climate-specific. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "reactive": {
+      "value": 13,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "GSM Roofing: NRCA preventive-maintenance insights",
+          "url": "https://www.gsmroofing.com/news/nrcas-preventive-maintenance-tips-prolonging-the-life-of-commercial-roofs/"
+        },
+        {
+          "name": "North American Roofing",
+          "url": "https://naroofing.com/blog/how-long-does-a-commercial-roof-last/"
+        }
+      ],
+      "note": "Reused from Laurel research (not climate- or market-specific). ~13 years without a maintenance program, attributed to NRCA by contractor sources. No low/high found. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "climate_note": "IECC climate zone 4A (mixed-humid), same as Laurel. NRI v1.20 for Anne Arundel: strong wind Relatively High (~7.7 event-days/yr), winter weather Relatively High (Very High in Baltimore City/County), heat wave Relatively Moderate (Relatively High in Baltimore City/County), hail Relatively Moderate. Bay-front buildings add salt-laden wind and surge exposure; no source was found quantifying a salt-air or shoreline adjustment to low-slope membrane life (corrosion of metal roofs, fasteners and edge metal is the plausible mechanism). No Maryland-specific roof-life adjustment is applied."
+  },
+  "code_triggers": {
+    "text": "Reused from Laurel research (Maryland statewide), with Anne Arundel specifics. (1) Code basis: Maryland Building Performance Standards (COMAR 09.12.51) require every jurisdiction to enforce the same I-code editions; the 2021 IBC/IRC/IECC/IEBC were adopted statewide effective May 29 2023, with local enforcement required by May 29 2024. Maryland published proposed 2024 I-code adoption in the Maryland Register on June 26 2026 (comments closed July 27 2026), so a 2024-code cycle is imminent. Howard County has already adopted the 2024 suite locally. (2) Recover limits (IBC 1511.3.1.1): a roof recover is NOT permitted where the existing roof/covering is water-soaked or deteriorated to the point it is not an adequate base, or where the existing roof already has two or more applications of any covering; in those cases a full tear-off is required. This is the direct link between neglect and cost: trapped moisture from unrepaired leaks turns a recover/restoration option into a full tear-off. (3) Energy code on re-roof (IECC C503.3.1, 2021): roof replacement on a roof with insulation entirely above deck must meet the prescriptive insulation (C402.1.3/.4/.5 or C407) for the climate zone (4A here); total R-value may not be reduced; minimum 1 in. at drains/scuppers. A Baltimore cost source cites R-25 to R-35 polyiso at $2.00-3.50/sq ft, a large add-on to a tear-off. (4) Damage thresholds: no Maryland- or county-specific percentage-of-damage rule forcing full replacement (like Florida's 25% rule) was found; IEBC repair provisions apply. Anne Arundel/Annapolis: search excerpts of local contractor pages state the 2021 IBC is in force in Anne Arundel County (adopted by Maryland May 29 2023, enforced by all jurisdictions since May 29 2024), and that Anne Arundel County Inspections and Permits requires a permit for commercial roof replacement. Baltimore City and Baltimore County were not separately checked. Flood-zone buildings: FEMA/IEBC substantial-improvement rules can apply to Bay-front buildings where repair cost exceeds 50% of building value, but no Anne Arundel-specific interpretation for re-roofs was found.",
+    "sources": [
+      {
+        "name": "Cornell LII: COMAR 09.12.51 Maryland Building Performance Standards",
+        "url": "https://www.law.cornell.edu/regulations/maryland/title-09/subtitle-12/chapter-09.12.51"
+      },
+      {
+        "name": "ICC NTA: Maryland Code Update - 2021 Code Adoption Cycle",
+        "url": "https://www.icc-nta.org/code-update/maryland-code-update-2021-code-cycle-adoption-information/"
+      },
+      {
+        "name": "Maryland DLI Building Codes Administration: What's New (2024 code proposal)",
+        "url": "https://www.labor.maryland.gov/labor/build/buildnews.shtml"
+      },
+      {
+        "name": "Maryland DLI: Current Adopted Building-Related Codes matrix",
+        "url": "https://labor.maryland.gov/labor/build/buildcodematrix.pdf"
+      },
+      {
+        "name": "Prince George's County DPIE: Building Codes & Bulletins",
+        "url": "https://www.princegeorgescountymd.gov/departments-offices/permitting-inspections-and-enforcement/about-dpie/resources/publications/building-codes-bulletins"
+      },
+      {
+        "name": "Anne Arundel County: History of Code Adoptions",
+        "url": "https://www.aacounty.org/sites/default/files/2023-05/history-of-code-adoptions.pdf"
+      },
+      {
+        "name": "Howard County: Adopted Codes",
+        "url": "https://www.howardcountymd.gov/inspections-licenses-permits/adopted-codes"
+      },
+      {
+        "name": "UpCodes: IBC Roof recover not allowed / Existing roofing (Sec. 1511)",
+        "url": "https://up.codes/s/existing-roofing"
+      },
+      {
+        "name": "City of Philadelphia FAQ on 2021 IECC C503.3.1 roof replacement (text of provision)",
+        "url": "https://www.phila.gov/media/20211115141957/PB_004_FAQ-Roof-Covering-Replacement_-Energy-Code-rev-11.10.21.pdf"
+      },
+      {
+        "name": "Commercial Roof Guide: Baltimore MD costs & codes",
+        "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+      },
+      {
+        "name": "Crown Remodeling: Commercial Roofing Annapolis MD (2021 IBC in force; search excerpt)",
+        "url": "https://crownremodelingllc.com/commercial-roofing/annapolis-md/"
+      },
+      {
+        "name": "Anne Arundel County: Commercial Code Requirements",
+        "url": "https://www.aacounty.org/inspections-and-permits/building-codes/commercial-code-requirements"
+      },
+      {
+        "name": "Anne Arundel County: Permits",
+        "url": "https://www.aacounty.org/inspections-and-permits/permits"
+      }
+    ]
+  },
+  "open_questions": [
+    "Replace contractor/aggregator $/sq ft with PAX job history for Anne Arundel/Baltimore by system (TPO, EPDM, mod bit, BUR, metal, coating), split tear-off vs recover and with/without insulation upgrade; confirm whether Commercial Roof Guide ranges include tear-off.",
+    "BWI Corridor industrial cap rate: obtain CBRE/C&W/JLL/Colliers/MacKenzie Q1-Q2 2026 Baltimore submarket data directly (all broker pages blocked here).",
+    "Annapolis and Baltimore suburban office cap rates (none found; national 7.5% used). Annapolis office vacancy 6.2% suggests a lower figure than Baltimore.",
+    "Retail: confirm Federal Realty's Annapolis Town Center going-in cap rate from the 8-K/earnings transcript, and get CBRE Baltimore retail figures first-hand.",
+    "Location cost factor: DoD UFC 3-701-01 area cost factor for Fort Meade / Annapolis (Naval Academy) or RSMeans CCI for 3-digit zips 210-212 and 214.",
+    "Freeze-thaw cycles/yr at BWI or Annapolis (NCEI GHCND) - still not sourced.",
+    "Count NCEI Storm Events for Anne Arundel (thunderstorm wind >= 65 kt, tornadoes, tropical, coastal flood) 2000-2025 to replace the derived 'significant events' composite.",
+    "Share of PAX's Millersville-area portfolio that is Bay-front or in a FEMA coastal flood zone (drives whether coastal flood/surge belongs in the default scenario).",
+    "Verify the MDJIA commercial 5% windstorm/hail deductible and typical named-storm deductibles written by admitted carriers on Anne Arundel shoreline commercial property.",
+    "Confirm Baltimore City and Baltimore County code editions and any local amendments to IBC 1511 / IECC C503.3.1; watch Maryland's 2024 I-code adoption (proposed June 2026).",
+    "NRI v1.20 changed hazard values substantially vs v1.19 (e.g., Anne Arundel hurricane EAL $36.1M -> $7.9M, hail Very Low -> Relatively Moderate, inland flooding now largest EAL). Refresh laurel.json to v1.20 so the two Maryland markets are comparable.",
+    "Find a source quantifying salt-air/shoreline effects on low-slope roof and edge-metal life around the Chesapeake."
+  ]
+}

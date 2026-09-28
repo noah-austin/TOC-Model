@@ -32,7 +32,9 @@ const MARKETS = [
   { id: 'laurel', shortName: 'Laurel', region: 'Maryland', perils: {
     headline: 'Thunderstorm wind / derecho, snow load',
     events: '~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)' } },
-  { id: 'millersville', shortName: 'Millersville', region: 'Maryland', perils: null },
+  { id: 'millersville', shortName: 'Millersville', region: 'Maryland', perils: {
+    headline: 'Thunderstorm wind, tropical remnants, bay flooding',
+    events: '~2.8 tropical storms within 50 nm of Annapolis per 20 years (NOAA HURDAT2 1975–2024); Isabel (2003) set the Annapolis flood record' } },
 ].filter((m) => existsSync(join(ROOT, `data/markets/${m.id}.json`)));
 const MARKET_IDS = MARKETS.map((m) => m.id);
 const SYSTEMS = ['tpo', 'epdm', 'mod_bit', 'bur', 'metal', 'coating_restoration'];
