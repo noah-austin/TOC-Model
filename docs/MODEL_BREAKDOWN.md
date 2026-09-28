@@ -73,21 +73,35 @@ This is the branded, printable, self-contained HTML page described in the handof
 6. **The PaxSeal fee has to appear in the planned scenario.** Otherwise the comparison is not honest.
 7. **Use real replacement cost, not $100K.** $100K is fine as a demo default.
 
-## 4. Markets
+## 4. Markets (v1)
 
-These markets are taken from the proposal footer:
+| Market | Area covered | Counties / cities researched | Likely primary perils |
+|---|---|---|---|
+| Austin | Austin metro, TX | Travis, Williamson | Hail, severe thunderstorm wind, heat/UV |
+| San Antonio | San Antonio metro, TX | Bexar, Comal, Guadalupe | Hail, severe thunderstorm wind, heat/UV |
+| Hampton Roads | Norfolk / Virginia Beach, VA | Norfolk, Virginia Beach, Chesapeake, Newport News, Hampton | Hurricane/tropical storm, nor'easters, coastal wind, salt air |
+| Laurel | Baltimore–Washington corridor, MD | Prince George's, Anne Arundel, Howard | Thunderstorm wind/derecho, snow/ice, freeze-thaw |
+| Culbertson | Northern Virginia (Manassas-based Culbertson Co.) | Prince William, Manassas, Fairfax, Loudoun | Thunderstorm wind/derecho, snow/ice, freeze-thaw |
 
-| Market | State | Likely primary perils |
+Waco, West Palm Beach and Millersville are out of scope for v1. Specific customer addresses can refine the county-level data later.
+
+Per-market research lives in `docs/research/<market>.md`. The data the model reads is in `data/markets/<market>.json` (schema: `data/markets/SCHEMA.md`). Cross-market evidence (maintained vs reactive life, repair cost multipliers, PPI escalation, program pricing benchmarks) is in `data/national.json` and `docs/research/national.md`.
+
+## 4a. Property types
+
+| Property type | Status | Why |
 |---|---|---|
-| Austin | TX | Hail, severe thunderstorm wind, extreme heat/UV |
-| San Antonio | TX | Hail, severe thunderstorm wind, extreme heat/UV |
-| Waco | TX | Hail, tornado/wind |
-| West Palm Beach | FL | Hurricane wind, wind-driven rain, UV; insurance market stress |
-| Hampton Roads (Norfolk/VA Beach) | VA | Tropical storm/hurricane, nor'easters, coastal wind |
-| Laurel | MD | Winter weather/freeze-thaw, thunderstorm wind, ice |
-| Millersville | MD | Same metro as Laurel; probably one "Baltimore–Annapolis" market row |
+| Warehouse / Industrial | **v1** | Large low-slope roofs; investor-owned; cap rate applies |
+| Office | **v1** | Cap rate applies; interior leak damage costs more |
+| Retail | **v1** | Cap rate applies; business interruption from leaks |
+| Medical / Institutional | In development | Mostly owner-occupied; needs a non-cap-rate value story |
+| K-12 / Education | In development | Public owners; value framed as budget/capital-plan certainty |
+| Multi-Family | In development | Different cap rates and roof systems (often steep-slope) |
+| Mixed Use | In development | Blend of the above |
 
-Perils in this table are starting hypotheses to confirm in research.
+## 4b. PaxSeal price
+
+There is no set price, so the planned scenario uses an **estimated program fee**: a default formula (base fee + $/sq ft per year, from industry benchmarks in `national.json`) that the rep can override. The report labels it as an estimate.
 
 ## 5. Suggested order of work
 
@@ -97,10 +111,7 @@ Perils in this table are starting hypotheses to confirm in research.
 4. **Build the report page** (handoff Phase 1), with a market picker driving the defaults.
 5. Salesforce comes later (handoff Phase 2).
 
-## 6. Questions to answer before research
+## 6. Open questions
 
-- Which markets are in v1: all 7, or Texas first?
-- Which property types matter most? This decides which cap rates to research.
-- Do we have internal job-cost data (repair tickets, replacement $/sq ft by branch)? That beats any public source.
-- What does PaxSeal cost per market or per sq ft? The planned scenario can't be calculated without it.
+- Internal job-cost data (repair tickets, replacement $/sq ft by branch) is unknown. If it exists, it should replace the public $/sq ft estimates.
 - Will Roof Only and Complete Service be modeled separately? Complete adds building envelope: walls, sealants, windows.
