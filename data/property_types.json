@@ -1,0 +1,511 @@
+{
+  "researched_on": "2026-09-28",
+  "method_note": "All broker, insurer and government sites were blocked by the sandbox proxy; every figure comes from labeled web-search excerpts (low/medium confidence). Leak multipliers are PAX proposals (no occupancy-relative severity data exists publicly), capped at 1.5.",
+  "types": {
+    "medical": {
+      "label": "Medical / Institutional",
+      "ownership": "Mixed. Hospitals are mostly nonprofit or government-owned (AHA 2026: 58% of community hospitals nonprofit, 24% investor-owned, 18% state/local government). Medical office buildings: over half of sq ft is owned by users (health systems, physician groups); about 37% is investor-owned (REITs about 35% of that, private investors about 65%).",
+      "cap_rate_applies": false,
+      "cap_rate_note": "Default false because most hospitals and many clinics are owner-occupied or nonprofit and aren't valued on NOI/cap rate. Set true only for an investor-owned MOB (REIT or private landlord); then use cap_rates_by_market[market].medical_office (national about 6.8%-6.9%).",
+      "leak_consequence_multiplier": {
+        "value": 1.4,
+        "low": 1.25,
+        "high": 1.5,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "CDC: Guidance for Reopening Healthcare Facilities After Water and Wind Damage (ICRA before restoration) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cdc.gov/infection-control/hcp/reopen-health-facilities/water-wind-damage.html"
+          },
+          {
+            "name": "ASHE ICRA 2.0 Toolkit (containment, negative pressure, HEPA exhaust) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.ashe.org/icra2"
+          },
+          {
+            "name": "The Joint Commission, Built Environment EC.02.06.01 (safe, functional environment) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.jointcommission.org/resources/the-physical-environment/built-environment/"
+          },
+          {
+            "name": "AXA XL: Water damage is a leading cause of property loss for hospitals (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://axaxl.com/fast-fast-forward/articles/water-damage-is-a-leading-cause-of-property-loss-for-hospitals"
+          },
+          {
+            "name": "Chubb: average commercial water damage claim about $89,000 (2019); healthcare, commercial real estate and hospitality seeing considerable increases in interior water claims (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.chubb.com/us-en/businesses/resources/6-commercial-water-damage-claims-their-impact-on-business.html"
+          },
+          {
+            "name": "PSQH: Preventing Common and Costly Water Damage in Healthcare (example: roof leak/blocked drains at a medical practice, $200,000 property damage + $350,000 lost income) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.psqh.com/analysis/preventing-common-and-costly-water-damage-in-healthcare/"
+          }
+        ],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. Highest consequence type: any water intrusion over clinical space triggers an Infection Control Risk Assessment (ICRA) and often Class IV containment with negative pressure/HEPA exhaust (CDC, ASHE); sterile supplies, imaging and lab equipment can be lost; ORs, procedure rooms or patient rooms may close (lost revenue); Joint Commission EC.02.06.01 findings follow unsafe conditions. Insurers (Chubb, AXA XL) flag healthcare as a rising, high-severity water-loss class. One case: $200K property damage + $350K lost income from a roof-drain leak at a medical practice (PSQH excerpt). Kept at 1.4 (not 1.5) because the model also covers medical office buildings, where consequences are closer to office; use the high end (1.5) for acute-care hospitals."
+      },
+      "value_story": "Lead with continuity of care and compliance, not property value: avoiding closed ORs, patient rooms and imaging suites; avoiding ICRA containment events and loss of sterile supplies/equipment; keeping Joint Commission Environment of Care (EC.02.06.01) survey findings clean; predictable capital budgets for health-system facilities teams. For investor MOBs, add tenant retention (long leases with health systems) and property value protected.",
+      "typical_roof_systems": [
+        "Multi-ply SBS modified bitumen (redundancy over patient areas)",
+        "Built-up roofing (BUR)",
+        "Hybrid mod-bit base with TPO/PVC cap",
+        "TPO/PVC single-ply on MOBs",
+        "Heavy rooftop mechanical equipment, walk pads and frequent traffic"
+      ],
+      "notes": "Roof-system notes from GAF/Siplast healthcare roofing pages (search excerpts): https://www.gaf.com/en-us/plan-design/hospital-roofing ; low-odor cold adhesives are used over occupied patient areas. Ownership: https://www.aha.org/statistics/fast-facts-us-hospitals ; https://www.pantheon.com/wp-content/uploads/2023/10/Introduction-To-Medical-Office-Real-Estate.pdf . Joint Commission: https://www.jointcommission.org/resources/the-physical-environment/built-environment/ ."
+    },
+    "k12": {
+      "label": "K-12 / Education",
+      "ownership": "Public schools are owned by about 18,000 school districts (NCES CCD, about 100,000 public schools); private and parochial schools are owned by nonprofits or churches. Funded by bonds, capital levies and operating budgets, not by NOI.",
+      "cap_rate_applies": false,
+      "cap_rate_note": "No NOI or market sale, so cap-rate valuation does not apply. Hide 'property value protected' and replace it with budget-certainty, avoided emergency spend and instructional days protected.",
+      "leak_consequence_multiplier": {
+        "value": 1.3,
+        "low": 1.15,
+        "high": 1.45,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "GAO-26-107970, K-12 Education: Facility Issues Led About One in Five Districts to Cancel School in 2024-25 (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.gao.gov/products/gao-26-107970"
+          },
+          {
+            "name": "GAO-20-494, K-12 Education: School Districts Frequently Identified Multiple Building Systems Needing Updates or Replacement (June 2020) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.gao.gov/products/gao-20-494"
+          },
+          {
+            "name": "EPA IAQ Tools for Schools / Mold Remediation in Schools and Commercial Buildings (dry wet materials within 24-48 h) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.epa.gov/mold/mold-and-indoor-air-quality-schools"
+          },
+          {
+            "name": "Bangor Daily News, 27 Mar 2026: black mold in Nobleboro school, about $2.3M remediation + $0.1M FF&E + $0.3M contingency (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.bangordailynews.com/2026/03/27/midcoast/midcoast-health/black-mold-nobleboro-school/"
+          }
+        ],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. Evidence of higher consequence: GAO found about 19% of districts canceled school in 2024-25 due to facility issues (2 million students, about 3.5 million lost learning days), and schools visited had ceiling, floor and electrical damage from roof leaks; EPA requires drying wet materials within 24-48 h or replacing them, and school mold events run from hundreds of thousands to millions (e.g., about $2.3M Nobleboro, ME, 2026). Classrooms have dense finishes, books and electronics; closures carry makeup-day and transport costs; public scrutiny raises remediation standards. Set below medical because schools can often relocate classes and many leaks occur outside occupied hours."
+      },
+      "value_story": "Emphasize budget certainty and capital planning: a flat, predictable PaxSeal line item vs unbudgeted emergency repairs; extending roof life to defer bond-funded replacement; protecting instructional days (GAO: about 19% of districts canceled school in 2024-25 for facility problems, 2 million students affected); preventing mold/IAQ events (EPA: dry within 24-48 h); documented condition data for facility-condition assessments and bond planning. Context: national school facility funding gap about $85B/yr (2021 State of Our Schools); 41% of districts need HVAC updates in at least half their schools (GAO-20-494), so roofs compete for scarce capital.",
+      "typical_roof_systems": [
+        "SBS modified bitumen (widely preferred by districts for redundancy)",
+        "Built-up roofing (BUR) on older buildings",
+        "TPO / PVC / EPDM single-ply",
+        "Hybrid mod-bit + single-ply",
+        "Coating restoration on sound roofs (budget-driven)",
+        "Standing-seam metal on some newer/steep sections"
+      ],
+      "notes": "Sources: https://www.gao.gov/products/gao-26-107970 ; https://www.gao.gov/products/gao-20-494 ; https://facilityexecutive.com/2021/09/u-s-school-facilities-face-85-billion-funding-gap-annually ; https://www.epa.gov/mold/mold-and-indoor-air-quality-schools ; https://nces.ed.gov/ccd/tables/202324_summary_3.asp . APPA (facility management benchmarks) could not be reached; no APPA figure used. Roof-system notes from Johns Manville / GAF school roofing pages (search excerpts): https://www.jm.com/en/commercial-roofing/building-owners/low-slope-roofing-for-schools/ ."
+    },
+    "multifamily": {
+      "label": "Multi-Family",
+      "ownership": "Predominantly investor-owned (private owners, syndicators, REITs, institutional funds); some public housing authorities and nonprofits (LIHTC).",
+      "cap_rate_applies": true,
+      "cap_rate_note": "Use cap_rates_by_market[market].multifamily (about 5.35%-6.0% across the five markets, 2026). Multifamily has the lowest cap rates of any type, so each $1 of NOI gain protects the most value (about $17-$19 per $1). For LIHTC/public housing, turn off cap-rate valuation.",
+      "leak_consequence_multiplier": {
+        "value": 1.25,
+        "low": 1.1,
+        "high": 1.4,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Bisnow (Sept 2026): Mold Is Growing Into Major Problem For Apartment Owners (habitability premiums $375-$1,400/unit; water damage most common claim) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.bisnow.com/news/national/multifamily/multimillion-dollar-mold-lawsuits-multifamily-owners-habitability-insurance"
+          },
+          {
+            "name": "Latent Insurance: Apartment Building Water Damage Claim 2026 Owner Playbook (water damage most frequent habitational claim; mold sublimits $15K-$50K) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.latentinsure.com/blog/apartment-building-water-damage-claim"
+          },
+          {
+            "name": "EPA IAQ Tools for Schools / Mold Remediation in Schools and Commercial Buildings (dry wet materials within 24-48 h) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.epa.gov/mold/mold-and-indoor-air-quality-schools"
+          }
+        ],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. Top-floor units sit directly under the roof: a leak hits occupied living space (drywall, flooring, personal property), may force tenant relocation/rent abatement and unit downtime, and carries mold/habitability liability that is described as the fastest-growing multifamily risk (habitability premiums $375-$1,400/unit, up 300%+ in some markets per Bisnow excerpt). Offsetting factor: many garden-style roofs are steep-slope shingles with lower leak frequency, but frequency is handled elsewhere in the model; this multiplier covers consequence cost only."
+      },
+      "value_story": "NOI and value: avoided repair spend flows to NOI and is capitalized at a low cap rate. Also stress resident retention (top-floor leaks trigger move-outs and bad reviews), avoided unit downtime/rent abatement, mold and habitability liability (fast-rising insurance line), and lender/insurer roof-age scrutiny (Fannie Mae/Freddie Mac property condition reports).",
+      "typical_roof_systems": [
+        "Architectural asphalt shingles on steep-slope garden-style and townhome buildings (most common low-rise type)",
+        "TPO single-ply on low-slope mid-rise/podium buildings",
+        "Modified bitumen / BUR on older low-slope buildings",
+        "Low-slope membrane sections over breezeways and stairwells on garden-style buildings",
+        "Standing-seam metal accents"
+      ],
+      "notes": "Low-rise steep-slope shingle roofs may fall outside a low-slope commercial PaxSeal scope; mid-rise/podium roofs are low-slope. Roof-system excerpts: https://www.jm.com/en/commercial-roofing/building-owners/low-slope-roofing-for-multifamily-buildings/ ; https://windwardroofing.com/blog/multifamily-roofing-guide ."
+    },
+    "mixed": {
+      "label": "Mixed Use",
+      "ownership": "Investor-owned (developers, private owners, funds), typically ground-floor retail with apartments or office above.",
+      "cap_rate_applies": true,
+      "cap_rate_note": "No broker publishes a mixed-use cap rate for these markets. Use an income-weighted blend: cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily for residential-over-retail, office for office-over-retail). Default w_retail = 0.30 (PAX assumption for one retail floor under two to three upper floors; let the rep override). This matches how lenders and appraisers underwrite mixed use: split the rent roll by use, then recombine.",
+      "leak_consequence_multiplier": {
+        "value": 1.2,
+        "low": 1.1,
+        "high": 1.3,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. No direct evidence; derived as a blend of the components. The roof sits over the upper use (apartments or office, 1.2-1.25), not the ground-floor retail, so the default follows the upper use: 1.2 (office-over-retail) to 1.25 (apartments-over-retail). Use 1.25 when the upper floors are residential."
+      },
+      "value_story": "Same NOI/value story as the dominant upper use, plus: the roof protects the residential/office floors directly, and leaks can cascade to ground-floor retail tenants (business interruption, co-tenancy risk). One maintenance program protects several income streams.",
+      "typical_roof_systems": [
+        "TPO / PVC single-ply on low-slope podium or wrap buildings",
+        "Modified bitumen",
+        "Amenity decks / pavers over membrane on podium roofs",
+        "Occasional steep-slope shingle or metal accents"
+      ],
+      "notes": "Blend approach per mixed-use underwriting guides (search excerpts): https://www.rentalcalcs.com/blog/analyzing-mixed-use-property-residential-commercial ; https://peersense.com/cmbs-loans/mixed-use ."
+    },
+    "industrial": {
+      "leak_consequence_multiplier": {
+        "value": 1.0,
+        "low": 1.0,
+        "high": 1.0,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "high",
+        "sources": [],
+        "note": "Baseline by definition. Warehouses have high ceilings, sparse finishes and few occupants per sq ft, so leak consequences are mostly the roof repair itself plus stored-goods exposure."
+      }
+    },
+    "office": {
+      "leak_consequence_multiplier": {
+        "value": 1.2,
+        "low": 1.1,
+        "high": 1.35,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Perceptive Things / Cove blog, attributing to Triple-I 2023: commercial water claims average about $50,000, office about 20% higher than retail (search-result excerpt (page itself blocked by sandbox proxy; not opened); secondary blog, underlying Triple-I figure not verified)",
+            "url": "https://www.perceptivethings.com/post/the-average-cost-of-water-damage-insurance-claims-for-commercial-buildings"
+          },
+          {
+            "name": "Chubb: average commercial water damage claim about $89,000 (2019); healthcare, commercial real estate and hospitality seeing considerable increases in interior water claims (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.chubb.com/us-en/businesses/resources/6-commercial-water-damage-claims-their-impact-on-business.html"
+          }
+        ],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. Office has finished ceilings (acoustic tile, drywall), carpet, IT/electronics and dense occupancy, so a leak damages more interior value per sq ft and displaces tenants. The one comparative data point found (secondary blog attributing Triple-I 2023: office water claims about 20% above retail) supports office >= retail, so office is set 0.1 above retail."
+      }
+    },
+    "retail": {
+      "leak_consequence_multiplier": {
+        "value": 1.1,
+        "low": 1.0,
+        "high": 1.25,
+        "unit": "x warehouse",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Hunton Andrews Kurth: Insurance Coverage for Business Interruption Losses: What Retailers Need to Know (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.hunton.com/hunton-retail-law-resource/insurance-coverage-for-business-interruption-losses-what-retailers-need-to-know"
+          },
+          {
+            "name": "Chubb: average commercial water damage claim about $89,000 (2019); healthcare, commercial real estate and hospitality seeing considerable increases in interior water claims (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.chubb.com/us-en/businesses/resources/6-commercial-water-damage-claims-their-impact-on-business.html"
+          },
+          {
+            "name": "Perceptive Things / Cove blog, attributing to Triple-I 2023: commercial water claims average about $50,000, office about 20% higher than retail (search-result excerpt (page itself blocked by sandbox proxy; not opened); secondary blog, underlying Triple-I figure not verified)",
+            "url": "https://www.perceptivethings.com/post/the-average-cost-of-water-damage-insurance-claims-for-commercial-buildings"
+          }
+        ],
+        "note": "Multiplier scales reactive repair and storm-damage consequence costs relative to a warehouse (1.0). No insurer publishes water/roof-leak claim severity by occupancy relative to warehouses; value is a conservative PAX proposal, capped at 1.5 per model policy. Retail adds inventory/merchandise loss, finished ceilings and fixtures, and business-interruption (lost sales while a store or bay is closed). Tenant typically bears inventory and BI, but landlord bears repair, rent abatement and tenant-relations cost. Kept close to 1.0 because many retail boxes are single-story with simple finishes."
+      }
+    }
+  },
+  "cap_rates_by_market": {
+    "austin": {
+      "multifamily": {
+        "value": 5.7,
+        "low": 5.5,
+        "high": 6.5,
+        "unit": "%",
+        "as_of": "Q1-Q2 2026",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "Matthews: Austin, TX Multifamily Market Report Q1 2026 (market cap rate 5.7%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.matthews.com/insights/austin-multifamily-q1-2026"
+          },
+          {
+            "name": "Northmarq: Austin multifamily sales volumes off to a strong start in 2026 (Q1 2026: cap rates 5.5%-6.5%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/austin-multifamily-sales-volumes-strong-start-q1-2026"
+          },
+          {
+            "name": "Northmarq: Austin multifamily rents begin to reverse a three-year slide (Q2 2026) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/austin-multifamily-rents-begin-reverse-three-year-slide-q2-2026"
+          }
+        ],
+        "note": "Matthews Q1 2026 market cap rate 5.7% (value); Northmarq Q1 2026 range 5.5%-6.5% (low/high). One search summary of Northmarq's Q2 2026 Austin report quoted '4.4% through the first half', which conflicts with every other source and was excluded as a likely summarizer error; verify before client use."
+      },
+      "medical_office": {
+        "value": 6.0,
+        "low": 5.5,
+        "high": 6.9,
+        "unit": "%",
+        "as_of": "Q4 2025",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Matthews: Austin, TX Medical Office Market Report Q4 2025 (cap rates around 6.0%, $513/SF avg) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.matthews.com/insights/austin-medical-office"
+          },
+          {
+            "name": "CBRE Q1 2026 U.S. Medical Outpatient Buildings Figures (average MOB cap rate 6.9%, first time below 7.0% since Q3 2024) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cbre.com/insights/figures/q1-2026-us-medical-outpatient-buildings-figures"
+          },
+          {
+            "name": "Ardor CRE / CREG Healthcare, Medical Office Cap Rates 2026 (stabilized multi-tenant suburban high-6% to low-8%; on-campus 50-100 bp tighter) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://ardorcre.com/medical-office-cap-rates/"
+          }
+        ],
+        "note": "Matthews Q4 2025 Austin MOB cap rates around 6.0% (value). Low 5.5 = bottom of 2026 national MOB range; high 6.9 = CBRE Q1 2026 national average (Austin trades tighter than national per Ardor/CREG excerpt)."
+      },
+      "mixed_use": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "%",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "No published mixed-use cap rate for Austin (searched broker reports and aggregators). Recommendation: blend by income share, cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily or office), with default w_retail = 0.30 for a typical ground-floor-retail building (assumption, not sourced). Austin retail cap rate in data/markets/austin.json is currently null, so the blend cannot be computed until it is sourced."
+      }
+    },
+    "san-antonio": {
+      "multifamily": {
+        "value": 6.0,
+        "low": 5.2,
+        "high": 7.0,
+        "unit": "%",
+        "as_of": "Q1 2026",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "Northmarq: Most 2026 deliveries landed in first quarter in San Antonio multifamily (Q1 2026 average 6.0%, up 50 bp from 5.5% in 2024) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/most-2026-deliveries-landed-first-quarter-san-antonios-multifamily-market-q1-2026"
+          },
+          {
+            "name": "Search excerpt attributed to Northmarq San Antonio Q2 report: Class A/B cap rates compressed 5 bp to 5.2% in Q2 2026 (identical wording also appeared for Washington DC, so it may come from a templated aggregator page such as apartmentloanstore.com) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/san-antonio-q2-multifamily-market-report-cap-rates-compress-sales-velocity"
+          },
+          {
+            "name": "Rod Khleif blog: Good Cap Rate for Multifamily in 2026 (San Antonio around 6%-7%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://rodkhleif.com/what-is-a-good-cap-rate-for-multifamily/"
+          }
+        ],
+        "note": "Northmarq Q1 2026 average 6.0% (value). Low 5.2 = Q2 2026 Class A/B figure from an excerpt whose wording also appeared for DC (possibly templated aggregator, low confidence). High 7.0 = top of the 'around 6%-7%' range in a blog excerpt. Market has high vacancy (about 15.8%) so higher cap rates are plausible."
+      },
+      "medical_office": {
+        "value": 7.0,
+        "low": 6.8,
+        "high": 7.5,
+        "unit": "%",
+        "as_of": "Q1 2026",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Matthews: San Antonio, TX Medical Office Market Report Q1 2026 (cap rates 7.0%, from 7.5% in Q4 2025; 6%-8% historical band) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.matthews.com/insights/san-antonio-medical-office-q1-2026"
+          },
+          {
+            "name": "Cushman & Wakefield MOB Capital Markets 2026 Mid-Year Update (H1 2026 MOB cap rate 6.8%, -35 bp YoY) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/mob-capital-markets-update"
+          }
+        ],
+        "note": "Matthews Q1 2026 San Antonio MOB cap rate 7.0% (value), down from 7.5% in Q4 2025 (high). Low 6.8 = C&W H1 2026 national average."
+      },
+      "mixed_use": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "%",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "No published mixed-use cap rate for San Antonio (searched broker reports and aggregators). Recommendation: blend by income share, cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily or office), with default w_retail = 0.30 for a typical ground-floor-retail building (assumption, not sourced). San Antonio retail cap rate in data/markets/san-antonio.json is currently null."
+      }
+    },
+    "hampton-roads": {
+      "multifamily": {
+        "value": 5.4,
+        "low": 5.25,
+        "high": 6.4,
+        "unit": "%",
+        "as_of": "Q1 2026",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "Northmarq Hampton Roads multifamily research (YE2025 report, Mar 2026: 5.25%-5.5%; Q1 2026 average 5.4%, down 30 bp YoY) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/declining-multifamily-vacancy-fuels-continued-rent-growth-hampton-roads"
+          },
+          {
+            "name": "Apartment Loan Store: Cap Rates in Norfolk, VA (all-classes about 5.6%; another excerpt: market cap rate 6.4% Q1 2026) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://apartmentloanstore.com/norfolk/virginia/cap-rate"
+          }
+        ],
+        "note": "Northmarq Q1 2026 Hampton Roads average 5.4% (value); Northmarq YE2025 range 5.25%-5.5% (low 5.25). High 6.4 = 'market cap rate 6.4% for Q1 2026' from an aggregator excerpt (likely CoStar-style all-sales figure). An all-classes figure of 5.6% also appeared."
+      },
+      "medical_office": {
+        "value": 6.8,
+        "low": 5.8,
+        "high": 8.0,
+        "unit": "%",
+        "as_of": "H1 2026",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Cushman & Wakefield MOB Capital Markets 2026 Mid-Year Update (H1 2026 MOB cap rate 6.8%, -35 bp YoY) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/mob-capital-markets-update"
+          },
+          {
+            "name": "CBRE Q1 2026 U.S. Medical Outpatient Buildings Figures (average MOB cap rate 6.9%, first time below 7.0% since Q3 2024) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cbre.com/insights/figures/q1-2026-us-medical-outpatient-buildings-figures"
+          },
+          {
+            "name": "Ardor CRE / CREG Healthcare, Medical Office Cap Rates 2026 (stabilized multi-tenant suburban high-6% to low-8%; on-campus 50-100 bp tighter) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://ardorcre.com/medical-office-cap-rates/"
+          }
+        ],
+        "note": "No Hampton Roads metro MOB cap rate found. Value = national MOB average (C&W H1 2026 6.8%; CBRE Q1 2026 6.9%). Low 5.8 = national minus 100 bp (on-campus/credit health-system tenancy trades 50-100 bp tighter); high 8.0 = top of 'high-6% to low-8%' band for stabilized multi-tenant suburban assets. Use the high end for small off-campus MOBs."
+      },
+      "mixed_use": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "%",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "No published mixed-use cap rate for Hampton Roads (searched broker reports and aggregators). Recommendation: blend by income share, cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily or office), with default w_retail = 0.30 for a typical ground-floor-retail building (assumption, not sourced). With the market's retail cap 6.55% (hampton-roads.json) and multifamily 5.4%, the recommended blend at w_retail = 0.30 would be about 5.7%."
+      }
+    },
+    "laurel": {
+      "multifamily": {
+        "value": 5.6,
+        "low": 5.2,
+        "high": 7.0,
+        "unit": "%",
+        "as_of": "Q1-Q2 2026",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Harbor Stone Advisors / Baltimore Q1 2026 search results: multifamily all classes averaged 5.6% in Q1 2026 (search-result excerpt (page itself blocked by sandbox proxy; not opened); exact originating page not confirmed, possibly apartmentloanstore.com/baltimore)",
+            "url": "https://harborstoneadvisors.com/baltimore-metro-q1-2026-multifamily-market-report/"
+          },
+          {
+            "name": "Washington DC multifamily Q2 2026: average 5.2% (Class A/B +5 bp); core DC 4.75%-5.5% per CBRE-attributed excerpt (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://apartmentloanstore.com/washington/dc/cap-rate"
+          },
+          {
+            "name": "Nomadic Real Estate: Real Estate Investing in DC, Maryland & Virginia 2026 Guide (Prince George's 5.5%-7% achievable; Northern Virginia 4.5%-6%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.nomadicrealestate.com/real-estate-investing-dmv/"
+          },
+          {
+            "name": "Northmarq: Washington, D.C. multifamily transaction volume accelerates in 2026 (cap rates moved higher; NoVA highest per-unit pricing, Maryland suburbs low end) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/washington-dc-multifamily-transaction-volume-accelerates-q1-2026"
+          }
+        ],
+        "note": "Laurel sits between Baltimore and DC in Prince George's County; no P.G.-specific survey figure found. Value 5.6 = Baltimore metro all-classes Q1 2026 average; low 5.2 = DC metro Q2 2026 average; high 7.0 = top of the 'Prince George's 5.5%-7%' range (blog excerpt, skews to small multifamily). Northmarq notes Maryland suburbs are the low-price (higher-cap) end of the DC region."
+      },
+      "medical_office": {
+        "value": 6.8,
+        "low": 5.8,
+        "high": 8.0,
+        "unit": "%",
+        "as_of": "H1 2026",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Cushman & Wakefield MOB Capital Markets 2026 Mid-Year Update (H1 2026 MOB cap rate 6.8%, -35 bp YoY) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/mob-capital-markets-update"
+          },
+          {
+            "name": "CBRE Q1 2026 U.S. Medical Outpatient Buildings Figures (average MOB cap rate 6.9%, first time below 7.0% since Q3 2024) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cbre.com/insights/figures/q1-2026-us-medical-outpatient-buildings-figures"
+          },
+          {
+            "name": "Ardor CRE / CREG Healthcare, Medical Office Cap Rates 2026 (stabilized multi-tenant suburban high-6% to low-8%; on-campus 50-100 bp tighter) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://ardorcre.com/medical-office-cap-rates/"
+          }
+        ],
+        "note": "No Baltimore-Washington / Laurel metro MOB cap rate found. Value = national MOB average (C&W H1 2026 6.8%; CBRE Q1 2026 6.9%). Low 5.8 = national minus 100 bp (on-campus/credit health-system tenancy trades 50-100 bp tighter); high 8.0 = top of 'high-6% to low-8%' band for stabilized multi-tenant suburban assets. Use the high end for small off-campus MOBs."
+      },
+      "mixed_use": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "%",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "No published mixed-use cap rate for Laurel (searched broker reports and aggregators). Recommendation: blend by income share, cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily or office), with default w_retail = 0.30 for a typical ground-floor-retail building (assumption, not sourced). With retail cap 6.55% (laurel.json) and multifamily 5.6%, the recommended blend at w_retail = 0.30 would be about 5.9%."
+      }
+    },
+    "culbertson": {
+      "multifamily": {
+        "value": 5.35,
+        "low": 4.75,
+        "high": 6.0,
+        "unit": "%",
+        "as_of": "2026-01-01",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Loudoun County Assessor, 478 Apartment Class B Base Cap Rate Development 1/1/2026 (base cap rate 5.35%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.loudoun.gov/DocumentCenter/View/219243/478-Apartment-Class-B-BenchmarkCapRateDevel-for-2026-PDF"
+          },
+          {
+            "name": "Nomadic Real Estate: Real Estate Investing in DC, Maryland & Virginia 2026 Guide (Prince George's 5.5%-7% achievable; Northern Virginia 4.5%-6%) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.nomadicrealestate.com/real-estate-investing-dmv/"
+          },
+          {
+            "name": "Washington DC multifamily Q2 2026: average 5.2% (Class A/B +5 bp); core DC 4.75%-5.5% per CBRE-attributed excerpt (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://apartmentloanstore.com/washington/dc/cap-rate"
+          },
+          {
+            "name": "Northmarq: Washington, D.C. multifamily transaction volume accelerates in 2026 (cap rates moved higher; NoVA highest per-unit pricing, Maryland suburbs low end) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.northmarq.com/insights/insights/washington-dc-multifamily-transaction-volume-accelerates-q1-2026"
+          }
+        ],
+        "note": "No Prince William/Fairfax survey figure found. Value 5.35 = Loudoun County assessor 2026 Class B apartment base cap rate (nearest NoVA published figure; assessor rates are for tax valuation). Low 4.75 = bottom of CBRE-attributed DC core range; high 6.0 = top of 'Northern Virginia 4.5%-6%' blog excerpt. A '6.73% Prince William average' appeared in one search summary but could not be traced to a source and was excluded. Manassas's Masons Keepe (270 units, $85M, July 2026) sold with no cap rate disclosed."
+      },
+      "medical_office": {
+        "value": 6.8,
+        "low": 5.8,
+        "high": 8.0,
+        "unit": "%",
+        "as_of": "H1 2026",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Cushman & Wakefield MOB Capital Markets 2026 Mid-Year Update (H1 2026 MOB cap rate 6.8%, -35 bp YoY) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/mob-capital-markets-update"
+          },
+          {
+            "name": "CBRE Q1 2026 U.S. Medical Outpatient Buildings Figures (average MOB cap rate 6.9%, first time below 7.0% since Q3 2024) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://www.cbre.com/insights/figures/q1-2026-us-medical-outpatient-buildings-figures"
+          },
+          {
+            "name": "Ardor CRE / CREG Healthcare, Medical Office Cap Rates 2026 (stabilized multi-tenant suburban high-6% to low-8%; on-campus 50-100 bp tighter) (search-result excerpt (page itself blocked by sandbox proxy; not opened))",
+            "url": "https://ardorcre.com/medical-office-cap-rates/"
+          }
+        ],
+        "note": "No Northern Virginia metro MOB cap rate found. Value = national MOB average (C&W H1 2026 6.8%; CBRE Q1 2026 6.9%). Low 5.8 = national minus 100 bp (on-campus/credit health-system tenancy trades 50-100 bp tighter); high 8.0 = top of 'high-6% to low-8%' band for stabilized multi-tenant suburban assets. Use the high end for small off-campus MOBs."
+      },
+      "mixed_use": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "%",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [],
+        "note": "No published mixed-use cap rate for Northern Virginia (Culbertson) (searched broker reports and aggregators). Recommendation: blend by income share, cap = w_retail x retail cap + (1 - w_retail) x upper-use cap (multifamily or office), with default w_retail = 0.30 for a typical ground-floor-retail building (assumption, not sourced). culbertson.json retail cap rate is null; once sourced, apply the blend."
+      }
+    }
+  }
+}

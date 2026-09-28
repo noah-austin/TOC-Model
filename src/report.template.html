@@ -646,7 +646,9 @@
     form.elements.annualFee.placeholder = Math.round(D.fee.baseUsd + D.fee.perSqftUsd * inp.area).toLocaleString('en-US');
     form.elements.escalation.placeholder = D.escalationPct.toFixed(1);
     form.elements.capRate.placeholder = pt.capRateKey ? mk.capRates[pt.capRateKey].value.toFixed(2) : 'n/a';
-    $('capHint').textContent = 'Usually owner-occupied, so no cap rate. Enter one only if the building is investor-owned.';
+    var mob = mk.capRates.medical_office && mk.capRates.medical_office.value;
+    $('capHint').textContent = 'Usually owner-occupied, so no cap rate. Enter one only if the building is investor-owned' +
+      (inp.propertyType === 'medical' && mob ? ' (medical office buildings in ' + mk.shortName + ' trade near ' + pct(mob) + ').' : '.');
     $('capHint').hidden = !!pt.capRateKey;
     $('feeHint').textContent = inp.feeIsEstimate
       ? 'Estimated at $' + D.fee.baseUsd + ' + $' + D.fee.perSqftUsd.toFixed(2) + '/sq ft a year until PaxSeal pricing is set.'
@@ -686,7 +688,7 @@
       { k: '<span class="sw" style="background:' + C.reactive + '"></span>Reactive net cost', v: short(k.reactiveNetCost), d: short(R.totalSpend) + ' spent, less ' + short(R.residualValue) + ' roof life left' },
       k.assetValueProtected != null
         ? { k: 'Value protected', v: short(k.assetValueProtected), d: short(k.annualNoiGain) + '/yr more NOI at a ' + pct(inp.capRatePct) + ' cap rate', good: true }
-        : { k: 'Emergency spend avoided', v: short(k.unplannedSpendAvoided), d: 'Unbudgeted repairs and storm damage over ' + N + ' years' + (k.returnPerFeeDollar > 0 ? '; $' + k.returnPerFeeDollar.toFixed(2) + ' back per fee dollar' : ''), good: true },
+        : { k: 'Emergency costs cut', v: short(k.unplannedSpendAvoided), d: 'Unbudgeted repairs and storm damage avoided' + (k.returnPerFeeDollar > 0 ? '; $' + k.returnPerFeeDollar.toFixed(2) + ' back per fee dollar' : ''), good: true },
       { k: 'New roof price', v: k.yearsToDouble ? '2× <small>in ' + Math.round(k.yearsToDouble) + ' yrs</small>' : '—', d: short(inp.replacementCost) + ' today, ' + short(k.replacementCostAtHorizon) + ' by year ' + N }
     ];
     $('figs').innerHTML = figs.map(function (f) {
@@ -719,8 +721,7 @@
     }
     pts.push('<b>Smaller repairs.</b> Problems found on a scheduled visit avoid emergency work, which costs about ' + c.reactiveRepairMultiplier +
       '× as much. That saves ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + ' in repairs.');
-    if (k.yearsToDouble) pts.push('<b>Waiting gets expensive.</b> Roofing costs have grown about ' + pct(inp.escalationPct) + ' a year, so a new roof doubles in price in about ' +
-      Math.round(k.yearsToDouble) + ' years. Each year of roof life added is worth more over time.');
+    // Cost doubling is already a page-1 figure, so it isn't repeated here.
     if (pt.story) pts.push(pt.story);
     if (k.returnPerFeeDollar > 0) pts.push('<b>The program pays for itself.</b> Each $1 of PaxSeal fees returns about $' + k.returnPerFeeDollar.toFixed(2) + ' in avoided cost.');
     if (inp.roofAge + (c.conditionAgeShift[inp.condition] || 0) >= inp.systemLife - c.lifeExtensionYears) {

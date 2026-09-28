@@ -28,7 +28,7 @@ Code: `src/engine.js`. Every coefficient is in the `MODEL_CONFIG` block at the t
 | Cost line | Planned (PaxSeal) | Reactive |
 |---|---|---|
 | Program fee | fee × 1.03^(t−1) | none |
-| Repairs | need × 50%. The fee covers the other half (minor repairs up to 4 hrs/visit). | need × 3 (`reactiveRepairMultiplier`) |
+| Repairs | need × 50%. The fee covers the other half (minor repairs up to 4 hrs/visit). | need × 3 (`reactiveRepairMultiplier`) × the property type's leak multiplier |
 | Storm damage | C × storm loss % | C × storm loss % × 1.5 |
 | Replacement | C × (1+e)^t in the replacement year, when repairs are skipped | same |
 
@@ -51,6 +51,7 @@ Current storm loss % of roof replacement cost per year, by market (FEMA NRI Dece
 - **Asset value protected** = annual NOI gain ÷ cap rate.
   - This fixes a bug in the old prototype, which divided *cumulative* savings by the cap rate.
   - It is only meaningful for income property where the owner pays roof costs. NNN leases and owner-occupied buildings need different wording.
+- **Emergency costs cut** = reactive (repairs + storm damage) − planned (repairs + storm damage) over 20 years. This is the headline figure for owner-occupied types (K-12, medical) where cap-rate value doesn't apply.
 - **Return per fee dollar** = savings ÷ total PaxSeal fees.
 - **Years to double** = ln 2 ÷ ln(1 + e).
 
@@ -80,4 +81,3 @@ Current storm loss % of roof replacement cost per year, by market (FEMA NRI Dece
 - The Complete (building envelope) tier: no pricing or benefit data yet.
 - Interior leak damage and business interruption: no sourced figures.
 - Wind/hail deductibles and roof-age ACV (actual cash value) coverage.
-- Medical, K-12, Multi-Family and Mixed Use, which need a value story other than cap rate.

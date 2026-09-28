@@ -89,15 +89,19 @@ Per-market research lives in `docs/research/<market>.md`. The data the model rea
 
 ## 4a. Property types
 
-| Property type | Status | Why |
-|---|---|---|
-| Warehouse / Industrial | **v1** | Large low-slope roofs; investor-owned; cap rate applies |
-| Office | **v1** | Cap rate applies; interior leak damage costs more |
-| Retail | **v1** | Cap rate applies; business interruption from leaks |
-| Medical / Institutional | In development | Mostly owner-occupied; needs a non-cap-rate value story |
-| K-12 / Education | In development | Public owners; value framed as budget/capital-plan certainty |
-| Multi-Family | In development | Different cap rates and roof systems (often steep-slope) |
-| Mixed Use | In development | Blend of the above |
+All seven types are live. Values come from `data/property_types.json` (memo: `docs/research/property-types.md`).
+
+| Property type | Headline value figure | Cap rate source | Leak consequences (warehouse = 1.0) |
+|---|---|---|---|
+| Warehouse / Industrial | Property value protected | Market industrial | 1.0 |
+| Office | Property value protected | Market office | 1.2 |
+| Retail | Property value protected | Market retail | 1.1 |
+| Multi-Family | Property value protected | Market multi-family | 1.25 |
+| Mixed Use | Property value protected | Blend: 30% retail, 35% office, 35% multi-family | 1.2 |
+| Medical / Institutional | Emergency costs cut (owner-occupied) | None unless the rep enters one; hint shows local medical office rate | 1.4 |
+| K-12 / Education | Emergency costs cut (owner-occupied) | None unless the rep enters one | 1.3 |
+
+Each type also gets its own takeaway on page 2, for example budget certainty for schools or continuity of patient care for hospitals. The leak multipliers are low-confidence estimates. The research supports their order, not their exact values.
 
 ## 4b. PaxSeal price
 

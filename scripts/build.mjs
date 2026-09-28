@@ -64,7 +64,7 @@ function buildPropertyTypes() {
       capRateKey: t.capRateKey,
       leakMultiplier: typeof m?.value === 'number' ? m.value : 1,
       leakConfidence: m?.confidence || null,
-      leakBasis: m?.note ? String(m.note).split(/(?<=\.)\s/)[0] : null,
+      leakBasis: t.id === 'industrial' ? null : 'Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates',
       story: t.story || null,
     }];
   }));
@@ -119,12 +119,14 @@ function buildDefaults() {
         : { value: capMedian[k], source: 'fallback: median of other markets', confidence: 'low' };
     }
 
-    // Mixed use rarely has its own published cap rate: blend the market's retail,
-    // office and multi-family rates when no direct figure exists.
+    // Mixed use rarely has its own published cap rate. Blend by typical income share:
+    // 30% ground-floor retail, 70% split between office and multi-family above
+    // (docs/research/property-types.md; the 30% share is a model assumption).
     if (capRates.mixed_use.value == null) {
-      const parts = ['retail', 'office', 'multifamily'].map((k) => capRates[k].value).filter((x) => typeof x === 'number');
-      if (parts.length) capRates.mixed_use = { value: Math.round(parts.reduce((a, x) => a + x, 0) / parts.length * 100) / 100,
-        source: 'fallback: blend of retail, office and multi-family rates', confidence: 'low' };
+      const r = capRates.retail.value, o = capRates.office.value, f = capRates.multifamily.value;
+      if ([r, o, f].every((x) => typeof x === 'number')) capRates.mixed_use = {
+        value: Math.round((0.30 * r + 0.35 * o + 0.35 * f) * 100) / 100,
+        source: 'fallback: blend of 30% retail, 35% office and 35% multi-family rates', confidence: 'low' };
     }
 
     out[id] = {

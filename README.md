@@ -18,6 +18,7 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 | `docs/MODEL_SPEC.md` | Exactly how the engine calculates, plus sensitivity and known gaps |
 | `docs/research/` | Per-market research memos, cross-market evidence, and `COMPARISON.md` |
 | `data/markets/*.json`, `data/national.json` | Sourced research data (schema: `data/markets/SCHEMA.md`) |
+| `data/property_types.json` | Property-type research: leak multipliers, multi-family / medical office cap rates |
 | `data/model_defaults.json` | Generated: the values the report actually uses |
 | `src/engine.js` | Calculation engine. All coefficients are in `MODEL_CONFIG` at the top. |
 | `src/report.template.html` | Report page (vanilla JS/SVG, PAX brand colors) |

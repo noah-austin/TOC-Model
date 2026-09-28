@@ -67,3 +67,28 @@ test('net cost = total spend minus residual value', () => {
   const r = E.run(base, D);
   for (const s of [r.planned, r.reactive]) assert.ok(Math.abs(s.netCost - (s.totalSpend - s.residualValue)) < 1e-6);
 });
+
+test('owner-occupied types show no property value unless a cap rate is entered', () => {
+  for (const propertyType of ['k12', 'medical']) {
+    const k = E.run({ ...base, propertyType }, D).kpis;
+    assert.equal(k.assetValueProtected, null, propertyType);
+    assert.ok(k.unplannedSpendAvoided > 0);
+    assert.ok(E.run({ ...base, propertyType, capRate: 6.5 }, D).kpis.assetValueProtected > 0);
+  }
+});
+
+test('income property types get a market cap rate and property value', () => {
+  for (const propertyType of ['industrial', 'office', 'retail', 'multifamily', 'mixed']) {
+    const r = E.run({ ...base, propertyType }, D);
+    assert.ok(r.inputs.capRatePct > 0, propertyType);
+    assert.ok(r.kpis.assetValueProtected > 0, propertyType);
+  }
+});
+
+test('higher leak consequences raise reactive cost, not planned cost', () => {
+  const w = E.run({ ...base, propertyType: 'industrial' }, D);
+  const h = E.run({ ...base, propertyType: 'medical' }, D);
+  assert.ok(h.inputs.leakMultiplier > w.inputs.leakMultiplier);
+  assert.ok(Math.abs(h.kpis.plannedNetCost - w.kpis.plannedNetCost) < 1e-6);
+  assert.ok(h.kpis.reactiveNetCost > w.kpis.reactiveNetCost);
+});
