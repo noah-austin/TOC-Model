@@ -421,7 +421,13 @@
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
   // ---------- selects ----------
-  Object.keys(D.markets).forEach(function (id) { $('market').add(new Option(D.markets[id].shortName, id)); });
+  // Market picker grouped by state
+  var groups = {};
+  Object.keys(D.markets).forEach(function (id) {
+    var mk = D.markets[id], g = groups[mk.region];
+    if (!g) { g = groups[mk.region] = document.createElement('optgroup'); g.label = mk.region; $('market').appendChild(g); }
+    g.appendChild(new Option(mk.shortName, id));
+  });
   Object.keys(D.propertyTypes).forEach(function (id) {
     var p = D.propertyTypes[id];
     var o = new Option(p.label + (p.status === 'v1' ? '' : ' (coming soon)'), id);

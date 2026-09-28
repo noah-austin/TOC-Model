@@ -4,42 +4,41 @@
 //      (one self-contained file, no CDN, safe to email or host on Azure SWA)
 //
 // Usage: node scripts/build.mjs
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
 
-const MARKET_IDS = ['austin', 'san-antonio', 'hampton-roads', 'laurel', 'culbertson'];
+// PAX markets, in picker order. `region` groups them in the market picker;
+// `perils` is a short rep-readable summary curated from docs/research/<id>.md.
+// A market whose data/markets/<id>.json doesn't exist yet is skipped.
+const MARKETS = [
+  { id: 'austin', shortName: 'Austin', region: 'Texas', perils: {
+    headline: 'Hail and tornado',
+    events: '~9 days with 2"+ hail somewhere in Travis County per 20 years (NOAA 1996–2025)' } },
+  { id: 'san-antonio', shortName: 'San Antonio', region: 'Texas', perils: {
+    headline: 'Hail and tornado',
+    events: 'Baseball-size hail somewhere in Bexar County about once every 3 years (NOAA); April 2016 storm ≈ $1.4B damage' } },
+  { id: 'waco', shortName: 'Waco', region: 'Texas', perils: null },
+  { id: 'west-palm-beach', shortName: 'West Palm Beach', region: 'Florida', perils: null },
+  { id: 'hampton-roads', shortName: 'Hampton Roads', region: 'Virginia', perils: {
+    headline: 'Hurricane / tropical-storm wind',
+    events: '~4.8 tropical storms or stronger within 50 nm of Norfolk per 20 years (NOAA HURDAT2 1975–2024)' } },
+  { id: 'culbertson', shortName: 'Culbertson (N. Virginia)', region: 'Virginia', perils: {
+    headline: 'Thunderstorm wind / derecho, snow and ice',
+    events: 'Strong wind and winter weather both rated Relatively High (FEMA NRI); tropical remnants ~1 per 12 years' } },
+  { id: 'laurel', shortName: 'Laurel', region: 'Maryland', perils: {
+    headline: 'Thunderstorm wind / derecho, snow load',
+    events: '~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)' } },
+  { id: 'millersville', shortName: 'Millersville', region: 'Maryland', perils: null },
+].filter((m) => existsSync(join(ROOT, `data/markets/${m.id}.json`)));
+const MARKET_IDS = MARKETS.map((m) => m.id);
 const SYSTEMS = ['tpo', 'epdm', 'mod_bit', 'bur', 'metal', 'coating_restoration'];
 const CAP_KEYS = ['industrial', 'office', 'retail'];
 // NRI hazards that damage roofs. Flooding, heat and lightning are excluded.
 const ROOF_PERILS = ['hail', 'strong_wind', 'tornado', 'hurricane', 'winter_weather', 'ice_storm'];
-
-// Short, rep-readable peril summaries, curated from docs/research/<market>.md.
-const PERIL_SUMMARY = {
-  'austin': {
-    headline: 'Hail and tornado',
-    events: '~9 days with 2"+ hail somewhere in Travis County per 20 years (NOAA 1996–2025)',
-  },
-  'san-antonio': {
-    headline: 'Hail and tornado',
-    events: 'Baseball-size hail somewhere in Bexar County about once every 3 years (NOAA); April 2016 storm ≈ $1.4B damage',
-  },
-  'hampton-roads': {
-    headline: 'Hurricane / tropical-storm wind',
-    events: '~4.8 tropical storms or stronger within 50 nm of Norfolk per 20 years (NOAA HURDAT2 1975–2024)',
-  },
-  'laurel': {
-    headline: 'Thunderstorm wind / derecho, snow load',
-    events: '~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)',
-  },
-  'culbertson': {
-    headline: 'Thunderstorm wind / derecho, snow and ice',
-    events: 'Strong wind and winter weather both rated Relatively High (FEMA NRI); tropical remnants ~1 per 12 years',
-  },
-};
 
 const median = (xs) => {
   const s = xs.filter((x) => typeof x === 'number').sort((a, b) => a - b);
@@ -59,7 +58,7 @@ function buildDefaults() {
     [k, median(MARKET_IDS.map((id) => markets[id].cap_rates?.[k]?.value))]));
 
   const out = {};
-  for (const id of MARKET_IDS) {
+  for (const { id, shortName, region, perils } of MARKETS) {
     const m = markets[id];
     const nri = m.fema_nri;
     const exposure = nri.building_exposure_usd ?? nri.building_value_usd;
@@ -83,15 +82,15 @@ function buildDefaults() {
     out[id] = {
       id,
       name: m.name,
-      shortName: { 'austin': 'Austin', 'san-antonio': 'San Antonio', 'hampton-roads': 'Hampton Roads',
-        'laurel': 'Laurel', 'culbertson': 'Culbertson (N. Virginia)' }[id],
+      shortName,
+      region,
       nriCounty: nri.county,
       nriVersion: nri.nri_version || null,
       nriOverall: nri.overall_risk_rating,
       nriRatings: Object.fromEntries(ROOF_PERILS.map((h) => [h, nri.hazards?.[h]?.rating || null])),
       // Expected annual building loss from roof-relevant perils, % of county building value.
       nriBuildingLossPct: exposure ? (eal / exposure) * 100 : 0,
-      perils: PERIL_SUMMARY[id],
+      perils: perils || { headline: 'Storm exposure', events: 'See FEMA National Risk Index ratings below' },
       replacementCostPerSqft,
       capRates,
     };

@@ -75,6 +75,7 @@
       "id": "austin",
       "name": "Austin, TX (Austin-Round Rock-San Marcos metro)",
       "shortName": "Austin",
+      "region": "Texas",
       "nriCounty": "Travis County, TX (FIPS 48453)",
       "nriVersion": "1.19.0 (March 2023)",
       "nriOverall": "Relatively High",
@@ -145,6 +146,7 @@
       "id": "san-antonio",
       "name": "San Antonio, TX",
       "shortName": "San Antonio",
+      "region": "Texas",
       "nriCounty": "Bexar County, TX (48029)",
       "nriVersion": null,
       "nriOverall": "Relatively High",
@@ -215,6 +217,7 @@
       "id": "hampton-roads",
       "name": "Hampton Roads (Norfolk / Virginia Beach / Chesapeake), VA",
       "shortName": "Hampton Roads",
+      "region": "Virginia",
       "nriCounty": "Norfolk (City), VA - FIPS 51710",
       "nriVersion": "December 2025",
       "nriOverall": "Relatively Moderate",
@@ -281,80 +284,11 @@
         }
       }
     },
-    "laurel": {
-      "id": "laurel",
-      "name": "Laurel, MD (Baltimore-Washington corridor)",
-      "shortName": "Laurel",
-      "nriCounty": "Prince George's County, MD (24033)",
-      "nriVersion": "1.19.0 (March 2023)",
-      "nriOverall": "Relatively Moderate",
-      "nriRatings": {
-        "hail": "Very Low",
-        "strong_wind": "Relatively High",
-        "tornado": "Relatively High",
-        "hurricane": "Relatively High",
-        "winter_weather": "Relatively High",
-        "ice_storm": "Relatively Moderate"
-      },
-      "nriBuildingLossPct": 0.03778654277722855,
-      "perils": {
-        "headline": "Thunderstorm wind / derecho, snow load",
-        "events": "~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)"
-      },
-      "replacementCostPerSqft": {
-        "tpo": {
-          "value": 7.7,
-          "source": "market",
-          "confidence": "low"
-        },
-        "epdm": {
-          "value": 7,
-          "source": "market",
-          "confidence": "low"
-        },
-        "mod_bit": {
-          "value": 8,
-          "source": "market",
-          "confidence": "low"
-        },
-        "bur": {
-          "value": 8,
-          "source": "market",
-          "confidence": "low"
-        },
-        "metal": {
-          "value": 16,
-          "source": "market",
-          "confidence": "low"
-        },
-        "coating_restoration": {
-          "value": 3.5,
-          "source": "market",
-          "confidence": "low"
-        }
-      },
-      "capRates": {
-        "industrial": {
-          "value": 7.7,
-          "source": "market",
-          "confidence": "medium"
-        },
-        "office": {
-          "value": 7.5,
-          "source": "market",
-          "confidence": "low"
-        },
-        "retail": {
-          "value": 6.55,
-          "source": "market",
-          "confidence": "low"
-        }
-      }
-    },
     "culbertson": {
       "id": "culbertson",
       "name": "Culbertson (Northern Virginia)",
       "shortName": "Culbertson (N. Virginia)",
+      "region": "Virginia",
       "nriCounty": "Prince William County, VA (51153)",
       "nriVersion": "v1.20.0, December 2025",
       "nriOverall": "Relatively Moderate",
@@ -417,6 +351,77 @@
         "retail": {
           "value": 6.55,
           "source": "fallback: median of other markets",
+          "confidence": "low"
+        }
+      }
+    },
+    "laurel": {
+      "id": "laurel",
+      "name": "Laurel, MD (Baltimore-Washington corridor)",
+      "shortName": "Laurel",
+      "region": "Maryland",
+      "nriCounty": "Prince George's County, MD (24033)",
+      "nriVersion": "1.19.0 (March 2023)",
+      "nriOverall": "Relatively Moderate",
+      "nriRatings": {
+        "hail": "Very Low",
+        "strong_wind": "Relatively High",
+        "tornado": "Relatively High",
+        "hurricane": "Relatively High",
+        "winter_weather": "Relatively High",
+        "ice_storm": "Relatively Moderate"
+      },
+      "nriBuildingLossPct": 0.03778654277722855,
+      "perils": {
+        "headline": "Thunderstorm wind / derecho, snow load",
+        "events": "~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)"
+      },
+      "replacementCostPerSqft": {
+        "tpo": {
+          "value": 7.7,
+          "source": "market",
+          "confidence": "low"
+        },
+        "epdm": {
+          "value": 7,
+          "source": "market",
+          "confidence": "low"
+        },
+        "mod_bit": {
+          "value": 8,
+          "source": "market",
+          "confidence": "low"
+        },
+        "bur": {
+          "value": 8,
+          "source": "market",
+          "confidence": "low"
+        },
+        "metal": {
+          "value": 16,
+          "source": "market",
+          "confidence": "low"
+        },
+        "coating_restoration": {
+          "value": 3.5,
+          "source": "market",
+          "confidence": "low"
+        }
+      },
+      "capRates": {
+        "industrial": {
+          "value": 7.7,
+          "source": "market",
+          "confidence": "medium"
+        },
+        "office": {
+          "value": 7.5,
+          "source": "market",
+          "confidence": "low"
+        },
+        "retail": {
+          "value": 6.55,
+          "source": "market",
           "confidence": "low"
         }
       }
