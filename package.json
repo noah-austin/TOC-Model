@@ -1,0 +1,9 @@
+{
+  "name": "pax-roof-tco",
+  "private": true,
+  "description": "PAX roof lifecycle (TCO) model and rep-facing report",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node --test test/*.test.mjs"
+  }
+}
