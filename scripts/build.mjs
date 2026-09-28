@@ -21,12 +21,6 @@ const MARKETS = [
   { id: 'san-antonio', shortName: 'San Antonio', region: 'Texas', perils: {
     headline: 'Hail and tornado',
     events: 'Baseball-size hail somewhere in Bexar County about once every 3 years (NOAA); April 2016 storm ≈ $1.4B damage' } },
-  { id: 'waco', shortName: 'Waco', region: 'Texas', perils: {
-    headline: 'Hail, tornado and thunderstorm wind',
-    events: '~16 roof-damaging storm days (hail 1"+ or wind 65+ kt) somewhere in McLennan County per 20 years (NOAA 1996–2025)' } },
-  { id: 'west-palm-beach', shortName: 'West Palm Beach', region: 'Florida', perils: {
-    headline: 'Hurricane wind and wind-driven rain',
-    events: '~2.4 hurricanes and ~5.6 tropical storms or stronger within 50 nm of West Palm Beach per 20 years (NOAA HURDAT2 1975–2024)' } },
   { id: 'hampton-roads', shortName: 'Hampton Roads', region: 'Virginia', perils: {
     headline: 'Hurricane / tropical-storm wind',
     events: '~4.8 tropical storms or stronger within 50 nm of Norfolk per 20 years (NOAA HURDAT2 1975–2024)' } },
@@ -36,9 +30,6 @@ const MARKETS = [
   { id: 'laurel', shortName: 'Laurel', region: 'Maryland', perils: {
     headline: 'Thunderstorm wind / derecho, snow load',
     events: '~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)' } },
-  { id: 'millersville', shortName: 'Millersville', region: 'Maryland', perils: {
-    headline: 'Thunderstorm wind, tropical remnants, bay flooding',
-    events: '~2.8 tropical storms within 50 nm of Annapolis per 20 years (NOAA HURDAT2 1975–2024); Isabel (2003) set the Annapolis flood record' } },
 ].filter((m) => existsSync(join(ROOT, `data/markets/${m.id}.json`)));
 const MARKET_IDS = MARKETS.map((m) => m.id);
 const SYSTEMS = ['tpo', 'epdm', 'mod_bit', 'bur', 'metal', 'coating_restoration'];
@@ -64,8 +55,12 @@ function buildDefaults() {
     [k, median(MARKET_IDS.map((id) => markets[id].cap_rates?.[k]?.value))]));
 
   // Replacement costs track local labor and materials, so prefer same-state markets.
-  const regionMedian = (s, region) => median(MARKETS.filter((m) => m.region === region)
-    .map((m) => markets[m.id].replacement_cost_per_sqft?.[s]?.value));
+  // Needs at least two same-state values, so one market's number is never copied as-is.
+  const regionMedian = (s, region) => {
+    const vals = MARKETS.filter((m) => m.region === region)
+      .map((m) => markets[m.id].replacement_cost_per_sqft?.[s]?.value).filter((v) => typeof v === 'number');
+    return vals.length >= 2 ? median(vals) : null;
+  };
 
   const out = {};
   for (const { id, shortName, region, perils } of MARKETS) {

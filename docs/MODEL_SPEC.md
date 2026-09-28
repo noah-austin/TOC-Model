@@ -38,9 +38,9 @@ Definitions used in the table:
 
 Current storm loss % of roof replacement cost per year, by market (FEMA NRI December 2025 for every market):
 
-| Austin | San Antonio | Waco | West Palm Beach | Hampton Roads | Culbertson | Laurel | Millersville |
-|---|---|---|---|---|---|---|---|
-| 0.28% | 0.38% | 0.18% | 1.17% | 0.44% | 0.15% | 0.13% | 0.14% |
+| Austin | San Antonio | Hampton Roads | Culbertson | Laurel |
+|---|---|---|---|---|
+| 0.28% | 0.38% | 0.44% | 0.15% | 0.13% |
 
 ## Outputs
 

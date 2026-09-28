@@ -79,12 +79,9 @@ This is the branded, printable, self-contained HTML page described in the handof
 |---|---|---|---|
 | Austin | Austin metro, TX | Travis | Hail, tornado, heat/UV |
 | San Antonio | San Antonio metro, TX | Bexar | Hail, tornado, heat/UV |
-| Waco | Waco / Killeen–Temple, TX | McLennan | Hail, tornado, thunderstorm wind |
-| West Palm Beach | Palm Beach County, FL | Palm Beach | Hurricane wind, wind-driven rain, UV |
 | Hampton Roads | Norfolk / Virginia Beach, VA | Norfolk | Hurricane/tropical storm, nor'easters, salt air |
 | Culbertson | Northern Virginia (Manassas-based Culbertson Co.) | Prince William | Thunderstorm wind/derecho, snow/ice |
 | Laurel | Baltimore–Washington corridor, MD | Prince George's | Thunderstorm wind/derecho, snow load |
-| Millersville | Annapolis–Baltimore, MD | Anne Arundel | Thunderstorm wind, tropical remnants, bay flooding |
 
 Specific customer addresses can refine the county-level data later.
 

@@ -20,8 +20,8 @@ OFFICIAL_URL = "https://hazards.fema.gov/nri/data-resources"
 
 # Primary county (5-digit FIPS) per market; must match the market research memo.
 PRIMARY = {
-    "austin": "48453", "san-antonio": "48029", "waco": "48309", "west-palm-beach": "12099",
-    "hampton-roads": "51710", "culbertson": "51153", "laurel": "24033", "millersville": "24003",
+    "austin": "48453", "san-antonio": "48029", "hampton-roads": "51710",
+    "culbertson": "51153", "laurel": "24033",
 }
 HAZARDS = {
     "hail": "HAIL", "strong_wind": "SWND", "tornado": "TRND", "hurricane": "HRCN",

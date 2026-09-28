@@ -12,25 +12,25 @@ Researched 2026-09-28. Details and source links are in each market's memo in thi
 
 ## Side-by-side
 
-All eight markets use FEMA National Risk Index **December 2025** county data (refreshed with `scripts/refresh_nri.py`). "—" means no market-specific value was found; the report then uses the median of the other markets and flags it.
+All five markets use FEMA National Risk Index **December 2025** county data (refreshed with `scripts/refresh_nri.py`). "—" means no market-specific value was found; the report then uses the median of the other markets and flags it.
 
-| | Austin | San Antonio | Waco | West Palm Beach | Hampton Roads | Culbertson (N. Virginia) | Laurel | Millersville |
-|---|---|---|---|---|---|---|---|---|
-| **Main roof perils** | Hail and tornado | Hail and tornado | Hail, tornado and thunderstorm wind | Hurricane wind and wind-driven rain | Hurricane / tropical-storm wind | Thunderstorm wind / derecho, snow and ice | Thunderstorm wind / derecho, snow load | Thunderstorm wind, tropical remnants, bay flooding |
-| **FEMA NRI overall** | Relatively High | Relatively High | Relatively Moderate | Relatively High | Relatively Moderate | Relatively Moderate | Relatively Moderate | Relatively Moderate |
-| **Hail (NRI)** | Very High | Very High | Moderate | Low | Low | Moderate | Moderate | Moderate |
-| **Strong wind (NRI)** | High | High | Moderate | High | Moderate | High | High | High |
-| **Tornado (NRI)** | Very High | Very High | High | High | Moderate | Moderate | High | Moderate |
-| **Hurricane (NRI)** | Low | Moderate | Low | Very High | Moderate | Moderate | Moderate | Moderate |
-| **Winter weather (NRI)** | Moderate | High | Low | — | Moderate | High | Very High | High |
-| **Storm loss, % of roof cost/yr** | 0.28% | 0.38% | 0.18% | 1.17% | 0.44% | 0.15% | 0.13% | 0.14% |
-| **TPO $/sq ft** | — | 13.5 | 11.5 | 11 | 9 | 9 | 7.7 | 7.4 |
-| **Metal $/sq ft** | — | 14 | 17.5 | 15 | 15 | 14 | 16 | 16 |
-| **Cap rate: industrial** | — | — | 7.5% | 5.25% | 7.5% | 6.44% | 7.7% | 7.5% |
-| **Cap rate: office** | — | — | 7.9% | 6.6% | 7.9% | 8.36% | 7.5% | 7.5% |
-| **Cap rate: retail** | — | — | 6.13% | 5.5% | 6.55% | — | 6.55% | 7% |
+| | Austin | San Antonio | Hampton Roads | Culbertson (N. Virginia) | Laurel |
+|---|---|---|---|---|---|
+| **Main roof perils** | Hail and tornado | Hail and tornado | Hurricane / tropical-storm wind | Thunderstorm wind / derecho, snow and ice | Thunderstorm wind / derecho, snow load |
+| **FEMA NRI overall** | Relatively High | Relatively High | Relatively Moderate | Relatively Moderate | Relatively Moderate |
+| **Hail (NRI)** | Very High | Very High | Low | Moderate | Moderate |
+| **Strong wind (NRI)** | High | High | Moderate | High | High |
+| **Tornado (NRI)** | Very High | Very High | Moderate | Moderate | High |
+| **Hurricane (NRI)** | Low | Moderate | Moderate | Moderate | Moderate |
+| **Winter weather (NRI)** | Moderate | High | Moderate | High | Very High |
+| **Storm loss, % of roof cost/yr** | 0.28% | 0.38% | 0.44% | 0.15% | 0.13% |
+| **TPO $/sq ft** | — | 13.5 | 9 | 9 | 7.7 |
+| **Metal $/sq ft** | — | 14 | 15 | 14 | 16 |
+| **Cap rate: industrial** | — | — | 7.5% | 6.44% | 7.7% |
+| **Cap rate: office** | — | — | 7.9% | 8.36% | 7.5% |
+| **Cap rate: retail** | — | — | 6.55% | — | 6.55% |
 
-Markets added in round 2 (Waco, West Palm Beach, Millersville) are documented in their own memos. Round-1 memos (Austin, San Antonio, Laurel) quote NRI figures from the older March 2023 release; the JSON files now carry the December 2025 values, with the originals kept under `fema_nri.research_fields`.
+Round-1 memos quote NRI figures from the release each agent could reach. The JSON files now carry the December 2025 values, with the originals kept under `fema_nri.research_fields`.
 
 ## Values shared by all markets (from `data/national.json`)
 

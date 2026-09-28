@@ -37,10 +37,9 @@ After editing research data or the engine, run `npm run build` and commit `dist/
 
 | State | Markets |
 |---|---|
-| Texas | Austin, San Antonio, Waco |
-| Florida | West Palm Beach |
+| Texas | Austin, San Antonio |
 | Virginia | Hampton Roads, Culbertson (Northern Virginia) |
-| Maryland | Laurel, Millersville |
+| Maryland | Laurel |
 
 To add a market: write `data/markets/<id>.json` (see `SCHEMA.md`), add it to the `MARKETS` list in `scripts/build.mjs`, add its primary county to `scripts/refresh_nri.py`, then run the refresh and `npm run build`.
 
