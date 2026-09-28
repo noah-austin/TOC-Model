@@ -1,0 +1,1182 @@
+{
+  "id": "laurel",
+  "name": "Laurel, MD (Baltimore-Washington corridor)",
+  "state": "MD",
+  "counties": [
+    {
+      "name": "Prince George's",
+      "fips": "24033",
+      "role": "primary"
+    },
+    {
+      "name": "Anne Arundel",
+      "fips": "24003",
+      "role": "primary"
+    },
+    {
+      "name": "Howard",
+      "fips": "24027",
+      "role": "primary"
+    },
+    {
+      "name": "Montgomery",
+      "fips": "24031",
+      "role": "secondary"
+    },
+    {
+      "name": "Baltimore County",
+      "fips": "24005",
+      "role": "secondary"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "research_environment_note": "The research sandbox's egress proxy blocked direct fetches of nearly all web hosts (fema.gov, bls.gov, noaa.gov, CBRE, etc.). FEMA NRI county data and the BLS roofing PPI series were obtained as full data files from public GitHub mirrors and computed directly. All other figures come from search-engine excerpts of the cited pages; they are traceable to the URL but were not verified by reading the full page, and confidence is lowered accordingly. Re-verify before customer use.",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 7.7,
+      "low": 5.0,
+      "high": 12.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Commercial Roofing in Baltimore MD, Costs & Codes (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "roofreplacementcost.ai: Commercial Roofing Costs Explained 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        },
+        {
+          "name": "The Roofing Brief: Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Windward Roofing: Commercial Roof Replacement Cost 2026 guide",
+          "url": "https://windwardroofing.com/blog/commercial-roof-cost-guide"
+        }
+      ],
+      "note": "value = midpoint of Baltimore-specific 60-mil TPO range $6.05-9.35 (Commercial Roof Guide). low/high = envelope of national 2025-26 contractor/aggregator ranges ($5-9 and $7-12). Excludes insulation upgrade: same Baltimore source puts polyiso at R-25 to R-35 at $2.00-3.50/sq ft extra, which a re-roof may trigger (see code_triggers). Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "epdm": {
+      "value": 7.0,
+      "low": 4.0,
+      "high": 10.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Commercial Roof Guide: Baltimore MD (2026)",
+          "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+        },
+        {
+          "name": "roofreplacementcost.ai 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        },
+        {
+          "name": "General Roofing Co.: EPDM roofing cost per sq ft 2026",
+          "url": "https://generalroof.com/epdm-roofing-cost-per-square-foot/"
+        }
+      ],
+      "note": "value = midpoint of $5.50-8.50 range reported alongside the Maryland/Baltimore figures; low/high = envelope of national ranges ($4-8, $6-10). Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "mod_bit": {
+      "value": 8.0,
+      "low": 4.0,
+      "high": 12.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "roofreplacementcost.ai 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        },
+        {
+          "name": "The Roofing Brief 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Ridgeline Roofing: commercial roof replacement cost",
+          "url": "https://ridgelineroofingcompany.com/how-much-does-a-commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "No Maryland-specific figure found. National ranges $4-7 and $7-12; value = midpoint of the pooled envelope. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "bur": {
+      "value": 8.0,
+      "low": 6.0,
+      "high": 10.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "The Roofing Brief / national 2025-26 commercial cost guides (search excerpt)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "Single national range ($6-10); no Maryland-specific figure found. Needs PAX job history. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "metal": {
+      "value": 16.0,
+      "low": 12.0,
+      "high": 22.0,
+      "unit": "$/sq ft installed (tear-off + replace)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "roofreplacementcost.ai 2026",
+          "url": "https://www.roofreplacementcost.ai/blog/commercial-roof-replacement-cost"
+        },
+        {
+          "name": "The Roofing Brief 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "Standing-seam; national ranges $12-18+ and $14-22; value = approx. midpoint of pooled envelope. No MD-specific figure. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "coating_restoration": {
+      "value": 3.5,
+      "low": 1.5,
+      "high": 7.0,
+      "unit": "$/sq ft installed (restoration over existing roof, NOT tear-off)",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "West Roofing Systems: cost to restore TPO/EPDM with silicone",
+          "url": "https://www.westroofingsystems.com/cost-restore-tpo-epdm-silicone-coating"
+        },
+        {
+          "name": "West Roofing Systems: cost to restore a commercial metal roof",
+          "url": "https://www.westroofingsystems.com/ballpark-cost-restore-commercial-metal-roof"
+        },
+        {
+          "name": "No Tear Off Roofing: Silicone Roof Coating Cost Guide 2026",
+          "url": "https://notearoffroofing.com/silicone-roof-coating-cost/"
+        },
+        {
+          "name": "Great Lakes Commercial Roofing: Commercial roof coating cost 2025",
+          "url": "https://greatlakescommercialroofingllc.com/commercial-roof-coating-cost/"
+        }
+      ],
+      "note": "Silicone restoration: $2.00-4.50 over TPO/EPDM, $2.50-5.00 over metal, general ranges $1.50-3.50 and $3.50-7.00. value = mid of the single-ply range. Schema asks for tear-off + replace; coating is by definition not a tear-off, so do not use as a replacement cost. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    }
+  },
+  "location_cost_factor": {
+    "value": null,
+    "low": null,
+    "high": null,
+    "unit": "index (national = 1.00)",
+    "as_of": null,
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "RSMeans City Cost Index Q1 2024 change notice (quarterly changes only)",
+        "url": "https://www.rsmeans.com/media/wysiwyg/quarterly_updates/Q1-2024-ChangeNotice.pdf"
+      },
+      {
+        "name": "UFC 3-701-01 DoD Facilities Pricing Guide, Change 7 (Jul 2025), Table of Area Cost Factors",
+        "url": "https://www.wbdg.org/FFC/DOD/UFC/ufc_3_701_01_2022_c7.pdf"
+      }
+    ],
+    "note": "Not found. RSMeans CCI values are paywalled; the public Q1 2024 change notice only shows Baltimore quarterly deltas (materials -2.03, installation +0.84, total -1.15), not the index level. The DoD Area Cost Factor for Fort Meade (adjacent to Laurel) in UFC 3-701-01 is a good free proxy but the PDF could not be fetched. The Baltimore-specific $/sq ft figures above are already local, so apply no factor to them; a factor is only needed if national figures are used."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.5,
+      "low": 5.5,
+      "high": 5.7,
+      "unit": "%/yr",
+      "as_of": "2025-04 / 2026-02",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI by Industry: Roofing Contractors, Nonresidential Building Work (PCU23816X23816X), monthly series Jan 2008-Apr 2025, via public mirror of BLS API pull",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED: PCU23816X23816X (Feb 2026 = 224.143, Dec 2007=100)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "NATIONAL index, not Maryland. Apr 2015 126.7 -> Apr 2025 215.584 = 5.46%/yr CAGR. Feb 2016 128.4 -> Feb 2026 224.143 (FRED, from search excerpt) = 5.73%/yr. The 10-yr figure is inflated by a 2021-2023 spike (Apr 2021 146.2 -> Apr 2023 206.3, +41% in two years). Pre-pandemic Apr 2008 -> Apr 2019 CAGR was only 2.6%/yr; Apr 2019 -> Apr 2025 was 8.0%/yr. For a wider sensitivity band use 2.6-8.0."
+    },
+    "annual_pct_20yr": {
+      "value": 4.5,
+      "low": 2.6,
+      "high": 5.7,
+      "unit": "%/yr",
+      "as_of": "2025-04",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X via public mirror",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED: PCU23816X23816X",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "Series only begins Dec 2007, so a true 20-yr CAGR is not available. value = longest available: Jan 2008 100.8 -> Apr 2025 215.584 = 4.51%/yr over 17.25 yrs (Jan 2008 -> Feb 2026 FRED 224.143 = 4.52%). low = Apr 2008-Apr 2019 pre-pandemic CAGR 2.6%; high = recent 10-yr CAGR 5.7%. At 4.5%/yr replacement cost doubles in ~15.7 years. National index."
+    }
+  },
+  "perils": [
+    {
+      "peril": "Severe thunderstorm / straight-line wind (incl. derechos)",
+      "annual_frequency": {
+        "value": 7.044,
+        "low": 7.044,
+        "high": 8.042,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Most frequent roof-damaging peril: flashing/perimeter edge failures, membrane blow-off, rooftop-unit and debris damage. Benchmark event: June 29 2012 derecho, widespread 60-90 mph gusts across the Mid-Atlantic, >4 million customers without power, Maryland outages >8 days (NOAA/NWS). NRI building EAL for strong wind in PG is small relative to building value (~0.0006%/yr), which says typical events are low-severity per building; the roof-program value is mostly in preventing small wind openings from turning into water damage.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 808842,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+          "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+        },
+        {
+          "name": "NOAA SPC: The Ohio Valley / Mid-Atlantic Derecho of June 2012",
+          "url": "https://www.spc.noaa.gov/misc/AbtDerechos/casepages/jun292012page.htm"
+        }
+      ]
+    },
+    {
+      "peril": "Winter weather (snow load, ice dams, freeze-thaw)",
+      "annual_frequency": {
+        "value": 2.694,
+        "low": 2.694,
+        "high": 3.178,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Heavy wet snow drifts on low-slope roofs cause ponding, drain freeze-up and occasional structural collapse. Feb 2010 'Snowmageddon' (two 15-30 in storms in 5 days) collapsed Warehouse 21 at the Smithsonian's Suitland, MD (Prince George's) facility; numerous roof collapses were reported across MD/DC/VA. Both Feb 2010 (DR-1875) and Jan 2016 (DR-4261) storms drew federal disaster declarations covering Prince George's, Anne Arundel and Howard.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 42784,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+        },
+        {
+          "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; PG, AA, Howard designated)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+        },
+        {
+          "name": "Wikipedia: Paul E. Garber Facility (Suitland, MD) - Warehouse 21 roof collapse, Feb 10 2010",
+          "url": "https://en.wikipedia.org/wiki/Paul_E._Garber_Preservation,_Restoration,_and_Storage_Facility"
+        },
+        {
+          "name": "Weather.com: February 2010 Snowmageddon retrospective (roof collapses across MD/DC/VA)",
+          "url": "https://weather.com/safety/winter/news/2020-02-04-february-2010-snowmageddon-snowstorms-washington-dc-baltimore-philly"
+        }
+      ]
+    },
+    {
+      "peril": "Ice storm",
+      "annual_frequency": {
+        "value": 0.356,
+        "low": 0.356,
+        "high": 0.891,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Ice loading on roof edges and drains; secondary tree-fall damage. NRI rates all three core counties Relatively Moderate.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 21572,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Hurricane / tropical-storm remnants",
+      "annual_frequency": {
+        "value": 0.095,
+        "low": 0.095,
+        "high": 0.104,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Low frequency but by far the largest NRI building EAL of any hazard in the market (PG $48.0M/yr, AA $36.1M/yr, Howard $11.6M/yr). Wind-driven rain through failed flashings and edge metal is the main roof mechanism.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 47975741,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Tornado",
+      "annual_frequency": {
+        "value": 0.37,
+        "low": 0.192,
+        "high": 0.37,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Mostly weak (EF0-EF1) short-track tornadoes embedded in tropical remnants and squall lines; high per-building severity but very low per-building probability.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 2228338,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Hail",
+      "annual_frequency": {
+        "value": 3.523,
+        "low": 3.523,
+        "high": 3.876,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "NRI rates hail Very Low in all five counties (PG building EAL ~$1.2K/yr). Hail is NOT a primary peril here, unlike Texas markets.",
+      "fema_nri_rating": "Very Low",
+      "fema_nri_expected_annual_loss_building_usd": 1172,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Riverine flooding",
+      "annual_frequency": {
+        "value": 3.458,
+        "low": 2.667,
+        "high": 3.75,
+        "unit": "events (or event-days)/yr, countywide",
+        "as_of": "NRI v1.19.0, March 2023 (period of record varies by hazard)",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          }
+        ],
+        "note": "value = Prince George's County (contains City of Laurel) NRI annualized frequency; low/high = range across Prince George's, Anne Arundel and Howard. Countywide frequency, NOT the probability that one specific building's roof is damaged."
+      },
+      "severity_note": "Not a roof peril per se; included for completeness (affects building interiors/site).",
+      "fema_nri_rating": "Relatively Low",
+      "fema_nri_expected_annual_loss_building_usd": 132126,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    {
+      "peril": "Significant regional roof-damaging event (derived composite)",
+      "annual_frequency": {
+        "value": 0.18,
+        "low": 0.13,
+        "high": 0.27,
+        "unit": "events/yr (regional)",
+        "as_of": "2026-09",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+            "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+          },
+          {
+            "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; PG, AA, Howard designated)",
+            "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+          },
+          {
+            "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+            "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+          },
+          {
+            "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "Derived, not a published statistic. Count of documented region-wide roof-threatening events found in this research for 2010-2026: Feb 2010 snowstorms (DR-1875), Jun 2012 derecho, Jan 2016 snowstorm (DR-4261) = 3 events in 17 years = 0.18/yr, i.e. ~3.5 per 20-year roof life. low = same 3 events spread over 2003-2026 (3/23 = 0.13/yr, a deliberate undercount). high = 0.18 + NRI PG hurricane annualized frequency 0.095 = 0.27/yr (~5.5 per 20 years) to include tropical remnants. Treat as an order-of-magnitude input for the 'expected storm events over 20 years' visual, not an actuarial rate. NCEI Storm Events database could refine this but was not reachable."
+      },
+      "severity_note": "These are the events that generate insurance claims and emergency repair calls across many buildings at once (contractor surge pricing).",
+      "fema_nri_rating": null,
+      "fema_nri_expected_annual_loss_building_usd": null,
+      "sources": [
+        {
+          "name": "FEMA PDA report FEMA-1875-DR-MD (Severe Winter Storm and Snowstorm, Feb 2010)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/PDAReport_FEMA-1875-DR-MD.pdf"
+        },
+        {
+          "name": "FEMA PDA report FEMA-4261-DR-MD (Severe Winter Storm and Snowstorm, Jan 22-23 2016; PG, AA, Howard designated)",
+          "url": "https://www.fema.gov/sites/default/files/2020-09/FEMA4261DRMD.pdf"
+        },
+        {
+          "name": "NOAA/NWS Service Assessment: The Historic Derecho of June 29, 2012",
+          "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+        }
+      ]
+    },
+    {
+      "peril": "Freeze-thaw cycling",
+      "annual_frequency": {
+        "value": null,
+        "low": null,
+        "high": null,
+        "unit": "cycles/yr",
+        "as_of": null,
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "NWS Sterling: BWI Normals, Means and Extremes (not reachable)",
+            "url": "https://www.weather.gov/lwx/bwinme"
+          }
+        ],
+        "note": "Not found. Tried NWS BWI normals (days with min <= 32F), MARISA cold-day tool, NCEI CDO; all blocked or not surfaced in search. Recommend pulling 1991-2020 BWI normals 'days min <= 32F' plus daily Tmax/Tmin crossings from NCEI GHCND USW00093721."
+      },
+      "severity_note": "Chronic, not event-driven: accelerates membrane seam, flashing and masonry parapet deterioration and opens small leaks that grow if not maintained. This is the main climate argument for biannual inspection in this market.",
+      "fema_nri_rating": null,
+      "fema_nri_expected_annual_loss_building_usd": null,
+      "sources": []
+    }
+  ],
+  "fema_nri": {
+    "county": "Prince George's County, MD (24033)",
+    "nri_version": "1.19.0 (March 2023)",
+    "overall_risk_rating": "Relatively Moderate",
+    "overall_risk_score": 94.6,
+    "building_value_usd": 135176296231.0,
+    "eal_building_all_hazards_usd": 52780905.0,
+    "hazards": {
+      "hail": {
+        "rating": "Very Low",
+        "annualized_frequency": 3.523,
+        "eal_building_usd": 1172.0
+      },
+      "strong_wind": {
+        "rating": "Relatively High",
+        "annualized_frequency": 7.0442,
+        "eal_building_usd": 808842.0
+      },
+      "tornado": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.3705,
+        "eal_building_usd": 2228338.0
+      },
+      "hurricane": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.0946,
+        "eal_building_usd": 47975741.0
+      },
+      "winter_weather": {
+        "rating": "Relatively High",
+        "annualized_frequency": 2.6943,
+        "eal_building_usd": 42784.0
+      },
+      "ice_storm": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.3557,
+        "eal_building_usd": 21572.0
+      },
+      "riverine_flooding": {
+        "rating": "Relatively Low",
+        "annualized_frequency": 3.4583,
+        "eal_building_usd": 132126.0
+      },
+      "coastal_flooding": {
+        "rating": "Relatively Low",
+        "annualized_frequency": 3.7067,
+        "eal_building_usd": 458147.0
+      },
+      "heat_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.9399,
+        "eal_building_usd": 0.0
+      },
+      "cold_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.0627,
+        "eal_building_usd": 672.0
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 65.7742,
+        "eal_building_usd": 59768.0
+      }
+    },
+    "sources": [
+      {
+        "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+        "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      }
+    ]
+  },
+  "fema_nri_other_counties": {
+    "24003": {
+      "county": "Anne Arundel County, MD (24003)",
+      "nri_version": "1.19.0 (March 2023)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 92.0,
+      "building_value_usd": 95235444621.0,
+      "eal_building_all_hazards_usd": 48967864.0,
+      "hazards": {
+        "hail": {
+          "rating": "Very Low",
+          "annualized_frequency": 3.8531,
+          "eal_building_usd": 4072.0
+        },
+        "strong_wind": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 8.0421,
+          "eal_building_usd": 499476.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.3188,
+          "eal_building_usd": 1699508.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.1039,
+          "eal_building_usd": 36142990.0
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "annualized_frequency": 2.9641,
+          "eal_building_usd": 93775.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.467,
+          "eal_building_usd": 15383.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 3.75,
+          "eal_building_usd": 225733.0
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 3.6581,
+          "eal_building_usd": 9403043.0
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 1.0116,
+          "eal_building_usd": 0.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.067,
+          "eal_building_usd": 473.0
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "annualized_frequency": 68.1766,
+          "eal_building_usd": 99491.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "24027": {
+      "county": "Howard County, MD (24027)",
+      "nri_version": "1.19.0 (March 2023)",
+      "overall_risk_rating": "Relatively Low",
+      "overall_risk_score": 80.4,
+      "building_value_usd": 65356838720.0,
+      "eal_building_all_hazards_usd": 14914838.0,
+      "hazards": {
+        "hail": {
+          "rating": "Very Low",
+          "annualized_frequency": 3.876,
+          "eal_building_usd": 4517.0
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "annualized_frequency": 7.6861,
+          "eal_building_usd": 573365.0
+        },
+        "tornado": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 0.1916,
+          "eal_building_usd": 1159184.0
+        },
+        "hurricane": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.0987,
+          "eal_building_usd": 11599367.0
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "annualized_frequency": 3.1776,
+          "eal_building_usd": 26763.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.8907,
+          "eal_building_usd": 30724.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 2.6667,
+          "eal_building_usd": 947931.0
+        },
+        "coastal_flooding": {
+          "rating": "Very Low",
+          "annualized_frequency": 0.01,
+          "eal_building_usd": 272.0
+        },
+        "heat_wave": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.8919,
+          "eal_building_usd": 0.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.0856,
+          "eal_building_usd": 358.0
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "annualized_frequency": 46.6081,
+          "eal_building_usd": 81984.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "24031": {
+      "county": "Montgomery County, MD (24031)",
+      "nri_version": "1.19.0 (March 2023)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 93.9,
+      "building_value_usd": 159125893132.0,
+      "eal_building_all_hazards_usd": 61536266.0,
+      "hazards": {
+        "hail": {
+          "rating": "Very Low",
+          "annualized_frequency": 4.1918,
+          "eal_building_usd": 15125.0
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "annualized_frequency": 7.8479,
+          "eal_building_usd": 1323671.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.3767,
+          "eal_building_usd": 2869843.0
+        },
+        "hurricane": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.0981,
+          "eal_building_usd": 55535690.0
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "annualized_frequency": 3.2105,
+          "eal_building_usd": 506.0
+        },
+        "ice_storm": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.628,
+          "eal_building_usd": 24028.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 5.0,
+          "eal_building_usd": 465926.0
+        },
+        "coastal_flooding": {
+          "rating": "Very Low",
+          "annualized_frequency": 0.01,
+          "eal_building_usd": 97.0
+        },
+        "heat_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.8706,
+          "eal_building_usd": 0.0
+        },
+        "cold_wave": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.0912,
+          "eal_building_usd": 913.0
+        },
+        "lightning": {
+          "rating": "Relatively High",
+          "annualized_frequency": 52.8973,
+          "eal_building_usd": 290441.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    },
+    "24005": {
+      "county": "Baltimore County, MD (24005)",
+      "nri_version": "1.19.0 (March 2023)",
+      "overall_risk_rating": "Relatively Moderate",
+      "overall_risk_score": 95.2,
+      "building_value_usd": 143629671938.0,
+      "eal_building_all_hazards_usd": 65145053.0,
+      "hazards": {
+        "hail": {
+          "rating": "Very Low",
+          "annualized_frequency": 4.0729,
+          "eal_building_usd": 5831.0
+        },
+        "strong_wind": {
+          "rating": "Relatively High",
+          "annualized_frequency": 8.5617,
+          "eal_building_usd": 784177.0
+        },
+        "tornado": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.4552,
+          "eal_building_usd": 3211884.0
+        },
+        "hurricane": {
+          "rating": "Relatively High",
+          "annualized_frequency": 0.113,
+          "eal_building_usd": 59336855.0
+        },
+        "winter_weather": {
+          "rating": "Relatively High",
+          "annualized_frequency": 3.5246,
+          "eal_building_usd": 23348.0
+        },
+        "ice_storm": {
+          "rating": "Relatively High",
+          "annualized_frequency": 1.1252,
+          "eal_building_usd": 31092.0
+        },
+        "riverine_flooding": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 5.2917,
+          "eal_building_usd": 512806.0
+        },
+        "coastal_flooding": {
+          "rating": "Relatively Low",
+          "annualized_frequency": 3.687,
+          "eal_building_usd": 15303.0
+        },
+        "heat_wave": {
+          "rating": "Very High",
+          "annualized_frequency": 0.9427,
+          "eal_building_usd": 0.0
+        },
+        "cold_wave": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 0.1019,
+          "eal_building_usd": 950.0
+        },
+        "lightning": {
+          "rating": "Relatively Moderate",
+          "annualized_frequency": 62.6496,
+          "eal_building_usd": 102925.0
+        }
+      },
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        }
+      ]
+    }
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": 7.9,
+      "low": -13.0,
+      "high": 20.4,
+      "unit": "%/yr premium change",
+      "as_of": "Q1 2023 - Q2 2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "CIAB Q1 2024 survey (commercial property +10.1%; Q1 2023 +20.4%)",
+          "url": "https://www.insurancejournal.com/news/national/2024/05/20/774982.htm"
+        },
+        {
+          "name": "CIAB Q4 2024 survey (commercial property +6.0%; Q3 2024 +7.9%; Q4 2023 +11.8%)",
+          "url": "https://www.insurancejournal.com/news/national/2025/02/20/812606.htm"
+        },
+        {
+          "name": "CIAB Q3 2025 survey (commercial property -0.2%, first decrease since Q2 2017)",
+          "url": "https://www.ciab.com/resources/soft-market-clear-in-q3-2025-according-to-the-council-of-insurance-agents-brokers-quarterly-p-c-market-survey/"
+        },
+        {
+          "name": "CIAB Q1 2026 Market Index (commercial property -5.5%; Q4 2025 -0.7%)",
+          "url": "https://www.ciab.com/api/protected-download/resource/3445"
+        },
+        {
+          "name": "Marsh Global Insurance Market Index Q2 2026 (US property -13%, 8th straight quarterly decline)",
+          "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"
+        }
+      ],
+      "note": "NATIONAL broker survey data; no Maryland-specific commercial property rate series found (Maryland Insurance Administration publishes homeowners, not commercial, rate data). CIAB quarterly average commercial property premium changes: 2023 Q1 +20.4, Q2 +18.3, Q3 +17.1, Q4 +11.8; 2024 Q1 +10.1, Q3 +7.9, Q4 +6.0; 2025 Q2 +1.9, Q3 -0.2, Q4 -0.7; 2026 Q1 -5.5. value = simple mean of those 11 quarters (7.9%), a full hard-to-soft cycle average. low = Marsh US property Q2 2026 (-13%); high = CIAB Q1 2023 (+20.4%). The market is currently soft (falling rates); a forward 20-yr default of 7.9% is aggressive. Consider a lower base trend with the roof-condition penalty doing the work. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "roof_age_underwriting": {
+      "text": "Carriers increasingly treat roof age and condition as a primary factor in insurability, pricing and terms. Common structure: roofs ~0-10 years old at replacement cost; 10+ years moved to a roof payment schedule (prorated by age); ~15+ years may be actual cash value (ACV) only for wind/hail. Maryland brokers note older buildings sometimes need roof (and electrical/plumbing) updates before a carrier will quote. Most published roof-schedule material describes personal lines; commercial roof schedules and ACV roof endorsements exist but thresholds are carrier-specific, so there is no Maryland-published standard. For PaxSeal: documented inspections and repair records are the evidence an underwriter asks for when a roof is past 10 years.",
+      "sources": [
+        {
+          "name": "Gerety Insurance: Maryland Commercial Property Insurance Gaps in 2026",
+          "url": "https://geretyinsurance.com/commercial-property-insurance-maryland-2026-gaps/"
+        },
+        {
+          "name": "Mansfield Insurance: Insurance settlement determined by age of roof (2025)",
+          "url": "https://mansfieldinsagency.com/blog/insurance-settlement-determined-by-age-of-roof/"
+        },
+        {
+          "name": "The Horton Group: Wind/Hail Deductibles and Roof Schedules",
+          "url": "https://www.thehortongroup.com/resources/wind-hail-deductibles-and-roof-schedules-what-you-need-to-know/"
+        },
+        {
+          "name": "Maryland Insurance Administration: homeowners rates (no commercial series)",
+          "url": "https://insurance.maryland.gov/Consumer/Pages/homeowners-rates.aspx"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "Percentage wind/hail deductibles are common in commercial property: typically 1%-5%, applied per building/location (endorsement removes the per-occurrence deductible), calculated on the building limit or on the loss depending on form (ISO CP 03 21 Windstorm or Hail Percentage Deductible). In this market hail is a Very Low NRI hazard, so the practical issue is named-storm/hurricane and windstorm deductibles for tropical remnants and derechos. No Maryland-specific survey of deductible levels found.",
+      "sources": [
+        {
+          "name": "The Horton Group: Wind/Hail Deductibles and Roof Schedules",
+          "url": "https://www.thehortongroup.com/resources/wind-hail-deductibles-and-roof-schedules-what-you-need-to-know/"
+        },
+        {
+          "name": "ISO form CP 03 21 Windstorm or Hail Percentage Deductible",
+          "url": "https://www.insurancexdate.com/insurance-forms/CP/CP-03-21/"
+        },
+        {
+          "name": "ReShield: Wind and Hail Deductibles in Commercial Property",
+          "url": "https://reshield.com/blog/wind-hail-deductibles-commercial-property/"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": 7.7,
+      "low": 7.5,
+      "high": 7.9,
+      "unit": "%",
+      "as_of": "Q4 2025 - Q1 2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "citybiz / REBusinessOnline: Baltimore Industrial Recalibration (Q1 2026): ~$1.1B volume, ~$142/sq ft, cap rates ~7.7%",
+          "url": "https://www.citybiz.co/article/838401/baltimore-industrial-recalibration-driven-by-new-supply-and-selective-leasing/"
+        },
+        {
+          "name": "CBRE: Baltimore Industrial Figures Q1 2026 (search excerpt: industrial cap rates averaged 7.5% in Q1 2026, down from 7.9% in Q4 2025; exact originating page among the search results not confirmed, possibly apartmentloanstore.com/baltimore/maryland/cap-rate)",
+          "url": "https://www.cbre.com/insights/figures/baltimore-industrial-figures-q1-2026"
+        }
+      ],
+      "note": "Baltimore metro (includes BWI/Anne Arundel and Howard submarkets). Market is softening: Q1 2026 reports put Baltimore industrial vacancy at ~8.5-8.7%, up ~100 bp year over year. CBRE/Cushman/JLL/Colliers submarket cap rates were not reachable. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "office": {
+      "value": 7.5,
+      "low": 6.0,
+      "high": 10.3,
+      "unit": "%",
+      "as_of": "2026-02",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Marcus & Millichap: 2026 Office Market Outlook and Highlights (national average office cap rate 7.5%; top assets near 6%)",
+          "url": "https://www.marcusmillichap.com/research/research-brief/2026/02/research-brief-february-2026-office-market-outlook-and-highlights"
+        },
+        {
+          "name": "Brexton CRE: Baltimore's Commercial Real Estate guide (Baltimore cap rates ~5.9% trophy to ~10.3% value-add, all types)",
+          "url": "https://www.brextoncre.com/post/baltimore-commercial-real-estate"
+        },
+        {
+          "name": "Colliers: Suburban Maryland Office Market Report Q3 2025 (vacancy 19.2%)",
+          "url": "https://www.colliers.com/en/research/washington-dc/suburban-maryland-office-market-report-2025-q3"
+        }
+      ],
+      "note": "No Baltimore/Suburban-MD office cap rate found. value = M&M NATIONAL average; low = M&M top-asset level; high = top of Baltimore all-property range. Suburban MD office vacancy of 19.2% implies local suburban office cap rates are likely at or above the national average. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "retail": {
+      "value": 6.55,
+      "low": 6.44,
+      "high": 6.8,
+      "unit": "%",
+      "as_of": "Q1 2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Apartment Loan Store: Cap Rates in Baltimore (cites CBRE Q1 2026: large retail centers 6.55%, small strip 6.44%, single-tenant net lease 6.80%)",
+          "url": "https://apartmentloanstore.com/baltimore/maryland/cap-rate"
+        },
+        {
+          "name": "CBRE U.S. Cap Rate Survey H2 2025 (primary; not reachable)",
+          "url": "https://www.cbre.com/insights/reports/us-cap-rate-survey-h2-2025"
+        }
+      ],
+      "note": "Second-hand citation of CBRE Baltimore figures via a lender website; verify against the CBRE Cap Rate Survey. Another aggregator reported a much higher Baltimore retail average (9.82%), so widen the sensitivity range if in doubt. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": 21,
+      "low": 16,
+      "high": 21,
+      "unit": "years",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "GSM Roofing: NRCA preventive-maintenance insights (attributes ~21 yr maintained vs ~13 yr unmaintained to NRCA)",
+          "url": "https://www.gsmroofing.com/news/nrcas-preventive-maintenance-tips-prolonging-the-life-of-commercial-roofs/"
+        },
+        {
+          "name": "North American Roofing: How long does a commercial roof last?",
+          "url": "https://naroofing.com/blog/how-long-does-a-commercial-roof-last/"
+        },
+        {
+          "name": "NRC Canada: Effective roof management - understanding the life cycle of your roof systems",
+          "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"
+        }
+      ],
+      "note": "value = the ~21 years commonly attributed to NRCA for a maintained low-slope membrane roof (secondary attribution; primary NRCA document not located). low = 13 yr reactive x 1.25, using NRC Canada's 'up to 25%' preventive-maintenance life extension (semiannual inspections + post-storm checks). Not climate-specific. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "reactive": {
+      "value": 13,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "GSM Roofing: NRCA preventive-maintenance insights",
+          "url": "https://www.gsmroofing.com/news/nrcas-preventive-maintenance-tips-prolonging-the-life-of-commercial-roofs/"
+        },
+        {
+          "name": "North American Roofing",
+          "url": "https://naroofing.com/blog/how-long-does-a-commercial-roof-last/"
+        }
+      ],
+      "note": "~13 years without a maintenance program, attributed to NRCA by contractor sources. No low/high found. Research-environment note: direct page fetches were blocked by the egress proxy; this figure was taken from the search-engine excerpt of the cited page, not a full read of the page."
+    },
+    "climate_note": "IECC climate zone 4A (mixed-humid). Roofs see hot humid summers (NRI heat wave Relatively High in PG/AA, Very High in Baltimore Co.), frequent summer thunderstorm wind (NRI ~7-8 strong-wind event-days/yr per county) and winter freeze-thaw with snow/ice (winter weather Relatively High in all five counties; ice storm Moderate-High). Freeze-thaw drives seam/flashing fatigue and ice-dam/ponding damage at drains; heat/UV drives membrane aging. No source was found that quantifies a Maryland-specific roof-life adjustment, so none is applied."
+  },
+  "code_triggers": {
+    "text": "(1) Code basis: Maryland Building Performance Standards (COMAR 09.12.51) require every jurisdiction to enforce the same I-code editions; the 2021 IBC/IRC/IECC/IEBC were adopted statewide effective May 29 2023, with local enforcement required by May 29 2024. Maryland published proposed 2024 I-code adoption in the Maryland Register on June 26 2026 (comments closed July 27 2026), so a 2024-code cycle is imminent. Howard County has already adopted the 2024 suite locally. (2) Recover limits (IBC 1511.3.1.1): a roof recover is NOT permitted where the existing roof/covering is water-soaked or deteriorated to the point it is not an adequate base, or where the existing roof already has two or more applications of any covering; in those cases a full tear-off is required. This is the direct link between neglect and cost: trapped moisture from unrepaired leaks turns a recover/restoration option into a full tear-off. (3) Energy code on re-roof (IECC C503.3.1, 2021): roof replacement on a roof with insulation entirely above deck must meet the prescriptive insulation (C402.1.3/.4/.5 or C407) for the climate zone (4A here); total R-value may not be reduced; minimum 1 in. at drains/scuppers. A Baltimore cost source cites R-25 to R-35 polyiso at $2.00-3.50/sq ft, a large add-on to a tear-off. (4) Damage thresholds: no Maryland- or county-specific percentage-of-damage rule forcing full replacement (like Florida's 25% rule) was found; IEBC repair provisions apply.",
+    "sources": [
+      {
+        "name": "Cornell LII: COMAR 09.12.51 Maryland Building Performance Standards",
+        "url": "https://www.law.cornell.edu/regulations/maryland/title-09/subtitle-12/chapter-09.12.51"
+      },
+      {
+        "name": "ICC NTA: Maryland Code Update - 2021 Code Adoption Cycle",
+        "url": "https://www.icc-nta.org/code-update/maryland-code-update-2021-code-cycle-adoption-information/"
+      },
+      {
+        "name": "Maryland DLI Building Codes Administration: What's New (2024 code proposal)",
+        "url": "https://www.labor.maryland.gov/labor/build/buildnews.shtml"
+      },
+      {
+        "name": "Maryland DLI: Current Adopted Building-Related Codes matrix",
+        "url": "https://labor.maryland.gov/labor/build/buildcodematrix.pdf"
+      },
+      {
+        "name": "Prince George's County DPIE: Building Codes & Bulletins",
+        "url": "https://www.princegeorgescountymd.gov/departments-offices/permitting-inspections-and-enforcement/about-dpie/resources/publications/building-codes-bulletins"
+      },
+      {
+        "name": "Anne Arundel County: History of Code Adoptions",
+        "url": "https://www.aacounty.org/sites/default/files/2023-05/history-of-code-adoptions.pdf"
+      },
+      {
+        "name": "Howard County: Adopted Codes",
+        "url": "https://www.howardcountymd.gov/inspections-licenses-permits/adopted-codes"
+      },
+      {
+        "name": "UpCodes: IBC Roof recover not allowed / Existing roofing (Sec. 1511)",
+        "url": "https://up.codes/s/existing-roofing"
+      },
+      {
+        "name": "City of Philadelphia FAQ on 2021 IECC C503.3.1 roof replacement (text of provision)",
+        "url": "https://www.phila.gov/media/20211115141957/PB_004_FAQ-Roof-Covering-Replacement_-Energy-Code-rev-11.10.21.pdf"
+      },
+      {
+        "name": "Commercial Roof Guide: Baltimore MD costs & codes",
+        "url": "https://commercialroofguide.com/states/maryland/baltimore/"
+      }
+    ]
+  },
+  "open_questions": [
+    "Replace contractor/aggregator $/sq ft with Patuxent Roofing job history by system (TPO, EPDM, mod bit, BUR, metal, coating) for 2024-2026, split tear-off vs recover and with/without insulation upgrade.",
+    "Location cost factor: pull the DoD Area Cost Factor for Fort Meade (UFC 3-701-01 Change 7) or buy RSMeans CCI for 3-digit zips 207/208 (Laurel) and 210-212 (Baltimore).",
+    "Re-verify every search-excerpt figure (cap rates, insurance, roof life, costs) by opening the pages from an unrestricted network before customer use.",
+    "Refresh FEMA NRI from v1.19 (Mar 2023) to v1.20 (Dec 2025) once hazards.fema.gov is reachable; search excerpts show ratings unchanged for PG (Relatively Moderate) and Howard (Relatively Low).",
+    "Count NCEI Storm Events for thunderstorm wind >= 65 kt, heavy snow and tropical events in PG/AA/Howard (e.g., 2000-2025) to replace the derived 'significant events' composite.",
+    "Freeze-thaw cycles per year at BWI (NCEI GHCND USW00093721) and any source quantifying freeze-thaw impact on membrane life.",
+    "Obtain CBRE H2 2025/H1 2026 Cap Rate Survey Baltimore figures directly (industrial, suburban office Class A/B, neighborhood/strip retail) and a Suburban Maryland (PG/Montgomery) office cap rate.",
+    "Maryland-specific commercial property rate trend (e.g., from a regional broker like Gerety or from MIA filings) and actual roof-age thresholds used by carriers writing MD commercial property.",
+    "Confirm current local code edition in PG and AA (2021 vs early 2024 adoption) and whether counties have amended IBC 1511 or IECC C503.3.1.",
+    "Find the primary NRCA (or RCI/manufacturer) document behind the '21 vs 13 years' maintained/unmaintained figure."
+  ]
+}

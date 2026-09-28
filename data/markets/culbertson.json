@@ -1,0 +1,1244 @@
+{
+  "id": "culbertson",
+  "name": "Culbertson (Northern Virginia)",
+  "state": "VA",
+  "counties": [
+    {
+      "name": "Prince William County",
+      "fips": "51153"
+    },
+    {
+      "name": "Manassas city",
+      "fips": "51683"
+    },
+    {
+      "name": "Fairfax County",
+      "fips": "51059"
+    },
+    {
+      "name": "Loudoun County",
+      "fips": "51107"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 9.0,
+      "low": 6.5,
+      "high": 11.5,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Roof Troopers - Roof Replacement Cost in Northern Virginia (2026 guide)",
+          "url": "https://roof-troopers.com/blog/roof-replacement-cost/"
+        },
+        {
+          "name": "Schoenherr Roofing - 2025 TPO Roofing Cost guide",
+          "url": "https://www.schoenherrroofing.com/blog/2025-tpo-roofing-cost-value-pros-cons/"
+        },
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "HomeGuide - 2026 TPO Roofing Cost",
+          "url": "https://homeguide.com/costs/tpo-roofing-cost"
+        },
+        {
+          "name": "Roof Observations - Virginia Roof Replacement Cost Guide (2026)",
+          "url": "https://roofobservations.com/virginia-roof-cost-guide/"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. Source ranges: NoVA (Roof Troopers) $5-15; Schoenherr $6.50-11.50; TRB 2026 $7-12; HomeGuide $4-10; national 2026 $6.50-9.50. value = median of range midpoints; low/high = median of range lows/highs. Roof Observations VA: ~$4 (ballasted TPO overlay, no insulation) to ~$15 (2-ply mod bit, insulated). Use the high end when full tear-off plus code insulation (R-30ci class) is required."
+    },
+    "epdm": {
+      "value": 8.0,
+      "low": 5.0,
+      "high": 10.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "FoxHaven Roofing - Flat Roof Replacement Cost 2025",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        },
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Constructionspedia - EPDM Roofing Cost Calculator 2026",
+          "url": "https://constructionspedia.com/epdm-roofing-cost-calculator/"
+        },
+        {
+          "name": "DeShazo and Son Roofing - Commercial Roof Installation Cost, Richmond VA",
+          "url": "https://www.deshazoandsonroofing.net/roofing-tips-blog/commercial-roof-installation-cost-richmond-va"
+        },
+        {
+          "name": "Roof Observations - Washington, D.C. Roof Replacement Cost Guide (2025)",
+          "url": "https://roofobservations.com/washington-dc-roof-cost-guide/"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. Ranges: FoxHaven $5-9; TRB 2026 $6-10; national 2026 $5.50-8.50; Constructionspedia $4-14; Richmond VA (DeShazo) $4.50-11.50. DC (Roof Observations) low end ~$5 for ballasted EPDM overlay without new insulation. value = median midpoint; low/high = median lows/highs."
+    },
+    "mod_bit": {
+      "value": 9.5,
+      "low": 6.0,
+      "high": 17.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "FoxHaven Roofing - Flat Roof Replacement Cost 2025",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        },
+        {
+          "name": "Roof Observations - Washington, D.C. Roof Replacement Cost Guide (2025)",
+          "url": "https://roofobservations.com/washington-dc-roof-cost-guide/"
+        },
+        {
+          "name": "Roof Observations - Virginia Roof Replacement Cost Guide (2026)",
+          "url": "https://roofobservations.com/virginia-roof-cost-guide/"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. Ranges: FoxHaven $4-8; TRB 2026 $7-12; national 2026 $6-9. Local top end: ~$15 (VA) and ~$17 (DC) for 2-ply mod bit with code-level insulation (Roof Observations). value = TRB 2026 midpoint, chosen because DC-metro local sources sit above national midpoints; high = DC insulated 2-ply."
+    },
+    "bur": {
+      "value": 8.9,
+      "low": 7.5,
+      "high": 11.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Durable Rooftop Solutions - Cost to Replace Commercial Roof (2026)",
+          "url": "https://www.durablerooftopsolutions.com/learn/commercial-roofing/cost-to-replace-commercial-roof"
+        },
+        {
+          "name": "Estimero - Commercial Roof Replacement Cost Calculator",
+          "url": "https://www.estimero.com/cost-calculators/commercial-roof-replacement"
+        },
+        {
+          "name": "Windward Roofing - Commercial Roof Replacement Cost 2026",
+          "url": "https://windwardroofing.com/blog/commercial-roof-cost-guide"
+        },
+        {
+          "name": "General Roofing Co. - Commercial Roof Replacement Cost (California, 2026)",
+          "url": "https://generalroof.com/commercial-roof-replacement-cost-per-square-foot/"
+        },
+        {
+          "name": "FoxHaven Roofing - Flat Roof Replacement Cost 2025",
+          "url": "https://foxhavenroof.com/flat-roof-replacement-cost-2025-complete-pricing-guide/"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. Ranges: vendor-neutral 2026 $7.91-9.82; $7-11; $6.50-11; $8-14; CA $8-12; FoxHaven $3-6 (outlier, likely materials-heavy). value = median midpoint; low/high = median lows/highs. Tear-off adds ~$1.00-2.50/sq ft per layer (multi-layer can double). No NoVA-specific BUR quote found."
+    },
+    "metal": {
+      "value": 14.0,
+      "low": 10.0,
+      "high": 22.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "Hope's Metal Roofing (Lynchburg VA) - commercial standing seam cost",
+          "url": "https://hopesmetalroofingva.com/how-much-does-it-cost-to-install-a-standing-seam-metal-roof-on-a-commercial-building/"
+        },
+        {
+          "name": "Modern Day Roofing - Metal Roof Cost in Virginia 2026",
+          "url": "https://moderndayroof.com/blog/metal-roof-cost-virginia-2026"
+        },
+        {
+          "name": "Angi - Standing Seam Metal Roof Cost",
+          "url": "https://www.angi.com/articles/how-much-does-it-cost-install-standing-seam-metal-roof.htm"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. Ranges: TRB 2026 $14-22; standing seam $10-16 and $11-15; $8-21 with $14 average; Lynchburg VA commercial average $16.74; SW Virginia $10-14. value = cited $14 average; standing seam over low-slope requires structural review."
+    },
+    "coating_restoration": {
+      "value": 4.0,
+      "low": 1.5,
+      "high": 7.0,
+      "unit": "$/sq ft",
+      "as_of": "2025-2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "West Roofing Systems - Cost of a silicone roof coating system",
+          "url": "https://www.westroofingsystems.com/cost-of-silicone-roof-coating-system"
+        },
+        {
+          "name": "No Tear Off Roofing - Silicone Roof Coating Cost Guide 2026",
+          "url": "https://notearoffroofing.com/silicone-roof-coating-cost/"
+        },
+        {
+          "name": "The Roofing Brief - Roof Coating Types and Cost 2026",
+          "url": "https://theroofingbrief.com/roof-coating-types-and-cost/"
+        }
+      ],
+      "note": "Contractor/blog ranges, installed $/sq ft. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page. NOT a tear-off: fluid-applied restoration over a sound existing roof. Silicone $2.50-5 installed (metal roof restoration $2.50-5); silicone systems $3.50-7 (July 2026); acrylic $1.50-3. value = silicone midpoint. Only applicable when core samples/infrared show limited wet insulation."
+    }
+  },
+  "location_cost_factor": {
+    "value": 1.08,
+    "low": 1.0,
+    "high": null,
+    "unit": "index (national=1.00)",
+    "as_of": "2021",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "USACE DoD Area Cost Factors (ACF) PAX Newsletter 3.2.1, 21 May 2021",
+        "url": "https://www.usace.army.mil/Portals/2/DOD%20Area%20Cost%20Factors%20(ACF)%20PAX%20Newsletter%203_2_1,%20Dated%2021%20May%202021%20(1).pdf"
+      },
+      {
+        "name": "USACE DoD ACF PAX Newsletter 3.2.1, 25 Mar 2015",
+        "url": "https://www.usace.army.mil/Portals/2/docs/2015_PAX_3.2.1_DoD_Area_Cost%20Factors_dated_25%20Mar_%2015_Final.pdf"
+      },
+      {
+        "name": "USACE DoD ACF PAX Newsletter 3.2.1, 29 Mar 2024 (current; Fort Belvoir value not retrieved)",
+        "url": "https://usace.contentdm.oclc.org/digital/api/collection/p16021coll8/id/4495/download"
+      }
+    ],
+    "note": "Proxy: DoD Area Cost Factor for Fort Belvoir (Fairfax County) = 1.08 in the May 2021 ACF table; 1.00 in the 2015 table (used as low). DoD ACF is a military-construction location factor, not an RSMeans City Cost Index; RSMeans DC/Fairfax/Manassas values are paywalled and were not found. The 2024 table lists a Virginia state average of 0.88 (which is weighted toward lower-cost Hampton Roads/rural installations). Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.4,
+      "low": 1.9,
+      "high": 8.9,
+      "unit": "%/yr",
+      "as_of": "2024-12",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X monthly values 2008-01..2025-04 (GitHub mirror of BLS data, downloaded)",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED - PPI by Industry: Roofing Contractors, Nonresidential Building Work (PCU23816X23816X), Dec 2007=100",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "NATIONAL index, not Virginia-specific. CAGR of BLS PPI Roofing Contractors, Nonresidential Building Work: Dec 2014 126.2 -> Dec 2024 212.901 = 5.37%/yr. Cross-check Dec 2015 128.5 -> Dec 2025 224.789 (Dec 2025 value from FRED via search extract) = 5.75%/yr. low = Dec 2008->Dec 2019 CAGR (112.6->138.8, 1.9%/yr, pre-pandemic); high = Dec 2019->Dec 2024 CAGR (138.8->212.901, 8.9%/yr, includes 2021 +21.1% and 2022 +9.0% spikes). Recent: Dec 2023->Dec 2024 +3.1%."
+    },
+    "annual_pct_20yr": {
+      "value": 4.5,
+      "low": 1.9,
+      "high": 5.75,
+      "unit": "%/yr",
+      "as_of": "2024-12",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X monthly values 2008-01..2025-04 (GitHub mirror of BLS data, downloaded)",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED - PPI by Industry: Roofing Contractors, Nonresidential Building Work (PCU23816X23816X), Dec 2007=100",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "NATIONAL index. Series only begins Dec 2007 (=100), so a true 20-year figure is not available; longest span Dec 2007->Dec 2024 = 4.55%/yr (Dec 2007->Dec 2025 at 224.789 = 4.6%/yr). low = 2008-2019 CAGR; high = 10-yr Dec15-Dec25 rate. Contractor commentary (TRB 2026) reports 4-7% YoY like-for-like increases, labor +5-8%/yr (low confidence)."
+    }
+  },
+  "perils": [
+    {
+      "peril": "Severe thunderstorm wind / derecho (NRI 'Strong Wind')",
+      "annual_frequency": {
+        "value": 7.126,
+        "low": 7.07,
+        "high": 7.777,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 7.777, 'Loudoun': 7.691, 'Prince William': 7.126, 'Manassas city': 7.07}. Four-county EAL to buildings = $2,832,931/yr on $373.3B building value = $7.59 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "The dominant recurring roof peril: membrane blow-off, perimeter/edge-metal and flashing failure, debris and tree impact. Benchmark event: 29 June 2012 derecho, 71 mph gust at Dulles, 65-75 mph gusts across suburban Washington, >1 million Virginians without power (NOAA SPC / NWS assessment, via search extract - unverified). NRI rates Strong Wind 'Relatively High' in Prince William, Fairfax and Loudoun.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 917254,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        },
+        {
+          "name": "NOAA SPC - The Ohio Valley / Mid-Atlantic Derecho of June 2012",
+          "url": "https://www.spc.noaa.gov/misc/AbtDerechos/casepages/jun292012page.htm"
+        },
+        {
+          "name": "NWS Service Assessment - The Historic Derecho of June 29, 2012",
+          "url": "https://www.weather.gov/media/publications/assessments/derecho12.pdf"
+        }
+      ]
+    },
+    {
+      "peril": "Hail",
+      "annual_frequency": {
+        "value": 3.776,
+        "low": 3.766,
+        "high": 3.922,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 3.912, 'Loudoun': 3.922, 'Prince William': 3.776, 'Manassas city': 3.766}. Four-county EAL to buildings = $6,287,126/yr on $373.3B building value = $16.84 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Mostly small hail; rated Relatively Moderate (PWC, Loudoun) to Relatively High (Fairfax) in NRI Dec 2025. Aged or blistered BUR/mod-bit and older single-ply are most vulnerable; cosmetic-damage exclusions (CP 10 36) can limit recovery.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 1009793,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Winter weather (heavy snow, snow load, ice dams)",
+      "annual_frequency": {
+        "value": 9.477,
+        "low": 9.477,
+        "high": 12.331,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 9.744, 'Loudoun': 12.331, 'Prince William': 9.477, 'Manassas city': 9.526}. Four-county EAL to buildings = $375,149/yr on $373.3B building value = $1.0 per $1M of building value per year (all building damage from this hazard, not roof-only). Note: NRI Winter Weather frequency changed from 2.84/yr (Mar 2023 v1.19) to 9.48/yr (Dec 2025 v1.20) for PWC due to a methodology change, not a climate shift."
+      },
+      "severity_note": "NRI Dec 2025 rates Winter Weather 'Relatively High' (PWC, Loudoun) / 'Very High' (Fairfax). Roof relevance: drift and ponding loads on low-slope roofs, drain blockage, ice damming at parapets/scuppers, and freeze-thaw of trapped moisture. Building EAL is small because NRI counts few structural losses; roof-maintenance consequences (leaks) are under-counted.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 52648,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Ice storm",
+      "annual_frequency": {
+        "value": 0.547,
+        "low": 0.536,
+        "high": 0.583,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 0.556, 'Loudoun': 0.583, 'Prince William': 0.547, 'Manassas city': 0.536}. Four-county EAL to buildings = $755,271/yr on $373.3B building value = $2.02 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "About one ice-storm event every ~2 years county-wide. Ice loading, limb fall onto roofs, and drain freeze-up.",
+      "fema_nri_rating": "Relatively Low",
+      "fema_nri_expected_annual_loss_building_usd": 145131,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Tornado",
+      "annual_frequency": {
+        "value": 0.248,
+        "low": 0.007,
+        "high": 0.346,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 0.298, 'Loudoun': 0.346, 'Prince William': 0.248, 'Manassas city': 0.007}. Four-county EAL to buildings = $5,378,770/yr on $373.3B building value = $14.41 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Infrequent (~1 per 4 years county-wide in PWC; near zero within Manassas city limits) but high severity when it hits.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 1742967,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Hurricane / tropical-storm remnants",
+      "annual_frequency": {
+        "value": 0.082,
+        "low": 0.081,
+        "high": 0.094,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 0.091, 'Loudoun': 0.094, 'Prince William': 0.082, 'Manassas city': 0.081}. Four-county EAL to buildings = $24,554,553/yr on $373.3B building value = $65.78 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Roughly one tropical system affecting the area every 11-12 years; wind-driven rain and gusts on remnants. Largest single wind-type contributor to building EAL in the four counties. NRI rating Relatively Moderate (PWC, Fairfax) / Relatively Low (Loudoun, Manassas).",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 3932647,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Inland (riverine/flash) flooding",
+      "annual_frequency": {
+        "value": 3.429,
+        "low": 0.571,
+        "high": 5.821,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 5.821, 'Loudoun': 3.036, 'Prince William': 3.429, 'Manassas city': 0.571}. Four-county EAL to buildings = $238,260,039/yr on $373.3B building value = $638.25 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Largest building EAL by far, but it is ground-level flood loss and not a roof peril. Include only for drainage/overflow scupper discussions; exclude from roof storm-damage math.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 44035759,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Cold wave",
+      "annual_frequency": {
+        "value": 1.361,
+        "low": 1.361,
+        "high": 1.756,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 1.362, 'Loudoun': 1.756, 'Prince William': 1.361, 'Manassas city': 1.368}. Four-county EAL to buildings = $449,626/yr on $373.3B building value = $1.2 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Supports freeze-thaw and thermal-cycling stress on membranes and flashings; low direct building loss.",
+      "fema_nri_rating": "Very Low",
+      "fema_nri_expected_annual_loss_building_usd": 63238,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    },
+    {
+      "peril": "Heat wave",
+      "annual_frequency": {
+        "value": 5.703,
+        "low": 4.516,
+        "high": 5.88,
+        "unit": "events/yr (county)",
+        "as_of": "2025-12",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+            "url": "https://hazards.fema.gov/nri/data-resources"
+          },
+          {
+            "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+          },
+          {
+            "name": "NRI data dictionary v1.20.0 (mirror)",
+            "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+          }
+        ],
+        "note": "FEMA NRI Dec 2025 annualized frequency = recorded events (or event-days) per year affecting the county, not hits on a single building. Value = Prince William County (Culbertson HQ county); low/high = range across the four counties {'Fairfax': 5.88, 'Loudoun': 4.516, 'Prince William': 5.703, 'Manassas city': 5.789}. Four-county EAL to buildings = $1,425/yr on $373.3B building value = $0.0 per $1M of building value per year (all building damage from this hazard, not roof-only). "
+      },
+      "severity_note": "Humid, hot summers add UV/thermal aging, especially on dark EPDM/BUR; negligible direct building loss in NRI.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 241,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+          "url": "https://hazards.fema.gov/nri/data-resources"
+        },
+        {
+          "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "NRI data dictionary v1.20.0 (mirror)",
+          "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+        }
+      ]
+    }
+  ],
+  "fema_nri": {
+    "county": "Prince William County, VA (51153)",
+    "nri_version": "v1.20.0, December 2025",
+    "overall_risk_rating": "Relatively Moderate",
+    "expected_annual_loss_rating": "Relatively Moderate",
+    "building_value_usd": 62031821360,
+    "eal_building_total_usd": 53997936,
+    "hazards": {
+      "hail": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.776,
+        "eal_building_usd": 1009793
+      },
+      "strong_wind": {
+        "rating": "Relatively High",
+        "annualized_frequency": 7.126,
+        "eal_building_usd": 917254
+      },
+      "tornado": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.248,
+        "eal_building_usd": 1742967
+      },
+      "hurricane": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.082,
+        "eal_building_usd": 3932647
+      },
+      "winter_weather": {
+        "rating": "Relatively High",
+        "annualized_frequency": 9.477,
+        "eal_building_usd": 52648
+      },
+      "ice_storm": {
+        "rating": "Relatively Low",
+        "annualized_frequency": 0.547,
+        "eal_building_usd": 145131
+      },
+      "riverine_flooding": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.429,
+        "eal_building_usd": 44035759
+      },
+      "coastal_flooding": {
+        "rating": "Relatively Low",
+        "annualized_frequency": 3.735,
+        "eal_building_usd": 109762
+      },
+      "heat_wave": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 5.703,
+        "eal_building_usd": 241
+      },
+      "cold_wave": {
+        "rating": "Very Low",
+        "annualized_frequency": 1.361,
+        "eal_building_usd": 63238
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 41.112,
+        "eal_building_usd": 62858
+      }
+    },
+    "note": "'riverine_flooding' holds NRI v1.20 'Inland Flooding' (IFLD), which replaced Riverine Flooding in the Dec 2025 release. cold_wave and lightning added beyond the schema list. Other counties in all_counties.",
+    "sources": [
+      {
+        "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      },
+      {
+        "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "NRI data dictionary v1.20.0 (mirror)",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+      }
+    ],
+    "all_counties": [
+      {
+        "county": "Prince William",
+        "fips": "51153",
+        "overall_risk_rating": "Relatively Moderate",
+        "eal_rating": "Relatively Moderate",
+        "building_value_usd": 62031821360,
+        "eal_building_total_usd": 53997936,
+        "hazards": {
+          "hail": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 3.776,
+            "eal_building_usd": 1009793
+          },
+          "strong_wind": {
+            "rating": "Relatively High",
+            "annualized_frequency": 7.126,
+            "eal_building_usd": 917254
+          },
+          "tornado": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.248,
+            "eal_building_usd": 1742967
+          },
+          "hurricane": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.082,
+            "eal_building_usd": 3932647
+          },
+          "winter_weather": {
+            "rating": "Relatively High",
+            "annualized_frequency": 9.477,
+            "eal_building_usd": 52648
+          },
+          "ice_storm": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.547,
+            "eal_building_usd": 145131
+          },
+          "riverine_flooding": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 3.429,
+            "eal_building_usd": 44035759
+          },
+          "coastal_flooding": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 3.735,
+            "eal_building_usd": 109762
+          },
+          "heat_wave": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 5.703,
+            "eal_building_usd": 241
+          },
+          "cold_wave": {
+            "rating": "Very Low",
+            "annualized_frequency": 1.361,
+            "eal_building_usd": 63238
+          },
+          "lightning": {
+            "rating": "Relatively High",
+            "annualized_frequency": 41.112,
+            "eal_building_usd": 62858
+          }
+        }
+      },
+      {
+        "county": "Manassas city",
+        "fips": "51683",
+        "overall_risk_rating": "Very Low",
+        "eal_rating": "Very Low",
+        "building_value_usd": 7000910027,
+        "eal_building_total_usd": 5686564,
+        "hazards": {
+          "hail": {
+            "rating": "Very Low",
+            "annualized_frequency": 3.766,
+            "eal_building_usd": 115279
+          },
+          "strong_wind": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 7.07,
+            "eal_building_usd": 223383
+          },
+          "tornado": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.007,
+            "eal_building_usd": 282177
+          },
+          "hurricane": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.081,
+            "eal_building_usd": 399880
+          },
+          "winter_weather": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 9.526,
+            "eal_building_usd": 6026
+          },
+          "ice_storm": {
+            "rating": "Very Low",
+            "annualized_frequency": 0.536,
+            "eal_building_usd": 12994
+          },
+          "riverine_flooding": {
+            "rating": "Very Low",
+            "annualized_frequency": 0.571,
+            "eal_building_usd": 4268474
+          },
+          "coastal_flooding": {
+            "rating": "Not Applicable",
+            "annualized_frequency": null,
+            "eal_building_usd": null
+          },
+          "heat_wave": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 5.789,
+            "eal_building_usd": 27
+          },
+          "cold_wave": {
+            "rating": "Very Low",
+            "annualized_frequency": 1.368,
+            "eal_building_usd": 54264
+          },
+          "lightning": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 41.04,
+            "eal_building_usd": 7502
+          }
+        }
+      },
+      {
+        "county": "Fairfax",
+        "fips": "51059",
+        "overall_risk_rating": "Relatively High",
+        "eal_rating": "Relatively High",
+        "building_value_usd": 239078583329,
+        "eal_building_total_usd": 185784173,
+        "hazards": {
+          "hail": {
+            "rating": "Relatively High",
+            "annualized_frequency": 3.912,
+            "eal_building_usd": 4017135
+          },
+          "strong_wind": {
+            "rating": "Relatively High",
+            "annualized_frequency": 7.777,
+            "eal_building_usd": 1281537
+          },
+          "tornado": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.298,
+            "eal_building_usd": 954406
+          },
+          "hurricane": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.091,
+            "eal_building_usd": 17478888
+          },
+          "winter_weather": {
+            "rating": "Very High",
+            "annualized_frequency": 9.744,
+            "eal_building_usd": 224918
+          },
+          "ice_storm": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.556,
+            "eal_building_usd": 571426
+          },
+          "riverine_flooding": {
+            "rating": "Relatively High",
+            "annualized_frequency": 5.821,
+            "eal_building_usd": 152745731
+          },
+          "coastal_flooding": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 3.762,
+            "eal_building_usd": 228044
+          },
+          "heat_wave": {
+            "rating": "Relatively High",
+            "annualized_frequency": 5.88,
+            "eal_building_usd": 952
+          },
+          "cold_wave": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 1.362,
+            "eal_building_usd": 245840
+          },
+          "lightning": {
+            "rating": "Very High",
+            "annualized_frequency": 40.936,
+            "eal_building_usd": 219259
+          }
+        }
+      },
+      {
+        "county": "Loudoun",
+        "fips": "51107",
+        "overall_risk_rating": "Relatively Low",
+        "eal_rating": "Relatively Moderate",
+        "building_value_usd": 65192755215,
+        "eal_building_total_usd": 46021784,
+        "hazards": {
+          "hail": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 3.922,
+            "eal_building_usd": 1144919
+          },
+          "strong_wind": {
+            "rating": "Relatively High",
+            "annualized_frequency": 7.691,
+            "eal_building_usd": 410757
+          },
+          "tornado": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.346,
+            "eal_building_usd": 2399220
+          },
+          "hurricane": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.094,
+            "eal_building_usd": 2743138
+          },
+          "winter_weather": {
+            "rating": "Relatively High",
+            "annualized_frequency": 12.331,
+            "eal_building_usd": 91557
+          },
+          "ice_storm": {
+            "rating": "Very Low",
+            "annualized_frequency": 0.583,
+            "eal_building_usd": 25720
+          },
+          "riverine_flooding": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 3.036,
+            "eal_building_usd": 37210075
+          },
+          "coastal_flooding": {
+            "rating": "Not Applicable",
+            "annualized_frequency": null,
+            "eal_building_usd": null
+          },
+          "heat_wave": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 4.516,
+            "eal_building_usd": 205
+          },
+          "cold_wave": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 1.756,
+            "eal_building_usd": 86284
+          },
+          "lightning": {
+            "rating": "Relatively High",
+            "annualized_frequency": 38.498,
+            "eal_building_usd": 85233
+          }
+        }
+      }
+    ]
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": -6.3,
+      "low": -13.0,
+      "high": 20.4,
+      "unit": "% change in premium (quarter, YoY)",
+      "as_of": "2026-Q2",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "CIAB Q2 2026 P&C Market Survey",
+          "url": "https://www.ciab.com/resources/q2-2026-pc-market-survey"
+        },
+        {
+          "name": "Insurance Journal - CIAB Survey: Overall Soft Market Conditions Continue in Q2 (Aug 2026)",
+          "url": "https://www.insurancejournal.com/news/national/2026/08/20/882240.htm"
+        },
+        {
+          "name": "Unico Group - Q1 2026 P&C Market Index: average premiums decrease first time since 2017",
+          "url": "https://unicogroup.com/q1-2026-pc-market-index-average-premiums-decrease-first-time-since-2017/"
+        },
+        {
+          "name": "CIAB Q3 2025 P/C Market Survey",
+          "url": "https://www.ciab.com/resources/soft-market-clear-in-q3-2025-according-to-the-council-of-insurance-agents-brokers-quarterly-p-c-market-survey/"
+        },
+        {
+          "name": "CIAB Q2 2025 P&C Market Survey",
+          "url": "https://www.ciab.com/resources/q2-2025-p-c-market-survey"
+        },
+        {
+          "name": "Risk & Insurance - Commercial Insurance Premiums Rise Steadily in Q4 2024: CIAB",
+          "url": "https://riskandinsurance.com/commercial-insurance-premiums-rise-steadily-in-q4-2024-ciab/"
+        },
+        {
+          "name": "Insurance Journal - Q3 2023 CIAB",
+          "url": "https://www.insurancejournal.com/news/national/2023/11/30/750039.htm"
+        },
+        {
+          "name": "Captive.com - Commercial Property Passed Cyber for Largest Premium Increases in Q4 (2022)",
+          "url": "https://www.captive.com/news/commercial-property-passed-cyber-for-largest-premium-increases-in-q4"
+        },
+        {
+          "name": "Marsh Q2 2026 Global Insurance Market Index",
+          "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"
+        }
+      ],
+      "note": "NATIONAL broker surveys; no Virginia-specific commercial property index found. CIAB average commercial property premium change: Q4 2022 +16.0%; 2023 Q1 +20.4%, Q2 +18.3%, Q3 +17.1%, Q4 +11.8%; 2024 Q3 +7.9%, Q4 +6.0%; 2025 Q2 +1.9%, Q3 -0.2% (first decline since Q2 2017), Q4 -0.7%; 2026 Q1 -5.5%, Q2 -6.3%. Marsh: US property rates -13% in Q2 2026 (8th straight quarterly decline). value = latest CIAB (Q2 2026); low = Marsh Q2 2026; high = CIAB Q1 2023 peak. Do NOT compound the current soft-market decline for 20 years; property pricing is cyclical. A NoVA broker page (abpinsurance.com) claims well-maintained, claims-free properties see reductions approaching -15% while deferred-maintenance properties get flat/modest increases (low confidence, marketing). Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page."
+    },
+    "roof_age_underwriting": {
+      "text": "Commercial carriers use ISO CP 10 36 'Limitations on Coverage for Roof Surfacing' (introduced in ISO's 2012 filing) or carrier variants to (1) switch roof surfacing from replacement cost to actual cash value and/or (2) exclude cosmetic wind/hail damage (cosmetic exclusion not approved in every state). 'Aged roof' endorsements commonly convert RCV to ACV at a trigger age of 10, 15 or 20 years depending on carrier/state; some use payment schedules (e.g., 100% at 0-5 yrs, 80% at 6-10 yrs). Documented inspection/maintenance records are viewed favorably at renewal. No Virginia-specific commercial roof-age rule or statute was found; thresholds are carrier-specific. Sources are mostly trade press/broker content retrieved via search extracts (unverified).",
+      "sources": [
+        {
+          "name": "Insurance Journal - Beware These Commercial Property Endorsements! (Sept 2026)",
+          "url": "https://www.insurancejournal.com/magazines/mag-features/2026/09/07/883930.htm"
+        },
+        {
+          "name": "Adjusters International - Recent Revisions to ISO Commercial Property Coverage Forms",
+          "url": "https://www.adjustersinternational.com/pubs/adjusting-today/be-aware-of-recent-revisions-to-iso-commercial-property-coverage-forms/"
+        },
+        {
+          "name": "Sample ISO CP 10 36 10 12 form",
+          "url": "https://www.mibsga.com/wp-content/uploads/2024/03/roof.pdf"
+        },
+        {
+          "name": "Higginbotham - Commercial roof limitation endorsements",
+          "url": "https://www.higginbotham.com/blog/commercial-roof-limitation-endorsements/"
+        },
+        {
+          "name": "The Roofing Brief - Actual Cash Value Roof (aged-roof trigger ages)",
+          "url": "https://theroofingbrief.com/actual-cash-value-roof/"
+        },
+        {
+          "name": "Carter Family Insurance - ACV vs Roof Payment Schedule",
+          "url": "https://carterfamilyinsurance.com/2025/04/26/acv-vs-roof-payment-schedule-whats-the-difference-and-why-it-matters/"
+        },
+        {
+          "name": "ABP Insurance - Virginia Commercial Property Insurance (broker page)",
+          "url": "https://www.abpinsurance.com/commercial-insurance-virginia/commercial-property"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "No Northern Virginia commercial-specific source found. Sources located describe percentage wind/hail deductibles of 0.5% or 1% of the insured building limit as common (e.g., 1% on $500,000 = $5,000), mostly in homeowners contexts. NoVA is inland (NRI coastal flooding Low/N.A.) so named-storm percentage deductibles typical of Hampton Roads are less likely, but this is unverified. Treat as an open question for PAX's insurance broker contacts.",
+      "sources": [
+        {
+          "name": "Ohio Insurance Agents - Analyzing roofing policy changes (percentage wind/hail deductibles)",
+          "url": "https://ohioinsuranceagents.com/blog/2025/analyzing-roofing-policy-changes-in-homeowners-insurance/"
+        },
+        {
+          "name": "Mansfield Insurance Agency - Insurance settlement determined by age of roof (2025)",
+          "url": "https://mansfieldinsagency.com/blog/insurance-settlement-determined-by-age-of-roof/"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": 6.44,
+      "low": 5.7,
+      "high": 7.5,
+      "unit": "%",
+      "as_of": "2025",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Serafin Real Estate - Mid-Year 2025 Northern Virginia CRE Report",
+          "url": "https://serafinre.com/2025-mid-year-northern-virginia-commercial-real-estate-report/"
+        },
+        {
+          "name": "Serafin Real Estate - Northern Virginia CRE Q3 2025 Market Report",
+          "url": "https://serafinre.com/northern-virginia-commercial-real-estate-q3-2025-market-report-serafin-real-estate/"
+        },
+        {
+          "name": "My Location Advisor (D. Senyurt, CCIM) - Industrial cap rates in Northern Virginia (2024 by submarket)",
+          "url": "https://mylocationadvisor.com/understanding-cap-rates-in-industrial-real-estate-a-guide-for-investors-and-property-owners-in-northern-virginia/"
+        },
+        {
+          "name": "Loudoun County Assessor - 439 Warehouse Class C Base Cap Rate Development 1/1/2026",
+          "url": "https://www.loudoun.gov/DocumentCenter/View/219226/439-Warehouse-Class-C-BenchmarkCapRateDevel-for-2026-PDF"
+        },
+        {
+          "name": "Loudoun County Assessor - 444 Flex Warehouse Base Cap Rate Development 1/1/2026",
+          "url": "https://www.loudoun.gov/DocumentCenter/View/219227/444-Flex-warehouse-2026-Guideline-PDF"
+        },
+        {
+          "name": "CBRE U.S. Cap Rate Survey H1 2026 (metro tables not retrieved)",
+          "url": "https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026"
+        }
+      ],
+      "note": "value = Serafin Mid-Year 2025 NoVA average cap rate 6.44% (search extract ties it to the industrial market; asset class not fully verified). Other points: Loudoun industrial cap rates fell to 5.93% in Q3 2025 at ~$330/sf (Serafin); 2024 submarket range 6.0% (Reston) to 7.5% (Woodbridge, Prince William), Tysons/Merrifield 6.8-6.9% (MLA); Loudoun assessor 2026 Class C warehouse benchmark 5.70% (range 5.00-6.30%) and flex warehouse survey range 6.00-8.00%. low = Loudoun Class C benchmark; high = Woodbridge 2024. DATA CENTER CAVEAT: Loudoun and Prince William are the world's largest data-center markets; land/pricing competition from data centers compresses Loudoun industrial cap rates and pricing, so Loudoun figures likely understate cap rates for ordinary warehouses. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page."
+    },
+    "office": {
+      "value": 8.36,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": "2025-Q3",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Loudoun County Assessor - (461) Office Class B Base Cap Rate Development 1/1/2026",
+          "url": "https://www.loudoun.gov/DocumentCenter/View/219237/461-Class-B-Office-2026-Guidelines-PDF"
+        },
+        {
+          "name": "CBRE U.S. Cap Rate Survey H1 2026 (metro tables not retrieved)",
+          "url": "https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026"
+        }
+      ],
+      "note": "Loudoun County assessor's 1/1/2026 Class B office base cap rate 8.36%, based on the PwC Real Estate Investor Survey (Northern Virginia office), 3rd quarter. No low/high found in the sources retrieved; NoVA office is distressed (high vacancy), so Class B/C trades can clear well above this. Class A likely lower. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page."
+    },
+    "retail": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "Loudoun County Assessor - 2026 Shopping Center Guideline (428-429 Retail; value not extracted)",
+          "url": "https://www.loudoun.gov/DocumentCenter/View/219224/428---429-Retail-2026-Guidelines-PDF"
+        },
+        {
+          "name": "Marcus & Millichap - Manassas Junction sale (May 2026)",
+          "url": "https://www.marcusmillichap.com/news-events/press/2026/05/5-26-manassas-junction"
+        },
+        {
+          "name": "CBRE U.S. Cap Rate Survey H1 2026 (metro tables not retrieved)",
+          "url": "https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026"
+        }
+      ],
+      "note": "No usable Northern Virginia retail cap rate retrieved. Tried: Loudoun 2026 Shopping Center Guideline (PDF blocked; value not extracted), CBRE H1 2026 Cap Rate Survey (metro tables not visible), Marcus & Millichap Manassas Junction (grocery-anchored ground lease, 'well under 4%' - explicitly an outlier, not usable as a market rate). Web-search budget exhausted before further attempts."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [],
+      "note": "No Northern-Virginia-specific maintained-vs-reactive roof life source retrieved in this session (web-search budget exhausted; NRCA/RCI pages not reachable). Use the cross-market evidence in data/national.json. Only related data point found: coating restorations add ~10-20 yrs (acrylic 7-15, silicone 15-20; The Roofing Brief/contractor, low confidence)."
+    },
+    "reactive": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": "",
+      "confidence": "low",
+      "sources": [],
+      "note": "Not found; see data/national.json."
+    },
+    "climate_note": "Mixed-humid climate with real freeze-thaw exposure: NRI Dec 2025 shows ~9.5-12.3 winter-weather event-days/yr, ~0.55 ice-storm events/yr and ~1.4-1.8 cold-wave events/yr, plus ~4.5-5.9 heat-wave events/yr across the four counties. That combination (moisture entry in summer, freeze expansion in winter, thermal cycling) penalizes unmaintained flashings, seams, and ponding areas more than in a hot-dry market; wet insulation discovered at tear-off is a common cost adder. No freeze-thaw cycle count was sourced.",
+    "climate_sources": [
+      {
+        "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      },
+      {
+        "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "NRI data dictionary v1.20.0 (mirror)",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
+      }
+    ]
+  },
+  "code_triggers": {
+    "text": "Virginia enforces the Virginia Uniform Statewide Building Code (USBC): the Virginia Construction Code (VCC, based on the 2021 IBC) and Virginia Existing Building Code (VEBC, based on the 2021 IEBC), with energy provisions based on the 2021 IECC. Re-roofing follows IBC Chapter 15 (Section 1511) as referenced by VEBC: a recover (overlay) is generally not permitted where the existing roof or insulation is water-soaked or deteriorated, or where two or more roof coverings already exist, which forces a full tear-off. On roof replacement the IECC generally requires that above-deck insulation be brought up to current code where the insulation is above the deck, which is a major cost driver (local cost guides cite the DC R-33 requirement; Virginia follows the 2021 IECC commercial table). THESE PROVISIONS ARE SUMMARIZED FROM GENERAL KNOWLEDGE OF THE 2021 I-CODES; the Virginia DHCD and ICC code pages could not be opened in this session and exact section numbers, R-values and Virginia amendments must be verified before use in customer-facing material. No Virginia rule was found that forces full replacement at a fixed % of roof damaged; damage-threshold (e.g., 25%/50%) replacement rules were not verified for Virginia.",
+    "sources": [
+      {
+        "name": "Virginia DHCD - Virginia Uniform Statewide Building Code (not opened; egress blocked)",
+        "url": "https://www.dhcd.virginia.gov/codes"
+      },
+      {
+        "name": "ICC - 2021 International Building Code, Chapter 15 Roof Assemblies and Rooftop Structures (not opened)",
+        "url": "https://codes.iccsafe.org/content/IBC2021P2/chapter-15-roof-assemblies-and-rooftop-structures"
+      },
+      {
+        "name": "Roof Observations - DC cost guide citing R-33 above-deck insulation requirement in DC",
+        "url": "https://roofobservations.com/washington-dc-roof-cost-guide/"
+      },
+      {
+        "name": "Roof Troopers - NoVA cost guide noting insulation upgrades needed to meet Virginia energy code",
+        "url": "https://roof-troopers.com/blog/roof-replacement-cost/"
+      }
+    ]
+  },
+  "open_questions": [
+    "Retail cap rate for Northern Virginia is null: pull CBRE H1 2026 Cap Rate Survey (DC metro tables), Loudoun 2026 Shopping Center Guideline PDF, or Cushman/JLL NoVA retail MarketBeat.",
+    "Office cap rate has no range; industrial cap rate figures are from a local brokerage blog and Loudoun assessor docs, and 6.44% may not be industrial-specific. Verify with CBRE/Cushman NoVA reports; strip data-center trades.",
+    "Location cost factor uses a 2021 DoD Area Cost Factor (Fort Belvoir 1.08), not RSMeans. Obtain RSMeans CCI for Washington DC / Fairfax (220-222 zip prefixes) / Manassas (201) or the 2024-2025 DoD ACF value for Fort Belvoir / Quantico.",
+    "Replacement $/sq ft are national-leaning contractor ranges; ask Culbertson for 3-5 recent NoVA bid tabs by system (TPO, EPDM, mod bit, BUR, metal, coating) including tear-off and code insulation.",
+    "Culbertson's clients skew toward schools, hospitals and historic buildings: many are public/owner-occupied, so the cap-rate asset-value output does not apply; historic buildings may involve slate/copper/steep-slope systems not covered by the low-slope cost table. Consider adding Institutional/K-12 and Healthcare property types, plus masonry/waterproofing scope (parapets, coping, through-wall flashing) which drives many 'roof' leaks.",
+    "Roof life maintained vs reactive for this climate is not sourced here; rely on national.json and consider asking Culbertson for its own service-life records.",
+    "Freeze-thaw cycle counts (e.g., NOAA/NCEI climate normals for IAD/Manassas) were not retrieved.",
+    "Virginia code provisions (VEBC/VCC re-roof, recover limits, IECC insulation on re-roof, any Virginia amendments) are unverified; confirm against the 2021 USBC text at DHCD.",
+    "Wind/hail deductible norms for NoVA commercial policies and any Virginia-specific roof-age underwriting practice need broker confirmation.",
+    "Insurance trend is national (CIAB/Marsh). Decide how the model should project premiums (e.g., flat or long-run average) rather than compounding the 2026 soft-market decline.",
+    "NRI frequencies are county event counts, not per-building hit probabilities; the model should derive roof-damaging events per building from EAL/building value (four-county roof-relevant hazards about $108 per $1M of building value per year, all building damage) rather than multiplying county frequency by 20 years.",
+    "Direct page fetches (FEMA, BLS, FRED, CBRE, county sites, code sites) were blocked by the session's egress proxy; many figures came from search-result extracts and should be spot-checked in a browser before customer use."
+  ]
+}

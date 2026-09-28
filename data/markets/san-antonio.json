@@ -1,0 +1,791 @@
+{
+  "id": "san-antonio",
+  "name": "San Antonio, TX",
+  "state": "TX",
+  "counties": [
+    {
+      "name": "Bexar",
+      "fips": "48029"
+    },
+    {
+      "name": "Comal",
+      "fips": "48091"
+    },
+    {
+      "name": "Guadalupe",
+      "fips": "48187"
+    }
+  ],
+  "researched_on": "2026-09-28",
+  "research_access_caveat": "All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use. Only three datasets were opened in full: FEMA NRI v1.19 county table, the BLS roofing-contractor PPI series, and 2021 IBC/IEBC text (all via GitHub mirrors).",
+  "replacement_cost_per_sqft": {
+    "tpo": {
+      "value": 13.5,
+      "low": 7.0,
+      "high": 20.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Prestige 360 Design - Commercial Roofing Cost in San Antonio (2026)",
+          "url": "https://prestige360design.com/blog/commercial-roofing-cost-san-antonio/"
+        },
+        {
+          "name": "Commercial Roof Guide - San Antonio costs & codes (2026)",
+          "url": "https://commercialroofguide.com/states/texas/san-antonio/"
+        },
+        {
+          "name": "TriVAN Roofing - TPO Roofing Cost Guide Texas (2026)",
+          "url": "https://www.trivanroofing.com/blog/tpo-roofing-cost-guide-texas-2026"
+        },
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "Envelope of tear-off-inclusive figures: low $7 (TRB national TPO $7-12 incl. tear-off/insulation); high $20 (Prestige 360: SA full reroof with complete tear-off $15-20). TriVAN TX: TPO core assembly $8-12 + tear-off $1.50-2.50 = $9.50-14.50. Value = midpoint of envelope. SA-specific membrane-only figure is $5.28-8.16 (60-mil, Commercial Roof Guide/Prestige 360) and recover over one layer $6-8, both excluding full tear-off. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "epdm": {
+      "value": 9.75,
+      "low": 6.0,
+      "high": 13.5,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "TriVAN Roofing - TPO Roofing Cost Guide Texas (2026)",
+          "url": "https://www.trivanroofing.com/blog/tpo-roofing-cost-guide-texas-2026"
+        },
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "Envelope: TRB national EPDM $6-10 (incl. tear-off); TriVAN TX EPDM $8-11 + tear-off $1.50-2.50 = $9.50-13.50. Value = midpoint of $6-13.50. Commercial Roof Guide says SA EPDM is 'usually lower' than TPO. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "mod_bit": {
+      "value": 10.25,
+      "low": 7.0,
+      "high": 13.5,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
+          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+        },
+        {
+          "name": "TriVAN Roofing - TPO Roofing Cost Guide Texas (2026)",
+          "url": "https://www.trivanroofing.com/blog/tpo-roofing-cost-guide-texas-2026"
+        },
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "Envelope: TRB national mod-bit $7-12; TriVAN TX $7-10 + heavy tear-off $2.00-3.50 = $9.00-13.50. Value = midpoint of $7-13.50. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "bur": {
+      "value": 7.5,
+      "low": 5.0,
+      "high": 10.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        },
+        {
+          "name": "TriVAN Roofing - TPO Roofing Cost Guide Texas (2026)",
+          "url": "https://www.trivanroofing.com/blog/tpo-roofing-cost-guide-texas-2026"
+        }
+      ],
+      "note": "Only one install range found: TRB national BUR $5-10. TriVAN gives BUR tear-off at $2.00-3.50 (tear-off may not be included in TRB's BUR figure). Value = midpoint of TRB range. No SA-specific BUR figure found. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "metal": {
+      "value": 14.0,
+      "low": 10.0,
+      "high": 18.0,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "low",
+      "sources": [
+        {
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
+        }
+      ],
+      "note": "TRB national standing-seam steel on commercial buildings $10-18 installed. Only one source; the SA metal-roof page seen (guildtx) gave labor only ($3-7/sf), so it was not used. Value = midpoint. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "coating_restoration": {
+      "value": 3.5,
+      "low": 1.5,
+      "high": 5.5,
+      "unit": "$/sq ft",
+      "as_of": "2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "M&M Roofing - Commercial Roof Coating Cost (TX & LA)",
+          "url": "https://mmroofsiding.com/blog/commercial-roof-coating-cost/"
+        },
+        {
+          "name": "The Roofing Brief - Roof Coating Types 2026",
+          "url": "https://theroofingbrief.com/roof-coating-types-and-cost/"
+        }
+      ],
+      "note": "M&M Roofing (TX): commercial coatings $1.50-5.50 (silicone at the high end); TRB 2026: silicone $2.50-5, acrylic $1.50-3. Value = midpoint of $1.50-5.50. Restoration, not tear-off: it applies only when the substrate qualifies (not water-soaked; see code_triggers). All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    }
+  },
+  "location_cost_factor": {
+    "value": 0.9,
+    "low": null,
+    "high": null,
+    "unit": "index (national=1.00)",
+    "as_of": "2026",
+    "confidence": "low",
+    "sources": [
+      {
+        "name": "Ximator - Construction Cost in San Antonio, Texas 2026",
+        "url": "https://ximator.com/blog/construction-cost-san-antonio-tx-2026"
+      },
+      {
+        "name": "RSMeans City Cost Index (paywalled; not accessed)",
+        "url": "https://www.rsmeans.com/rsmeans-city-cost-index"
+      }
+    ],
+    "note": "Ximator says San Antonio is 'approximately -10% of the benchmark' national average (general construction, not roofing-specific). The RSMeans CCI for San Antonio is paywalled and was not accessed. DoD Area Cost Factor tables (UFC 3-701-01 / PAX 3.2.1) list SA but could not be opened. Low/high left null: no second source. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+  },
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.5,
+      "low": 1.9,
+      "high": 8.9,
+      "unit": "%/yr",
+      "as_of": "2025-04",
+      "confidence": "high",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X Roofing contractors, nonresidential building work (Dec 2007=100), monthly 2008-01..2025-04, via GitHub mirror of BLS data",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED PCU23816X23816X (Dec 2025 = 224.789 per search excerpt; FRED host blocked)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "CAGR of BLS PPI Roofing contractors, nonresidential building work (PCU23816X23816X), NATIONAL: Apr 2015 126.7 -> Apr 2025 215.584 = 5.46%/yr. With the Dec 2025 value 224.789 (FRED, per search excerpt) vs Dec 2015 128.5, it is 5.75%/yr. Low 1.9 = Dec 2008->Dec 2015 CAGR (112.6->128.5); high 8.9 = Dec 2019->Dec 2024 CAGR (138.8->212.901), which includes the 2021-2022 spike (+9.2% in 2021, +21.1% in 2022). National series, not San Antonio-specific."
+    },
+    "annual_pct_20yr": {
+      "value": 4.6,
+      "low": 1.9,
+      "high": 8.9,
+      "unit": "%/yr",
+      "as_of": "2025-12",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "BLS PPI PCU23816X23816X Roofing contractors, nonresidential building work (Dec 2007=100), monthly 2008-01..2025-04, via GitHub mirror of BLS data",
+          "url": "https://raw.githubusercontent.com/evilb1000/whatsitcost/main/ScrapedData/scrapedSeries/PCU23816X23816X_raw.csv"
+        },
+        {
+          "name": "FRED PCU23816X23816X (Dec 2025 = 224.789 per search excerpt; FRED host blocked)",
+          "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"
+        }
+      ],
+      "note": "The series starts Dec 2007 = 100, so a full 20-yr history does not exist. 18-yr CAGR Dec 2007 (100) -> Dec 2025 (224.789) = 4.60%/yr; Jan 2008 -> Apr 2025 (mirror only) = 4.51%/yr. Low/high as for the 10-yr figure. At 4.6%/yr costs double in ~15.4 yrs; at 5.5%/yr in ~12.9 yrs. National series."
+    }
+  },
+  "perils": [
+    {
+      "peril": "hail (>=1 inch, any report in Bexar County)",
+      "annual_frequency": {
+        "value": 3.1,
+        "low": 2.98,
+        "high": 4.4,
+        "unit": "hail days/yr (county-wide)",
+        "as_of": "2025",
+        "confidence": "medium",
+        "sources": [
+          {
+            "name": "Houston Chronicle / SA weather: 'How often does large hail actually happen in San Antonio?' (NOAA Storm Events analysis; seen via search excerpt)",
+            "url": "https://www.houstonchronicle.com/san-antonio-weather/article/hail-san-antonio-texas-weather-severe-storm-22208133.php"
+          },
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "Houston Chronicle analysis of NOAA Storm Events: 176 days with >=1-inch hail in Bexar County since 1970 (~3.1-3.4/yr as reported); 2016-2025 averaged 4.4 days/yr, the highest 10-yr stretch on record. NRI v1.19 Bexar HAIL_AFREQ = 2.98 events/yr (102 events). These are county-wide counts (1,257 sq mi), NOT the probability that a given roof is hit. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+      },
+      "severity_note": "Golf-ball (>=1.75 in) hail: at least 99 instances in Bexar since 1970 (~1.8/yr). Baseball-size: 20 times since 1970 (~1 every 3 yrs). Reports >=2 in: 2020 >=1, 2021 13, 2022 0, 2023 0, 2024 4, 2025 3 (Stormersite). Largest: 5.5 in near China Grove, Apr 28 2021. Apr 12 2016 north-side storm (up to ~4.5 in) caused ~$1.36-1.4B in damage, the costliest hailstorm in Texas history at the time (about $800M homes/businesses and $560M vehicles per the Insurance Council of Texas). NRI annualized building loss rate for hail in Bexar = 0.0104%/yr of building value (~$104 per $1M of building value per year).",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 28473804,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "FEMA National Risk Index data (official download page)",
+          "url": "https://www.fema.gov/about/openfema/data-sets/national-risk-index-data"
+        },
+        {
+          "name": "Houston Chronicle / SA weather: 'How often does large hail actually happen in San Antonio?' (NOAA Storm Events analysis; seen via search excerpt)",
+          "url": "https://www.houstonchronicle.com/san-antonio-weather/article/hail-san-antonio-texas-weather-severe-storm-22208133.php"
+        },
+        {
+          "name": "Stormersite Bexar County hail reports by year (SPC/LSR-derived; seen via search excerpt)",
+          "url": "https://www.stormersite.com/hail_reports/bexar_county_texas/all"
+        },
+        {
+          "name": "MySA: San Antonio hail storm called costliest in Texas history (~$1.4B)",
+          "url": "https://www.mysanantonio.com/business/local/article/San-Antonio-hail-storm-1-4-billion-in-losses-7269460.php"
+        },
+        {
+          "name": "Insurance Journal: Texas Hail Losses Set Record in 2016",
+          "url": "https://www.insurancejournal.com/news/southcentral/2016/12/14/435200.htm"
+        }
+      ]
+    },
+    {
+      "peril": "significant roof-damaging hail (>=2 in / baseball-size, county-wide)",
+      "annual_frequency": {
+        "value": 0.33,
+        "low": 0.33,
+        "high": 0.67,
+        "unit": "events/yr (county-wide)",
+        "as_of": "2025",
+        "confidence": "low",
+        "sources": [
+          {
+            "name": "Houston Chronicle / SA weather: 'How often does large hail actually happen in San Antonio?' (NOAA Storm Events analysis; seen via search excerpt)",
+            "url": "https://www.houstonchronicle.com/san-antonio-weather/article/hail-san-antonio-texas-weather-severe-storm-22208133.php"
+          },
+          {
+            "name": "Stormersite Bexar County hail reports by year (SPC/LSR-derived; seen via search excerpt)",
+            "url": "https://www.stormersite.com/hail_reports/bexar_county_texas/all"
+          }
+        ],
+        "note": "Baseball-size hail 20 times since 1970 in Bexar (~0.33/yr, i.e. ~6-7 over a 20-yr roof life somewhere in the county). >=2-in reports occurred in 4 of the 6 years 2020-2025 (Stormersite). Site-level odds for one building are much lower and are not directly measured; use NRI EAL (0.0104%/yr of building value) for expected site loss. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+      },
+      "severity_note": "Metro billion-dollar hail events: Apr 12 2016 is the benchmark. Apr 28 2021 (5.5-in hail, west side to downtown to China Grove to Seguin) was also severe; no insured-loss total found.",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 28473804,
+      "sources": [
+        {
+          "name": "Houston Chronicle / SA weather: 'How often does large hail actually happen in San Antonio?' (NOAA Storm Events analysis; seen via search excerpt)",
+          "url": "https://www.houstonchronicle.com/san-antonio-weather/article/hail-san-antonio-texas-weather-severe-storm-22208133.php"
+        },
+        {
+          "name": "Stormersite Bexar County hail reports by year (SPC/LSR-derived; seen via search excerpt)",
+          "url": "https://www.stormersite.com/hail_reports/bexar_county_texas/all"
+        },
+        {
+          "name": "MySA: San Antonio hail storm called costliest in Texas history (~$1.4B)",
+          "url": "https://www.mysanantonio.com/business/local/article/San-Antonio-hail-storm-1-4-billion-in-losses-7269460.php"
+        }
+      ]
+    },
+    {
+      "peril": "tornado",
+      "annual_frequency": {
+        "value": 0.435,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI TRND_AFREQ for Bexar (46 events in record)."
+      },
+      "severity_note": "NRI tornado EAL-building for Bexar is $21.4M/yr (Very High, score 99.87), second only to hail.",
+      "fema_nri_rating": "Very High",
+      "fema_nri_expected_annual_loss_building_usd": 21390375,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ]
+    },
+    {
+      "peril": "strong wind",
+      "annual_frequency": {
+        "value": 0.982,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI SWND_AFREQ for Bexar (34 events)."
+      },
+      "severity_note": "Low building EAL ($374K/yr), but wind-driven hail (e.g. 75-100 mph winds with 2.5-in hail west of SA on Apr 28 2021) raises severity.",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 373894,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ]
+    },
+    {
+      "peril": "winter weather",
+      "annual_frequency": {
+        "value": 0.743,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI WNTW_AFREQ for Bexar."
+      },
+      "severity_note": "Feb 2021 Winter Storm Uri: TDI reports 510,772 Texas claims and ~$11.2B expected insured losses (as of Mar 31 2022), largely freeze and pipe damage plus some roof damage. Commercial roof share in SA not isolated.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 19351,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        },
+        {
+          "name": "TDI: Insured Losses Resulting from the February 2021 Texas Winter Weather Event (Mar 2022 data call)",
+          "url": "https://www.tdi.texas.gov/reports/documents/feb2021-tx-winter-weather-summary-mar2022.pdf"
+        }
+      ]
+    },
+    {
+      "peril": "ice storm",
+      "annual_frequency": {
+        "value": 0.19,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI ISTM_AFREQ for Bexar."
+      },
+      "severity_note": "EAL-building $354K/yr.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 354222,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ]
+    },
+    {
+      "peril": "heat wave",
+      "annual_frequency": {
+        "value": 0.248,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI HWAV_AFREQ for Bexar."
+      },
+      "severity_note": "NRI models near-zero direct building loss ($40/yr). Heat and UV matter for roofs through faster membrane aging, not acute events, and this could not be quantified with a sourced figure.",
+      "fema_nri_rating": "Relatively High",
+      "fema_nri_expected_annual_loss_building_usd": 40,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ]
+    },
+    {
+      "peril": "hurricane (inland remnants)",
+      "annual_frequency": {
+        "value": 0.036,
+        "low": null,
+        "high": null,
+        "unit": "events/yr",
+        "as_of": "NRI v1.19 (2023)",
+        "confidence": "high",
+        "sources": [
+          {
+            "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+            "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+          }
+        ],
+        "note": "NRI HRCN_AFREQ for Bexar."
+      },
+      "severity_note": "EAL-building $8.1M/yr (Relatively Moderate).",
+      "fema_nri_rating": "Relatively Moderate",
+      "fema_nri_expected_annual_loss_building_usd": 8127749,
+      "sources": [
+        {
+          "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+          "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        }
+      ]
+    }
+  ],
+  "fema_nri": {
+    "county": "Bexar County, TX (48029)",
+    "version": "NRI v1.19.0, March 2023 (a newer v1.20, Dec 2025, exists and was not accessible; values may differ)",
+    "overall_risk_rating": "Relatively High",
+    "overall_risk_score": 98.28,
+    "eal_building_total_usd": 64836031,
+    "eal_total_all_consequences_usd": 186613235,
+    "building_value_usd": 274658997004,
+    "hazards": {
+      "hail": {
+        "rating": "Very High",
+        "annualized_frequency": 2.9841,
+        "eal_building_usd": 28473804
+      },
+      "strong_wind": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.982,
+        "eal_building_usd": 373894
+      },
+      "tornado": {
+        "rating": "Very High",
+        "annualized_frequency": 0.435,
+        "eal_building_usd": 21390375
+      },
+      "hurricane": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.0359,
+        "eal_building_usd": 8127749
+      },
+      "winter_weather": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.743,
+        "eal_building_usd": 19351
+      },
+      "ice_storm": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.19,
+        "eal_building_usd": 354222
+      },
+      "riverine_flooding": {
+        "rating": "Relatively High",
+        "annualized_frequency": 7.9167,
+        "eal_building_usd": 2316239
+      },
+      "coastal_flooding": {
+        "rating": "Not Applicable",
+        "annualized_frequency": null,
+        "eal_building_usd": null
+      },
+      "heat_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.2477,
+        "eal_building_usd": 40
+      }
+    },
+    "secondary_counties": {
+      "Comal (48091)": {
+        "overall_risk_rating": "Relatively Moderate",
+        "hazards": {
+          "hail": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 3.8267,
+            "eal_building_usd": 69986
+          },
+          "strong_wind": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 1.407,
+            "eal_building_usd": 174522
+          },
+          "tornado": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.2459,
+            "eal_building_usd": 2905213
+          },
+          "hurricane": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.0404,
+            "eal_building_usd": 1239789
+          },
+          "winter_weather": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.805,
+            "eal_building_usd": 25761
+          },
+          "ice_storm": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.513,
+            "eal_building_usd": 15278
+          },
+          "riverine_flooding": {
+            "rating": "Relatively High",
+            "annualized_frequency": 4.2917,
+            "eal_building_usd": 9281340
+          },
+          "coastal_flooding": {
+            "rating": "Not Applicable",
+            "annualized_frequency": null,
+            "eal_building_usd": null
+          },
+          "heat_wave": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.2477,
+            "eal_building_usd": 231
+          }
+        }
+      },
+      "Guadalupe (48187)": {
+        "overall_risk_rating": "Relatively Moderate",
+        "hazards": {
+          "hail": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 3.0681,
+            "eal_building_usd": 31312
+          },
+          "strong_wind": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 1.2399,
+            "eal_building_usd": 196408
+          },
+          "tornado": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.2892,
+            "eal_building_usd": 2166654
+          },
+          "hurricane": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.0567,
+            "eal_building_usd": 1394229
+          },
+          "winter_weather": {
+            "rating": "Relatively High",
+            "annualized_frequency": 0.6811,
+            "eal_building_usd": 28704
+          },
+          "ice_storm": {
+            "rating": "Relatively Low",
+            "annualized_frequency": 0.3049,
+            "eal_building_usd": 36442
+          },
+          "riverine_flooding": {
+            "rating": "Relatively High",
+            "annualized_frequency": 3.3333,
+            "eal_building_usd": 7673178
+          },
+          "coastal_flooding": {
+            "rating": "Not Applicable",
+            "annualized_frequency": null,
+            "eal_building_usd": null
+          },
+          "heat_wave": {
+            "rating": "Relatively Moderate",
+            "annualized_frequency": 0.2477,
+            "eal_building_usd": 188
+          }
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
+        "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+      },
+      {
+        "name": "FEMA National Risk Index data (official download page)",
+        "url": "https://www.fema.gov/about/openfema/data-sets/national-risk-index-data"
+      },
+      {
+        "name": "FEMA NRI Technical Documentation v1.20 (Dec 2025) - newer version exists; not opened",
+        "url": "https://www.fema.gov/sites/default/files/documents/fema_national-risk-index_technical-documentation.pdf"
+      }
+    ],
+    "note": "annualized_frequency = events/yr from NRI *_AFREQ; eal_building_usd from *_EALB. Hail AFREQ in Comal/Guadalupe is similar to or higher than Bexar, but their hail EAL is ~400-900x lower. NRI loss ratios reflect historic losses (for Bexar, dominated by the 2016 storm) and exposure density, so treat the county-to-county contrast with caution. eal_building_total_usd = EAL_VALB (all hazards); hail + tornado = 77% of it. eal_total_all_consequences = EAL_VALT (includes population-equivalence and agriculture)."
+  },
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": null,
+      "low": -13.0,
+      "high": 20.4,
+      "unit": "% change in premium",
+      "as_of": "2026-Q2",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "CIAB Q2 2026 P&C Market Survey (commercial property -6.3%)",
+          "url": "https://www.ciab.com/resources/q2-2026-pc-market-survey"
+        },
+        {
+          "name": "Marsh Global Insurance Market Index Q2 2026 (US property -13%)",
+          "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"
+        },
+        {
+          "name": "Insurance Journal: Commercial Property Premiums Up Over 20% to Start 2023 (CIAB Q1 2023: +20.4%)",
+          "url": "https://www.insurancejournal.com/magazines/mag-features/2023/06/05/723092.htm"
+        },
+        {
+          "name": "CIAB Q4 2023 P&C Market Survey (commercial property +11.8%)",
+          "url": "https://www.ciab.com/resources/q4-2023-p-c-market-survey"
+        }
+      ],
+      "note": "No single long-run trend value is defensible; the market is cyclical. Observations (NATIONAL, not Texas-specific): CIAB commercial property +20.4% (Q1 2023, the first >20% since 2001), +11.8% (Q4 2023), -6.3% (Q2 2026, the second straight quarter as the steepest-falling line). Marsh US property -13% in Q2 2026 (eighth straight quarterly decline; cat-exposed programs >$1M -20%). low/high = observed range. Recommend the model use a user-set premium escalator rather than extrapolating either the hard or the soft market. No Texas-specific commercial rate index found. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+    },
+    "roof_age_underwriting": {
+      "text": "Texas carriers increasingly settle roof losses at ACV (depreciated) rather than RCV once roofs pass an age threshold, commonly cited as 10, 15 or 20 years, with 15 most often cited in 2026 sources. Roof payment schedules pay a set percentage of roof cost by age. Commercial forms add cosmetic-damage exclusions for hail (endorsement CP 10 36 cited), which matter most for metal roofs (dents without functional failure pay $0). Exterior or aerial inspections feed non-renewal or ACV conversion. Most sources found are homeowner-focused; commercial-specific evidence is thinner (Higginbotham and Core Commercial Roofing pages were seen by title/excerpt only). Sales implication: documented maintenance and condition records (PaxSeal reports) can support insurability and RCV terms, but no source quantified a premium credit for maintained roofs. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use.",
+      "sources": [
+        {
+          "name": "Latent Insurance - Texas Hail Damage Insurance: Roof Schedules, ACV vs RCV",
+          "url": "https://www.latentinsure.com/blog/texas-hail-damage-home-insurance"
+        },
+        {
+          "name": "Higginbotham - Commercial roof limitation endorsements (title only seen)",
+          "url": "https://www.higginbotham.com/blog/commercial-roof-limitation-endorsements/"
+        },
+        {
+          "name": "Core Commercial Roofing - Commercial Property Insurance and Roof Claims in Texas",
+          "url": "https://corecommercialroofing.com/commercial-property-insurance-and-roof-claims-in-texas/"
+        },
+        {
+          "name": "Monumental Roofing - Texas Wind & Hail Deductible Guide (2026)",
+          "url": "https://www.monumentalroofing.com/texas-wind-hail-deductible-guide/"
+        }
+      ]
+    },
+    "wind_hail_deductible_norms": {
+      "text": "Commercial wind/hail deductibles in Texas often range from 1% to 5% of total insured value (Lundquist Law Firm). Named-storm deductibles 2-10% of insured value (search excerpt, unattributed; less relevant inland). For Texas residential in 2026, 2% has become the dominant wind/hail deductible, with some carriers at 3%. Example: at 2% on a $10M building, the owner retains the first $200K of a hail loss, which is often more than a roof replacement, so many hail events are effectively uninsured for the roof. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use.",
+      "sources": [
+        {
+          "name": "Lundquist Law Firm - When to File a Commercial Hail Damage Claim in Texas",
+          "url": "https://www.lundquistlawfirm.com/blog/hail-damage-commercial-policyholder"
+        },
+        {
+          "name": "Monumental Roofing - Texas Wind & Hail Deductible Guide (2026)",
+          "url": "https://www.monumentalroofing.com/texas-wind-hail-deductible-guide/"
+        },
+        {
+          "name": "Latent Insurance - Texas Hail Damage Insurance: Roof Schedules, ACV vs RCV",
+          "url": "https://www.latentinsure.com/blog/texas-hail-damage-home-insurance"
+        }
+      ]
+    }
+  },
+  "cap_rates": {
+    "industrial": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": null,
+      "confidence": "low",
+      "sources": [],
+      "note": "NOT RESEARCHED: the session's web-search quota ran out before cap-rate sources (CBRE H1 2026 Cap Rate Survey, Cushman & Wakefield / JLL / Marcus & Millichap San Antonio reports) could be searched, and publisher sites were blocked for direct fetch. The coworker's 6.5-8.5% is unverified."
+    },
+    "office": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": null,
+      "confidence": "low",
+      "sources": [],
+      "note": "NOT RESEARCHED (see industrial). Office cap rates are likely the widest and least liquid of the three; needs a current broker survey."
+    },
+    "retail": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "%",
+      "as_of": null,
+      "confidence": "low",
+      "sources": [],
+      "note": "NOT RESEARCHED (see industrial)."
+    }
+  },
+  "roof_life_years": {
+    "maintained": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": null,
+      "confidence": "low",
+      "sources": [],
+      "note": "No credible source opened for maintained vs neglected low-slope roof life in a hot/high-UV climate. Tried: search excerpts gave only contractor marketing claims (e.g. 'TPO 20-30 yr', 'standing seam 40-60 yr', 'silicone coating 15-20 yr') without separating maintained from reactive, so they were not used as values. Next sources to try: NRCA, RCI/IIBEC studies, and manufacturer warranty terms (GAF/Carlisle/Firestone Building Products) that require documented maintenance."
+    },
+    "reactive": {
+      "value": null,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "as_of": null,
+      "confidence": "low",
+      "sources": [],
+      "note": "Not found; see maintained."
+    },
+    "climate_note": "San Antonio's hazards are heat-wave 'Relatively High' (NRI) and hail/tornado 'Very High'. Heat/UV aging is not quantified by NRI (EAL ~ $0) and still needs a sourced roof-life adjustment."
+  },
+  "code_triggers": {
+    "text": "Model-code text (2021 IBC Sec. 1512 / 2021 IEBC Sec. 705, opened): (1) A roof RECOVER is NOT permitted where the existing roof is water-soaked or deteriorated so it is not an adequate base, where the existing covering is slate/clay/cement/asbestos-cement tile, or where the roof already has TWO OR MORE applications of any roof covering. So a neglected, wet roof forces full tear-off, and a second recover is prohibited. (2) New protective coatings over existing coatings, metal panel, BUR, SPF, mod bit, and thermoset/thermoplastic single-ply are permitted without tear-off, which is the code basis for coating/restoration. (3) Reroof/recover of low-slope roofs is exempt from the 1/4:12 minimum slope and from adding secondary drains, provided positive drainage exists; existing secondary drains may not be removed. (4) Existing rusted/damaged flashings, edge metal and drain collars and damaged ballast may not be reinstalled. NOT VERIFIED: which I-code edition and local amendments the City of San Antonio has adopted (believed to be a 2021 I-code cycle, unconfirmed), and the IECC re-roof insulation requirement (IECC C503 roof replacement: insulation upgrade where insulation is entirely above deck), whose text and R-values were not opened. Texas has no statewide commercial building code for most private buildings, so city adoption governs.",
+    "sources": [
+      {
+        "name": "2021 IBC Section 1512 Reroofing (model code text, 'texas' folder of us-building-codes-dataset)",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/texas/ibc-2021/chapter-15-roof-assemblies-and-rooftop-structures.csv"
+      },
+      {
+        "name": "2021 IEBC Section 705 Reroofing / 706 (model code text)",
+        "url": "https://raw.githubusercontent.com/thexqin/us-building-codes-dataset/main/download/texas/iebc-2021/chapter-7-alterations-level-1.csv"
+      }
+    ]
+  },
+  "coworker_claims_check": {
+    "tco_100k_roof_329k_vs_564k": "UNVERIFIED: depends on roof-life (maintained vs reactive) and repair-cost assumptions for which no credible source was found. For scale, with sourced escalation a $100K roof costs ~$157K to replace in year 10 and ~$246K in year 20 at 4.6%/yr.",
+    "replacement_cost_doubles_14_18_yrs": "ROUGHLY HOLDS: the national roofing-contractor PPI grew 4.6%/yr over 2007-2025 (doubling ~15.4 yrs) and 5.5%/yr over the last 10 yrs (doubling ~12.9 yrs). But 2008-2015 was only ~1.9%/yr (doubling ~36 yrs), and most of the gain came in 2021-2023.",
+    "destructive_storm_every_4_5_yrs": "HOLDS AT METRO LEVEL, OVERSTATED AT PROPERTY LEVEL: baseball-size hail somewhere in Bexar ~every 3 yrs and >=2-in hail in 4 of the last 6 yrs, but NRI expected hail loss is ~0.01%/yr of building value. A single building is not expected to be destroyed every 4-5 yrs.",
+    "cap_rates_6_5_8_5": "UNVERIFIED (not researched; search quota exhausted)."
+  },
+  "open_questions": [
+    "Get current San Antonio cap rates by property type (CBRE H1 2026 Cap Rate Survey; Cushman & Wakefield / JLL / Marcus & Millichap SA Q2 2026 reports).",
+    "Find credible maintained vs reactive roof-life data for TPO/mod-bit/BUR in hot climates (NRCA, IIBEC, manufacturer warranty maintenance requirements).",
+    "Confirm the City of San Antonio's adopted IBC/IEBC/IECC edition and local amendments, and the IECC re-roof insulation R-value requirement for climate zone 2A.",
+    "Re-pull FEMA NRI v1.20 (Dec 2025) county data from the official site; this file uses v1.19 (Mar 2023) from a mirror.",
+    "Get SPC/NCEI hail reports within ~25 mi of San Antonio (>=1 in, >=2 in) directly, and compute a site-level strike probability (e.g. from hail-swath or radar MESH climatology).",
+    "Get the RSMeans 2026 City Cost Index for San Antonio (paywalled), or the DoD Area Cost Factor for JBSA, to replace the low-confidence 0.90 factor.",
+    "Get a Texas-specific commercial property rate trend (TDI data, Texas broker market reports) and any premium credit for documented roof maintenance.",
+    "Find insured loss for the Apr 28 2021 SA hailstorm and more recent events (e.g. May 9 2024) to build a metro event catalog.",
+    "Verify every search-excerpt-derived value against the actual source page before client-facing use."
+  ]
+}
