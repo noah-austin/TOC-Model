@@ -1,6 +1,6 @@
 // Build step:
 //   1. data/markets/*.json + data/national.json  ->  data/model_defaults.json
-//   2. src/report.template.html + src/engine.js + defaults  ->  dist/report.html
+//   2. src/report.template.html + src/engine.js + defaults + fonts  ->  dist/index.html
 //      (one self-contained file, no CDN, safe to email or host on Azure SWA)
 //
 // Usage: node scripts/build.mjs
@@ -129,11 +129,19 @@ function buildDefaults() {
 const defaults = buildDefaults();
 writeFileSync(join(ROOT, 'data/model_defaults.json'), JSON.stringify(defaults, null, 2) + '\n');
 
+// Montserrat (SIL OFL, from @fontsource/montserrat), embedded so the report
+// needs no network access. Falls back to Arial if a weight is missing.
+const fonts = [400, 600, 700, 800].map((w) => {
+  const b64 = readFileSync(join(ROOT, `src/fonts/montserrat-latin-${w}-normal.woff2`)).toString('base64');
+  return `@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:${w};src:url(data:font/woff2;base64,${b64}) format('woff2');}`;
+}).join('\n');
+
 const template = readFileSync(join(ROOT, 'src/report.template.html'), 'utf8');
 const engine = readFileSync(join(ROOT, 'src/engine.js'), 'utf8');
 const html = template
+  .replace('/*__FONTS__*/', () => fonts)
   .replace('/*__ENGINE__*/', () => engine)
   .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults) + ';');
 mkdirSync(join(ROOT, 'dist'), { recursive: true });
-writeFileSync(join(ROOT, 'dist/report.html'), html);
-console.log('Built data/model_defaults.json and dist/report.html');
+writeFileSync(join(ROOT, 'dist/index.html'), html);
+console.log('Built data/model_defaults.json and dist/index.html');
