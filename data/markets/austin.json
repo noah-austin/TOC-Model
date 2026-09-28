@@ -521,47 +521,47 @@
     }
   ],
   "fema_nri": {
-    "county": "Travis County, TX (FIPS 48453)",
+    "county": "Travis County, TX (48453)",
     "overall_risk_rating": "Relatively High",
-    "risk_score_national_percentile": 96.9,
-    "eal_building_all_hazards_usd": 58735540,
-    "building_exposure_usd": 189538566798,
-    "nri_version": "1.19.0 (March 2023)",
+    "risk_score": 97.74173027989822,
+    "nri_version": "December 2025",
+    "building_value_usd": 212768077221.0,
+    "eal_building_all_hazards_usd": 229816276.88646495,
     "hazards": {
       "hail": {
         "rating": "Very High",
-        "annualized_frequency": 3.7927,
-        "eal_building_usd": 23947322
+        "annualized_frequency": 3.898788985277545,
+        "eal_building_usd": 24769312.158068616
       },
       "strong_wind": {
         "rating": "Relatively High",
-        "annualized_frequency": 1.6158,
-        "eal_building_usd": 782638
+        "annualized_frequency": 1.61356836952264,
+        "eal_building_usd": 2354144.9920786824
       },
       "tornado": {
         "rating": "Very High",
-        "annualized_frequency": 0.5231,
-        "eal_building_usd": 17906081
+        "annualized_frequency": 0.537811295446153,
+        "eal_building_usd": 20131964.966489933
       },
       "hurricane": {
         "rating": "Relatively Low",
-        "annualized_frequency": 0.0347,
-        "eal_building_usd": 5033938
+        "annualized_frequency": 0.034273240302124,
+        "eal_building_usd": 1511210.66007381
       },
       "winter_weather": {
-        "rating": "Relatively High",
-        "annualized_frequency": 1.1765,
-        "eal_building_usd": 185826
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.789473684210546,
+        "eal_building_usd": 64053.013922652426
       },
       "ice_storm": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.5525,
-        "eal_building_usd": 711555
+        "annualized_frequency": 0.552727639080441,
+        "eal_building_usd": 538170.7549715341
       },
       "riverine_flooding": {
         "rating": "Relatively High",
-        "annualized_frequency": 5.875,
-        "eal_building_usd": 6714461
+        "annualized_frequency": 5.464285714285714,
+        "eal_building_usd": 178293484.9937009
       },
       "coastal_flooding": {
         "rating": "Not Applicable",
@@ -570,66 +570,32 @@
       },
       "heat_wave": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.4334,
-        "eal_building_usd": 49
+        "annualized_frequency": 10.315789473684205,
+        "eal_building_usd": 415.8204603497252
+      },
+      "cold_wave": {
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.631578947368426,
+        "eal_building_usd": 27530.10540114107
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 49.21046569895562,
+        "eal_building_usd": 111782.3812997826
       }
     },
-    "note": "Ratings are NRI hazard risk ratings (<HAZ>_RISKR). annualized_frequency = events/yr per NRI methodology (hail/strong wind 1986-2021, tornado 1950-2021, winter weather & heat wave 2005-2021, ice storm 1946-2014, riverine flooding 1996-2019). eal_building_usd = expected annual loss to building value for ALL buildings in the county (all occupancies), not commercial roofs specifically. Coastal flooding is 'Not Applicable'. Heat wave is rated 'Relatively High' but NRI assigns only ~$49/yr building EAL: NRI does not model heat/UV roof aging, which is the main climate driver of roof life here. FEMA released NRI v1.20 (Dec 2025); v1.20 values could not be retrieved (hazards.fema.gov blocked) and may differ.",
-    "secondary_county_williamson": {
-      "county": "Williamson County, TX (FIPS 48491)",
-      "overall_risk_rating": "Relatively Moderate",
-      "risk_score_national_percentile": 87.4,
-      "eal_building_all_hazards_usd": 13102729,
-      "building_exposure_usd": 86573802776,
-      "nri_version": "1.19.0 (March 2023)",
-      "hazards": {
-        "hail": {
-          "rating": "Relatively Moderate",
-          "annualized_frequency": 3.8816,
-          "eal_building_usd": 43057
-        },
-        "strong_wind": {
-          "rating": "Relatively Low",
-          "annualized_frequency": 1.7414,
-          "eal_building_usd": 237531
-        },
-        "tornado": {
-          "rating": "Relatively High",
-          "annualized_frequency": 0.594,
-          "eal_building_usd": 5695652
-        },
-        "hurricane": {
-          "rating": "Relatively Low",
-          "annualized_frequency": 0.0384,
-          "eal_building_usd": 2876650
-        },
-        "winter_weather": {
-          "rating": "Very High",
-          "annualized_frequency": 1.2384,
-          "eal_building_usd": 11348
-        },
-        "ice_storm": {
-          "rating": "Relatively High",
-          "annualized_frequency": 0.6486,
-          "eal_building_usd": 131532
-        },
-        "riverine_flooding": {
-          "rating": "Relatively Moderate",
-          "annualized_frequency": 4.0833,
-          "eal_building_usd": 392216
-        },
-        "coastal_flooding": {
-          "rating": "Not Applicable",
-          "annualized_frequency": null,
-          "eal_building_usd": null
-        },
-        "heat_wave": {
-          "rating": "Relatively High",
-          "annualized_frequency": 0.4334,
-          "eal_building_usd": 1119
-        }
+    "sources": [
+      {
+        "name": "FEMA National Risk Index, county table (official)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
+      },
+      {
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
-    }
+    ],
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "previous_version": "1.19.0 (March 2023)"
   },
   "insurance": {
     "commercial_property_rate_trend_pct": {

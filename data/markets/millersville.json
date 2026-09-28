@@ -774,87 +774,80 @@
   ],
   "fema_nri": {
     "county": "Anne Arundel County, MD (24003)",
-    "fips": "24003",
-    "nri_version": "1.20.0 (December 2025)",
     "overall_risk_rating": "Relatively Moderate",
-    "overall_risk_score": 81.9,
-    "eal_rating": "Relatively Moderate",
+    "risk_score": 81.87022900763358,
+    "nri_version": "December 2025",
     "building_value_usd": 106907331725.0,
-    "eal_building_all_hazards_usd": 49575492.0,
-    "social_vulnerability_rating": "Very Low",
-    "community_resilience_rating": "Very High",
+    "eal_building_all_hazards_usd": 49575492.14763183,
     "hazards": {
       "hail": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 3.3835,
-        "eal_building_usd": 1080507.0
+        "annualized_frequency": 3.383505230078839,
+        "eal_building_usd": 1080507.3402977977
       },
       "strong_wind": {
         "rating": "Relatively High",
-        "annualized_frequency": 7.7382,
-        "eal_building_usd": 918225.0
+        "annualized_frequency": 7.738153389760609,
+        "eal_building_usd": 918224.5832537938
       },
       "tornado": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.4297,
-        "eal_building_usd": 1873605.0
+        "annualized_frequency": 0.429725655745981,
+        "eal_building_usd": 1873604.6449100003
       },
       "hurricane": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.0941,
-        "eal_building_usd": 7932623.0
+        "annualized_frequency": 0.09407693082861,
+        "eal_building_usd": 7932623.227603158
       },
       "winter_weather": {
         "rating": "Relatively High",
-        "annualized_frequency": 9.5206,
-        "eal_building_usd": 71394.0
+        "annualized_frequency": 9.520571182075125,
+        "eal_building_usd": 71393.51281729668
       },
       "ice_storm": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.429,
-        "eal_building_usd": 177418.0
+        "annualized_frequency": 0.429031168300944,
+        "eal_building_usd": 177417.89049869886
       },
       "riverine_flooding": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 3.6429,
-        "eal_building_usd": 32106705.0
+        "annualized_frequency": 3.642857142857143,
+        "eal_building_usd": 32106704.581100054
       },
       "coastal_flooding": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 3.6581,
-        "eal_building_usd": 2176813.0
+        "annualized_frequency": 3.658139737177573,
+        "eal_building_usd": 2176813.442810562
       },
       "heat_wave": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 6.2864,
-        "eal_building_usd": 3.0
+        "annualized_frequency": 6.286368620027941,
+        "eal_building_usd": 3.228657134887327
       },
       "cold_wave": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 1.2153,
-        "eal_building_usd": 105354.0
+        "annualized_frequency": 1.215271136262063,
+        "eal_building_usd": 105353.7123806595
       },
       "lightning": {
         "rating": "Relatively High",
-        "annualized_frequency": 39.894,
-        "eal_building_usd": 118140.0
+        "annualized_frequency": 39.89397962756728,
+        "eal_building_usd": 118139.67931641902
       }
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.20.0 (December 2025), NRI_Table_Counties.csv, via public GitHub mirror (downloaded and parsed; NRI_VER field = 'December 2025'; data dictionary in same repo lists version 1.20.0)",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
-      },
-      {
-        "name": "NRI v1.20 data dictionary (same mirror)",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
-      },
-      {
-        "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
+        "name": "FEMA National Risk Index, county table (official)",
         "url": "https://hazards.fema.gov/nri/data-resources"
+      },
+      {
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
     ],
-    "note": "'rating' = NRI hazard risk rating (xxxx_RISKR). 'riverine_flooding' holds NRI v1.20 'Inland Flooding' (IFLD), which replaced Riverine Flooding in the Dec 2025 release. cold_wave and lightning added beyond the schema list. Version comparison for Anne Arundel (v1.19.0 Mar 2023 values from laurel.json fema_nri_other_counties -> v1.20.0): overall rating Relatively Moderate -> Relatively Moderate (score 92.0 -> 81.9); building value $95.2B -> $106.9B; all-hazard building EAL $49.0M -> $49.6M; hurricane EAL $36.1M -> $7.9M; coastal flooding EAL $9.40M -> $2.18M; riverine $0.23M -> inland $32.1M; hail Very Low -> Relatively Moderate ($4K -> $1.08M); strong wind Relatively Moderate -> Relatively High; winter weather AF 2.96 -> 9.52. Do not mix v1.19 and v1.20 numbers across markets."
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "previous_version": "1.20.0 (December 2025)"
   },
   "fema_nri_other_counties": {
     "24510": {

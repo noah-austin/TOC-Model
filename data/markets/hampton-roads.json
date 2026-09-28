@@ -586,95 +586,80 @@
     "note": "Derived: tropical storms/hurricanes within 50 nm of Norfolk 0.24/yr x 20 = 4.8 (value); low = hurricanes within 100 nm 0.18/yr x 20 = 3.6; high = TS-strength systems within 100 nm 0.76/yr x 20 = 15.2. Adding NRI non-tropical strong-wind events (0.50/yr) would add ~10 more lower-severity events. Not all passages damage roofs; this is an exposure count, not a claim count."
   },
   "fema_nri": {
-    "county": "Norfolk (City), VA - FIPS 51710",
-    "nri_version": "December 2025",
+    "county": "Norfolk City, VA (51710)",
     "overall_risk_rating": "Relatively Moderate",
-    "overall_risk_score": 81.2,
-    "eal_rating": "Relatively Low",
-    "eal_total_usd": 45699250.0,
-    "eal_building_usd": 34217663.0,
+    "risk_score": 81.23409669211196,
+    "nri_version": "December 2025",
     "building_value_usd": 42208348266.0,
-    "social_vulnerability_rating": "Relatively Low",
-    "community_resilience_rating": "Relatively High",
+    "eal_building_all_hazards_usd": 34217662.955839865,
     "hazards": {
       "hail": {
         "rating": "Relatively Low",
-        "risk_score": 68.8,
-        "annualized_frequency": 1.289,
-        "eal_building_usd": 441005.0
+        "annualized_frequency": 1.28922298470365,
+        "eal_building_usd": 441005.03459461225
       },
       "strong_wind": {
         "rating": "Relatively Moderate",
-        "risk_score": 71.4,
-        "annualized_frequency": 0.499,
-        "eal_building_usd": 399409.0
+        "annualized_frequency": 0.499376104362037,
+        "eal_building_usd": 399408.83349026565
       },
       "tornado": {
         "rating": "Relatively Moderate",
-        "risk_score": 74.1,
-        "annualized_frequency": 0.038,
-        "eal_building_usd": 1349474.0
+        "annualized_frequency": 0.037694557084651,
+        "eal_building_usd": 1349474.428130001
       },
       "hurricane": {
         "rating": "Relatively Moderate",
-        "risk_score": 92.9,
-        "annualized_frequency": 0.237,
-        "eal_building_usd": 13042145.0
+        "annualized_frequency": 0.236650077451624,
+        "eal_building_usd": 13042144.73791914
       },
       "winter_weather": {
         "rating": "Relatively Moderate",
-        "risk_score": 69.8,
-        "annualized_frequency": 2.85,
-        "eal_building_usd": 13019.0
+        "annualized_frequency": 2.850167369807449,
+        "eal_building_usd": 13019.073302681218
       },
       "ice_storm": {
         "rating": "Relatively Moderate",
-        "risk_score": 69.6,
-        "annualized_frequency": 0.483,
-        "eal_building_usd": 218058.0
+        "annualized_frequency": 0.483374639960775,
+        "eal_building_usd": 218058.46857968133
       },
       "riverine_flooding": {
         "rating": "Relatively Moderate",
-        "risk_score": 75.3,
-        "annualized_frequency": 1.821,
-        "eal_building_usd": 14841709.0,
-        "note": "NRI v1.20 replaced 'Riverine Flooding' with 'Inland Flooding' (IFLD_*); values shown are IFLD."
+        "annualized_frequency": 1.821428571428571,
+        "eal_building_usd": 14841709.207999997
       },
       "coastal_flooding": {
         "rating": "Relatively High",
-        "risk_score": 82.4,
-        "annualized_frequency": 3.647,
-        "eal_building_usd": 2880351.0
+        "annualized_frequency": 3.647000000130847,
+        "eal_building_usd": 2880350.539879518
       },
       "heat_wave": {
         "rating": "Relatively Moderate",
-        "risk_score": 88.2,
-        "annualized_frequency": 6.191,
-        "eal_building_usd": 178.0
-      },
-      "lightning": {
-        "rating": "Relatively High",
-        "risk_score": 87.8,
-        "annualized_frequency": 40.699,
-        "eal_building_usd": 45196.0
+        "annualized_frequency": 6.191269883870295,
+        "eal_building_usd": 177.6862562999385
       },
       "cold_wave": {
         "rating": "Relatively Moderate",
-        "risk_score": 70.4,
-        "annualized_frequency": 0.471,
-        "eal_building_usd": 13945.0
+        "annualized_frequency": 0.470780037491418,
+        "eal_building_usd": 13945.450141682104
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 40.6992180000001,
+        "eal_building_usd": 45196.355607981306
       }
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.20 (Dec 2025), county table NRI_Table_Counties.csv - GitHub mirror actually downloaded and parsed",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
+        "name": "FEMA National Risk Index, county table (official)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "FEMA NRI data resources (official download page; blocked by egress proxy in this session, not opened)",
-        "url": "https://hazards.fema.gov/nri/data-resources"
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
-    ]
+    ],
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building."
   },
   "fema_nri_other_jurisdictions": {
     "51810": {

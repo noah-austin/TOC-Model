@@ -568,78 +568,80 @@
   ],
   "fema_nri": {
     "county": "Prince George's County, MD (24033)",
-    "nri_version": "1.19.0 (March 2023)",
     "overall_risk_rating": "Relatively Moderate",
-    "overall_risk_score": 94.6,
-    "building_value_usd": 135176296231.0,
-    "eal_building_all_hazards_usd": 52780905.0,
+    "risk_score": 93.1615776081425,
+    "nri_version": "December 2025",
+    "building_value_usd": 151743263235.0,
+    "eal_building_all_hazards_usd": 85610310.79586741,
     "hazards": {
       "hail": {
-        "rating": "Very Low",
-        "annualized_frequency": 3.523,
-        "eal_building_usd": 1172.0
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 3.301434198286071,
+        "eal_building_usd": 1632953.2340907466
       },
       "strong_wind": {
         "rating": "Relatively High",
-        "annualized_frequency": 7.0442,
-        "eal_building_usd": 808842.0
+        "annualized_frequency": 7.235661230032743,
+        "eal_building_usd": 1115602.856713874
       },
       "tornado": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.3705,
-        "eal_building_usd": 2228338.0
+        "annualized_frequency": 0.367322451479676,
+        "eal_building_usd": 2457301.5681409915
       },
       "hurricane": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.0946,
-        "eal_building_usd": 47975741.0
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.092028068766838,
+        "eal_building_usd": 10350009.801470673
       },
       "winter_weather": {
-        "rating": "Relatively High",
-        "annualized_frequency": 2.6943,
-        "eal_building_usd": 42784.0
+        "rating": "Very High",
+        "annualized_frequency": 9.317601646306684,
+        "eal_building_usd": 113888.81914106685
       },
       "ice_storm": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.3557,
-        "eal_building_usd": 21572.0
+        "annualized_frequency": 0.351264009125711,
+        "eal_building_usd": 257805.41051993647
       },
       "riverine_flooding": {
-        "rating": "Relatively Low",
-        "annualized_frequency": 3.4583,
-        "eal_building_usd": 132126.0
+        "rating": "Relatively High",
+        "annualized_frequency": 4.178571428571429,
+        "eal_building_usd": 63559144.48129997
       },
       "coastal_flooding": {
         "rating": "Relatively Low",
-        "annualized_frequency": 3.7067,
-        "eal_building_usd": 458147.0
+        "annualized_frequency": 3.706686897221585,
+        "eal_building_usd": 105309.97649593001
       },
       "heat_wave": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.9399,
-        "eal_building_usd": 0.0
+        "annualized_frequency": 6.053699312248348,
+        "eal_building_usd": 0.025179338798484
       },
       "cold_wave": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.0627,
-        "eal_building_usd": 672.0
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 1.21086417680418,
+        "eal_building_usd": 135861.81344074276
       },
       "lightning": {
-        "rating": "Relatively High",
-        "annualized_frequency": 65.7742,
-        "eal_building_usd": 59768.0
+        "rating": "Very High",
+        "annualized_frequency": 39.85537660749561,
+        "eal_building_usd": 144079.8923225797
       }
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.19.0 (Mar 2023), NRI_Table_Counties.csv, via public GitHub mirror (FEMA host blocked from research environment); byte-identical copy also at jasminextan/Telecom_NatDisaster",
-        "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/Data/NRI_Table_Counties/NRI_Table_Counties.csv"
+        "name": "FEMA National Risk Index, county table (official)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "FEMA NRI official data downloads page (canonical source; not reachable from research environment)",
-        "url": "https://hazards.fema.gov/nri/data-resources"
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
-    ]
+    ],
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "previous_version": "1.19.0 (March 2023)"
   },
   "fema_nri_other_counties": {
     "24003": {

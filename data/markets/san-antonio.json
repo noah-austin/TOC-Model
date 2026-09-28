@@ -465,47 +465,46 @@
   ],
   "fema_nri": {
     "county": "Bexar County, TX (48029)",
-    "version": "NRI v1.19.0, March 2023 (a newer v1.20, Dec 2025, exists and was not accessible; values may differ)",
     "overall_risk_rating": "Relatively High",
-    "overall_risk_score": 98.28,
-    "eal_building_total_usd": 64836031,
-    "eal_total_all_consequences_usd": 186613235,
-    "building_value_usd": 274658997004,
+    "risk_score": 99.42748091603053,
+    "nri_version": "December 2025",
+    "building_value_usd": 308320716312.0,
+    "eal_building_all_hazards_usd": 401065170.13965356,
     "hazards": {
       "hail": {
         "rating": "Very High",
-        "annualized_frequency": 2.9841,
-        "eal_building_usd": 28473804
+        "annualized_frequency": 2.960508017112547,
+        "eal_building_usd": 70085200.67637885
       },
       "strong_wind": {
-        "rating": "Relatively Moderate",
-        "annualized_frequency": 0.982,
-        "eal_building_usd": 373894
+        "rating": "Relatively High",
+        "annualized_frequency": 0.99792403605148,
+        "eal_building_usd": 512602.19858298096
       },
       "tornado": {
         "rating": "Very High",
-        "annualized_frequency": 0.435,
-        "eal_building_usd": 21390375
+        "annualized_frequency": 0.433375672738939,
+        "eal_building_usd": 23651767.07294988
       },
       "hurricane": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.0359,
-        "eal_building_usd": 8127749
+        "annualized_frequency": 0.035319418151502,
+        "eal_building_usd": 2459801.7041079714
       },
       "winter_weather": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.743,
-        "eal_building_usd": 19351
+        "annualized_frequency": 2.842105263157912,
+        "eal_building_usd": 69614.07729522731
       },
       "ice_storm": {
-        "rating": "Relatively High",
-        "annualized_frequency": 0.19,
-        "eal_building_usd": 354222
+        "rating": "Relatively Moderate",
+        "annualized_frequency": 0.19004665467183,
+        "eal_building_usd": 267908.4231540079
       },
       "riverine_flooding": {
-        "rating": "Relatively High",
-        "annualized_frequency": 7.9167,
-        "eal_building_usd": 2316239
+        "rating": "Very High",
+        "annualized_frequency": 7.464285714285714,
+        "eal_building_usd": 301986554.30709887
       },
       "coastal_flooding": {
         "rating": "Not Applicable",
@@ -514,127 +513,31 @@
       },
       "heat_wave": {
         "rating": "Relatively High",
-        "annualized_frequency": 0.2477,
-        "eal_building_usd": 40
-      }
-    },
-    "secondary_counties": {
-      "Comal (48091)": {
-        "overall_risk_rating": "Relatively Moderate",
-        "hazards": {
-          "hail": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 3.8267,
-            "eal_building_usd": 69986
-          },
-          "strong_wind": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 1.407,
-            "eal_building_usd": 174522
-          },
-          "tornado": {
-            "rating": "Relatively High",
-            "annualized_frequency": 0.2459,
-            "eal_building_usd": 2905213
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.0404,
-            "eal_building_usd": 1239789
-          },
-          "winter_weather": {
-            "rating": "Relatively High",
-            "annualized_frequency": 0.805,
-            "eal_building_usd": 25761
-          },
-          "ice_storm": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.513,
-            "eal_building_usd": 15278
-          },
-          "riverine_flooding": {
-            "rating": "Relatively High",
-            "annualized_frequency": 4.2917,
-            "eal_building_usd": 9281340
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.2477,
-            "eal_building_usd": 231
-          }
-        }
+        "annualized_frequency": 10.315789473684147,
+        "eal_building_usd": 602.5624899332722
       },
-      "Guadalupe (48187)": {
-        "overall_risk_rating": "Relatively Moderate",
-        "hazards": {
-          "hail": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 3.0681,
-            "eal_building_usd": 31312
-          },
-          "strong_wind": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 1.2399,
-            "eal_building_usd": 196408
-          },
-          "tornado": {
-            "rating": "Relatively High",
-            "annualized_frequency": 0.2892,
-            "eal_building_usd": 2166654
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.0567,
-            "eal_building_usd": 1394229
-          },
-          "winter_weather": {
-            "rating": "Relatively High",
-            "annualized_frequency": 0.6811,
-            "eal_building_usd": 28704
-          },
-          "ice_storm": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.3049,
-            "eal_building_usd": 36442
-          },
-          "riverine_flooding": {
-            "rating": "Relatively High",
-            "annualized_frequency": 3.3333,
-            "eal_building_usd": 7673178
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.2477,
-            "eal_building_usd": 188
-          }
-        }
+      "cold_wave": {
+        "rating": "Relatively High",
+        "annualized_frequency": 0.526315789473681,
+        "eal_building_usd": 33244.73428725507
+      },
+      "lightning": {
+        "rating": "Relatively High",
+        "annualized_frequency": 45.977201714786695,
+        "eal_building_usd": 132440.9861857853
       }
     },
     "sources": [
       {
-        "name": "FEMA National Risk Index v1.19.0 (March 2023) county table, via GitHub mirror of NRI_Table_Counties.csv (official FEMA host blocked from research environment)",
-        "url": "https://raw.githubusercontent.com/dynamiquet/Project-SAND/main/NRI_Table_Counties/NRI_Table_Counties.csv"
+        "name": "FEMA National Risk Index, county table (official)",
+        "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "FEMA National Risk Index data (official download page)",
-        "url": "https://www.fema.gov/about/openfema/data-sets/national-risk-index-data"
-      },
-      {
-        "name": "FEMA NRI Technical Documentation v1.20 (Dec 2025) - newer version exists; not opened",
-        "url": "https://www.fema.gov/sites/default/files/documents/fema_national-risk-index_technical-documentation.pdf"
+        "name": "Unmodified GitHub copy used for this refresh",
+        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
       }
     ],
-    "note": "annualized_frequency = events/yr from NRI *_AFREQ; eal_building_usd from *_EALB. Hail AFREQ in Comal/Guadalupe is similar to or higher than Bexar, but their hail EAL is ~400-900x lower. NRI loss ratios reflect historic losses (for Bexar, dominated by the 2016 storm) and exposure density, so treat the county-to-county contrast with caution. eal_building_total_usd = EAL_VALB (all hazards); hail + tornado = 77% of it. eal_total_all_consequences = EAL_VALT (includes population-equivalence and agriculture)."
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building."
   },
   "insurance": {
     "commercial_property_rate_trend_pct": {

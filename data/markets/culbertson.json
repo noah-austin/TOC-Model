@@ -655,345 +655,80 @@
   ],
   "fema_nri": {
     "county": "Prince William County, VA (51153)",
-    "nri_version": "v1.20.0, December 2025",
     "overall_risk_rating": "Relatively Moderate",
-    "expected_annual_loss_rating": "Relatively Moderate",
-    "building_value_usd": 62031821360,
-    "eal_building_total_usd": 53997936,
+    "risk_score": 83.17430025445293,
+    "nri_version": "December 2025",
+    "building_value_usd": 62031821360.0,
+    "eal_building_all_hazards_usd": 53997936.479956135,
     "hazards": {
       "hail": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 3.776,
-        "eal_building_usd": 1009793
+        "annualized_frequency": 3.7762707383189,
+        "eal_building_usd": 1009793.1023699113
       },
       "strong_wind": {
         "rating": "Relatively High",
-        "annualized_frequency": 7.126,
-        "eal_building_usd": 917254
+        "annualized_frequency": 7.125659724459657,
+        "eal_building_usd": 917254.3326070312
       },
       "tornado": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.248,
-        "eal_building_usd": 1742967
+        "annualized_frequency": 0.247831021812931,
+        "eal_building_usd": 1742966.8050099972
       },
       "hurricane": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 0.082,
-        "eal_building_usd": 3932647
+        "annualized_frequency": 0.082349583824929,
+        "eal_building_usd": 3932646.9363468555
       },
       "winter_weather": {
         "rating": "Relatively High",
-        "annualized_frequency": 9.477,
-        "eal_building_usd": 52648
+        "annualized_frequency": 9.476893839436784,
+        "eal_building_usd": 52648.22721385192
       },
       "ice_storm": {
         "rating": "Relatively Low",
-        "annualized_frequency": 0.547,
-        "eal_building_usd": 145131
+        "annualized_frequency": 0.546945589317236,
+        "eal_building_usd": 145131.3152649539
       },
       "riverine_flooding": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 3.429,
-        "eal_building_usd": 44035759
+        "annualized_frequency": 3.428571428571428,
+        "eal_building_usd": 44035758.92149997
       },
       "coastal_flooding": {
         "rating": "Relatively Low",
-        "annualized_frequency": 3.735,
-        "eal_building_usd": 109762
+        "annualized_frequency": 3.734880743995121,
+        "eal_building_usd": 109761.71674062998
       },
       "heat_wave": {
         "rating": "Relatively Moderate",
-        "annualized_frequency": 5.703,
-        "eal_building_usd": 241
+        "annualized_frequency": 5.703041629730003,
+        "eal_building_usd": 240.5643942309761
       },
       "cold_wave": {
         "rating": "Very Low",
-        "annualized_frequency": 1.361,
-        "eal_building_usd": 63238
+        "annualized_frequency": 1.36147038980815,
+        "eal_building_usd": 63238.3775455178
       },
       "lightning": {
         "rating": "Relatively High",
-        "annualized_frequency": 41.112,
-        "eal_building_usd": 62858
+        "annualized_frequency": 41.111910092351565,
+        "eal_building_usd": 62857.86476165239
       }
     },
-    "note": "'riverine_flooding' holds NRI v1.20 'Inland Flooding' (IFLD), which replaced Riverine Flooding in the Dec 2025 release. cold_wave and lightning added beyond the schema list. Other counties in all_counties.",
     "sources": [
       {
-        "name": "FEMA National Risk Index county table, v1.20.0 (December 2025) - official data page",
+        "name": "FEMA National Risk Index, county table (official)",
         "url": "https://hazards.fema.gov/nri/data-resources"
       },
       {
-        "name": "NRI_Table_Counties.csv (Dec 2025, NRI_VER field verified) - GitHub mirror actually downloaded; FEMA hosts blocked from this session",
+        "name": "Unmodified GitHub copy used for this refresh",
         "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRI_Table_Counties.csv"
-      },
-      {
-        "name": "NRI data dictionary v1.20.0 (mirror)",
-        "url": "https://raw.githubusercontent.com/ooowen-unc/flood_set/main/NRIDataDictionary.csv"
       }
     ],
-    "all_counties": [
-      {
-        "county": "Prince William",
-        "fips": "51153",
-        "overall_risk_rating": "Relatively Moderate",
-        "eal_rating": "Relatively Moderate",
-        "building_value_usd": 62031821360,
-        "eal_building_total_usd": 53997936,
-        "hazards": {
-          "hail": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.776,
-            "eal_building_usd": 1009793
-          },
-          "strong_wind": {
-            "rating": "Relatively High",
-            "annualized_frequency": 7.126,
-            "eal_building_usd": 917254
-          },
-          "tornado": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.248,
-            "eal_building_usd": 1742967
-          },
-          "hurricane": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.082,
-            "eal_building_usd": 3932647
-          },
-          "winter_weather": {
-            "rating": "Relatively High",
-            "annualized_frequency": 9.477,
-            "eal_building_usd": 52648
-          },
-          "ice_storm": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.547,
-            "eal_building_usd": 145131
-          },
-          "riverine_flooding": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.429,
-            "eal_building_usd": 44035759
-          },
-          "coastal_flooding": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 3.735,
-            "eal_building_usd": 109762
-          },
-          "heat_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 5.703,
-            "eal_building_usd": 241
-          },
-          "cold_wave": {
-            "rating": "Very Low",
-            "annualized_frequency": 1.361,
-            "eal_building_usd": 63238
-          },
-          "lightning": {
-            "rating": "Relatively High",
-            "annualized_frequency": 41.112,
-            "eal_building_usd": 62858
-          }
-        }
-      },
-      {
-        "county": "Manassas city",
-        "fips": "51683",
-        "overall_risk_rating": "Very Low",
-        "eal_rating": "Very Low",
-        "building_value_usd": 7000910027,
-        "eal_building_total_usd": 5686564,
-        "hazards": {
-          "hail": {
-            "rating": "Very Low",
-            "annualized_frequency": 3.766,
-            "eal_building_usd": 115279
-          },
-          "strong_wind": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 7.07,
-            "eal_building_usd": 223383
-          },
-          "tornado": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.007,
-            "eal_building_usd": 282177
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.081,
-            "eal_building_usd": 399880
-          },
-          "winter_weather": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 9.526,
-            "eal_building_usd": 6026
-          },
-          "ice_storm": {
-            "rating": "Very Low",
-            "annualized_frequency": 0.536,
-            "eal_building_usd": 12994
-          },
-          "riverine_flooding": {
-            "rating": "Very Low",
-            "annualized_frequency": 0.571,
-            "eal_building_usd": 4268474
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 5.789,
-            "eal_building_usd": 27
-          },
-          "cold_wave": {
-            "rating": "Very Low",
-            "annualized_frequency": 1.368,
-            "eal_building_usd": 54264
-          },
-          "lightning": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 41.04,
-            "eal_building_usd": 7502
-          }
-        }
-      },
-      {
-        "county": "Fairfax",
-        "fips": "51059",
-        "overall_risk_rating": "Relatively High",
-        "eal_rating": "Relatively High",
-        "building_value_usd": 239078583329,
-        "eal_building_total_usd": 185784173,
-        "hazards": {
-          "hail": {
-            "rating": "Relatively High",
-            "annualized_frequency": 3.912,
-            "eal_building_usd": 4017135
-          },
-          "strong_wind": {
-            "rating": "Relatively High",
-            "annualized_frequency": 7.777,
-            "eal_building_usd": 1281537
-          },
-          "tornado": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.298,
-            "eal_building_usd": 954406
-          },
-          "hurricane": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.091,
-            "eal_building_usd": 17478888
-          },
-          "winter_weather": {
-            "rating": "Very High",
-            "annualized_frequency": 9.744,
-            "eal_building_usd": 224918
-          },
-          "ice_storm": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.556,
-            "eal_building_usd": 571426
-          },
-          "riverine_flooding": {
-            "rating": "Relatively High",
-            "annualized_frequency": 5.821,
-            "eal_building_usd": 152745731
-          },
-          "coastal_flooding": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 3.762,
-            "eal_building_usd": 228044
-          },
-          "heat_wave": {
-            "rating": "Relatively High",
-            "annualized_frequency": 5.88,
-            "eal_building_usd": 952
-          },
-          "cold_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 1.362,
-            "eal_building_usd": 245840
-          },
-          "lightning": {
-            "rating": "Very High",
-            "annualized_frequency": 40.936,
-            "eal_building_usd": 219259
-          }
-        }
-      },
-      {
-        "county": "Loudoun",
-        "fips": "51107",
-        "overall_risk_rating": "Relatively Low",
-        "eal_rating": "Relatively Moderate",
-        "building_value_usd": 65192755215,
-        "eal_building_total_usd": 46021784,
-        "hazards": {
-          "hail": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.922,
-            "eal_building_usd": 1144919
-          },
-          "strong_wind": {
-            "rating": "Relatively High",
-            "annualized_frequency": 7.691,
-            "eal_building_usd": 410757
-          },
-          "tornado": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 0.346,
-            "eal_building_usd": 2399220
-          },
-          "hurricane": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 0.094,
-            "eal_building_usd": 2743138
-          },
-          "winter_weather": {
-            "rating": "Relatively High",
-            "annualized_frequency": 12.331,
-            "eal_building_usd": 91557
-          },
-          "ice_storm": {
-            "rating": "Very Low",
-            "annualized_frequency": 0.583,
-            "eal_building_usd": 25720
-          },
-          "riverine_flooding": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 3.036,
-            "eal_building_usd": 37210075
-          },
-          "coastal_flooding": {
-            "rating": "Not Applicable",
-            "annualized_frequency": null,
-            "eal_building_usd": null
-          },
-          "heat_wave": {
-            "rating": "Relatively Moderate",
-            "annualized_frequency": 4.516,
-            "eal_building_usd": 205
-          },
-          "cold_wave": {
-            "rating": "Relatively Low",
-            "annualized_frequency": 1.756,
-            "eal_building_usd": 86284
-          },
-          "lightning": {
-            "rating": "Relatively High",
-            "annualized_frequency": 38.498,
-            "eal_building_usd": 85233
-          }
-        }
-      }
-    ]
+    "note": "Refreshed by scripts/refresh_nri.py so every market uses the same NRI release. annualized_frequency = county-wide events/yr, not hits on one building.",
+    "previous_version": "v1.20.0, December 2025"
   },
   "insurance": {
     "commercial_property_rate_trend_pct": {

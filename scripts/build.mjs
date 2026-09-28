@@ -89,7 +89,10 @@ function buildDefaults() {
       nriCounty: nri.county,
       nriVersion: nri.nri_version || null,
       nriOverall: nri.overall_risk_rating,
-      nriRatings: Object.fromEntries(ROOF_PERILS.map((h) => [h, nri.hazards?.[h]?.rating || null])),
+      nriRatings: Object.fromEntries(ROOF_PERILS.map((h) => {
+        const r = nri.hazards?.[h]?.rating;
+        return [h, r && !/No Rating|Not Applicable|Insufficient/i.test(r) ? r : null];
+      })),
       // Expected annual building loss from roof-relevant perils, % of county building value.
       nriBuildingLossPct: exposure ? (eal / exposure) * 100 : 0,
       perils: perils || { headline: 'Storm exposure', events: 'See FEMA National Risk Index ratings below' },
