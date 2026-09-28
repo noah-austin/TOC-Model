@@ -1,0 +1,316 @@
+{
+  "id": "national",
+  "name": "National / cross-market inputs",
+  "researched_on": "2026-09-28",
+  "access_note": "Research environment limits: direct fetches of bls.gov, fred.stlouisfed.org, nrca.net, agc.org, fanniemae.com, iibec.org, wbdg.org and most other hosts were blocked by the egress proxy (curl and WebFetch). Every value below was read from search-engine extracts of the cited URLs (WebSearch), not from a full page read. Confidence is capped accordingly: 'high' is not used anywhere. Before client-facing use, a person with open web access should open each URL and confirm the figure. A GitHub mirror of BLS PPI data was found (github.com/evilb1000/whatsitcost) but was NOT used: running calculations on it was blocked by this session's permission policy.",
+
+  "maintenance_evidence": {
+    "roof_life_years": {
+      "maintained": {
+        "value": 21, "low": 18, "high": 25, "unit": "years (low-slope membrane)",
+        "as_of": "study date unknown (reported as a 15-year study)",
+        "confidence": "low",
+        "sources": [
+          {"name": "Ridgeline Roofing blog, citing 'a 15-year study by Firestone Building Products and ProLogis'", "url": "https://ridgelineroofingcompany.com/how-commercial-roof-maintenance-prevents-leaks/"},
+          {"name": "GSM Roofing blog, attributing 21 vs 13 years to NRCA", "url": "https://www.gsmroofing.com/news/nrcas-preventive-maintenance-tips-prolonging-the-life-of-commercial-roofs/"}
+        ],
+        "note": "21 years (proactive) vs 13 years (reactive) is the most widely repeated figure. Contractor blogs attribute it to a Firestone/ProLogis study, and sometimes to NRCA. No original report, paper or NRCA document containing it was found. Treat it as industry lore that is widely cited but has no traceable origin. low/high are a sensitivity band chosen for the model, not a sourced range."
+      },
+      "reactive": {
+        "value": 13, "low": 10, "high": 17.4, "unit": "years (low-slope membrane)",
+        "as_of": "see note", "confidence": "low",
+        "sources": [
+          {"name": "Ridgeline Roofing blog (Firestone/ProLogis attribution)", "url": "https://ridgelineroofingcompany.com/how-commercial-roof-maintenance-prevents-leaks/"},
+          {"name": "Cash (1997), 'The Relative Durability of Low-Slope Roofing', as summarised in NRC Canada 'Effective Roof Management' (17.4-yr average for multi-ply asphalt; used as high bound)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"}
+        ],
+        "note": "13 yrs comes from the same untraced Firestone/ProLogis claim. The high bound of 17.4 yrs is Cash's 1997 survey of more than 400 contractors (average BUR service life, no maintenance split), taken from a search extract of the NRC Canada paper."
+      },
+      "life_extension_years": {
+        "value": 5, "low": 3, "high": 8, "unit": "years added by a planned maintenance program",
+        "as_of": "c. 2000s (NRC Canada / CIB paper)", "confidence": "medium",
+        "sources": [
+          {"name": "NRC Canada, 'Effective Roof Management – Understanding the Life Cycle of Your Roof Systems' (also CIB paper 2149)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"},
+          {"name": "Same paper, CIB/irbnet copy", "url": "https://www.irbnet.de/daten/iconda/CIB2149.pdf"},
+          {"name": "Carlisle Continu-Care: annual preventive maintenance extends the Total System Warranty by 5 years (a manufacturer proxy for how much life maintenance adds)", "url": "https://www.carlislesyntec.com/en/About-Carlisle/Warranty-Services/Continu-Care-Warranty"}
+        ],
+        "note": "NRC Canada: in life-cycle modelling, 'service life is generally assigned, then extended by three to five years' with rising maintenance cost during the extension. That is the source for low=3. value=5 uses the top of that range, which Carlisle's 5-year warranty extension for maintained roofs supports. high=8 is the untraced 21-13 claim. The widely repeated 'NRCA says maintenance extends life by up to 50%' could not be traced to an NRCA document, so it is not used."
+      }
+    },
+    "reactive_to_planned_repair_cost_multiplier": {
+      "value": 3.0, "low": 1.8, "high": 5.0, "unit": "x (cost of a reactive/emergency repair vs the same defect fixed on a planned visit)",
+      "as_of": "2026", "confidence": "low",
+      "sources": [
+        {"name": "Contractor blog summaries: 'emergency roof leak repair often costs 3-5 times more than planned maintenance'", "url": "https://www.kodiakroofing.com/blog/emergency-vs-planned-roof-repairs/"},
+        {"name": "Claim attributed to a 'GAF April 2026 report': emergency repairs cost 3-9x scheduled maintenance (the GAF report itself was not located)", "url": "https://www.upstateroofingpros.com/blog/roof-maintenance-reduces-capital-costs-2026-guide"},
+        {"name": "Firestone/ProLogis claim: reactive maintenance about $0.25/sf/yr vs proactive about $0.14/sf/yr (ratio 1.79). Compares annual spend, not per-repair cost; used as the low bound", "url": "https://ridgelineroofingcompany.com/how-commercial-roof-maintenance-prevents-leaks/"},
+        {"name": "US DOE FEMP O&M Best Practices Guide R3.0: preventive maintenance saves 12-18% vs reactive (all building equipment, not roof-specific). Context only", "url": "https://www.energy.gov/sites/prod/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf"}
+      ],
+      "note": "No primary study quantifying a roof-specific reactive vs planned repair cost ratio was found. The 3-5x and 3-9x figures are marketing claims. The 3-9x figure also circulates in general facilities-maintenance lore. value=3 is the low end of both marketing ranges, as a conservative default. The only government figure, FEMP's 12-18% program-level savings, measures something different and is much smaller."
+    },
+    "annual_maintenance_cost": {
+      "per_sqft_historic_surveys": {
+        "value": 0.14, "low": 0.09, "high": 0.19, "unit": "$/sq ft/yr (1997 dollars)",
+        "as_of": "1997", "confidence": "medium",
+        "sources": [
+          {"name": "IIBEC, 'Life Cycle Cost Analysis Using Roofing Coatings' (cites Schneider & Keenan 1997 survey: $0.14-0.19/sf; Cash 1997 survey: $0.09-0.15/sf)", "url": "https://iibec.org/publication-post/life-cycle-cost-analysis-using-roofing-coatings/"}
+        ],
+        "note": "These are the only survey-based (not marketing) maintenance cost figures found. They are in 1997 dollars; escalate before use. The $0.14 'proactive' figure in the Firestone/ProLogis lore matches the low end of Schneider & Keenan, which suggests a possible common origin."
+      },
+      "pct_of_replacement_cost": {
+        "value": null, "low": 1, "high": 3, "unit": "% of replacement cost per year",
+        "as_of": "2026", "confidence": "low",
+        "sources": [
+          {"name": "Contractor/FM blog summaries citing '1-3% of replacement cost per year' (no primary origin)", "url": "https://www.upstateroofingpros.com/blog/roof-maintenance-reduces-capital-costs-2026-guide"}
+        ],
+        "note": "1-3% appears only in unattributed marketing content, so value is null. Related primary-ish figure: NRC Canada reports average annual maintenance cost is about one-third of the average annual life-cycle cost in its dataset."
+      },
+      "maintenance_share_of_annual_lcc": {
+        "value": 0.33, "low": null, "high": null, "unit": "fraction of average annual life-cycle cost",
+        "as_of": "c. 2000s", "confidence": "medium",
+        "sources": [{"name": "NRC Canada, Effective Roof Management", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"}],
+        "note": "'The average annual maintenance cost for the roofs reported in the study are typically one-third of the average annual life cycle cost.' Read from a search extract."
+      }
+    },
+    "share_of_roofs_failing_to_reach_expected_life": {
+      "value": null, "low": null, "high": null, "unit": "%",
+      "as_of": null, "confidence": "low",
+      "sources": [
+        {"name": "Fortis, 'Who Said it First? 80% of Roofs are Replaced Prematurely' (traces the claim to a 2006 Kieft/Fortis brochure; no study)", "url": "https://fortis.us.com/who-said-it-first-80-of-roofs-are-replaced-prematurely/"}
+      ],
+      "note": "Every candidate statistic is untraceable: '80% of roofs replaced prematurely' (earliest known text is a 2006 warranty-firm brochure: 'over 80% of re-roofs are premature and can be deferred 5-15 years'); '85% of premature failures due to inadequate maintenance'; '60% of roof failures stem from inadequate maintenance'. Do not use these in the model."
+    },
+    "manufacturer_maintenance_requirements": {
+      "text": "Carlisle's Owner's Manual recommends inspection at least twice a year and after severe storms, with records kept. It states that regular maintenance inspections are necessary for continued warranty service and coverage. Carlisle Continu-Care: annual maintenance by an authorized applicator extends a 20-yr-eligible Total System Warranty by 5 years (30-yr maximum). The owner must enrol within 1 year of completion. FM Global Data Sheet 1-29 recommends semi-annual and post-storm inspection with written records (DS 1-32 was folded into 1-28/1-29). GAF, Johns Manville and Holcim/Firestone warranty clauses were not verified (search budget exhausted).",
+      "sources": [
+        {"name": "Carlisle SynTec Owner's Manual", "url": "https://www.buildsite.com/pdf/carlislesyntec/Carlisle-Owner-Manual-2928857.pdf"},
+        {"name": "Carlisle Continu-Care Warranty Extension", "url": "https://www.carlislesyntec.com/en/About-Carlisle/Warranty-Services/Continu-Care-Warranty"},
+        {"name": "FM Global DS 1-29 summary (Professional Roofing, 'Important FM updates', Mar 2026)", "url": "https://www.professionalroofing.net/Articles/Important-FM-updates--03-01-2026/5705"}
+      ]
+    }
+  },
+
+  "maintenance_program_pricing": {
+    "inspection_per_visit_usd": {
+      "value": 500, "low": 250, "high": 1000, "unit": "$ per inspection visit (inspection + report, no repairs)",
+      "as_of": "2025", "confidence": "low",
+      "sources": [
+        {"name": "Roof Medic, 'How Much Does A Commercial Roof Inspection Cost In 2025?'", "url": "https://roofmedic.com/blog/commercial-roof-inspection-cost/"},
+        {"name": "General Roofing Co., commercial roof inspection cost", "url": "https://generalroof.com/commercial-roof-inspection-checklist-cost/"}
+      ],
+      "note": "The search extract (source not individually attributed) gave: most commercial inspections $250-$800. By size: <5,000 sf $250-400; 5,000-20,000 sf $400-700; >20,000 sf $700-1,000+. value=500 is the midpoint of the 5k-20k sf tier. These are contractor marketing figures."
+    },
+    "contract_per_sqft_yr": {
+      "basic_inspection_plan": {
+        "value": 0.035, "low": 0.03, "high": 0.10, "unit": "$/sq ft/yr",
+        "as_of": "2025-2026", "confidence": "low",
+        "sources": [
+          {"name": "Weather Shield Roofing: most maintenance plans $0.03-0.04/sf plus travel fee", "url": "https://weathershieldusa.com/how-much-does-a-commercial-roof-maintenance-plan-cost/"},
+          {"name": "Stay Dry Roofing: $0.03/sf basic plan, sometimes $0.04+, no repairs included", "url": "https://staydryroofing.com/what-is-the-cost-of-commercial-roof-maintenance/"},
+          {"name": "West Roofing Systems: $0.03-0.10/sf depending on condition/scope", "url": "https://www.westroofingsystems.com/cost-of-a-commercial-roof-maintenance-plan"}
+        ],
+        "note": "Plans in this range are inspection plus light cleaning. Repairs are extra. The band is below what PaxSeal includes."
+      },
+      "inspection_only_contract": {
+        "value": 0.075, "low": 0.05, "high": 0.10, "unit": "$/sq ft/yr (biannual inspections + reports, repairs quoted separately)",
+        "as_of": "2025-2026", "confidence": "low",
+        "sources": [{"name": "Griffith Roofing, 'Property Managers' Budget Playbook'", "url": "https://www.griffithroofing.com/commercial-roof-maintenance-plan/"}],
+        "note": "Midpoint of the quoted $0.05-0.10 range."
+      },
+      "full_service_contract": {
+        "value": 0.20, "low": 0.15, "high": 0.25, "unit": "$/sq ft/yr (biannual inspections, minor repairs to a per-visit cap, drains/debris, photo reports)",
+        "as_of": "2025-2026", "confidence": "low",
+        "sources": [
+          {"name": "Commercial Roof Guide, Roof Maintenance Guide (2026)", "url": "https://commercialroofguide.com/guides/roof-maintenance/"},
+          {"name": "Griffith Roofing budget playbook", "url": "https://www.griffithroofing.com/commercial-roof-maintenance-plan/"}
+        ],
+        "note": "This contract type matches PaxSeal most closely (2 visits, repairs capped at 4 hrs/visit, reports). Both sources quote $0.15-0.25. value is the midpoint."
+      }
+    },
+    "recommended_paxseal_fee_formula": {
+      "roof_only": {
+        "base_fee_usd_yr": {
+          "value": 800, "low": 500, "high": 1400, "unit": "$/yr fixed (covers 2 mobilizations, 2 reports, annual consult)",
+          "as_of": "2026", "confidence": "low",
+          "sources": [{"name": "Derived from per-visit inspection fees (Roof Medic / General Roofing extracts)", "url": "https://roofmedic.com/blog/commercial-roof-inspection-cost/"}],
+          "note": "DERIVED, not quoted. Base = 2 visits x per-visit inspection fee: 2 x $250 (low), 2 x $400 (value, small-roof tier top), 2 x $700 (high, large-roof tier bottom). It gives small roofs a floor price."
+        },
+        "per_sqft_usd_yr": {
+          "value": 0.13, "low": 0.08, "high": 0.20, "unit": "$/sq ft/yr on top of base",
+          "as_of": "2026", "confidence": "low",
+          "sources": [
+            {"name": "Full-service contract benchmark $0.15-0.25/sf (Commercial Roof Guide; Griffith)", "url": "https://commercialroofguide.com/guides/roof-maintenance/"},
+            {"name": "Inspection-only benchmark $0.05-0.10/sf (Griffith)", "url": "https://www.griffithroofing.com/commercial-roof-maintenance-plan/"}
+          ],
+          "note": "DERIVED calibration. With base $800, $0.13/sf gives an effective all-in rate of $0.17/sf at 20,000 sf, $0.146/sf at 50,000 sf and $0.138/sf at 100,000 sf. That is inside or just under the $0.15-0.25 full-service band, and larger roofs get a volume discount. PaxSeal's 4-hr repair cap is modest, so pricing sits at the low end of full service. PAX should replace this with its own labor rate x hours once set."
+        }
+      },
+      "complete_tier_uplift": {
+        "value": null, "low": null, "high": null, "unit": "multiplier or $ add-on for building-envelope scope",
+        "as_of": null, "confidence": "low",
+        "sources": [],
+        "note": "No published pricing for combined roof + envelope (walls, sealants, windows) preventive programs was found. PAX must set this, or price it as an hours-based add-on."
+      }
+    }
+  },
+
+  "cost_escalation": {
+    "annual_pct_10yr": {
+      "value": 5.75, "low": 2.47, "high": 9.14, "unit": "%/yr",
+      "as_of": "Dec 2015 - Dec 2025", "confidence": "medium",
+      "sources": [
+        {"name": "BLS PPI PCU23816X23816X, Roofing Contractors, Nonresidential Building Work (Dec 2007=100), via FRED table", "url": "https://fred.stlouisfed.org/data/PCU23816X23816X"},
+        {"name": "FRED series page", "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"},
+        {"name": "AGC PPI Tables (Jan 2026 update) for 2021-2025 annual changes", "url": "https://www.agc.org/sites/default/files/users/user21902/PPI%20Tables%202026_01%20Redo_v2.pdf"}
+      ],
+      "note": "Index values from search extracts: Dec 2015 = 128.5, Dec 2025 = 224.789 (Feb 2026 = 224.143). CAGR = (224.789/128.5)^(1/10) - 1 = 5.75%. Annual changes 2021-2025 (AGC): 6.0, 18.8, 14.9, 2.7, 4.2%. Those give an implied Dec 2020 value of about 145.2, so Dec 2015 to Dec 2020 = 2.47%/yr (low) and Dec 2020 to Dec 2025 = 9.14%/yr (high). The 10-yr figure is inflated by the 2022-23 surge. The index covers new nonresidential work plus maintenance and repair."
+    },
+    "annual_pct_20yr": {
+      "value": 4.60, "low": 2.91, "high": 5.75, "unit": "%/yr",
+      "as_of": "Dec 2007 - Dec 2025 (18 yrs; series starts Dec 2007)", "confidence": "medium",
+      "sources": [
+        {"name": "BLS PPI PCU23816X23816X via FRED", "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"}
+      ],
+      "note": "No 20-yr roofing-contractor series exists (it begins Dec 2007 = 100), so the longest available span is used: (224.789/100)^(1/18) - 1 = 4.60%. low = Dec 2007 to implied Dec 2020 (pre-surge) = 2.91%/yr. Recommended forward default for a 20-yr TCO: 4.6% national, before market adjustments."
+    },
+    "related_series": [
+      {"series_id": "PCU23816X23816X", "name": "PPI Roofing contractors, nonresidential building work (Dec 2007=100)", "use": "primary escalator", "url": "https://fred.stlouisfed.org/series/PCU23816X23816X"},
+      {"series_id": "PCU23816X23816XP", "name": "PPI Roofing contractors, nonresidential: primary products", "url": "https://fred.stlouisfed.org/series/PCU23816X23816XP"},
+      {"series_id": "PCU236400236400223", "name": "PPI New nonresidential building construction by contractor type: roofing contractors (Feb 2014=100)", "url": "https://fred.stlouisfed.org/data/PCU236400236400223"},
+      {"series_id": "WPU136", "name": "PPI Asphalt felts and coatings", "annual_pct_change": {"2021": 18.1, "2022": 11.4, "2023": 2.5, "2024": 0.9}, "note": "From AGC PPI Tables (Jan 2025) search extract. 2021-2024 CAGR = 8.0%/yr. 10/20-yr CAGR not obtained.", "url": "https://www.agc.org/sites/default/files/users/user21902/PPI%20Tables%202025_01.pdf"},
+      {"series_id": "WPU1361", "name": "PPI Prepared asphalt and tar roofing and siding products", "note": "Index levels not obtained (FRED/BLS blocked).", "url": "https://fred.stlouisfed.org/series/WPU1361"},
+      {"series_id": "PCU3241232412", "name": "PPI Asphalt paving and roofing materials manufacturing", "note": "Index levels not obtained.", "url": "https://fred.stlouisfed.org/series/PCU3241232412"},
+      {"series_id": "WPU0721", "name": "PPI Plastic construction products (proxy for TPO/PVC membranes)", "note": "Index levels not obtained.", "url": "https://fred.stlouisfed.org/series/WPU0721"},
+      {"series_id": "WPU1392", "name": "PPI Insulation materials (proxy for polyiso boards)", "note": "Index levels not obtained.", "url": "https://fred.stlouisfed.org/series/WPU1392"}
+    ],
+    "claims_cost_context": {
+      "text": "Verisk reports that US roof repair and replacement cost value was about $31B in 2024, up nearly 30% since 2022. Verisk's 2026 report says average (residential) roof replacement claim cost was $17,631 in 2025, 33% above the 2021-2024 average, even as claim counts fell about 20%.",
+      "sources": [
+        {"name": "Verisk newsroom", "url": "https://www.verisk.com/company/newsroom/u.s.-roof-claims-costs-reached-over-$30-billion-in-2024-underscoring-evolving-risks/"},
+        {"name": "Insurance Journal, 'Roof Costs Soar Even as Claims Decline: Verisk' (Jun 2026)", "url": "https://www.insurancejournal.com/news/national/2026/06/01/871878.htm"}
+      ]
+    }
+  },
+
+  "roof_life_years_by_system": {
+    "tpo": {
+      "value": 20, "low": 15, "high": 35, "unit": "years", "as_of": "2014 (NRCA study); Fannie Mae EUL 2019+", "confidence": "medium",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F Estimated Useful Life Tables: built-up/EPDM/TPO = 20 yrs", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "McGroarty & Taylor, 'A study of longevity', Professional Roofing, Feb 2014 (NRCA TPO heat-aging study: utility grade ~15 yrs, premium ~35)", "url": "https://www.professionalroofing.net/Articles/A-study-of-longevity--02-01-2014/2406"}
+      ],
+      "note": "Lender EUL table used as the default. The NRCA heat-aging study sets the range by membrane grade."
+    },
+    "epdm": {
+      "value": 20, "low": 20, "high": 38, "unit": "years", "as_of": "2019-2025", "confidence": "medium",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F EUL", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "EPDM Roofing Association, 'Survey, Research Confirm EPDM Roofing Membranes Last 38 Years' (2025 survey, n=569)", "url": "https://epdmroofs.org/resource/survey-research-confirm-epdm-roofing-membranes-last-38-years/"},
+        {"name": "UFC 3-110-03 Roofing (DoD): 'properly constructed EPDM systems are now providing 30 years or more'", "url": "https://nibs-s3-wbdg3-production.s3.us-east-1.amazonaws.com/FFC/DOD/UFC/ufc_3_110_03_2012_c5.pdf"}
+      ],
+      "note": "38 yrs is a trade-association figure for 'properly designed, installed and maintained' EPDM. Its survey respondents gave about 25 to 40+ yrs. The DoD criteria say 30+. Default is the conservative lender EUL of 20."
+    },
+    "mod_bit": {
+      "value": 20, "low": 15, "high": 25, "unit": "years", "as_of": "2026", "confidence": "low",
+      "sources": [
+        {"name": "The Roofing Brief, flat roof materials compared (15-25 yrs, attributed to NRCA field studies and warranty data)", "url": "https://theroofingbrief.com/flat-roof-materials-compared/"},
+        {"name": "Fannie Mae Form 4099.F EUL (built-up category = 20)", "url": "https://multifamily.fanniemae.com/media/35621/display"}
+      ],
+      "note": "No mod-bit-specific primary figure was confirmed. Whether Fannie Mae lists mod bit separately was not verified."
+    },
+    "bur": {
+      "value": 20, "low": 17.4, "high": 30, "unit": "years", "as_of": "1997-2026", "confidence": "medium",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F EUL: built-up = 20", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "Cash (1997) survey of 400+ contractors: multi-ply asphalt average 17.4 yrs (via NRC Canada)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"},
+        {"name": "The Roofing Brief (BUR 20-30 yrs)", "url": "https://theroofingbrief.com/flat-roof-materials-compared/"}
+      ],
+      "note": ""
+    },
+    "metal": {
+      "value": 40, "low": 30, "high": 40, "unit": "years", "as_of": "2019+", "confidence": "medium",
+      "sources": [{"name": "Fannie Mae Form 4099.F EUL: metal roofing = 40", "url": "https://multifamily.fanniemae.com/media/35621/display"}],
+      "note": "low=30 is a modelling sensitivity bound, not sourced."
+    },
+    "coating_restoration": {
+      "value": 15, "low": 10, "high": 20, "unit": "years added per coating cycle", "as_of": "2025", "confidence": "low",
+      "sources": [{"name": "West Roofing Systems, silicone coating warranty/cost (10/15/20-yr warranties by mil thickness)", "url": "https://www.westroofingsystems.com/process-warranty-cost-silicone-roof-coating-systems"}],
+      "note": "Based on manufacturer warranty terms (10 yr at about 20 mils, 15 yr at about 25 mils, 20 yr at higher builds) as reported by contractors. These are warranty terms, not measured service life."
+    }
+  },
+
+  "insurance": {
+    "commercial_property_rate_trend_pct": {
+      "value": -13, "low": -20, "high": -10, "unit": "% rate change, US property, Q2 2026 (y/y)",
+      "as_of": "Q2 2026", "confidence": "medium",
+      "sources": [
+        {"name": "Marsh Global Insurance Market Index Q2 2026", "url": "https://www.marsh.com/en/about/media/global-commercial-insurance-falls-6-percent-q2-2026.html"},
+        {"name": "Insurance Journal coverage (Jul 2026)", "url": "https://www.insurancejournal.com/news/national/2026/07/23/878716.htm"}
+      ],
+      "note": "US property rates fell 13% in Q2 2026: cat-exposed programs over $1M fell 20%, non-cat programs under $1M fell 10%. This was the eighth straight quarterly decline. For comparison, the 2023 hard market (CIAB average commercial property premium change): Q1 +20.4%, Q2 +18.3%, Q3 +17.1%, Q4 +11.8%. 2024: Q1 +10.1%, Q3 +7.9%, Q4 +6.0%.",
+      "history_sources": [
+        {"name": "CIAB Q1 2024 (Insurance Journal)", "url": "https://www.insurancejournal.com/news/national/2024/05/20/774982.htm"},
+        {"name": "CIAB Q4 2024 (Insurance Journal)", "url": "https://www.insurancejournal.com/news/national/2025/02/20/812606.htm"}
+      ]
+    },
+    "roof_age_underwriting": {
+      "text": "ISO endorsement CP 10 36 (Limitations on Coverage for Roof Surfacing, introduced in ISO's 2012 filing) lets insurers value roof surfacing at ACV while the rest of the building stays at replacement cost. It can also exclude cosmetic wind/hail damage. Scheduled premises must be listed, and the cosmetic exclusion is not approved in every state. Carriers commonly start restricting coverage around 10-15 years of roof age. Inspections and ACV conversion are common at 15-20 years, and non-renewal or a replacement requirement is common beyond 20-25. These age thresholds come from contractor and residential-focused sources and should be confirmed with PAX's brokers. No quantified premium or deductible differential for roof age or for a documented maintenance program was found in public sources.",
+      "sources": [
+        {"name": "Adjusters International, ISO commercial property revisions (CP 10 36)", "url": "https://www.adjustersinternational.com/pubs/adjusting-today/be-aware-of-recent-revisions-to-iso-commercial-property-coverage-forms/"},
+        {"name": "Insurance Journal, 'Beware These Commercial Property Endorsements!' (Sep 2026)", "url": "https://www.insurancejournal.com/magazines/mag-features/2026/09/07/883930.htm"},
+        {"name": "RoofVista roof insurance requirements guide (age thresholds; secondary)", "url": "https://roofvista.com/resources/guides/roof-insurance-state-guide"}
+      ]
+    },
+    "maintenance_documentation_effect": {
+      "value": null, "confidence": "low",
+      "sources": [
+        {"name": "FM Global DS 1-29 via Professional Roofing: semi-annual + post-storm inspection with written records; 'healthy roof systems are less likely to produce a casualty loss'", "url": "https://www.professionalroofing.net/Articles/Important-FM-updates--03-01-2026/5705"}
+      ],
+      "note": "Qualitative only. Insurers commonly deny roof claims as wear-and-tear or lack of maintenance, and maintenance records rebut that argument. No study was found that quantifies better claim outcomes or premium credits for documented maintenance. The model should present this as a qualitative benefit, not a dollar figure."
+    }
+  },
+
+  "valuation": {
+    "method": "Income approach, direct capitalization: value = NOI / cap rate. So an operating-cost saving S that passes through to NOI changes value by S / cap rate.",
+    "applies_when": [
+      "The owner bears the roof expense and it is an operating expense (above the NOI line), e.g. gross or modified-gross leases, or NNN leases where the landlord keeps 'roof and structure'.",
+      "Recurring, stabilized savings. One-off or capital items are not capitalized this way."
+    ],
+    "does_not_apply_or_needs_adjustment": [
+      "NNN leases where tenants reimburse roof maintenance via CAM: the saving accrues to tenants, so landlord NOI is unchanged (it may indirectly support rent or occupancy).",
+      "Owner-occupied buildings: there is no NOI. Use direct cash-flow/NPV savings instead, and do not capitalize.",
+      "Roof replacement is a capital expenditure, usually treated below the NOI line (reserves for replacement / CapEx). Deferring replacement shows up as lower reserves or CapEx in a DCF, not as NOI capitalized at the cap rate. Appraiser practice on including reserves above the line varies."
+    ],
+    "sources": [],
+    "confidence": "low",
+    "note": "The formula is standard appraisal practice (Appraisal Institute, 'The Appraisal of Real Estate'), but no source could be opened this session because the web-search budget ran out. Verify wording before client use. Cap rates come from the market files."
+  },
+
+  "secondary_leak_costs": {
+    "interior_damage_per_leak_event_usd": {
+      "value": null, "low": null, "high": null, "unit": "$ per leak event",
+      "as_of": null, "confidence": "low", "sources": [],
+      "note": "The only figures seen were unattributed contractor-blog claims in a search summary, e.g. 'interior remediation adds $5,000 to $40,000' and 'average preventive repair $200-$800 vs $8,000+ reactive'. They could not be tied to a specific URL or primary source, so they are not used. The search budget ran out before insurer (Verisk/ISO water-damage severity) or business-interruption sources could be checked."
+    },
+    "business_interruption": {"value": null, "confidence": "low", "sources": [], "note": "Not researched (search budget exhausted)."},
+    "mold_remediation": {"value": null, "confidence": "low", "sources": [], "note": "Not researched (search budget exhausted)."}
+  },
+
+  "untraceable_statistics": [
+    {"claim": "80% of commercial roofs are replaced prematurely", "finding": "Folklore. Earliest known text is a 2006 Kieft/Fortis warranty brochure. No study exists.", "url": "https://fortis.us.com/who-said-it-first-80-of-roofs-are-replaced-prematurely/"},
+    {"claim": "Maintained roof lasts 21 years vs 13 reactive (Firestone/ProLogis 15-yr study; also attributed to NRCA)", "finding": "Widely repeated by contractors. No original report or NRCA document was found. Its $0.14/sf proactive cost matches Schneider & Keenan's 1997 survey low end, which suggests a possible 1990s origin."},
+    {"claim": "NRCA: maintenance extends roof life by up to 50%", "finding": "Attributed to NRCA by contractor blogs. No NRCA source was found."},
+    {"claim": "Reactive/emergency repairs cost 3-5x (or 3-9x, 'GAF April 2026 report') planned work", "finding": "Marketing claims. The GAF report was not located, and 3-9x also circulates as generic facilities-maintenance lore."},
+    {"claim": "85% of premature roof failures / 60% of roof failures are due to inadequate maintenance", "finding": "No origin found."},
+    {"claim": "Maintenance costs 1-3% of replacement value per year", "finding": "No primary origin found."}
+  ],
+
+  "open_questions": [
+    "Confirm every search-extracted number by opening the URL. Direct access was blocked in this session. The priorities are the FRED PCU23816X23816X values (Dec 2015 = 128.5, Dec 2025 = 224.789) and the Fannie Mae EUL table.",
+    "Pull full monthly data for PCU23816X23816X, WPU1361, WPU0721 and WPU1392 from FRED/BLS to compute exact annual-average CAGRs and material-specific escalators.",
+    "Obtain Kyle & Kalinger (1997) and Coffelt & Hendrickson (2010, J. Arch. Eng.) full texts for primary maintained vs unmaintained service-life data.",
+    "Check GAF, Johns Manville and Holcim/Firestone warranty maintenance clauses, and whether GAF published an April 2026 report with the 3-9x figure.",
+    "PAX: set the Complete-tier (envelope) uplift and replace the derived fee formula with labor rate x hours once PaxSeal is priced.",
+    "Ask PAX's insurance brokers for actual roof-age schedules and any premium credit for documented maintenance programs.",
+    "Research leak secondary costs (interior damage, BI, mold) from insurer loss data. Not done because the search budget ran out."
+  ]
+}
