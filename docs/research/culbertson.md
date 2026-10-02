@@ -87,3 +87,11 @@ Each cell reads rating · annualized frequency · expected annual loss to buildi
 8. NoVA commercial wind/hail deductibles and roof-age practices (ask a broker).
 9. How the model should project insurance premiums beyond the current cycle.
 10. Whether to add Institutional/K-12, Healthcare and Historic property types for Culbertson.
+
+## Round 2 update (October 2026)
+
+| Key | Value (range) | Confidence | Sources |
+|---|---|---|---|
+| `cap_rates.retail` | 6.1% (5.6–7.5) | low | [Serafin Mid-Year 2026](https://serafinre.com/northern-virginia-commercial-real-estate-market-report-mid-year-2026/), [Serafin Q3 2025](https://serafinre.com/northern-virginia-commercial-real-estate-q3-2025-market-report-serafin-real-estate/), [Loudoun 2026 Shopping Center Guideline](https://www.loudoun.gov/DocumentCenter/View/219224/428---429-Retail-2026-Guidelines-PDF) |
+
+Market points from Serafin: Loudoun 5.64% (Q3 2025), Fairfax 5.99% (H1 2026), Prince William 6.73% (H1 2026), and shopping-center sales at 6.1–6.3%. The value is the median of those points. The Loudoun assessor's 2026 assessment cap rates (7.0% anchored, 7.5% small unanchored) set the high bound. All figures come from search-result excerpts; the pages could not be fetched. The excerpt does not clearly say whether the Fairfax and Prince William averages are retail-only.

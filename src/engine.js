@@ -206,6 +206,7 @@
       cumulative: cumulative,
       totalSpend: run,
       residualValue: residual,
+      lifeLeftYears: lifeLeft,
       openingValue: openingValue,
       netCost: run + openingValue - residual,
       replacementYears: replacements,
@@ -273,8 +274,12 @@
         npvSavings: npv(diff, cfg.discountRatePct),
         totalFees: totalFees,
         returnPerFeeDollar: totalFees ? savings / totalFees : null,
-        // Other roof costs avoided per $1 of fees (gross; net savings + the fee itself).
-        avoidedPerFeeDollar: totalFees ? (savings + totalFees) / totalFees : null,
+        // Savings split: lower cash spending (nominal) plus more roof life left at year 20
+        // (today's dollars). The two add up to `savings`.
+        cashSavings: reactive.totalSpend - planned.totalSpend,
+        roofValueKept: planned.residualValue - reactive.residualValue,
+        // Other cash roof costs avoided per $1 of fees (cash only; excludes roof value kept).
+        avoidedPerFeeDollar: totalFees ? (reactive.totalSpend - planned.totalSpend + totalFees) / totalFees : null,
         annualNoiGain: annualNoiGain,
         assetValueProtected: inp.capRatePct > 0 ? annualNoiGain / (inp.capRatePct / 100) : null,
         yearsToDouble: e > 0 ? Math.log(2) / Math.log(1 + e) : null,

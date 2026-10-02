@@ -1165,27 +1165,27 @@
       "note": "Loudoun County assessor's 1/1/2026 Class B office base cap rate 8.36%, based on the PwC Real Estate Investor Survey (Northern Virginia office), 3rd quarter. No low/high found in the sources retrieved; NoVA office is distressed (high vacancy), so Class B/C trades can clear well above this. Class A likely lower. Retrieved from a web-search result extract; direct page fetch was blocked by this session's egress proxy, so figure is unverified against the full page."
     },
     "retail": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 6.1,
+      "low": 5.6,
+      "high": 7.5,
       "unit": "%",
-      "as_of": "2026",
+      "as_of": "2025-Q3 to 2026-H1",
       "confidence": "low",
       "sources": [
         {
-          "name": "Loudoun County Assessor - 2026 Shopping Center Guideline (428-429 Retail; value not extracted)",
+          "name": "Serafin Real Estate - Northern Virginia CRE Market Report: Mid-Year 2026",
+          "url": "https://serafinre.com/northern-virginia-commercial-real-estate-market-report-mid-year-2026/"
+        },
+        {
+          "name": "Serafin Real Estate - Northern Virginia CRE Q3 2025 Market Report",
+          "url": "https://serafinre.com/northern-virginia-commercial-real-estate-q3-2025-market-report-serafin-real-estate/"
+        },
+        {
+          "name": "Loudoun County Assessor - 2026 Shopping Center Guideline (428-429 Retail)",
           "url": "https://www.loudoun.gov/DocumentCenter/View/219224/428---429-Retail-2026-Guidelines-PDF"
-        },
-        {
-          "name": "Marcus & Millichap - Manassas Junction sale (May 2026)",
-          "url": "https://www.marcusmillichap.com/news-events/press/2026/05/5-26-manassas-junction"
-        },
-        {
-          "name": "CBRE U.S. Cap Rate Survey H1 2026 (metro tables not retrieved)",
-          "url": "https://www.cbre.com/insights/reports/us-cap-rate-survey-h1-2026"
         }
       ],
-      "note": "No usable Northern Virginia retail cap rate retrieved. Tried: Loudoun 2026 Shopping Center Guideline (PDF blocked; value not extracted), CBRE H1 2026 Cap Rate Survey (metro tables not visible), Marcus & Millichap Manassas Junction (grocery-anchored ground lease, 'well under 4%' - explicitly an outlier, not usable as a market rate). Web-search budget exhausted before further attempts."
+      "note": "Serafin (retail section, per excerpt): Loudoun retail cap rate compressed to 5.64% in Q3 2025 ($343/sf). Fairfax average 7.30% (2025) to 5.99% (H1 2026). Prince William 6.73% (H1 2026) vs 6.53% (2025). Recent NoVA shopping-center sales 6.1-6.3%. The excerpt does not clearly say whether the Fairfax and Prince William averages are retail-only. value = median of the market points (5.64, 5.99, 6.2, 6.73) = 6.1. Loudoun assessor 2026 guideline cap rates for assessment (more conservative than market): anchored large retail 7.0%, small unanchored 7.5%; Loudoun sales comps in that guideline 5.60-6.07% (RERC Q3 2025 East-region neighborhood-center data also cited). low = Loudoun Q3 2025; high = assessor small unanchored. The 'well under 4%' Manassas Junction ground lease is still excluded as an outlier. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     }
   },
   "roof_life_years": {

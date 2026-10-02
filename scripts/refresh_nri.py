@@ -47,7 +47,8 @@ def main(csv_path, only=None):
         data = json.loads(path.read_text())
         old = data.get("fema_nri", {})
         data["fema_nri"] = {
-            "county": f"{r['COUNTY']} {r['COUNTYTYPE']}, {r['STATEABBRV']} ({fips})",
+            # FEMA writes independent cities as "Norfolk city"; counties keep "County".
+            "county": f"{r['COUNTY']} {r['COUNTYTYPE'] if r['COUNTYTYPE'] != 'City' else 'city'}, {r['STATEABBRV']} ({fips})",
             "overall_risk_rating": r["RISK_RATNG"],
             "risk_score": num(r["RISK_SCORE"]),
             "nri_version": r["NRI_VER"],

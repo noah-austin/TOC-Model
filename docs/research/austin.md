@@ -103,3 +103,21 @@
    - Austin Energy Green Building and cool-roof rules;
    - differences in Williamson County cities.
 8. Cross-check the NCEI damage totals for Sep 2023 against TDI or insurer loss data.
+
+## Round 2 update (October 2026)
+
+Every figure below comes from a web-search result excerpt. Direct fetches of the broker and contractor sites were still blocked by the sandbox proxy, so treat these values as provisional. Each value is the median of the source midpoints. Full derivations are in each key's `note`.
+
+| Key | Value (range) | Confidence | Sources |
+|---|---|---|---|
+| `replacement_cost_per_sqft.tpo` | $11.00 ($7–15) | medium | [RISE Austin calculator](https://www.riseroofingaustin.com/commercial-roof-cost-calculator/), [TriVAN TX 2026](https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026), [Roofing Brief](https://theroofingbrief.com/commercial-roof-replacement-cost/) |
+| `replacement_cost_per_sqft.epdm` | $11.00 ($7–14.50) | low | [TriVAN TX 2026](https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026), [Angi](https://www.angi.com/articles/epdm-roofing-cost.htm), [Fox Haven](https://foxhavenroof.com/epdm-roofing-guide-2026-costs-benefits-installation-process/) |
+| `replacement_cost_per_sqft.mod_bit` | $11.00 ($7.50–17.25) | medium | [RISE Austin](https://www.riseroofingaustin.com/commercial-roof-cost-calculator/), [TriVAN](https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026), [BTOL](https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/) |
+| `replacement_cost_per_sqft.bur` | $10.00 ($5.75–15.50) | low | [TriVAN](https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026), [BTOL](https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/), [Commercial Roof Guide BUR](https://commercialroofguide.com/guides/built-up-roofing/) |
+| `replacement_cost_per_sqft.metal` | $14.00 ($8–23) | low | [BTOL](https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/), [RoofVista commercial](https://roofvista.com/resources/guides/commercial-flat-roof-cost), [RoofVista TX metal](https://roofvista.com/resources/guides/texas-metal-roofing-guide), [Austin Roofing Co.](https://austinroofingcompany.com/guides/roof-replacement-cost-austin-tx) |
+| `replacement_cost_per_sqft.coating_restoration` | $3.50 ($1.50–7), no tear-off | medium | [M&M TX/LA](https://mmroofsiding.com/blog/commercial-roof-coating-cost/), [West Roofing](https://www.westroofingsystems.com/cost-of-silicone-roof-coating-system), [Roofing Brief coatings](https://theroofingbrief.com/roof-coating-types-and-cost/) |
+| `cap_rates.industrial` | 7.0% (6.28–7.9) | medium | [Matthews Q1 2026](https://www.matthews.com/insights/austin-tx-industrial-market-report-q1-2026), [Partners Q1 2026](https://partnersrealestate.com/research/austin-industrial-q1-2026-quarterly-market-report/), [Score Property Group](https://scorepropertygroup.com/insights/austin-industrial-cap-rates-2026/) |
+| `cap_rates.office` | 8.5% (7.6–9.45) | low | [M&M 2026 office forecast](https://www.marcusmillichap.com/research/market-report/austin/austin-2026-investment-forecast-office-market-report), [RealCostIQ](https://realcostiq.com/cap-rate/austin/), [CBRE H1 2026 summary](https://finance.yahoo.com/real-estate/articles/cbre-h1-2026-cap-rate-055007513.html) |
+| `cap_rates.retail` | 6.4% (5.5–6.8) | medium | [Matthews Q2 2026](https://www.matthews.com/insights/austin-retail-q2-2026), [Partners Q1 2026](https://partnersrealestate.com/research/austin-retail-q1-2026-quarterly-market-report/), [Grewal RE](https://grewalregroup.com/blog/austin-commercial-real-estate-guide-2026), [CBRE H1 2026 summary](https://finance.yahoo.com/real-estate/articles/cbre-h1-2026-cap-rate-055007513.html) |
+
+Caveats: few sources were Austin-specific. EPDM, BUR and metal rely mainly on Texas-wide guides. Several sources quote the membrane system and tear-off separately, so tear-off was added to make them comparable. Check all cost values against PAX job-cost data.

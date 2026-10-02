@@ -18,166 +18,146 @@
   "research_status": "PARTIAL - hazard data and cost escalation are primary-source; replacement cost, location factor, insurance, cap rates, roof life and code text could not be sourced because the session's network egress was restricted to GitHub/package registries. See open_questions.",
   "replacement_cost_per_sqft": {
     "tpo": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 11.0,
+      "low": 7.0,
+      "high": 15.0,
       "unit": "$/sq ft installed (tear-off + replace)",
       "as_of": "2026",
-      "confidence": "low",
+      "confidence": "medium",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "name": "RISE Roofing Austin - Commercial Roof Cost Calculator (2026)",
           "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
         },
         {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
           "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
         },
         {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
-          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
-        },
-        {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+          "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
+          "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
         }
       ],
-      "note": "TPO: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+      "note": "Three estimates of tear-off-inclusive TPO cost: (1) RISE Austin $8-14/sf, which the calculator says includes standard tear-off (midpoint 11.0). (2) TriVAN Texas $8.50-11.50/sf membrane system plus $1.50-3.50/sf tear-off, giving $10-15 (midpoint 12.5). (3) TRB national $7-12/sf including one-layer tear-off, R-25 polyiso, cover board and membrane (midpoint 9.5). value = median of the three midpoints. low/high = envelope. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "epdm": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 11.0,
+      "low": 7.0,
+      "high": 14.5,
       "unit": "$/sq ft installed (tear-off + replace)",
       "as_of": "2026",
       "confidence": "low",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
-          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
-        },
-        {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
           "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
         },
         {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
-          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
+          "name": "Angi - EPDM roofing cost (2026)",
+          "url": "https://www.angi.com/articles/epdm-roofing-cost.htm"
         },
         {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+          "name": "Fox Haven Roof - EPDM Roofing Guide 2026",
+          "url": "https://foxhavenroof.com/epdm-roofing-guide-2026-costs-benefits-installation-process/"
         }
       ],
-      "note": "EPDM: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+      "note": "No Austin-specific EPDM $/sf was found. (1) TriVAN Texas EPDM $8-11/sf plus $1.50-3.50 tear-off gives $9.50-14.50 (midpoint 12.0). (2) National guides put EPDM at $6-12/sf installed plus $1-3/sf tear-off, giving $7-15 (midpoint 11.0). (3) Another national guide gives $7.43-13.00/sf installed (midpoint 10.2). The excerpt did not say exactly which of the Angi/Fox Haven pages gave which national figure. value = median of the three midpoints. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "mod_bit": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 11.0,
+      "low": 7.5,
+      "high": 17.25,
       "unit": "$/sq ft installed (tear-off + replace)",
       "as_of": "2026",
-      "confidence": "low",
+      "confidence": "medium",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
+          "name": "RISE Roofing Austin - Commercial Roof Cost Calculator (2026)",
           "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
         },
         {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
           "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
         },
         {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "name": "BTOL Roofing - Commercial Roof Replacement Cost in Texas",
           "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
-        },
-        {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
         }
       ],
-      "note": "Modified bitumen: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+      "note": "Three estimates: (1) RISE Austin $7.50-12.50/sf including standard tear-off (midpoint 10.0). (2) TriVAN Texas $7-10/sf plus $1.50-3.50 tear-off, giving $8.50-13.50 (midpoint 11.0). (3) BTOL Texas $6.90-17.25/sf (midpoint 12.1). value = median of the three midpoints. low = RISE low; high = BTOL high. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "bur": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 10.0,
+      "low": 5.75,
+      "high": 15.5,
       "unit": "$/sq ft installed (tear-off + replace)",
       "as_of": "2026",
       "confidence": "low",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
-          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
-        },
-        {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
+          "name": "TriVAN Roofing - Texas Commercial Roof Replacement Cost Guide 2026",
           "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
         },
         {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "name": "BTOL Roofing - Commercial Roof Replacement Cost in Texas",
           "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
         },
         {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+          "name": "Commercial Roof Guide - Built-Up Roofing Guide (2026)",
+          "url": "https://commercialroofguide.com/guides/built-up-roofing/"
         }
       ],
-      "note": "BUR: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+      "note": "No Austin-specific BUR figure was found that could be firmly attributed. (1) TriVAN Texas BUR $8-12/sf plus $1.50-3.50 tear-off, giving $9.50-15.50 (midpoint 12.5). (2) BTOL Texas $5.75-13.80/sf (midpoint 9.8). (3) An Austin-area excerpt gave $4.50-12/sf (source page unclear; midpoint 8.25). National 2026 figures: 4-ply gravel $7-10/sf and cap sheet $6-8.50/sf, excluding tear-off (Commercial Roof Guide). value = median of the three Texas midpoints (9.8), rounded to 10.0. Gravel-surfaced BUR tear-off is heavier than single-ply, so the real cost leans higher. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "metal": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 14.0,
+      "low": 8.0,
+      "high": 23.0,
       "unit": "$/sq ft installed (tear-off + replace)",
       "as_of": "2026",
       "confidence": "low",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
-          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
-        },
-        {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
-          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
-        },
-        {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
+          "name": "BTOL Roofing - Commercial Roof Replacement Cost in Texas",
           "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
         },
         {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+          "name": "RoofVista - Commercial Flat Roof Cost Per Square Foot (2026)",
+          "url": "https://roofvista.com/resources/guides/commercial-flat-roof-cost"
+        },
+        {
+          "name": "RoofVista - Texas Metal Roofing Guide 2026",
+          "url": "https://roofvista.com/resources/guides/texas-metal-roofing-guide"
+        },
+        {
+          "name": "Austin Roofing Company - Roof Replacement Cost Austin TX (2026)",
+          "url": "https://austinroofingcompany.com/guides/roof-replacement-cost-austin-tx"
         }
       ],
-      "note": "Metal (low-slope standing seam / retrofit): no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges."
+      "note": "Standing-seam metal over low-slope (1/2:12 and up). Excerpt figures: Austin standing seam $10-18/sf (midpoint 14). Commercial standing seam $7-14/sf (10.5). Steel standing seam $8-12/sf (10). Commercial standing seam with R-30 polyiso $14-22/sf (18). BTOL Texas $11.50-23/sf (17.25). Matching each figure to one of the RoofVista/Austin Roofing pages is not confirmed. value = median of the midpoints (14.0). low = steel standing seam low; high = BTOL high. One excerpt notes 2026 steel tariffs added about $1-2/sf compared with 2024. Converting membrane to metal may need structural or framing work that these figures do not cover. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "coating_restoration": {
-      "value": null,
-      "low": null,
-      "high": null,
-      "unit": "$/sq ft installed (tear-off + replace)",
+      "value": 3.5,
+      "low": 1.5,
+      "high": 7.0,
+      "unit": "$/sq ft installed (restoration over existing roof; no tear-off)",
       "as_of": "2026",
-      "confidence": "low",
+      "confidence": "medium",
       "sources": [
         {
-          "name": "Rise Roofing Austin - commercial roof cost calculator (lead, not opened)",
-          "url": "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+          "name": "M&M Roofing & Siding - Commercial Roof Coating Cost (TX & LA)",
+          "url": "https://mmroofsiding.com/blog/commercial-roof-coating-cost/"
         },
         {
-          "name": "TriVAN - Texas commercial roof replacement cost guide 2026 (lead, not opened)",
-          "url": "https://www.trivanroofing.com/blog/commercial-roof-replacement-cost-texas-2026"
+          "name": "West Roofing Systems - Cost of a Silicone Roof Coating System",
+          "url": "https://www.westroofingsystems.com/cost-of-silicone-roof-coating-system"
         },
         {
-          "name": "BTOL Roofing - commercial roof replacement cost in Texas (lead, not opened)",
-          "url": "https://btolroofing.com/blog/commercial-roof-replacement-cost-in-texas/"
-        },
-        {
-          "name": "Texas Roof Replacement Cost - flat roof cost Texas (lead, not opened)",
-          "url": "https://www.texasroofreplacementcost.com/flat-roof-cost-texas/"
+          "name": "The Roofing Brief - Roof Coating Types and Cost 2026",
+          "url": "https://theroofingbrief.com/roof-coating-types-and-cost/"
         }
       ],
-      "note": "Coating/restoration: no value entered. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted. Unverified leads seen only in search-result summaries (pages NOT opened, so not used as values): Austin TPO $8-14/sq ft and $7-11/sq ft, Austin mod bit $7.50-12.50/sq ft (riseroofingaustin.com calculator; texasroofreplacementcost.com); Texas single-ply $5.75-13.80, EPDM $8-11, mod bit $7-10 and $6.90-17.25 (trivanroofing.com, btolroofing.com, roofedright.com); national 2026 guides: TPO $5-10, EPDM $5-9, 2-ply mod bit $4-9, metal $7-14, BUR $10-18+, tear-off $1-5 (foxhavenroof.com, roofvista.com, costprism.com). Open these pages and re-enter as low/medium-confidence ranges. No coating/restoration $/sq ft lead was seen at all (only a $0.50-1.50/sq ft reflective-coating add-on figure in a national snippet)."
+      "note": "A restoration coats the existing roof, so tear-off does not apply. Excerpt figures: Texas commercial coating $1.50-5.50/sf (midpoint 3.5). Texas silicone $2.50-4.50/sf (3.5). Texas acrylic $1.50-3.00/sf (2.25). National silicone low-slope restoration $3.50-7.00/sf, July 2026 (5.25; West Roofing). value = median of the midpoints. Prep, wet-insulation replacement and warranty tier push cost toward the high end. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     }
   },
   "location_cost_factor": {
@@ -705,61 +685,77 @@
   },
   "cap_rates": {
     "industrial": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 7.0,
+      "low": 6.28,
+      "high": 7.9,
       "unit": "%",
-      "as_of": "2026",
-      "confidence": "low",
+      "as_of": "2026-Q1",
+      "confidence": "medium",
       "sources": [
         {
-          "name": "CBRE U.S. Cap Rate Survey (blocked)",
-          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+          "name": "Matthews - Austin, TX Industrial Market Report Q1 2026",
+          "url": "https://www.matthews.com/insights/austin-tx-industrial-market-report-q1-2026"
         },
         {
-          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
-          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+          "name": "Partners - Austin Industrial Q1 2026 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/austin-industrial-q1-2026-quarterly-market-report/"
+        },
+        {
+          "name": "Score Property Group - Austin Industrial Cap Rates (Q2 2026)",
+          "url": "https://scorepropertygroup.com/insights/austin-industrial-cap-rates-2026/"
         }
       ],
-      "note": "No value for Austin industrial. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+      "note": "Q1 2026 Austin industrial cap rates ran from 6.28% (Class A) to 7.00% (Class C) (Matthews Q1 2026 excerpt). The average across all types and classes fell to 7.5% from 7.9% in Q4 2025 (excerpt; source is Partners or Score, not confirmed which). value = median of 6.28, 7.00 and 7.5. high = Q4 2025 average. Vacancy was about 14.5% in Q1 2026, a 20+ year high. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "office": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 8.5,
+      "low": 7.6,
+      "high": 9.45,
       "unit": "%",
-      "as_of": "2026",
+      "as_of": "2026-08",
       "confidence": "low",
       "sources": [
         {
-          "name": "CBRE U.S. Cap Rate Survey (blocked)",
-          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+          "name": "Marcus & Millichap - Austin 2026 Investment Forecast, Office",
+          "url": "https://www.marcusmillichap.com/research/market-report/austin/austin-2026-investment-forecast-office-market-report"
         },
         {
-          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
-          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+          "name": "RealCostIQ - Average Cap Rate in Austin (2026)",
+          "url": "https://realcostiq.com/cap-rate/austin/"
+        },
+        {
+          "name": "CBRE H1 2026 Cap Rate Survey (Yahoo Finance summary)",
+          "url": "https://finance.yahoo.com/real-estate/articles/cbre-h1-2026-cap-rate-055007513.html"
         }
       ],
-      "note": "No value for Austin office. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+      "note": "Excerpt dated about Aug 2026: Austin metro office 8.70% (Class A) to 9.45% (Class C); suburban office 7.60-8.50%; single-tenant net-lease office about 7.9%. Matching these figures to specific pages in the list is not confirmed. value = median of 7.6, 7.9, 8.5, 8.7 and 9.45. CBRE H1 2026 says office cap-rate dispersion widened, and distressed Class B/C office can trade above 9.45%. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "retail": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 6.4,
+      "low": 5.5,
+      "high": 6.8,
       "unit": "%",
-      "as_of": "2026",
-      "confidence": "low",
+      "as_of": "2026-Q2",
+      "confidence": "medium",
       "sources": [
         {
-          "name": "CBRE U.S. Cap Rate Survey (blocked)",
-          "url": "https://www.cbre.com/insights/books/us-cap-rate-survey-h1-2025"
+          "name": "Matthews - Austin, TX Retail Market Report Q2 2026",
+          "url": "https://www.matthews.com/insights/austin-retail-q2-2026"
         },
         {
-          "name": "Cushman & Wakefield Austin MarketBeat (blocked)",
-          "url": "https://www.cushmanwakefield.com/en/united-states/insights/us-marketbeats/austin-marketbeats"
+          "name": "Partners - Austin Retail Q1 2026 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/austin-retail-q1-2026-quarterly-market-report/"
+        },
+        {
+          "name": "Grewal RE Group - Austin CRE Guide for Investors 2026",
+          "url": "https://grewalregroup.com/blog/austin-commercial-real-estate-guide-2026"
+        },
+        {
+          "name": "CBRE H1 2026 Cap Rate Survey (Yahoo Finance summary)",
+          "url": "https://finance.yahoo.com/real-estate/articles/cbre-h1-2026-cap-rate-055007513.html"
         }
       ],
-      "note": "No value for Austin retail. Not researchable in this session: the egress proxy blocked every non-GitHub/package-registry host (e.g. rsmeans.com, bls.gov, fred.stlouisfed.org, cbre.com, cushmanwakefield.com, jll.com, tdi.texas.gov, nrca.net, iccsafe.org, austintexas.gov, all contractor sites) and the shared WebSearch budget was exhausted."
+      "note": "Excerpt figures: Matthews Q2 2026 Austin retail cap rate 6.4%. CBRE Q1 2026 (as cited in an excerpt): large centers 6.55%, small strip 6.44%, STNL 6.80%. Another 2026 source: 5.50-6.25%. value = median of 5.5, 6.25, 6.4, 6.44, 6.55 and 6.8. Retail vacancy is about 3.4% (Q2 2026). All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     }
   },
   "roof_life_years": {

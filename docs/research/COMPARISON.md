@@ -12,25 +12,27 @@ Researched 2026-09-28. Details and source links are in each market's memo in thi
 
 ## Side-by-side
 
-All five markets use FEMA National Risk Index **December 2025** county data (refreshed with `scripts/refresh_nri.py`). "—" means no market-specific value was found; the report then uses the median of the other markets and flags it.
+All five markets use FEMA National Risk Index **December 2025** county data (refreshed with `scripts/refresh_nri.py`). Round 2 (October 2026) filled the Austin roof prices and the Texas and Northern Virginia retail cap rates, and revised San Antonio TPO from $13.50 to $11.00. Every market now has its own value for each figure below. Most non-FEMA values still come from search-result excerpts, so they need verification before customer use.
 
 | | Austin | San Antonio | Hampton Roads | Culbertson (N. Virginia) | Laurel |
 |---|---|---|---|---|---|
 | **Main roof perils** | Hail and tornado | Hail and tornado | Hurricane / tropical-storm wind | Thunderstorm wind / derecho, snow and ice | Thunderstorm wind / derecho, snow load |
 | **FEMA NRI overall** | Relatively High | Relatively High | Relatively Moderate | Relatively Moderate | Relatively Moderate |
-| **Hail (NRI)** | Very High | Very High | Low | Moderate | Moderate |
-| **Strong wind (NRI)** | High | High | Moderate | High | High |
-| **Tornado (NRI)** | Very High | Very High | Moderate | Moderate | High |
-| **Hurricane (NRI)** | Low | Moderate | Moderate | Moderate | Moderate |
-| **Winter weather (NRI)** | Moderate | High | Moderate | High | Very High |
+| **Hail (NRI)** | Very High | Very High | Relatively Low | Relatively Moderate | Relatively Moderate |
+| **Strong wind (NRI)** | Relatively High | Relatively High | Relatively Moderate | Relatively High | Relatively High |
+| **Tornado (NRI)** | Very High | Very High | Relatively Moderate | Relatively Moderate | Relatively High |
+| **Hurricane (NRI)** | Relatively Low | Relatively Moderate | Relatively Moderate | Relatively Moderate | Relatively Moderate |
+| **Winter weather (NRI)** | Relatively Moderate | Relatively High | Relatively Moderate | Relatively High | Very High |
 | **Storm loss, % of roof cost/yr** | 0.28% | 0.38% | 0.44% | 0.15% | 0.13% |
-| **TPO $/sq ft** | — | 13.5 | 9 | 9 | 7.7 |
-| **Metal $/sq ft** | — | 14 | 15 | 14 | 16 |
-| **Cap rate: industrial** | — | — | 7.5% | 6.44% | 7.7% |
-| **Cap rate: office** | — | — | 7.9% | 8.36% | 7.5% |
-| **Cap rate: retail** | — | — | 6.55% | — | 6.55% |
+| **TPO $/sq ft** | 11 | 11 | 9 | 9 | 7.7 |
+| **Metal $/sq ft** | 14 | 14 | 15 | 14 | 16 |
+| **Cap rate: industrial** | 7% | 7.3% | 7.5% | 6.44% | 7.7% |
+| **Cap rate: office** | 8.5% | 7.7% | 7.9% | 8.36% | 7.5% |
+| **Cap rate: retail** | 6.4% | 6.7% | 6.55% | 6.1% | 6.55% |
+| **Cap rate: multi-family** | 5.7% | 6% | 5.4% | 5.35% | 5.6% |
+| **Cap rate: medical office** | 6% | 7% | 6.8% | 6.8% | 6.8% |
 
-Round-1 memos quote NRI figures from the release each agent could reach. The JSON files now carry the December 2025 values, with the originals kept under `fema_nri.research_fields`.
+Round-1 memos quote NRI figures from the release each agent could reach. The JSON files now carry the December 2025 values, with the originals kept under `fema_nri.research_fields`. Round-2 additions are listed at the end of the Austin, San Antonio and Culbertson memos.
 
 ## Values shared by all markets (from `data/national.json`)
 
@@ -59,13 +61,13 @@ Key takeaways for the model:
 
 ## Biggest gaps, in priority order
 
-1. **Replacement $/sq ft for Austin, and verified figures everywhere.** PAX estimator data would beat any web number.
-2. **Cap rates for Austin and San Antonio** (all three types), plus NoVA retail. A current CBRE or Cushman & Wakefield metro report would fill these in minutes.
+1. **Verification.** Most roof prices and cap rates came from search-result excerpts because broker and contractor sites were blocked. Someone should click through the sources, or replace the numbers with PAX estimator data and a current broker cap-rate report.
+2. **Repair assumptions.** The 3x reactive repair multiplier and the 1%/yr base repair rate drive most of the savings, and neither has a primary source. PAX service-ticket history would calibrate both.
 3. **Roof life, maintained vs reactive, from a traceable source.** Currently the national +5-yr default.
 4. **State insurance detail:** roof-age underwriting in TX, VA and MD, and coastal VA named-storm deductibles.
 5. **Complete (envelope) tier pricing and benefit data.**
 
-## What unblocks round 2
+## What would unblock round 3
 
 - Allow these hosts in the environment's network settings:
   - `bls.gov`

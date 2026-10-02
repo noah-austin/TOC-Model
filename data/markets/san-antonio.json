@@ -20,7 +20,7 @@
   "research_access_caveat": "All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use. Only three datasets were opened in full: FEMA NRI v1.19 county table, the BLS roofing-contractor PPI series, and 2021 IBC/IEBC text (all via GitHub mirrors).",
   "replacement_cost_per_sqft": {
     "tpo": {
-      "value": 13.5,
+      "value": 11.0,
       "low": 7.0,
       "high": 20.0,
       "unit": "$/sq ft",
@@ -42,9 +42,13 @@
         {
           "name": "The Roofing Brief - Commercial Roof Replacement Cost 2026 (national)",
           "url": "https://theroofingbrief.com/commercial-roof-replacement-cost/"
-        }
+        },
+        [
+          "RISE Roofing Austin - Commercial Roof Cost Calculator (2026)",
+          "https://www.riseroofingaustin.com/commercial-roof-cost-calculator/"
+        ]
       ],
-      "note": "Envelope of tear-off-inclusive figures: low $7 (TRB national TPO $7-12 incl. tear-off/insulation); high $20 (Prestige 360: SA full reroof with complete tear-off $15-20). TriVAN TX: TPO core assembly $8-12 + tear-off $1.50-2.50 = $9.50-14.50. Value = midpoint of envelope. SA-specific membrane-only figure is $5.28-8.16 (60-mil, Commercial Roof Guide/Prestige 360) and recover over one layer $6-8, both excluding full tear-off. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
+      "note": "Round 2 (Oct 2026) changed value from 13.5 to 11.0. The 13.5 was the midpoint of a $7-20 envelope whose top ($15-20, Prestige 360 'full reroof with complete tear-off') is a single outlier; it probably includes deck or insulation rebuild. Tear-off-inclusive midpoints: Commercial Roof Guide SA 60-mil TPO $5.28-8.16 plus $1-2 SA tear-off = $6.28-10.16 (8.2). TRB national $7-12 including tear-off (9.5). RISE Austin, the neighboring market, $8-14 including tear-off (11.0). TriVAN TX $8-12 plus $1.50-2.50 = $9.50-14.50 (12.0). Prestige 360 $15-20 (17.5). value = median of these five (11.0), in line with other markets ($7.40-11). low/high kept at 7-20 so the full-tear-off high case remains in sensitivity. All non-GitHub web sources were read only as search-engine result excerpts: direct page fetches were blocked by the research environment's egress proxy. Verify before external use."
     },
     "epdm": {
       "value": 9.75,
@@ -734,34 +738,81 @@
   },
   "cap_rates": {
     "industrial": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 7.3,
+      "low": 6.0,
+      "high": 8.5,
       "unit": "%",
-      "as_of": null,
-      "confidence": "low",
-      "sources": [],
-      "note": "NOT RESEARCHED: the session's web-search quota ran out before cap-rate sources (CBRE H1 2026 Cap Rate Survey, Cushman & Wakefield / JLL / Marcus & Millichap San Antonio reports) could be searched, and publisher sites were blocked for direct fetch. The coworker's 6.5-8.5% is unverified."
+      "as_of": "2026-Q1",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Partners - San Antonio Industrial Q1 2026 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/san-antonio-industrial-q1-2026-quarterly-market-report/"
+        },
+        {
+          "name": "Lumi CRE - San Antonio Industrial Real Estate Market Report (2026)",
+          "url": "https://lumicre.com/investments/san-antonio-industrial-real-estate-market-report-2026/"
+        },
+        {
+          "name": "Crexi - San Antonio Commercial Real Estate Market Report 2026",
+          "url": "https://www.crexi.com/blog/san-antonio-commercial-real-estate-market"
+        }
+      ],
+      "note": "Partners: 132 SA industrial deals in the 12 months through Q1 2026, average cap rate 7.6% (7.2% a year earlier). Class ranges from an excerpt (source among Lumi CRE and Crexi not confirmed): Class A logistics 6.0-6.75%, Class B 6.5-7.5%, flex 7.0-8.5%. value = median of 6.375, 7.0, 7.6 and 7.75. Excluded: a 'Q2 2026 average 5.2%' excerpt figure, treated as a thin-sample outlier. Replaces the coworker's unverified 6.5-8.5%. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "office": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 7.7,
+      "low": 6.2,
+      "high": 8.9,
       "unit": "%",
-      "as_of": null,
-      "confidence": "low",
-      "sources": [],
-      "note": "NOT RESEARCHED (see industrial). Office cap rates are likely the widest and least liquid of the three; needs a current broker survey."
+      "as_of": "2025-Q4 to 2026-Q2",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Partners - San Antonio Office Q4 2025 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/san-antonio-office-q4-2025-quarterly-market-report/"
+        },
+        {
+          "name": "Partners - San Antonio Office Q3 2025 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/san-antonio-office-q3-2025-quarterly-market-report/"
+        },
+        {
+          "name": "Partners - San Antonio Office Quarterly Report Q2 2025",
+          "url": "https://partnersrealestate.com/research/san-antonio-office-quarterly-report-q2-2025/"
+        },
+        {
+          "name": "Crexi - San Antonio Commercial Real Estate Market Report 2026",
+          "url": "https://www.crexi.com/blog/san-antonio-commercial-real-estate-market"
+        },
+        {
+          "name": "Cap Rate Index - Cap Rate in San Antonio TX",
+          "url": "https://www.caprateindex.com/cap-rate-by-city/TX-San-Antonio"
+        }
+      ],
+      "note": "Partners quarterly average office cap rates: Q2 2025 8.9% (32 sales), Q3 2025 6.7% (69 sales), Q4 2025 7.5% (43 sales). A Q2 2026 average of 7.9% appeared in an excerpt (likely Crexi). Class table (likely Cap Rate Index): metro 6.20% A / 7.00% B / 7.85% C; suburban 7.60% A / 7.85% B / 7.50% C. value = median of the four quarterly averages (6.7, 7.5, 7.9, 8.9). low = metro Class A; high = Q2 2025. Quarterly averages swing with small samples. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     },
     "retail": {
-      "value": null,
-      "low": null,
-      "high": null,
+      "value": 6.7,
+      "low": 6.4,
+      "high": 7.25,
       "unit": "%",
-      "as_of": null,
-      "confidence": "low",
-      "sources": [],
-      "note": "NOT RESEARCHED (see industrial)."
+      "as_of": "2026-Q1/Q2",
+      "confidence": "medium",
+      "sources": [
+        {
+          "name": "Partners - San Antonio Retail Q1 2026 Quarterly Market Report",
+          "url": "https://partnersrealestate.com/research/san-antonio-retail-q1-2026-quarterly-market-report/"
+        },
+        {
+          "name": "Crexi - San Antonio Commercial Real Estate Market Report 2026",
+          "url": "https://www.crexi.com/blog/san-antonio-commercial-real-estate-market"
+        },
+        {
+          "name": "Cap Rate Index - Cap Rate in San Antonio TX",
+          "url": "https://www.caprateindex.com/cap-rate-by-city/TX-San-Antonio"
+        }
+      ],
+      "note": "Partners Q1 2026: 287 SA retail deals, average cap rate 7.2%, average price $211/sf. An excerpt gave a Q2 2026 average of 6.7% (likely Crexi). Class table (Cap Rate Index): metro 6.40% A / 6.60% B / 7.05% C; suburban 6.60-7.25%. value = median of 6.4, 6.6, 6.6, 6.7, 7.05, 7.2 and 7.25. All figures come from web-search result excerpts (Oct 2026). Direct page fetches were blocked by the sandbox egress proxy, so they are not verified against the full pages."
     }
   },
   "roof_life_years": {

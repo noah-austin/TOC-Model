@@ -586,7 +586,7 @@
     "note": "Derived: tropical storms/hurricanes within 50 nm of Norfolk 0.24/yr x 20 = 4.8 (value); low = hurricanes within 100 nm 0.18/yr x 20 = 3.6; high = TS-strength systems within 100 nm 0.76/yr x 20 = 15.2. Adding NRI non-tropical strong-wind events (0.50/yr) would add ~10 more lower-severity events. Not all passages damage roofs; this is an exposure count, not a claim count."
   },
   "fema_nri": {
-    "county": "Norfolk City, VA (51710)",
+    "county": "Norfolk city, VA (51710)",
     "overall_risk_rating": "Relatively Moderate",
     "risk_score": 81.23409669211196,
     "nri_version": "December 2025",

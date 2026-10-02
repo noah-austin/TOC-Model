@@ -102,3 +102,16 @@ Comal and Guadalupe see hail as often as Bexar, but NRI's historic loss ratio th
 - Texas commercial property rate data, and whether carriers give documented-maintenance credits or RCV retention.
 - Insured losses for the Apr 28 2021 and May 9 2024 SA hail events, to build an event catalog.
 - Rebuild the coworker's $329K/$564K TCO once the roof-life inputs are sourced.
+
+## Round 2 update (October 2026)
+
+Every figure below comes from a web-search result excerpt (broker sites were blocked for direct fetch). Full derivations are in each key's `note`.
+
+| Key | Value (range) | Confidence | Sources |
+|---|---|---|---|
+| `replacement_cost_per_sqft.tpo` (changed from 13.5) | $11.00 ($7–20, unchanged) | medium | [Commercial Roof Guide SA](https://commercialroofguide.com/states/texas/san-antonio/), [Prestige 360](https://prestige360design.com/blog/commercial-roofing-cost-san-antonio/), [TriVAN TPO TX](https://www.trivanroofing.com/blog/tpo-roofing-cost-guide-texas-2026), [Roofing Brief](https://theroofingbrief.com/commercial-roof-replacement-cost/), [RISE Austin](https://www.riseroofingaustin.com/commercial-roof-cost-calculator/) |
+| `cap_rates.industrial` | 7.3% (6.0–8.5) | medium | [Partners SA Industrial Q1 2026](https://partnersrealestate.com/research/san-antonio-industrial-q1-2026-quarterly-market-report/), [Lumi CRE](https://lumicre.com/investments/san-antonio-industrial-real-estate-market-report-2026/), [Crexi](https://www.crexi.com/blog/san-antonio-commercial-real-estate-market) |
+| `cap_rates.office` | 7.7% (6.2–8.9) | medium | [Partners SA Office Q4 2025](https://partnersrealestate.com/research/san-antonio-office-q4-2025-quarterly-market-report/), [Q3 2025](https://partnersrealestate.com/research/san-antonio-office-q3-2025-quarterly-market-report/), [Q2 2025](https://partnersrealestate.com/research/san-antonio-office-quarterly-report-q2-2025/), [Crexi](https://www.crexi.com/blog/san-antonio-commercial-real-estate-market), [Cap Rate Index](https://www.caprateindex.com/cap-rate-by-city/TX-San-Antonio) |
+| `cap_rates.retail` | 6.7% (6.4–7.25) | medium | [Partners SA Retail Q1 2026](https://partnersrealestate.com/research/san-antonio-retail-q1-2026-quarterly-market-report/), [Crexi](https://www.crexi.com/blog/san-antonio-commercial-real-estate-market), [Cap Rate Index](https://www.caprateindex.com/cap-rate-by-city/TX-San-Antonio) |
+
+Why TPO changed: the old 13.5 was the midpoint of a $7–20 envelope. The $15–20 top comes from one source's "full reroof with complete tear-off" figure. The median of five tear-off-inclusive source midpoints is $11.00, in line with other markets. The $20 high stays in the range for sensitivity. The excerpt's industrial "Q2 2026 average 5.2%" was excluded as a thin-sample outlier.

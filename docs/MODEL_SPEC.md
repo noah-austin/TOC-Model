@@ -13,6 +13,7 @@ Code: `src/engine.js`. Every coefficient is in the `MODEL_CONFIG` block at the t
 | Replacement cost (C) | area × market $/sq ft for that system. A rep-entered total wins, and the report shows the $/sq ft it implies. |
 | Roof age, condition | Condition adds effective age: Good +0, Fair +2, Poor +4 |
 | Warranty left, active leaks | Shown as takeaways only; they don't change the math |
+| Rep name, phone, email | Printed in the report's "Next step" box (PAX main line and email when blank) |
 | PaxSeal fee | $800 + $0.13/sq ft per year (benchmark estimate; there is no set price). Escalates 3%/yr. |
 | Escalation (e) | 4.6%/yr (BLS producer price index, nonresidential roofing contractors, 2007–2025) |
 | Cap rate | Market rate for the property type; none for K-12 and medical unless the rep enters one |
@@ -55,6 +56,7 @@ Storm loss % of roof replacement cost per year (FEMA NRI December 2025):
   - **Current roof value** = C × (L − effective age) ÷ L, in today's dollars. It is the same in both scenarios, so it never changes the savings. It stops net cost from going negative when a long-life roof carries a large end credit.
   - **Roof life left** = C × (life left ÷ total life of the roof in place), straight-line, in today's dollars (conservative).
 - **Savings** = reactive net − planned net. **Savings %** = savings ÷ reactive net.
+  - The report splits savings into **lower cash spending** (nominal) and the **difference in roof life left** at year 20 (today's dollars), so the non-cash part is visible.
 - **Savings range:** the same inputs rerun under two assumption sets (`rangeScenarios`). Rep overrides of those assumptions win.
   - Conservative: 2.0× repairs, 4 yrs life added.
   - Upside: 3.5× repairs, 6 yrs life added.
@@ -62,7 +64,7 @@ Storm loss % of roof replacement cost per year (FEMA NRI December 2025):
 - **Annual NOI gain:** the level yearly amount with the same present value (7%) as the operating savings (fees, repairs, storm). Replacement reserves are excluded, as many appraisers treat them below the NOI line.
 - **Property value protected** = annual NOI gain ÷ cap rate. Shown only when it is positive and a cap rate applies.
 - **Emergency costs cut** = reactive (repairs + storm) − planned (repairs + storm). This is the headline for owner-occupied types.
-- **Avoided per fee dollar** = (savings + fees) ÷ fees.
+- **Avoided per fee dollar** = (cash savings + fees) ÷ fees. Cash only; it excludes the roof-value difference.
 - **Years to double** = ln 2 ÷ ln(1 + e).
 
 ## Sensitivity (San Antonio, $200K roof, 20,000 sq ft, 8 yrs old, Good)

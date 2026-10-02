@@ -17,19 +17,19 @@ const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
 const MARKETS = [
   { id: 'austin', shortName: 'Austin', region: 'Texas', perils: {
     headline: 'Hail and tornado',
-    events: '~9 days with 2"+ hail somewhere in Travis County per 20 years (NOAA 1996–2025)' } },
+    events: 'About 9 days with hail 2 inches or larger somewhere in Travis County per 20 years (NOAA 1996–2025)' } },
   { id: 'san-antonio', shortName: 'San Antonio', region: 'Texas', perils: {
     headline: 'Hail and tornado',
     events: 'Baseball-size hail somewhere in Bexar County about once every 3 years (NOAA); April 2016 storm ≈ $1.4B damage' } },
   { id: 'hampton-roads', shortName: 'Hampton Roads', region: 'Virginia', perils: {
     headline: 'Hurricane / tropical-storm wind',
-    events: '~4.8 tropical storms or stronger within 50 nm of Norfolk per 20 years (NOAA HURDAT2 1975–2024)' } },
+    events: 'About 4.8 tropical storms or stronger within 50 nautical miles of Norfolk per 20 years (NOAA HURDAT2 1975–2024)' } },
   { id: 'culbertson', shortName: 'Culbertson (N. Virginia)', region: 'Virginia', perils: {
     headline: 'Thunderstorm wind / derecho, snow and ice',
-    events: 'Strong wind and winter weather both rated Relatively High (FEMA NRI); tropical remnants ~1 per 12 years' } },
+    events: 'Strong wind and winter weather are both rated Relatively High by FEMA, and tropical storm remnants arrive about once every 12 years' } },
   { id: 'laurel', shortName: 'Laurel', region: 'Maryland', perils: {
     headline: 'Thunderstorm wind / derecho, snow load',
-    events: '~3.5 major regional roof-damaging events per 20 years (2010 snow, 2012 derecho, 2016 blizzard)' } },
+    events: 'About 3–4 major regional roof-damaging events per 20 years, such as the 2010 snowstorms, the 2012 derecho and the 2016 blizzard' } },
 ].filter((m) => existsSync(join(ROOT, `data/markets/${m.id}.json`)));
 const MARKET_IDS = MARKETS.map((m) => m.id);
 const SYSTEMS = ['tpo', 'epdm', 'mod_bit', 'bur', 'metal', 'coating_restoration'];
