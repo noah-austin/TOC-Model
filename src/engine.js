@@ -59,7 +59,15 @@
     conditionAgeShift: { good: 0, fair: 2, poor: 4 },
 
     // Discount rate for the NPV figure (nominal cumulative is the headline).
-    discountRatePct: 7.0
+    discountRatePct: 7.0,
+
+    // Savings range shown beside the headline. Conservative uses the low end of the
+    // research ranges in national.json; upside stays below their marketing-sourced
+    // high end (5x repair cost, 8 yrs life added).
+    rangeScenarios: {
+      conservative: { reactiveRepairMultiplier: 1.8, lifeExtensionYears: 3 },
+      upside: { reactiveRepairMultiplier: 4.0, lifeExtensionYears: 7 }
+    }
   };
 
   function merge(base, over) {
@@ -190,7 +198,7 @@
     return values.reduce(function (acc, v, i) { return acc + v / Math.pow(1 + r, i + 1); }, 0);
   }
 
-  function run(raw, defaults, configOverrides) {
+  function run(raw, defaults, configOverrides, skipRange) {
     var cfg = merge(MODEL_CONFIG, configOverrides);
     var inp = resolveInputs(raw || {}, defaults, cfg);
     var planned = simulate(inp, cfg, true);
@@ -217,6 +225,20 @@
     var totalFees = planned.rows.reduce(function (a, r) { return a + r.fee; }, 0);
     var savings = reactive.netCost - planned.netCost;
 
+    // Same inputs under the conservative and upside assumption sets. Rep overrides of
+    // those same assumptions win, so a custom value narrows the range.
+    var range = null;
+    if (!skipRange) {
+      var over = configOverrides || {};
+      var at = function (scen) {
+        var o = merge(cfg, scen);
+        for (var k in scen) if (over[k] !== undefined) o[k] = over[k];
+        return run(raw, defaults, o, true).kpis.savings;
+      };
+      var lo = at(cfg.rangeScenarios.conservative), hi = at(cfg.rangeScenarios.upside);
+      range = { low: Math.min(lo, hi, savings), high: Math.max(lo, hi, savings) };
+    }
+
     return {
       config: cfg,
       inputs: inp,
@@ -228,6 +250,7 @@
         reactiveNetCost: reactive.netCost,
         savings: savings,
         savingsPct: reactive.netCost ? savings / reactive.netCost : 0,
+        savingsRange: range,
         npvSavings: npv(diff, cfg.discountRatePct),
         totalFees: totalFees,
         returnPerFeeDollar: totalFees ? savings / totalFees : null,

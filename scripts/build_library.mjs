@@ -58,8 +58,9 @@ const rows = types.map((type) => {
     const second = k.assetValueProtected != null
       ? `${short(k.assetValueProtected)} value protected`
       : `${short(k.unplannedSpendAvoided)} emergency costs cut`;
-    return `<td><div class="save">${short(k.savings)}</div><div class="sub">${Math.round(k.savingsPct * 100)}% less than reactive<br>${second}</div>
-      <div class="links"><a href="../?${esc(query(paramsFor(market, type)))}">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
+    const range = k.savingsRange ? `<div class="range">Range ${short(k.savingsRange.low)}&ndash;${short(k.savingsRange.high)}</div>` : '';
+    return `<td><div class="save">${short(k.savings)}</div>${range}<div class="sub">${Math.round(k.savingsPct * 100)}% less than reactive<br>${second}</div>
+      <div class="links"><a href="../index.html?${esc(query(paramsFor(market, type)))}">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
   }).join('');
   return `<tr><th scope="row"><div class="t">${esc(pt.label)}</div><div class="p">${prof.area.toLocaleString('en-US')} sq ft ${esc(sysLabel(prof.system))} roof, ${prof.roofAge} yrs old</div></th>${cells}</tr>`;
 }).join('\n');
@@ -92,6 +93,7 @@ tbody th .t { font-weight: 800; font-size: 13px; }
 tbody th .p { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 2px; }
 td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); border-left: 1px solid var(--hair); }
 .save { font-size: 20px; font-weight: 800; color: var(--green); letter-spacing: -.01em; }
+.range { font-size: 11px; font-weight: 700; color: var(--ink); }
 .sub { font-size: 11px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; }
 .links { display: flex; gap: 6px; margin-top: 8px; }
 .links a { font-size: 11px; font-weight: 700; color: var(--navy); text-decoration: none; border: 1px solid var(--rule); border-radius: 5px; padding: 3px 9px; }
@@ -101,7 +103,7 @@ td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); b
 </style>
 </head>
 <body>
-<header class="bar"><span class="mk">PAX</span><b>SERVICES GROUP</b><a href="../">Build a custom report</a></header>
+<header class="bar"><span class="mk">PAX</span><b>SERVICES GROUP</b><a href="../index.html">Build a custom report</a></header>
 <main>
   <h1>TCO Projection Library</h1>
   <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one opens as a two-page report with the cost curve. Use <b>Build a custom report</b> for a specific customer's roof.</p>
@@ -113,7 +115,7 @@ ${rows}
       </tbody>
     </table>
   </div>
-  <p class="fine">Figures are 20-year projections in nominal dollars, net of the roof life remaining at year 20, and include an estimated PaxSeal fee. The typical buildings are illustrative profiles, not market averages. Market data is round-one research with many low-confidence values; see each report's assumptions table. Generated ${today} from model data ${esc(D.builtOn)}.</p>
+  <p class="fine">Figures are 20-year projections in nominal dollars, net of the roof life remaining at year 20, and include an estimated PaxSeal fee. The range runs from conservative to upside assumptions for repair costs and roof life added. The typical buildings are illustrative profiles, not market averages. Market data is round-one research with many low-confidence values; see each report's assumptions table. Generated ${today} from model data ${esc(D.builtOn)}.</p>
 </main>
 </body>
 </html>

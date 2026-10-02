@@ -71,6 +71,12 @@
   .unit input { padding-right: 50px; }
   .unit span { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--faint); pointer-events: none; }
   .b-foot { padding: 12px 20px 24px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .check { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; font-weight: 600; color: var(--ink-2); cursor: pointer; line-height: 1.4; }
+  .check input { margin: 2px 0 0; accent-color: var(--navy); }
+  .check span { font-weight: 400; color: var(--muted); }
+  .jump { display: none; font-size: 12px; font-weight: 700; color: var(--navy); }
+  @media (max-width: 1100px) { .jump { display: inline; } }
+  .sheet-foot .internal { color: var(--red); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
   .linkish { background: none; border: 0; padding: 0; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: underline; cursor: pointer; }
 
   /* ---------- Desk + sheets ---------- */
@@ -237,7 +243,7 @@
   <div class="title">Roof Lifecycle Report</div>
   <div class="spacer"></div>
   <span class="toast" id="toast" role="status"></span>
-  <a class="btn only-builder" href="library/" id="libLink">
+  <a class="btn only-builder" href="library/index.html" id="libLink">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 3h4v10h-4zM6.5 3h4v10h-4zM10.5 4l3-.8 2 9.8-3 .8"/></svg><span>Library</span></a>
   <button type="button" class="btn only-shared" id="editBtn">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit inputs</span></button>
@@ -267,6 +273,11 @@
           <div class="field"><label for="system">Roof system</label><select id="system" name="system"></select></div>
           <div class="field"><label for="condition">Condition</label>
             <select id="condition" name="condition"><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option></select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="warranty">Warranty left</label><div class="unit"><input id="warranty" name="warranty" type="number" inputmode="numeric" min="0" max="40" step="1" placeholder="Unknown"><span>yrs</span></div></div>
+          <div class="field"><label for="leaks">Active leaks?</label>
+            <select id="leaks" name="leaks"><option value="">Unknown</option><option value="no">No</option><option value="yes">Yes</option></select></div>
         </div>
       </div>
     </details>
@@ -314,10 +325,11 @@
         </div>
         <div class="field"><label for="repair">Repair need, new roof</label><div class="unit"><input id="repair" name="repair" type="number" step="0.1" min="0" max="10"><span>%/yr</span></div>
           <div class="hint">Share of replacement cost spent on planned-visit repairs each year. Grows 5% per year of roof age.</div></div>
+        <label class="check"><input type="checkbox" id="internal" name="internal"> Show source confidence <span>(internal review copy, not for customers)</span></label>
       </div>
     </details>
 
-    <div class="b-foot"><span class="hint" style="margin:0">Model data <span id="builtOn"></span></span><button type="button" class="linkish" id="resetBtn">Reset inputs</button></div>
+    <div class="b-foot"><span class="hint" style="margin:0">Model data <span id="builtOn"></span></span><a class="jump" href="#desk">View report &darr;</a><button type="button" class="linkish" id="resetBtn">Reset inputs</button></div>
   </form>
 
   <main class="desk" id="desk">
@@ -379,7 +391,7 @@
       </section>
 
       <section class="sec">
-        <div class="sec-h"><h2>Key assumptions</h2><p>Confidence reflects source strength. Values will be refined as research continues.</p></div>
+        <div class="sec-h"><h2>Key assumptions</h2><p id="assumeNote"></p></div>
         <div class="scroll"><table class="assume" id="assume"></table></div>
       </section>
 
@@ -391,6 +403,7 @@
     <div class="appendix no-print">
       <details>
         <summary>Year-by-year detail</summary>
+        <p class="hint" style="margin:10px 0 0">Every figure behind the chart, in nominal dollars. <button type="button" class="linkish" id="csvBtn">Download as CSV</button></p>
         <div class="scroll"><table id="yearly"></table></div>
       </details>
     </div>
@@ -405,7 +418,7 @@
   var D = window.PAX_DEFAULTS, E = window.PaxTCO, CFG = E.MODEL_CONFIG;
   var FIELDS = ['customer', 'property', 'city', 'contact', 'preparedBy', 'date', 'market', 'propertyType',
     'area', 'roofAge', 'system', 'condition', 'costPerSqft', 'replacementCost', 'annualFee', 'escalation', 'capRate',
-    'ext', 'mult', 'repair'];
+    'ext', 'mult', 'repair', 'warranty', 'leaks', 'internal'];
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
   var C = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#6E7B85', grid: '#EBEEF0', axis: '#C3CBD0', wash: '#EAF4EE' };
@@ -455,17 +468,17 @@
     if (!params.has(f)) return;
     var el = form.elements[f], v = params.get(f);
     if (el.tagName === 'SELECT' && !Array.prototype.some.call(el.options, function (o) { return o.value === v && !o.disabled; })) return;
-    el.value = v;
+    if (el.type === 'checkbox') el.checked = v === '1'; else el.value = v;
   });
   applyDefaults();
-  if (['ext', 'mult', 'repair'].some(function (f) { return params.has(f); })) $('advanced').open = true;
+  if (['ext', 'mult', 'repair', 'internal'].some(function (f) { return params.has(f); })) $('advanced').open = true;
   if (params.get('view') === 'report') document.body.classList.add('report-only');
 
   function readForm() {
     var o = {};
     FIELDS.forEach(function (f) {
       var el = form.elements[f];
-      o[f] = el.value.trim();
+      o[f] = el.type === 'checkbox' ? (el.checked ? '1' : '') : el.value.trim();
       if (el.type === 'number' && o[f] !== '' && !el.checkValidity()) o[f] = '';
     });
     return o;
@@ -673,9 +686,12 @@
         ? 'Planned maintenance is projected to save the owner of a typical ' + esc(mk.shortName) + ' ' + esc(pt.noun) + ' <span class="save">' + short(k.savings) + '</span> over the next ' + N + ' years.'
         : 'Planned maintenance is projected to save ' + esc(raw.customer) + ' <span class="save">' + short(k.savings) + '</span> on this roof over the next ' + N + ' years.')
       : 'At these inputs, planned maintenance costs about ' + short(-k.savings) + ' more than reactive repair over ' + N + ' years.';
-    $('thesisSub').innerHTML = 'That is ' + pct(Math.abs(k.savingsPct) * 100) + ' less than the reactive cost, or ' + short(k.npvSavings) +
-      ' in today’s dollars. It compares PaxSeal planned maintenance with fixing problems only after they leak, using ' +
-      esc(mk.shortName) + ' costs and storm history.';
+    var rg = k.savingsRange;
+    $('thesisSub').innerHTML = k.savings > 0
+      ? 'That is ' + pct(k.savingsPct * 100) + ' less than fixing problems only after they leak' +
+        (rg && rg.high - rg.low > 1000 ? '. Under conservative to upside assumptions, the savings range from ' + short(rg.low) + ' to ' + short(rg.high) : '') +
+        '. In today\u2019s dollars the estimate is worth ' + short(k.npvSavings) + '. Based on ' + esc(mk.shortName) + ' costs and storm history.'
+      : 'This usually means a large fee relative to the roof, or a new roof with most of its life ahead. Check the fee and roof details.';
 
     // spec strip
     var spec = [
@@ -719,20 +735,24 @@
       lines.map(function (l) { return '<tr><td>' + l[0] + '</td><td>' + amt(l[1]) + '</td><td>' + amt(l[2]) + '</td>' + cell(l[2] - l[1]) + '</tr>'; }).join('') +
       '</tbody><tfoot><tr><td>Net 20-year cost</td><td>' + short(P.netCost) + '</td><td>' + short(R.netCost) + '</td>' + cell(k.savings) + '</tr></tfoot>';
 
-    // points
+    // points, in priority order; page 2 has room for four
     var pts = [];
+    if (raw.leaks === 'yes') pts.push('<b>Fix the active leaks first.</b> Water already getting in soaks insulation and rots the deck, shortening roof life and raising repair costs every month.');
     if (k.reactiveReplacementYear && (!k.plannedReplacementYear || k.plannedReplacementYear > k.reactiveReplacementYear)) {
       pts.push('<b>A later replacement.</b> Maintenance moves the next new roof from year ' + k.reactiveReplacementYear + ' to ' +
         (k.plannedReplacementYear ? 'year ' + k.plannedReplacementYear : 'beyond year ' + N) + ', so fewer roofs are bought over the period.');
     }
     pts.push('<b>Smaller repairs.</b> Problems found on a scheduled visit avoid emergency work, which costs about ' + c.reactiveRepairMultiplier +
-      '× as much. That saves ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + ' in repairs.');
-    // Cost doubling is already a page-1 figure, so it isn't repeated here.
+      '\u00d7 as much. That saves ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + ' in repairs.');
+    var warr = parseFloat(raw.warranty);
+    if (warr > 0) pts.push('<b>Keep the warranty valid.</b> This roof has about ' + Math.round(warr) + ' year' + (Math.round(warr) === 1 ? '' : 's') +
+      ' of manufacturer warranty left. Warranties typically require documented maintenance, which PaxSeal visit reports provide.');
     if (pt.story) pts.push(pt.story);
     if (k.returnPerFeeDollar > 0) pts.push('<b>The program pays for itself.</b> Each $1 of PaxSeal fees returns about $' + k.returnPerFeeDollar.toFixed(2) + ' in avoided cost.');
     if (inp.roofAge + (c.conditionAgeShift[inp.condition] || 0) >= inp.systemLife - c.lifeExtensionYears) {
-      pts.push('<b>Near end of life.</b> This roof has little service life left. Maintenance now mainly protects the building until a planned replacement.');
+      pts.splice(Math.min(pts.length, 2), 0, '<b>Near end of life.</b> This roof has little service life left. Maintenance now mainly protects the building until a planned replacement.');
     }
+    pts = pts.slice(0, 4);
     $('points').innerHTML = pts.map(function (s) { return '<li><span>' + s + '</span></li>'; }).join('');
 
     // risk
@@ -752,31 +772,43 @@
     var capSrc = pt.capRateKey ? mk.capRates[pt.capRateKey] : null;
     var repCost = raw.costPerSqft || raw.replacementCost;
     var A = [
-      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - c.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs from NRC Canada roof study and manufacturer warranty terms', 'medium'],
+      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - c.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs per NRC Canada and warranty terms', 'medium'],
       ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing contractors, 2007–2025', raw.escalation ? 'rep' : 'high'],
       ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : (mDefault.source.indexOf(mk.region) > -1 ? 'Median of other ' + mk.region + ' PAX markets' : 'Median of other PAX markets') + ' until local data is added'), repCost ? 'rep' : 'low'],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '× planned', 'Industry estimates; no primary study found', 'low'],
-      ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA NRI expected annual building loss from hail, wind, tornado, hurricane and winter weather', 'medium'],
+      ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA National Risk Index expected building loss, roof-related hazards', 'medium'],
       // Our own price, so it is labeled as an estimate or a quote rather than given a research confidence.
       ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'PAX program estimate for this roof size. Your proposal will state the actual fee' : 'PaxSeal price for this property', inp.feeIsEstimate ? 'est' : 'quote']
     ];
     if (inp.leakMultiplier !== 1) A.push(['Leak consequences', inp.leakMultiplier.toFixed(2) + '\u00d7 warehouse', pt.leakBasis || 'Property-type research', pt.leakConfidence || 'low']);
     if (raw.capRate) A.push(['Cap rate', pct(inp.capRatePct), 'Entered by rep', 'rep']);
     else if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : capSrc.source.replace(/^fallback: /, '').replace(/^./, function (ch) { return ch.toUpperCase(); }) + ' until local data is added', capSrc.confidence || 'low']);
-    $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Basis</th><th>Confidence</th></tr></thead><tbody>' +
+    // Confidence ratings are for internal review; customer copies show the basis only.
+    var internal = raw.internal === '1';
+    $('assumeNote').textContent = internal
+      ? 'Internal review copy. Confidence reflects source strength; low-confidence values need checking before customer use.'
+      : 'The basis for each figure in this analysis.';
+    $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Basis</th>' + (internal ? '<th>Confidence</th>' : '') + '</tr></thead><tbody>' +
       A.map(function (a) {
-        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td><td><span class="conf ' + a[3] + '">' + ({ rep: 'Rep input', est: 'Estimate', quote: 'PAX price' }[a[3]] || a[3]) + '</span></td></tr>';
+        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td>' +
+          (internal ? '<td><span class="conf ' + a[3] + '">' + ({ rep: 'Rep input', est: 'Estimate', quote: 'PAX price' }[a[3]] || a[3]) + '</span></td>' : '') + '</tr>';
       }).join('') + '</tbody>';
 
     // fine print + footers
     var custom = Object.keys(overrides(raw)).length;
+    var placeholders = [];
+    if (!repCost && mDefault.source !== 'market') placeholders.push(sys + ' price uses ' + mDefault.source.replace(/^fallback: /, ''));
+    if (!raw.capRate && capSrc && capSrc.source !== 'market') placeholders.push(pt.label.toLowerCase() + ' cap rate uses ' + capSrc.source.replace(/^fallback: /, ''));
     $('fine').innerHTML =
       '<p><b>Estimates, not a quote.</b> Projections use ' + esc(mk.shortName) + ' market research and industry data, in nominal dollars; actual costs will differ. ' +
       (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate and your proposal will state the actual price. ' : '') +
       'Net cost credits the roof life remaining at year ' + N + '.' + (inp.capRatePct ? ' Property value is the yearly gain in net operating income divided by the cap rate, and applies to income-producing property where the owner pays for the roof.' : '') + '</p>' +
-      (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '');
+      (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '') +
+      (internal && placeholders.length ? '<p class="flag">Placeholder data: ' + placeholders.join('; ') + '.</p>' : '');
     var footText = 'PAX Services Group · Roof Lifecycle Cost Analysis · ' + (generic ? mk.shortName + ' ' + pt.label + ' projection' : raw.customer);
-    $('foot1').textContent = footText; $('foot2').textContent = footText;
+    ['foot1', 'foot2'].forEach(function (id) {
+      $(id).innerHTML = (internal ? '<span class="internal">Internal review copy \u00b7 </span>' : '') + esc(footText);
+    });
 
     // appendix
     $('yearly').innerHTML = '<thead><tr><th>Year</th><th>PaxSeal fee</th><th>Repairs</th><th>Storm</th><th>Replacement</th><th>PaxSeal total</th><th>Reactive repairs</th><th>Storm</th><th>Replacement</th><th>Reactive total</th></tr></thead><tbody>' +
@@ -786,14 +818,38 @@
           '</td><td><b>' + money(r.total) + '</b></td><td>' + money(q.repairs) + '</td><td>' + money(q.storm) + '</td><td>' + (q.replacement ? money(q.replacement) : '—') + '</td><td><b>' + money(q.total) + '</b></td></tr>';
       }).join('') + '</tbody>';
 
+    lastRes = res; lastRaw = raw;
     document.title = (generic ? mk.shortName + ' ' + pt.label.split(' / ')[0] + ' \u2013 ' : raw.customer + ' \u2013 ') + 'Roof Lifecycle Analysis';
   }
+
+  var lastRes, lastRaw;
+  $('csvBtn').addEventListener('click', function () {
+    var P = lastRes.planned.rows, R = lastRes.reactive.rows, round = function (n) { return Math.round(n); };
+    var lines = [['Year', 'PaxSeal fee', 'PaxSeal repairs', 'PaxSeal storm', 'PaxSeal replacement', 'PaxSeal total',
+      'Reactive repairs', 'Reactive storm', 'Reactive replacement', 'Reactive total', 'New roof price']];
+    P.forEach(function (r, i) {
+      var q = R[i];
+      lines.push([r.year, round(r.fee), round(r.repairs), round(r.storm), round(r.replacement), round(r.total),
+        round(q.repairs), round(q.storm), round(q.replacement), round(q.total), round(lastRes.replacementCurve[r.year])]);
+    });
+    lines.push([]);
+    lines.push(['Roof life left at year ' + P.length, round(lastRes.planned.residualValue), '', '', '', '', round(lastRes.reactive.residualValue)]);
+    lines.push(['Net 20-year cost', round(lastRes.planned.netCost), '', '', '', '', round(lastRes.reactive.netCost)]);
+    var blob = new Blob([lines.map(function (l) { return l.join(','); }).join('\n')], { type: 'text/csv' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = ((lastRaw.customer || (lastRes.inputs.market.shortName + ' ' + lastRes.inputs.propertyType)) + ' roof lifecycle.csv').replace(/[^\w .-]+/g, '');
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
 
   function reportUrl() {
     var p = new URLSearchParams(), raw = readForm();
     FIELDS.forEach(function (f) { if (raw[f]) p.set(f, raw[f]); });
     p.set('view', 'report');
-    return location.origin + location.pathname + '?' + p.toString();
+    // Opened from a file (e.g. an email attachment), link to the published tool instead.
+    var base = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : 'https://noah-austin.github.io/TOC-Model/';
+    return base + '?' + p.toString();
   }
   var toastTimer;
   function toast(msg) { $('toast').textContent = msg; clearTimeout(toastTimer); toastTimer = setTimeout(function () { $('toast').textContent = ''; }, 2500); }

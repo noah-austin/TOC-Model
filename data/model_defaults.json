@@ -51,7 +51,7 @@
       "capRateKey": "office",
       "leakMultiplier": 1.2,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": null
     },
     "retail": {
@@ -61,7 +61,7 @@
       "capRateKey": "retail",
       "leakMultiplier": 1.1,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": null
     },
     "multifamily": {
@@ -71,7 +71,7 @@
       "capRateKey": "multifamily",
       "leakMultiplier": 1.25,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": "<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Catching roof problems early keeps units occupied."
     },
     "mixed": {
@@ -81,7 +81,7 @@
       "capRateKey": "mixed_use",
       "leakMultiplier": 1.2,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": "<b>Two kinds of tenants protected.</b> A leak can shut the ground-floor retail and damage the offices or apartments above. Planned care protects both income streams."
     },
     "medical": {
@@ -91,7 +91,7 @@
       "capRateKey": null,
       "leakMultiplier": 1.4,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": "<b>Operations keep running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment. Planned care keeps the roof from interrupting patient care."
     },
     "k12": {
@@ -101,7 +101,7 @@
       "capRateKey": null,
       "leakMultiplier": 1.3,
       "leakConfidence": "low",
-      "leakBasis": "Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates",
+      "leakBasis": "Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated",
       "story": "<b>A predictable budget line.</b> PaxSeal turns unplanned emergency repairs into a fixed annual cost the board can plan for, and keeps leaks from closing classrooms."
     }
   },

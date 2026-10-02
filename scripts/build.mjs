@@ -65,7 +65,7 @@ function buildPropertyTypes() {
       capRateKey: t.capRateKey,
       leakMultiplier: typeof m?.value === 'number' ? m.value : 1,
       leakConfidence: m?.confidence || null,
-      leakBasis: t.id === 'industrial' ? null : 'Scales reactive repair costs. Order supported by school-closure, hospital infection-control and insurer water-damage evidence; exact values are estimates',
+      leakBasis: t.id === 'industrial' ? null : 'Scales reactive repairs. Ranking backed by school, hospital and insurer water-damage evidence; values estimated',
       story: t.story || null,
     }];
   }));
