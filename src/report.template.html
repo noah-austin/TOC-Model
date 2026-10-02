@@ -64,8 +64,11 @@
   .field label { display: block; font-size: 11.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 4px; }
   .field input, .field select { width: 100%; height: 36px; padding: 0 10px; border: 1px solid #C9D0D4; border-radius: 6px; font-size: 13px; background: #fff; color: var(--ink); }
   .field input::placeholder { color: var(--faint); }
+  .field input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+  .field input[type=number]::-webkit-inner-spin-button, .field input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   .field input:focus, .field select:focus { outline: 2px solid var(--gold-dark); outline-offset: -1px; border-color: var(--gold-dark); }
   .field input:invalid { border-color: var(--red); }
+  .field[data-err]:not([data-err=""])::after { content: attr(data-err); display: block; font-size: 11px; color: var(--red); margin-top: 3px; }
   .hint { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
   .unit { position: relative; }
   .unit input { padding-right: 50px; }
@@ -94,7 +97,8 @@
   .mast h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; margin-top: 2px; color: var(--navy); }
   .mast .who { text-align: right; font-size: 11.5px; max-width: 320px; justify-self: end; color: var(--ink-2); line-height: 1.65; }
   @media (max-width: 640px) { .mast .who { text-align: left; } }
-  .mast .who b { color: var(--ink); font-size: 13px; }
+  .mast .who b { color: var(--ink); font-size: 13px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .mast .who .clip { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .mast .who .k { color: var(--faint); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
 
   /* Thesis */
@@ -174,6 +178,7 @@
   .ratings .src { grid-column: 1 / -1; font-size: 10px; color: var(--muted); margin-top: 4px; }
   .assume td { font-size: 11px; padding-top: 6px; padding-bottom: 6px; }
   .assume td:nth-child(2) { font-weight: 700; white-space: nowrap; }
+  .assume td:first-child { white-space: nowrap; }
   .assume th:nth-child(3), .assume td:nth-child(3), .assume th:last-child, .assume td:last-child { text-align: left; }
   .assume td:nth-child(3) { color: var(--ink-2); }
   @media (max-width: 640px) { .assume th:nth-child(3), .assume td:nth-child(3) { display: none; } .assume td:first-child::after { content: attr(data-src); display: block; font-size: 10.5px; color: var(--muted); margin-top: 2px; } }
@@ -266,8 +271,8 @@
         <div class="field"><label for="market">PAX market</label><select id="market" name="market"></select></div>
         <div class="field"><label for="propertyType">Property type</label><select id="propertyType" name="propertyType"></select></div>
         <div class="row2">
-          <div class="field"><label for="area">Roof area</label><div class="unit"><input id="area" name="area" type="number" inputmode="numeric" min="1000" max="2000000" step="500"><span>sq ft</span></div></div>
-          <div class="field"><label for="roofAge">Roof age</label><div class="unit"><input id="roofAge" name="roofAge" type="number" inputmode="numeric" min="0" max="50" step="1"><span>yrs</span></div></div>
+          <div class="field"><label for="area">Roof area</label><div class="unit"><input id="area" name="area" type="number" inputmode="numeric" min="5000" max="2000000" step="any"><span>sq ft</span></div></div>
+          <div class="field"><label for="roofAge">Roof age</label><div class="unit"><input id="roofAge" name="roofAge" type="number" inputmode="numeric" min="0" max="50" step="any"><span>yrs</span></div></div>
         </div>
         <div class="row2">
           <div class="field"><label for="system">Roof system</label><select id="system" name="system"></select></div>
@@ -275,7 +280,7 @@
             <select id="condition" name="condition"><option value="good">Good</option><option value="fair">Fair</option><option value="poor">Poor</option></select></div>
         </div>
         <div class="row2">
-          <div class="field"><label for="warranty">Warranty left</label><div class="unit"><input id="warranty" name="warranty" type="number" inputmode="numeric" min="0" max="40" step="1" placeholder="Unknown"><span>yrs</span></div></div>
+          <div class="field"><label for="warranty">Warranty left</label><div class="unit"><input id="warranty" name="warranty" type="number" inputmode="numeric" min="0" max="40" step="any" placeholder="Unknown"><span>yrs</span></div></div>
           <div class="field"><label for="leaks">Active leaks?</label>
             <select id="leaks" name="leaks"><option value="">Unknown</option><option value="no">No</option><option value="yes">Yes</option></select></div>
         </div>
@@ -302,14 +307,14 @@
       <summary><span class="step">3</span><span class="gt">Costs</span><span class="chev"></span></summary>
       <div class="g-body">
         <div class="row2">
-          <div class="field"><label for="costPerSqft">Replacement cost</label><div class="unit"><input id="costPerSqft" name="costPerSqft" type="number" inputmode="decimal" step="0.25" min="0"><span>$/sq ft</span></div></div>
-          <div class="field"><label for="replacementCost">or total</label><div class="unit"><input id="replacementCost" name="replacementCost" type="number" inputmode="numeric" step="1000" min="0"><span>$</span></div></div>
+          <div class="field"><label for="costPerSqft">Replacement cost</label><div class="unit"><input id="costPerSqft" name="costPerSqft" type="number" inputmode="decimal" step="any" min="0"><span>$/sq ft</span></div></div>
+          <div class="field"><label for="replacementCost">or total</label><div class="unit"><input id="replacementCost" name="replacementCost" type="number" inputmode="numeric" step="any" min="1000"><span>$</span></div></div>
         </div>
-        <div class="field"><label for="annualFee">PaxSeal annual fee</label><div class="unit"><input id="annualFee" name="annualFee" type="number" inputmode="numeric" step="100" min="0"><span>$/yr</span></div>
+        <div class="field"><label for="annualFee">PaxSeal annual fee</label><div class="unit"><input id="annualFee" name="annualFee" type="number" inputmode="numeric" step="any" min="0"><span>$/yr</span></div>
           <div class="hint" id="feeHint"></div></div>
         <div class="row2">
-          <div class="field"><label for="escalation">Cost growth</label><div class="unit"><input id="escalation" name="escalation" type="number" inputmode="decimal" step="0.1" min="0" max="15"><span>%/yr</span></div></div>
-          <div class="field"><label for="capRate">Cap rate</label><div class="unit"><input id="capRate" name="capRate" type="number" inputmode="decimal" step="0.05" min="1" max="15"><span>%</span></div></div>
+          <div class="field"><label for="escalation">Cost growth</label><div class="unit"><input id="escalation" name="escalation" type="number" inputmode="decimal" step="any" min="0" max="15"><span>%/yr</span></div></div>
+          <div class="field"><label for="capRate">Cap rate</label><div class="unit"><input id="capRate" name="capRate" type="number" inputmode="decimal" step="any" min="1" max="15"><span>%</span></div></div>
         </div>
         <div class="hint" id="capHint" style="margin-top:-4px" hidden></div>
       </div>
@@ -320,10 +325,10 @@
       <div class="g-body">
         <div class="hint" style="margin:0">For sales ops. Changes apply to this report only and are saved in its link.</div>
         <div class="row2">
-          <div class="field"><label for="ext">Life added</label><div class="unit"><input id="ext" name="ext" type="number" step="1" min="0" max="15"><span>yrs</span></div></div>
-          <div class="field"><label for="mult">Reactive repairs</label><div class="unit"><input id="mult" name="mult" type="number" step="0.1" min="1" max="10"><span>&times;</span></div></div>
+          <div class="field"><label for="ext">Life added</label><div class="unit"><input id="ext" name="ext" type="number" step="any" min="0" max="10"><span>yrs</span></div></div>
+          <div class="field"><label for="mult">Reactive repairs</label><div class="unit"><input id="mult" name="mult" type="number" step="any" min="1" max="10"><span>&times;</span></div></div>
         </div>
-        <div class="field"><label for="repair">Repair need, new roof</label><div class="unit"><input id="repair" name="repair" type="number" step="0.1" min="0" max="10"><span>%/yr</span></div>
+        <div class="field"><label for="repair">Repair need, new roof</label><div class="unit"><input id="repair" name="repair" type="number" step="any" min="0" max="10"><span>%/yr</span></div>
           <div class="hint">Share of replacement cost spent on planned-visit repairs each year. Grows 5% per year of roof age.</div></div>
         <label class="check"><input type="checkbox" id="internal" name="internal"> Show source confidence <span>(internal review copy, not for customers)</span></label>
       </div>
@@ -479,7 +484,13 @@
     FIELDS.forEach(function (f) {
       var el = form.elements[f];
       o[f] = el.type === 'checkbox' ? (el.checked ? '1' : '') : el.value.trim();
-      if (el.type === 'number' && o[f] !== '' && !el.checkValidity()) o[f] = '';
+      if (el.type === 'number') {
+        // Out-of-range numbers are ignored (the default is used) and flagged on the field.
+        var bad = o[f] !== '' && !el.checkValidity();
+        var field = el.closest('.field');
+        if (field) field.setAttribute('data-err', bad ? 'Use ' + (el.min || 0) + (el.max ? '\u2013' + Number(el.max).toLocaleString('en-US') : ' or more') + '. Using the default.' : '');
+        if (bad) o[f] = '';
+      }
     });
     return o;
   }
@@ -501,6 +512,7 @@
     return n;
   }
   function niceMax(v) {
+    if (!(v > 0)) return 1;
     var p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p;
     var steps = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];
     for (var i = 0; i < steps.length; i++) if (m <= steps[i]) return steps[i] * p;
@@ -535,7 +547,7 @@
   function drawSpend(res) {
     var wrap = $('chart1'), tip = $('tip1');
     var old = wrap.querySelector('svg'); if (old) old.remove();
-    var W = 720, H = 260, m = { t: 10, r: 120, b: 26, l: 46 };
+    var W = 720, H = 245, m = { t: 10, r: 120, b: 26, l: 46 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b;
     var N = res.config.horizonYears, P = res.planned, R = res.reactive, ref = res.replacementCurve;
     var pp = stepPoints(P), rp = stepPoints(R);
@@ -582,6 +594,9 @@
       { v: ref[N], a: 'New roof', b: short(ref[N]), color: C.reference }
     ].map(function (l) { l.y = y(l.v); return l; }).sort(function (a, b) { return a.y - b.y; });
     for (var k = 1; k < labels.length; k++) if (labels[k].y - labels[k - 1].y < 28) labels[k].y = labels[k - 1].y + 28;
+    // Keep the stack inside the plot: shift it up if the last label runs past the bottom.
+    var over = labels[labels.length - 1].y - (m.t + ih - 4);
+    if (over > 0) labels.forEach(function (l) { l.y -= over; });
     labels.forEach(function (l) {
       el('rect', { x: m.l + iw + 10, y: l.y - 10, width: 3, height: 24, rx: 1.5, fill: l.color }, svg);
       el('text', { x: m.l + iw + 19, y: l.y, 'font-size': 10, fill: C.muted, 'font-weight': 600 }, svg, l.a);
@@ -620,7 +635,7 @@
   function drawLife(res) {
     var wrap = $('chart2');
     wrap.innerHTML = '';
-    var W = 720, rowH = 32, m = { t: 4, r: 120, b: 22, l: 64 };
+    var W = 720, rowH = 28, m = { t: 4, r: 120, b: 22, l: 64 };
     var N = res.config.horizonYears, iw = W - m.l - m.r;
     var H = m.t + rowH * 2 + m.b;
     var x = function (t) { return m.l + (Math.min(t, N) / N) * iw; };
@@ -660,7 +675,8 @@
     form.elements.replacementCost.placeholder = Math.round(inp.area * inp.costPerSqft).toLocaleString('en-US');
     form.elements.annualFee.placeholder = Math.round(D.fee.baseUsd + D.fee.perSqftUsd * inp.area).toLocaleString('en-US');
     form.elements.escalation.placeholder = D.escalationPct.toFixed(1);
-    form.elements.capRate.placeholder = pt.capRateKey ? mk.capRates[pt.capRateKey].value.toFixed(2) : 'n/a';
+    var capDef = pt.capRateKey && mk.capRates[pt.capRateKey] && mk.capRates[pt.capRateKey].value;
+    form.elements.capRate.placeholder = capDef ? capDef.toFixed(2) : 'n/a';
     var mob = mk.capRates.medical_office && mk.capRates.medical_office.value;
     $('capHint').textContent = 'Usually owner-occupied, so no cap rate. Enter one only if the building is investor-owned' +
       (inp.propertyType === 'medical' && mob ? ' (medical office buildings in ' + mk.shortName + ' trade near ' + pct(mob) + ').' : '.');
@@ -677,7 +693,7 @@
       ? '<div class="k">Market projection</div><b>Typical ' + esc(pt.noun) + '</b><br>' + esc(mk.shortName) + ' market<br>' + esc(dateStr)
       : '<div class="k">Prepared for</div><b>' + esc(raw.customer) + '</b>' +
       (raw.contact ? '<br>Attn: ' + esc(raw.contact) : '') +
-      (raw.property || raw.city ? '<br>' + esc([raw.property, raw.city].filter(Boolean).join(', ')) : '') +
+      (raw.property || raw.city ? '<span class="clip">' + esc([raw.property, raw.city].filter(Boolean).join(', ')) + '</span>' : '<br>') +
       '<br>' + (raw.preparedBy ? esc(raw.preparedBy) + ' · ' : '') + esc(dateStr);
 
     // thesis
@@ -690,7 +706,7 @@
     $('thesisSub').innerHTML = k.savings > 0
       ? 'That is ' + pct(k.savingsPct * 100) + ' less than fixing problems only after they leak' +
         (rg && rg.high - rg.low > 1000 ? '. Under conservative to upside assumptions, the savings range from ' + short(rg.low) + ' to ' + short(rg.high) : '') +
-        '. In today\u2019s dollars the estimate is worth ' + short(k.npvSavings) + '. Based on ' + esc(mk.shortName) + ' costs and storm history.'
+        '. In today\u2019s dollars the estimate is worth ' + short(k.npvSavings) + '.'
       : 'This usually means a large fee relative to the roof, or a new roof with most of its life ahead. Check the fee and roof details.';
 
     // spec strip
@@ -706,11 +722,11 @@
 
     // figures
     var figs = [
-      { k: '<span class="sw" style="background:' + C.planned + '"></span>PaxSeal net cost', v: short(k.plannedNetCost), d: short(P.totalSpend) + ' spent, less ' + short(P.residualValue) + ' roof life left' },
-      { k: '<span class="sw" style="background:' + C.reactive + '"></span>Reactive net cost', v: short(k.reactiveNetCost), d: short(R.totalSpend) + ' spent, less ' + short(R.residualValue) + ' roof life left' },
-      k.assetValueProtected != null
+      { k: '<span class="sw" style="background:' + C.planned + '"></span>PaxSeal net cost', v: short(k.plannedNetCost), d: short(P.totalSpend) + ' spent plus roof wear, net of roof life left' },
+      { k: '<span class="sw" style="background:' + C.reactive + '"></span>Reactive net cost', v: short(k.reactiveNetCost), d: short(R.totalSpend) + ' spent plus roof wear, net of roof life left' },
+      k.assetValueProtected > 0
         ? { k: 'Value protected', v: short(k.assetValueProtected), d: short(k.annualNoiGain) + '/yr more NOI at a ' + pct(inp.capRatePct) + ' cap rate', good: true }
-        : { k: 'Emergency costs cut', v: short(k.unplannedSpendAvoided), d: 'Unbudgeted repairs and storm damage avoided' + (k.returnPerFeeDollar > 0 ? '; $' + k.returnPerFeeDollar.toFixed(2) + ' back per fee dollar' : ''), good: true },
+        : { k: 'Emergency costs cut', v: short(Math.max(0, k.unplannedSpendAvoided)), d: 'Unbudgeted repairs and storm damage avoided', good: k.unplannedSpendAvoided > 0 },
       { k: 'New roof price', v: k.yearsToDouble ? '2× <small>in ' + Math.round(k.yearsToDouble) + ' yrs</small>' : '—', d: short(inp.replacementCost) + ' today, ' + short(k.replacementCostAtHorizon) + ' by year ' + N }
     ];
     $('figs').innerHTML = figs.map(function (f) {
@@ -727,6 +743,7 @@
       ['Repairs paid by owner', sum(P.rows, 'repairs'), sum(R.rows, 'repairs')],
       ['Expected storm damage', sum(P.rows, 'storm'), sum(R.rows, 'storm')],
       ['Roof replacements', sum(P.rows, 'replacement'), sum(R.rows, 'replacement')],
+      ['Current roof value used', P.openingValue, R.openingValue],
       ['Credit for roof life left', -P.residualValue, -R.residualValue]
     ];
     function amt(v) { return Math.abs(v) < 0.5 ? '—' : short(v); }
@@ -737,20 +754,24 @@
 
     // points, in priority order; page 2 has room for four
     var pts = [];
-    if (raw.leaks === 'yes') pts.push('<b>Fix the active leaks first.</b> Water already getting in soaks insulation and rots the deck, shortening roof life and raising repair costs every month.');
-    if (k.reactiveReplacementYear && (!k.plannedReplacementYear || k.plannedReplacementYear > k.reactiveReplacementYear)) {
-      pts.push('<b>A later replacement.</b> Maintenance moves the next new roof from year ' + k.reactiveReplacementYear + ' to ' +
-        (k.plannedReplacementYear ? 'year ' + k.plannedReplacementYear : 'beyond year ' + N) + ', so fewer roofs are bought over the period.');
+    if (raw.leaks === 'yes') pts.push('<b>Fix the active leaks first.</b> Water getting in soaks insulation and rots the deck, raising costs every month.');
+    // Only claim a later replacement when it is at least two years later.
+    var pYr = k.plannedReplacementYear || N + 1, rYr = k.reactiveReplacementYear;
+    if (rYr && pYr - rYr >= 2) {
+      var fewer = R.replacementYears.length > P.replacementYears.length;
+      pts.push('<b>A later replacement.</b> The next new roof moves from year ' + rYr + ' to ' +
+        (k.plannedReplacementYear ? 'year ' + pYr : 'beyond year ' + N) +
+        (fewer ? ', so fewer roofs are bought.' : ', when it costs less in today\u2019s dollars.'));
     }
-    pts.push('<b>Smaller repairs.</b> Problems found on a scheduled visit avoid emergency work, which costs about ' + c.reactiveRepairMultiplier +
-      '\u00d7 as much. That saves ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + ' in repairs.');
+    pts.push('<b>Smaller repairs.</b> Fixes made on scheduled visits avoid emergency work at about ' +
+      (Math.round(c.reactiveRepairMultiplier * inp.leakMultiplier * 10) / 10) + '\u00d7 the cost' + (inp.leakMultiplier > 1 ? ' in ' + (/^[aeiou]/i.test(pt.noun) ? 'an ' : 'a ') + esc(pt.noun) : '') + ', saving ' + short(sum(R.rows, 'repairs') - sum(P.rows, 'repairs')) + '.');
     var warr = parseFloat(raw.warranty);
-    if (warr > 0) pts.push('<b>Keep the warranty valid.</b> This roof has about ' + Math.round(warr) + ' year' + (Math.round(warr) === 1 ? '' : 's') +
-      ' of manufacturer warranty left. Warranties typically require documented maintenance, which PaxSeal visit reports provide.');
+    if (warr > 0) pts.push('<b>Keep the warranty valid.</b> About ' + Math.round(warr) + ' year' + (Math.round(warr) === 1 ? '' : 's') +
+      ' of warranty remain, and manufacturers typically require the documented maintenance PaxSeal provides.');
     if (pt.story) pts.push(pt.story);
-    if (k.returnPerFeeDollar > 0) pts.push('<b>The program pays for itself.</b> Each $1 of PaxSeal fees returns about $' + k.returnPerFeeDollar.toFixed(2) + ' in avoided cost.');
-    if (inp.roofAge + (c.conditionAgeShift[inp.condition] || 0) >= inp.systemLife - c.lifeExtensionYears) {
-      pts.splice(Math.min(pts.length, 2), 0, '<b>Near end of life.</b> This roof has little service life left. Maintenance now mainly protects the building until a planned replacement.');
+    if (k.savings > 0 && k.avoidedPerFeeDollar) pts.push('<b>The program pays for itself.</b> Each $1 of fees avoids about $' + k.avoidedPerFeeDollar.toFixed(2) + ' of other roof costs.');
+    if (inp.roofAge + (c.conditionAgeShift[inp.condition] || 0) >= inp.systemLife - k.lifeExtensionYears) {
+      pts.splice(Math.min(pts.length, 2), 0, '<b>Near end of life.</b> Maintenance now mainly protects the building until a planned replacement.');
     }
     pts = pts.slice(0, 4);
     $('points').innerHTML = pts.map(function (s) { return '<li><span>' + s + '</span></li>'; }).join('');
@@ -772,15 +793,15 @@
     var capSrc = pt.capRateKey ? mk.capRates[pt.capRateKey] : null;
     var repCost = raw.costPerSqft || raw.replacementCost;
     var A = [
-      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - c.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + c.lifeExtensionYears + ' yrs per NRC Canada and warranty terms', 'medium'],
+      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - k.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Fannie Mae service-life tables; +' + k.lifeExtensionYears + ' yrs per NRC Canada and warranty terms', 'medium'],
       ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing contractors, 2007–2025', raw.escalation ? 'rep' : 'high'],
       ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : (mDefault.source.indexOf(mk.region) > -1 ? 'Median of other ' + mk.region + ' PAX markets' : 'Median of other PAX markets') + ' until local data is added'), repCost ? 'rep' : 'low'],
-      ['Reactive repair cost', c.reactiveRepairMultiplier + '× planned', 'Industry estimates; no primary study found', 'low'],
-      ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA National Risk Index expected building loss, roof-related hazards', 'medium'],
+      ['Reactive repair cost', c.reactiveRepairMultiplier + '\u00d7 planned' + (inp.leakMultiplier !== 1 ? ' \u00d7 ' + inp.leakMultiplier : ''),
+        'Industry estimates; no primary study found' + (inp.leakMultiplier !== 1 ? '. \u00d7' + inp.leakMultiplier + ' for leak damage in ' + (/^[aeiou]/i.test(pt.noun) ? 'an ' : 'a ') + pt.noun : ''), 'low'],
+      ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost, before insurance. FEMA National Risk Index expected building loss, roof-related hazards', 'medium'],
       // Our own price, so it is labeled as an estimate or a quote rather than given a research confidence.
       ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'PAX program estimate for this roof size. Your proposal will state the actual fee' : 'PaxSeal price for this property', inp.feeIsEstimate ? 'est' : 'quote']
     ];
-    if (inp.leakMultiplier !== 1) A.push(['Leak consequences', inp.leakMultiplier.toFixed(2) + '\u00d7 warehouse', pt.leakBasis || 'Property-type research', pt.leakConfidence || 'low']);
     if (raw.capRate) A.push(['Cap rate', pct(inp.capRatePct), 'Entered by rep', 'rep']);
     else if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : capSrc.source.replace(/^fallback: /, '').replace(/^./, function (ch) { return ch.toUpperCase(); }) + ' until local data is added', capSrc.confidence || 'low']);
     // Confidence ratings are for internal review; customer copies show the basis only.
@@ -800,9 +821,10 @@
     if (!repCost && mDefault.source !== 'market') placeholders.push(sys + ' price uses ' + mDefault.source.replace(/^fallback: /, ''));
     if (!raw.capRate && capSrc && capSrc.source !== 'market') placeholders.push(pt.label.toLowerCase() + ' cap rate uses ' + capSrc.source.replace(/^fallback: /, ''));
     $('fine').innerHTML =
-      '<p><b>Estimates, not a quote.</b> Projections use ' + esc(mk.shortName) + ' market research and industry data, in nominal dollars; actual costs will differ. ' +
-      (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate and your proposal will state the actual price. ' : '') +
-      'Net cost credits the roof life remaining at year ' + N + '.' + (inp.capRatePct ? ' Property value is the yearly gain in net operating income divided by the cap rate, and applies to income-producing property where the owner pays for the roof.' : '') + '</p>' +
+      '<p><b>Estimates, not a quote.</b> Projections from ' + esc(mk.shortName) + ' market research and industry data, in nominal dollars. ' +
+      (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate; your proposal states the actual price. ' : '') +
+      'Net cost includes wear on the current roof, less roof life left at year ' + N + '. Storm damage is before insurance.' +
+      (k.assetValueProtected > 0 ? ' Property value is the yearly gain in net operating income divided by the cap rate, for income property where the owner pays for the roof.' : '') + '</p>' +
       (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '') +
       (internal && placeholders.length ? '<p class="flag">Placeholder data: ' + placeholders.join('; ') + '.</p>' : '');
     var footText = 'PAX Services Group · Roof Lifecycle Cost Analysis · ' + (generic ? mk.shortName + ' ' + pt.label + ' projection' : raw.customer);

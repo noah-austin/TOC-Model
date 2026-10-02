@@ -61,12 +61,13 @@
     // Discount rate for the NPV figure (nominal cumulative is the headline).
     discountRatePct: 7.0,
 
-    // Savings range shown beside the headline. Conservative uses the low end of the
-    // research ranges in national.json; upside stays below their marketing-sourced
-    // high end (5x repair cost, 8 yrs life added).
+    // Savings range shown beside the headline: the two assumptions that drive most of
+    // the savings, moved toward each end of the research ranges in national.json
+    // (repair multiplier 1.8-5x, life added 3-8 yrs). The extremes are avoided because
+    // they rest on marketing claims and make the range too wide to be useful.
     rangeScenarios: {
-      conservative: { reactiveRepairMultiplier: 1.8, lifeExtensionYears: 3 },
-      upside: { reactiveRepairMultiplier: 4.0, lifeExtensionYears: 7 }
+      conservative: { reactiveRepairMultiplier: 2.0, lifeExtensionYears: 4 },
+      upside: { reactiveRepairMultiplier: 3.5, lifeExtensionYears: 6 }
     }
   };
 
@@ -94,6 +95,8 @@
     var area = num(raw.area, defaults.defaultArea);
     var costPerSqft = num(raw.costPerSqft, market.replacementCostPerSqft[system].value);
     var replacementCost = num(raw.replacementCost, area * costPerSqft);
+    // A rep-entered total wins over $/sq ft; report the rate it implies.
+    if (num(raw.replacementCost, null) !== null && area > 0) costPerSqft = replacementCost / area;
     var fee = num(raw.annualFee, defaults.fee.baseUsd + defaults.fee.perSqftUsd * area);
     var pt = defaults.propertyTypes[propType];
     // Cap-rate valuation only applies to income property. For owner-occupied types
@@ -124,24 +127,31 @@
   /*
    * Simulate one scenario. Returns per-year arrays (index 0 = year 1).
    */
+  // Life added by maintenance, capped at half the design life so an override can't
+  // leave the reactive roof with almost no life.
+  function lifeExtension(cfg, L) { return Math.min(cfg.lifeExtensionYears, L / 2); }
+
   function simulate(inp, cfg, planned) {
     var H = cfg.horizonYears;
     var C = inp.replacementCost;
     var e = inp.escalationPct / 100;
     var L = inp.systemLife;
-    var ext = cfg.lifeExtensionYears;
+    var ext = lifeExtension(cfg, L);
     var fullLife = planned ? L : Math.max(1, L - ext);
     var ageEff = inp.roofAge + (cfg.conditionAgeShift[inp.condition] || 0);
 
     // Remaining life of the existing roof. Maintenance started late earns only
     // part of the extension: proportional to the share of design life left.
-    var reactiveRemaining = Math.max(1, (L - ext) - ageEff);
+    var reactiveRemaining = Math.max(0, (L - ext) - ageEff);
     var remaining = planned
       ? reactiveRemaining + ext * Math.min(1, Math.max(0, (L - ageEff) / L))
       : reactiveRemaining;
 
     var rows = [];
-    var nextReplace = Math.ceil(remaining);   // year index (1-based) of first replacement
+    // The existing roof serves `remaining` more years and is replaced the year after;
+    // a worn-out roof (remaining < 1) is replaced in year 1. A new roof installed in
+    // year t serves t..t+L-1, so both follow the same convention.
+    var nextReplace = Math.floor(remaining) + 1;
     var roofAge = ageEff;                    // age of roof in place at start of year
     var currentLife = ageEff + remaining;    // total life of roof in place
     var replacements = [];
@@ -155,10 +165,14 @@
         replacements.push(t);
         roofAge = 0;
         currentLife = fullLife;
-        nextReplace = t + Math.ceil(fullLife);
+        nextReplace = t + Math.round(fullLife);
       } else {
-        var repairNeed = C * price * (cfg.baseRepairPctOfReplacement / 100) *
-          Math.pow(1 + cfg.repairAgeGrowthPct / 100, roofAge);
+        // Wear is measured against design life (a 20-yr-old metal roof is mid-life),
+        // and capped at 3x the new-roof rate.
+        var wear = Math.min(Math.pow(1 + cfg.repairAgeGrowthPct / 100, roofAge * 20 / L), 3);
+        // Base rate is for a 20-yr system; longer-life systems need proportionally less
+        // repair per dollar of replacement cost.
+        var repairNeed = C * price * (cfg.baseRepairPctOfReplacement / 100) * (20 / L) * wear;
         row.repairs = planned ? repairNeed * (1 - cfg.feeCoversRepairShare)
                               : repairNeed * cfg.reactiveRepairMultiplier * inp.leakMultiplier;
       }
@@ -172,10 +186,16 @@
       roofAge += 1;
     }
 
-    // Value of service life left in the roof at the end of the horizon,
-    // straight-line, at end-of-horizon replacement prices.
+    // Credit for service life left in the roof at the end of the horizon, straight-line,
+    // in today's dollars. Pricing it at year-20 costs would let a long-life roof's credit
+    // exceed everything spent; today's dollars keeps the credit conservative.
     var lifeLeft = Math.max(0, currentLife - roofAge);
-    var residual = C * Math.pow(1 + e, H) * (lifeLeft / currentLife);
+    var residual = currentLife > 0 ? C * (lifeLeft / currentLife) : 0;
+
+    // Value of the current roof today (straight-line on design life). Using it up is part
+    // of the cost of ownership. It is the same in both scenarios, so it never changes the
+    // savings, but it keeps net cost meaningful when a long-life roof has a large credit.
+    var openingValue = C * Math.max(0, L - ageEff) / L;
 
     var cumulative = [];
     var run = 0;
@@ -186,7 +206,8 @@
       cumulative: cumulative,
       totalSpend: run,
       residualValue: residual,
-      netCost: run - residual,
+      openingValue: openingValue,
+      netCost: run + openingValue - residual,
       replacementYears: replacements,
       remainingLifeYears: remaining,
       fullLifeYears: fullLife
@@ -209,15 +230,13 @@
     var replacementCurve = [];
     for (var t = 0; t <= H; t++) replacementCurve.push(inp.replacementCost * Math.pow(1 + e, t));
 
-    // Annual NOI improvement in today's dollars: average operating savings
-    // (deflated) plus the difference in replacement reserves (cost / life).
-    var opexSavingsToday = 0;
-    for (var i = 0; i < H; i++) {
-      opexSavingsToday += (reactive.rows[i].opex - planned.rows[i].opex) / Math.pow(1 + e, i + 1);
-    }
-    opexSavingsToday /= H;
-    var reserveSavings = inp.replacementCost / reactive.fullLifeYears - inp.replacementCost / planned.fullLifeYears;
-    var annualNoiGain = opexSavingsToday + reserveSavings;
+    // Annual NOI improvement: the level yearly amount with the same present value as the
+    // operating savings (fees, repairs, storm), at the NPV discount rate. Replacement
+    // reserves are left out, as many appraisers treat them below the NOI line, so the
+    // value figure doesn't capitalize capital timing into perpetuity.
+    var d = cfg.discountRatePct / 100;
+    var opexDiff = reactive.rows.map(function (r, k) { return r.opex - planned.rows[k].opex; });
+    var annualNoiGain = npv(opexDiff, cfg.discountRatePct) * (d > 0 ? d / (1 - Math.pow(1 + d, -H)) : 1 / H);
 
     var diff = reactive.rows.map(function (r, k) { return r.total - planned.rows[k].total; });
     diff[H - 1] -= reactive.residualValue - planned.residualValue;
@@ -254,10 +273,13 @@
         npvSavings: npv(diff, cfg.discountRatePct),
         totalFees: totalFees,
         returnPerFeeDollar: totalFees ? savings / totalFees : null,
+        // Other roof costs avoided per $1 of fees (gross; net savings + the fee itself).
+        avoidedPerFeeDollar: totalFees ? (savings + totalFees) / totalFees : null,
         annualNoiGain: annualNoiGain,
-        assetValueProtected: inp.capRatePct ? annualNoiGain / (inp.capRatePct / 100) : null,
+        assetValueProtected: inp.capRatePct > 0 ? annualNoiGain / (inp.capRatePct / 100) : null,
         yearsToDouble: e > 0 ? Math.log(2) / Math.log(1 + e) : null,
         replacementCostAtHorizon: replacementCurve[H],
+        lifeExtensionYears: lifeExtension(cfg, inp.systemLife),
         plannedReplacementYear: planned.replacementYears[0] || null,
         reactiveReplacementYear: reactive.replacementYears[0] || null,
         // Unplanned spending (repairs + storm damage) avoided over the horizon: the

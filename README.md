@@ -49,8 +49,12 @@ After editing research data or the engine, run `npm run build` and commit `dist/
 
 To add a market: write `data/markets/<id>.json` (see `SCHEMA.md`), add it to the `MARKETS` list in `scripts/build.mjs`, add its primary county to `scripts/refresh_nri.py`, then run the refresh and `npm run build`.
 
+## URL parameters
+
+Every input can be set in the URL, which is how the library links work and how a Salesforce Flow would open a report (handoff Phase 2):
+
+`market`, `propertyType`, `area`, `roofAge`, `system`, `condition`, `warranty`, `leaks`, `customer`, `property`, `city`, `contact`, `preparedBy`, `date`, `costPerSqft`, `replacementCost`, `annualFee`, `escalation`, `capRate`, `ext`, `mult`, `repair`, `internal=1` (internal review copy), `view=report` (hide the builder).
+
 ## Status
 
-- Phase 1 standalone report: working.
-- Data: round 1, with many low-confidence values. See `docs/research/COMPARISON.md`.
-- Still to add: the real PAX logo (currently a wordmark placeholder) and the Salesforce Flow (Phase 2).
+See the roadmap in `docs/MODEL_BREAKDOWN.md` §5. In short: the engine, report, and V1.0 library are live. Data is round 1, with many low-confidence values. Still needed: research round 2, the real PAX logo, the report and proposal letter templates, and the Salesforce Flow.

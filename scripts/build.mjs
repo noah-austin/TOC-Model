@@ -45,13 +45,13 @@ const PROPERTY_TYPES = [
   { id: 'office', noun: 'office building', label: 'Office', capRateKey: 'office' },
   { id: 'retail', noun: 'retail center', label: 'Retail', capRateKey: 'retail' },
   { id: 'multifamily', noun: 'apartment property', label: 'Multi-Family', capRateKey: 'multifamily',
-    story: '<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Catching roof problems early keeps units occupied.' },
+    story: '<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Early repairs keep units occupied.' },
   { id: 'mixed', noun: 'mixed-use building', label: 'Mixed Use', capRateKey: 'mixed_use',
-    story: '<b>Two kinds of tenants protected.</b> A leak can shut the ground-floor retail and damage the offices or apartments above. Planned care protects both income streams.' },
+    story: '<b>Both income streams protected.</b> A leak can close the ground-floor retail and damage the offices or apartments above.' },
   { id: 'medical', noun: 'medical facility', label: 'Medical / Institutional', capRateKey: null,
-    story: '<b>Operations keep running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment. Planned care keeps the roof from interrupting patient care.' },
+    story: '<b>Patient care keeps running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment.' },
   { id: 'k12', noun: 'school', label: 'K-12 / Education', capRateKey: null,
-    story: '<b>A predictable budget line.</b> PaxSeal turns unplanned emergency repairs into a fixed annual cost the board can plan for, and keeps leaks from closing classrooms.' },
+    story: '<b>A predictable budget line.</b> Emergency repairs become a fixed annual cost the board can plan for, and leaks stop closing classrooms.' },
 ];
 const propertyResearch = existsSync(join(ROOT, 'data/property_types.json')) ? readJson('data/property_types.json') : { types: {}, cap_rates_by_market: {} };
 function buildPropertyTypes() {
@@ -186,7 +186,8 @@ const engine = readFileSync(join(ROOT, 'src/engine.js'), 'utf8');
 const html = template
   .replace('/*__FONTS__*/', () => fonts)
   .replace('/*__ENGINE__*/', () => engine)
-  .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults) + ';');
+  // Escape '<' so research text can never close the <script> tag early.
+  .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults).replace(/</g, '\\u003c') + ';');
 mkdirSync(join(ROOT, 'dist'), { recursive: true });
 writeFileSync(join(ROOT, 'dist/index.html'), html);
 console.log('Built data/model_defaults.json and dist/index.html');

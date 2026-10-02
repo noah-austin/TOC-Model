@@ -107,15 +107,22 @@ Each type also gets its own takeaway on page 2, for example budget certainty for
 
 There is no set price, so the planned scenario uses an **estimated program fee**: a default formula (base fee + $/sq ft per year, from industry benchmarks in `national.json`) that the rep can override. The report labels it as an estimate.
 
-## 5. Suggested order of work
+## 5. Status and roadmap
 
-1. **Lock the model structure with San Antonio**, using the existing benchmark: ~$329K maintained / ~$564K deferred at $100K.
-2. **Research one market fully** (San Antonio, to validate against the coworker's numbers) and fill in its row in the table.
-3. **Research the remaining markets** into the same table (`data/markets.json` or a spreadsheet).
-4. **Build the report page** (handoff Phase 1), with a market picker driving the defaults.
-5. Salesforce comes later (handoff Phase 2).
+| Step | Status |
+|---|---|
+| Model structure and engine (`src/engine.js`, spec in `docs/MODEL_SPEC.md`) | Done; reviewed and tested across every market, type, system, age and condition |
+| Market research, round 1 (5 markets) and property-type research | Done; many low-confidence values (`docs/research/COMPARISON.md`) |
+| Report page (handoff Phase 1): customer copy, internal review copy, print to 2 pages, CSV export | Done, live on GitHub Pages |
+| V1.0 sales library: 35 market × property-type projections with PDFs | Done (`/library/`); typical building profiles need Sales sign-off |
+| V1.1 customer-specific projections | Supported by the report builder; batch generation possible from a target list |
+| Research round 2: verify sources, fill Austin/Texas gaps, calibrate repair assumptions with PAX job data | Next |
+| PaxSeal report template and proposal letter template | Waiting on the Tiger Team road maps |
+| Salesforce Screen Flow (handoff Phase 2): the report reads every input from URL parameters already | Later |
 
 ## 6. Open questions
 
-- Internal job-cost data (repair tickets, replacement $/sq ft by branch) is unknown. If it exists, it should replace the public $/sq ft estimates.
+- Internal job-cost data (repair tickets, replacement $/sq ft by branch) is unknown. If it exists, it should replace the public $/sq ft estimates and calibrate the repair multiplier.
 - Will Roof Only and Complete Service be modeled separately? Complete adds building envelope: walls, sealants, windows.
+- Sign-off needed on the typical building profiles in `data/library_profiles.json`.
+- Real PAX logo file (the report uses a wordmark placeholder).

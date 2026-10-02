@@ -16,14 +16,14 @@ test('every market produces finite, positive savings for a new roof', () => {
 });
 
 test('planned maintenance delays replacement', () => {
-  const k = E.run(base, D).kpis;
-  assert.equal(k.reactiveReplacementYear, 15);
-  assert.equal(k.plannedReplacementYear, 20);
+  const k = E.run(base, D).kpis;              // new TPO: 15 yrs reactive, 20 maintained
+  assert.equal(k.reactiveReplacementYear, 16); // serves years 1-15, replaced in year 16
+  assert.equal(k.plannedReplacementYear, null); // lasts through year 20
 });
 
 test('late-started maintenance earns only part of the life extension', () => {
   const k = E.run({ ...base, roofAge: 10 }, D).kpis;   // 5 yrs reactive remaining, +2.5 yrs planned
-  assert.equal(k.reactiveReplacementYear, 5);
+  assert.equal(k.reactiveReplacementYear, 6);
   assert.equal(k.plannedReplacementYear, 8);
 });
 
@@ -63,9 +63,10 @@ test('higher fee lowers savings', () => {
   assert.ok(b < a);
 });
 
-test('net cost = total spend minus residual value', () => {
+test('net cost = spending + current roof value used - roof life left', () => {
   const r = E.run(base, D);
-  for (const s of [r.planned, r.reactive]) assert.ok(Math.abs(s.netCost - (s.totalSpend - s.residualValue)) < 1e-6);
+  for (const s of [r.planned, r.reactive]) assert.ok(Math.abs(s.netCost - (s.totalSpend + s.openingValue - s.residualValue)) < 1e-6);
+  assert.equal(r.planned.openingValue, r.reactive.openingValue);
 });
 
 test('owner-occupied types show no property value unless a cap rate is entered', () => {
@@ -91,4 +92,42 @@ test('higher leak consequences raise reactive cost, not planned cost', () => {
   assert.ok(h.inputs.leakMultiplier > w.inputs.leakMultiplier);
   assert.ok(Math.abs(h.kpis.plannedNetCost - w.kpis.plannedNetCost) < 1e-6);
   assert.ok(h.kpis.reactiveNetCost > w.kpis.reactiveNetCost);
+});
+
+// Sweep every market, property type, system, age and condition at a realistic size.
+const sweep = [];
+for (const market of Object.keys(D.markets)) for (const propertyType of Object.keys(D.propertyTypes))
+  for (const system of Object.keys(D.systems)) for (const roofAge of [0, 5, 10, 15, 20, 30])
+    for (const condition of ['good', 'fair', 'poor']) sweep.push({ market, propertyType, system, roofAge, condition, area: 40000 });
+
+test('sweep: no NaN, no negative net cost, savings % stays within 0-100%', () => {
+  for (const p of sweep) {
+    const k = E.run(p, D).kpis, tag = JSON.stringify(p);
+    for (const v of [k.plannedNetCost, k.reactiveNetCost, k.savings, k.npvSavings, k.annualNoiGain]) assert.ok(Number.isFinite(v), tag);
+    assert.ok(k.plannedNetCost > 0 && k.reactiveNetCost > 0, tag);
+    assert.ok(k.savingsPct < 1, tag);
+  }
+});
+
+test('sweep: savings range brackets the estimate', () => {
+  for (const p of sweep.filter((_, i) => i % 7 === 0)) {
+    const k = E.run(p, D).kpis;
+    assert.ok(k.savingsRange.low <= k.savings + 1e-6 && k.savingsRange.high >= k.savings - 1e-6, JSON.stringify(p));
+  }
+});
+
+test('a rep-entered total replacement cost sets the implied $/sq ft', () => {
+  const r = E.run({ market: 'austin', area: 20000, replacementCost: 300000 }, D);
+  assert.equal(r.inputs.replacementCost, 300000);
+  assert.equal(r.inputs.costPerSqft, 15);
+});
+
+test('life added is capped at half the design life', () => {
+  const k = E.run({ ...base, system: 'coating_restoration' }, D, { lifeExtensionYears: 15 }).kpis;
+  assert.equal(k.lifeExtensionYears, D.systems.coating_restoration.lifeYears / 2);
+});
+
+test('a worn-out roof is replaced in year 1 even when the condition is poor', () => {
+  const k = E.run({ ...base, roofAge: 18, condition: 'poor' }, D).kpis;
+  assert.equal(k.reactiveReplacementYear, 1);
 });
