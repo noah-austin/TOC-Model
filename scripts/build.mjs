@@ -41,16 +41,16 @@ const ROOF_PERILS = ['hail', 'strong_wind', 'tornado', 'hurricane', 'winter_weat
 // Property types. Research values (leak-consequence multipliers, extra cap rates)
 // come from data/property_types.json; `story` is the type-specific takeaway on page 2.
 const PROPERTY_TYPES = [
-  { id: 'industrial', label: 'Warehouse / Industrial', capRateKey: 'industrial' },
-  { id: 'office', label: 'Office', capRateKey: 'office' },
-  { id: 'retail', label: 'Retail', capRateKey: 'retail' },
-  { id: 'multifamily', label: 'Multi-Family', capRateKey: 'multifamily',
+  { id: 'industrial', noun: 'warehouse', label: 'Warehouse / Industrial', capRateKey: 'industrial' },
+  { id: 'office', noun: 'office building', label: 'Office', capRateKey: 'office' },
+  { id: 'retail', noun: 'retail center', label: 'Retail', capRateKey: 'retail' },
+  { id: 'multifamily', noun: 'apartment property', label: 'Multi-Family', capRateKey: 'multifamily',
     story: '<b>Fewer unit turns.</b> A leak into an apartment means displaced residents, mold risk and lost rent. Catching roof problems early keeps units occupied.' },
-  { id: 'mixed', label: 'Mixed Use', capRateKey: 'mixed_use',
+  { id: 'mixed', noun: 'mixed-use building', label: 'Mixed Use', capRateKey: 'mixed_use',
     story: '<b>Two kinds of tenants protected.</b> A leak can shut the ground-floor retail and damage the offices or apartments above. Planned care protects both income streams.' },
-  { id: 'medical', label: 'Medical / Institutional', capRateKey: null,
+  { id: 'medical', noun: 'medical facility', label: 'Medical / Institutional', capRateKey: null,
     story: '<b>Operations keep running.</b> A leak in a clinical area triggers infection-control work, closes rooms and can damage equipment. Planned care keeps the roof from interrupting patient care.' },
-  { id: 'k12', label: 'K-12 / Education', capRateKey: null,
+  { id: 'k12', noun: 'school', label: 'K-12 / Education', capRateKey: null,
     story: '<b>A predictable budget line.</b> PaxSeal turns unplanned emergency repairs into a fixed annual cost the board can plan for, and keeps leaks from closing classrooms.' },
 ];
 const propertyResearch = existsSync(join(ROOT, 'data/property_types.json')) ? readJson('data/property_types.json') : { types: {}, cap_rates_by_market: {} };
@@ -60,6 +60,7 @@ function buildPropertyTypes() {
     const m = r.leak_consequence_multiplier;
     return [t.id, {
       label: t.label,
+      noun: t.noun,
       status: 'v1',
       capRateKey: t.capRateKey,
       leakMultiplier: typeof m?.value === 'number' ? m.value : 1,

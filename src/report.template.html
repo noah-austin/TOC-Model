@@ -33,7 +33,7 @@
   .appbar .sep { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
   .appbar .title { font-size: 13px; font-weight: 600; color: #C5CED4; white-space: nowrap; }
   .appbar .spacer { flex: 1; }
-  .btn { height: 34px; padding: 0 14px; border-radius: 6px; font-size: 12.5px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,.28); background: transparent; color: #fff; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .btn { text-decoration: none; height: 34px; padding: 0 14px; border-radius: 6px; font-size: 12.5px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,.28); background: transparent; color: #fff; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
   .btn:hover { background: rgba(255,255,255,.08); }
   .btn.primary { background: var(--red); border-color: var(--red); }
   .btn.primary:hover { background: var(--red-dark); }
@@ -237,6 +237,8 @@
   <div class="title">Roof Lifecycle Report</div>
   <div class="spacer"></div>
   <span class="toast" id="toast" role="status"></span>
+  <a class="btn only-builder" href="library/" id="libLink">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 3h4v10h-4zM6.5 3h4v10h-4zM10.5 4l3-.8 2 9.8-3 .8"/></svg><span>Library</span></a>
   <button type="button" class="btn only-shared" id="editBtn">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit inputs</span></button>
   <button type="button" class="btn only-builder" id="linkBtn">
@@ -656,16 +658,20 @@
 
     // masthead
     var dateStr = raw.date ? new Date(raw.date + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
-    $('who').innerHTML =
-      '<div class="k">Prepared for</div><b>' + esc(raw.customer || 'Customer name') + '</b>' +
+    // No customer named = a market projection for a typical building (the sales library).
+    var generic = !raw.customer;
+    $('who').innerHTML = generic
+      ? '<div class="k">Market projection</div><b>Typical ' + esc(pt.noun) + '</b><br>' + esc(mk.shortName) + ' market<br>' + esc(dateStr)
+      : '<div class="k">Prepared for</div><b>' + esc(raw.customer) + '</b>' +
       (raw.contact ? '<br>Attn: ' + esc(raw.contact) : '') +
       (raw.property || raw.city ? '<br>' + esc([raw.property, raw.city].filter(Boolean).join(', ')) : '') +
       '<br>' + (raw.preparedBy ? esc(raw.preparedBy) + ' · ' : '') + esc(dateStr);
 
     // thesis
-    var who = raw.customer ? esc(raw.customer) : 'this property';
     $('thesis').innerHTML = k.savings > 0
-      ? 'Planned maintenance is projected to save ' + who + ' <span class="save">' + short(k.savings) + '</span> on this roof over the next ' + N + ' years.'
+      ? (generic
+        ? 'Planned maintenance is projected to save the owner of a typical ' + esc(mk.shortName) + ' ' + esc(pt.noun) + ' <span class="save">' + short(k.savings) + '</span> over the next ' + N + ' years.'
+        : 'Planned maintenance is projected to save ' + esc(raw.customer) + ' <span class="save">' + short(k.savings) + '</span> on this roof over the next ' + N + ' years.')
       : 'At these inputs, planned maintenance costs about ' + short(-k.savings) + ' more than reactive repair over ' + N + ' years.';
     $('thesisSub').innerHTML = 'That is ' + pct(Math.abs(k.savingsPct) * 100) + ' less than the reactive cost, or ' + short(k.npvSavings) +
       ' in today’s dollars. It compares PaxSeal planned maintenance with fixing problems only after they leak, using ' +
@@ -768,7 +774,7 @@
       (inp.feeIsEstimate ? 'The PaxSeal fee is an estimate and your proposal will state the actual price. ' : '') +
       'Net cost credits the roof life remaining at year ' + N + '.' + (inp.capRatePct ? ' Property value is the yearly gain in net operating income divided by the cap rate, and applies to income-producing property where the owner pays for the roof.' : '') + '</p>' +
       (custom ? '<p class="flag">This report uses custom model assumptions.</p>' : '');
-    var footText = 'PAX Services Group · Roof Lifecycle Cost Analysis' + (raw.customer ? ' · ' + raw.customer : '');
+    var footText = 'PAX Services Group · Roof Lifecycle Cost Analysis · ' + (generic ? mk.shortName + ' ' + pt.label + ' projection' : raw.customer);
     $('foot1').textContent = footText; $('foot2').textContent = footText;
 
     // appendix
@@ -779,7 +785,7 @@
           '</td><td><b>' + money(r.total) + '</b></td><td>' + money(q.repairs) + '</td><td>' + money(q.storm) + '</td><td>' + (q.replacement ? money(q.replacement) : '—') + '</td><td><b>' + money(q.total) + '</b></td></tr>';
       }).join('') + '</tbody>';
 
-    document.title = (raw.customer ? raw.customer + ' – ' : '') + 'Roof Lifecycle Analysis';
+    document.title = (generic ? mk.shortName + ' ' + pt.label.split(' / ')[0] + ' \u2013 ' : raw.customer + ' \u2013 ') + 'Roof Lifecycle Analysis';
   }
 
   function reportUrl() {

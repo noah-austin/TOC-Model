@@ -10,6 +10,8 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 - "Copy report link" builds a URL like `?customer=Acme&market=austin&area=40000&roofAge=8&view=report`, which opens the report without the form.
 - Print → Save as PDF produces a 2-page US Letter report.
 
+**Sales library (V1.0):** https://noah-austin.github.io/TOC-Model/library/ has a ready-made projection for every market × property type, using the typical buildings in `data/library_profiles.json`. Each one has a web view and a PDF. Regenerate with `npm run library` after changing data or the report, then commit `dist/library/`.
+
 ## Layout
 
 | Path | What it is |
@@ -23,6 +25,8 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 | `src/engine.js` | Calculation engine. All coefficients are in `MODEL_CONFIG` at the top. |
 | `src/report.template.html` | Report page (vanilla JS/SVG, PAX brand colors) |
 | `src/fonts/` | Montserrat woff2 (SIL OFL), embedded at build time |
+| `data/library_profiles.json` | Typical building per property type for the sales library |
+| `scripts/build_library.mjs` | Generates `dist/library/` (35 PDFs + index page) |
 | `dist/index.html` | Generated: deployable report |
 
 ## Commands
@@ -30,6 +34,7 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 ```
 npm run build   # regenerate data/model_defaults.json and dist/index.html
 npm test        # build, then run engine tests
+npm run library # rebuild the sales library PDFs (needs `npm install` for Playwright)
 ```
 
 After editing research data or the engine, run `npm run build` and commit `dist/index.html`.

@@ -4,6 +4,10 @@
   "description": "PAX roof lifecycle (TCO) model and rep-facing report",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node scripts/build.mjs && node --test test/*.test.mjs"
+    "test": "node scripts/build.mjs && node --test test/*.test.mjs",
+    "library": "node scripts/build.mjs && node scripts/build_library.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
   }
 }

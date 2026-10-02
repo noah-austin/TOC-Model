@@ -1,0 +1,13 @@
+{
+  "note": "Typical buildings used for the V1.0 sales library of market x property-type projections. Illustrative profiles chosen by PAX Sales Ops, not market statistics. Edit here and re-run `npm run library`.",
+  "defaults": { "roofAge": 8, "condition": "good" },
+  "profiles": {
+    "industrial":  { "area": 100000, "system": "tpo" },
+    "office":      { "area": 40000,  "system": "tpo" },
+    "retail":      { "area": 30000,  "system": "tpo" },
+    "multifamily": { "area": 30000,  "system": "tpo" },
+    "mixed":       { "area": 25000,  "system": "tpo" },
+    "medical":     { "area": 60000,  "system": "mod_bit" },
+    "k12":         { "area": 120000, "system": "mod_bit" }
+  }
+}

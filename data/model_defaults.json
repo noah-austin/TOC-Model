@@ -1,5 +1,5 @@
 {
-  "builtOn": "2026-09-28",
+  "builtOn": "2026-10-02",
   "defaultMarket": "san-antonio",
   "defaultArea": 20000,
   "escalationPct": 4.6,
@@ -36,6 +36,7 @@
   "propertyTypes": {
     "industrial": {
       "label": "Warehouse / Industrial",
+      "noun": "warehouse",
       "status": "v1",
       "capRateKey": "industrial",
       "leakMultiplier": 1,
@@ -45,6 +46,7 @@
     },
     "office": {
       "label": "Office",
+      "noun": "office building",
       "status": "v1",
       "capRateKey": "office",
       "leakMultiplier": 1.2,
@@ -54,6 +56,7 @@
     },
     "retail": {
       "label": "Retail",
+      "noun": "retail center",
       "status": "v1",
       "capRateKey": "retail",
       "leakMultiplier": 1.1,
@@ -63,6 +66,7 @@
     },
     "multifamily": {
       "label": "Multi-Family",
+      "noun": "apartment property",
       "status": "v1",
       "capRateKey": "multifamily",
       "leakMultiplier": 1.25,
@@ -72,6 +76,7 @@
     },
     "mixed": {
       "label": "Mixed Use",
+      "noun": "mixed-use building",
       "status": "v1",
       "capRateKey": "mixed_use",
       "leakMultiplier": 1.2,
@@ -81,6 +86,7 @@
     },
     "medical": {
       "label": "Medical / Institutional",
+      "noun": "medical facility",
       "status": "v1",
       "capRateKey": null,
       "leakMultiplier": 1.4,
@@ -90,6 +96,7 @@
     },
     "k12": {
       "label": "K-12 / Education",
+      "noun": "school",
       "status": "v1",
       "capRateKey": null,
       "leakMultiplier": 1.3,
