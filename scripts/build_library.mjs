@@ -74,7 +74,7 @@ const html = `<!doctype html>
 <title>TCO Projection Library</title>
 <style>
 ${fonts}
-:root { --red:#CD163F; --navy:#1C2B39; --green:#1A6B3C; --ink:#1C2B39; --ink-2:#44525D; --muted:#6E7B85; --faint:#98A3AB; --rule:#DCE1E4; --hair:#EBEEF0; --desk:#EEF1F3; }
+:root { --red:#CD163F; --navy:#1C2B39; --green:#1A6B3C; --ink:#1C2B39; --ink-2:#44525D; --muted:#5E6A73; --faint:#6E7A84; --rule:#DCE1E4; --hair:#EBEEF0; --desk:#EEF1F3; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--desk); color: var(--ink); font: 13px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 .bar { background: var(--navy); color: #fff; display: flex; align-items: center; gap: 14px; padding: 12px 20px; }

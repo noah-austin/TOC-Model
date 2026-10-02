@@ -14,7 +14,7 @@
   :root {
     --red: #CD163F; --red-dark: #A8102F; --navy: #1C2B39;
     --gold-dark: #DD971A; --green: #1A6B3C;
-    --ink: #1C2B39; --ink-2: #44525D; --muted: #6E7B85; --faint: #98A3AB;
+    --ink: #1C2B39; --ink-2: #44525D; --muted: #5E6A73; --faint: #6E7A84;
     --paper: #FFFFFF; --desk: #DDE2E6; --panel: #F7F8F9; --rule: #DCE1E4; --hair: #EBEEF0;
     --planned: #1A6B3C; --reactive: #CD163F; --reference: #8C979F;
     --green-wash: #EAF4EE; --gold-wash: #FFF7E6;
@@ -28,6 +28,7 @@
   .num { font-variant-numeric: tabular-nums; }
   button, input, select { font: inherit; }
   :focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
   /* ---------- App bar ---------- */
@@ -370,7 +371,8 @@
           <span><i class="dash" style="border-color:var(--reference)"></i>Price of a new roof that year</span>
           <span><i class="band"></i>Money kept by maintaining</span>
         </div>
-        <div class="chart" id="chart1"><div class="tip" id="tip1" hidden></div></div>
+        <div class="chart" id="chart1"><div class="tip" id="tip1" role="status" aria-live="polite" hidden></div></div>
+        <p id="chartKeys" class="sr-only">Use the left and right arrow keys to step through the years.</p>
       </section>
 
       <section class="sec">
@@ -728,7 +730,7 @@
     'ext', 'mult', 'repair', 'warranty', 'leaks', 'internal'];
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
-  var C = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#6E7B85', grid: '#EBEEF0', axis: '#C3CBD0', wash: '#EAF4EE' };
+  var C = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#5E6A73', grid: '#EBEEF0', axis: '#C3CBD0', wash: '#EAF4EE' };
 
   // ---------- formatting ----------
   var MINUS = '−';
@@ -911,7 +913,12 @@
     function move(evt) {
       var r = svg.getBoundingClientRect();
       var px = (evt.clientX - r.left) * (W / r.width);
-      var idx = Math.max(0, Math.min(N, Math.round((px - m.l) / iw * N)));
+      show(Math.max(0, Math.min(N, Math.round((px - m.l) / iw * N))));
+    }
+    var current = N;
+    function show(idx) {
+      current = idx;
+      var r = svg.getBoundingClientRect();
       cross.setAttribute('x1', x(idx)); cross.setAttribute('x2', x(idx)); cross.setAttribute('opacity', 0.25);
       var html = '<div class="t">' + (idx ? 'Year ' + idx : 'Today') + '</div>' +
         row(C.planned, 'PaxSeal, to date', money(valueAt(pp, idx))) +
@@ -931,7 +938,21 @@
     }
     hit.addEventListener('mousemove', move);
     hit.addEventListener('touchstart', function (e) { move(e.touches[0]); }, { passive: true });
-    hit.addEventListener('mouseleave', function () { tip.hidden = true; cross.setAttribute('opacity', 0); });
+    function hide() { tip.hidden = true; cross.setAttribute('opacity', 0); }
+    hit.addEventListener('mouseleave', hide);
+    // Keyboard: focus the chart, then use the arrow keys to step through the years.
+    svg.setAttribute('tabindex', '0');
+    svg.setAttribute('aria-describedby', 'chartKeys');
+    svg.addEventListener('focus', function () { show(current); });
+    svg.addEventListener('blur', hide);
+    svg.addEventListener('keydown', function (e) {
+      var step = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[e.key];
+      if (e.key === 'Home') step = -N; else if (e.key === 'End') step = N;
+      else if (e.key === 'Escape') { hide(); return; }
+      if (!step) return;
+      e.preventDefault();
+      show(Math.max(0, Math.min(N, current + step)));
+    });
   }
 
   function drawLife(res) {
