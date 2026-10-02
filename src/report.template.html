@@ -175,7 +175,7 @@
   .conf.high { background: #E1EFE6; color: var(--green); }
   .conf.medium { background: #FDF0D5; color: #7F5300; }
   .conf.low { background: #FBE2E7; color: var(--red-dark); }
-  .conf.rep { background: #E5EAEE; color: var(--navy); }
+  .conf.rep, .conf.est, .conf.quote { background: #E5EAEE; color: var(--navy); }
   .fine { font-size: 10.5px; color: var(--muted); display: grid; gap: 5px; }
   .fine p { margin: 0; max-width: 110ch; }
   .fine .flag { color: #7F5300; font-weight: 700; }
@@ -757,14 +757,15 @@
       ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : (mDefault.source.indexOf(mk.region) > -1 ? 'Median of other ' + mk.region + ' PAX markets' : 'Median of other PAX markets') + ' until local data is added'), repCost ? 'rep' : 'low'],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '× planned', 'Industry estimates; no primary study found', 'low'],
       ['Storm damage', inp.stormLossPct.toFixed(2) + '%/yr', 'Of roof cost. FEMA NRI expected annual building loss from hail, wind, tornado, hurricane and winter weather', 'medium'],
-      ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'Estimate from maintenance-program pricing benchmarks' : 'Entered by rep', inp.feeIsEstimate ? 'low' : 'rep']
+      // Our own price, so it is labeled as an estimate or a quote rather than given a research confidence.
+      ['PaxSeal fee', money(inp.annualFee) + '/yr', inp.feeIsEstimate ? 'PAX program estimate for this roof size. Your proposal will state the actual fee' : 'PaxSeal price for this property', inp.feeIsEstimate ? 'est' : 'quote']
     ];
     if (inp.leakMultiplier !== 1) A.push(['Leak consequences', inp.leakMultiplier.toFixed(2) + '\u00d7 warehouse', pt.leakBasis || 'Property-type research', pt.leakConfidence || 'low']);
     if (raw.capRate) A.push(['Cap rate', pct(inp.capRatePct), 'Entered by rep', 'rep']);
     else if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : capSrc.source.replace(/^fallback: /, '').replace(/^./, function (ch) { return ch.toUpperCase(); }) + ' until local data is added', capSrc.confidence || 'low']);
     $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Basis</th><th>Confidence</th></tr></thead><tbody>' +
       A.map(function (a) {
-        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td><td><span class="conf ' + a[3] + '">' + (a[3] === 'rep' ? 'Rep input' : a[3]) + '</span></td></tr>';
+        return '<tr><td data-src="' + esc(a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td><td><span class="conf ' + a[3] + '">' + ({ rep: 'Rep input', est: 'Estimate', quote: 'PAX price' }[a[3]] || a[3]) + '</span></td></tr>';
       }).join('') + '</tbody>';
 
     // fine print + footers
