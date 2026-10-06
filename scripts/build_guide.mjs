@@ -232,6 +232,8 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: now
 
 <section>
   <h2>Good to know</h2>
+  <p><b>Getting around.</b> Every page has the same header: <b>Report builder</b>, <b>Library</b>, <b>Assumptions</b> and the <b>User guide</b>. A report link sent to a customer shows only the report, with Edit and Print.</p>
+  <p><b>Assumptions page.</b> Shows every number the model uses (roof life by system, property-type factors, each market&rsquo;s prices, cap rates and storm loss) with its source. Sales ops can adjust values there; changes are published by uploading the downloaded overrides.json to the project.</p>
   <p><b>Estimates, not quotes.</b> Every report says so. The PaxSeal proposal sets the actual price and scope.</p>
   <p><b>Typical buildings in the library</b> are illustrative profiles (for example, a 100,000 sq ft warehouse roof, 8 years old), not market averages. Use a custom report for a real property.</p>
   <p><b>Updates.</b> The tool is a single web page hosted on GitHub Pages and updates automatically when the model or data change. The full method is in <span class="url">docs/MODEL_SPEC.md</span> in the project repository.</p>

@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
+import { NAV_CSS, navHtml } from './nav.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
@@ -189,9 +190,22 @@ const fonts = [400, 600, 700, 800].map((w) => {
 }).join('\n');
 
 const template = readFileSync(join(ROOT, 'src/report.template.html'), 'utf8');
+// Report page actions: builder view gets Copy link + Print; a shared link gets Edit + Print.
+const ICON = {
+  edit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg>',
+  link: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.8 2.8 0 014 4l-1 1M9 11.5l-1 1a2.8 2.8 0 01-4-4l1-1"/></svg>',
+  print: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z"/></svg>',
+};
+const reportActions =
+  '<span class="toast" id="toast" role="status"></span>' +
+  `<button type="button" class="btn only-shared" id="editBtn">${ICON.edit}<span>Edit<span class="opt"> report</span></span></button>` +
+  `<button type="button" class="btn only-builder" id="linkBtn">${ICON.link}<span>Copy<span class="opt"> report</span> link</span></button>` +
+  `<button type="button" class="btn primary" id="printBtn">${ICON.print}<span>Print<span class="opt"> / PDF</span></span></button>`;
 const engine = readFileSync(join(ROOT, 'src/engine.js'), 'utf8');
 const html = template
   .replace('/*__FONTS__*/', () => fonts)
+  .replace('/*__NAVCSS__*/', () => NAV_CSS)
+  .replace('<!--__NAV__-->', () => navHtml('builder', '', reportActions))
   .replace('/*__ENGINE__*/', () => engine)
   // Escape '<' so research text can never close the <script> tag early.
   .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults).replace(/</g, '\\u003c') + ';');
@@ -218,6 +232,8 @@ const research = {
 };
 const page = readFileSync(join(ROOT, 'src/assumptions.template.html'), 'utf8')
   .replace('/*__FONTS__*/', () => fonts)
+  .replace('/*__NAVCSS__*/', () => NAV_CSS)
+  .replace('<!--__NAV__-->', () => navHtml('assumptions', '../'))
   .replace('/*__ENGINE__*/', () => engine)
   .replace('/*__OVERRIDES_JS__*/', () => readFileSync(join(ROOT, 'src/overrides.js'), 'utf8'))
   .replace('/*__DATA__*/', () => 'window.PAX_DATA = ' + JSON.stringify({ base: baseDefaults, overrides, research, modelConfig: E.MODEL_CONFIG }).replace(/</g, '\\u003c') + ';');

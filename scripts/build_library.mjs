@@ -10,6 +10,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { chromium } from 'playwright';
+import { NAV_CSS, navHtml } from './nav.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -23,6 +24,8 @@ const markets = Object.keys(D.markets);
 const types = Object.keys(D.propertyTypes).filter((t) => LIB.profiles[t]);
 // Typical buildings: research profile file, then PAX adjustments from the Assumptions page.
 const paramsFor = (market, type) => ({ market, propertyType: type, ...LIB.defaults, ...LIB.profiles[type], ...(D.libraryProfiles?.[type] || {}) });
+// 'Open' links go to the builder (full navigation) prefilled with the typical building.
+const openQuery = (p) => new URLSearchParams(Object.fromEntries(Object.entries(p).map(([k, v]) => [k, String(v)]))).toString();
 const query = (p) => new URLSearchParams({ view: 'report', date: today, ...Object.fromEntries(Object.entries(p).map(([k, v]) => [k, String(v)])) }).toString();
 
 // ---------- PDFs ----------
@@ -63,7 +66,7 @@ const rows = types.map((type) => {
       : `${short(k.unplannedSpendAvoided)} emergency costs cut`;
     const range = k.savingsRange ? `<div class="range">Range ${short(k.savingsRange.low)}&ndash;${short(k.savingsRange.high)}</div>` : '';
     return `<td><div class="save">${short(k.savings)}</div>${range}<div class="sub">${Math.round(k.savingsPct * 100)}% less than reactive<br>${second}</div>
-      <div class="links"><a href="../index.html?${esc(query(paramsFor(market, type)))}">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
+      <div class="links"><a href="../index.html?${esc(openQuery(paramsFor(market, type)))}" title="Open in the report builder to adjust or share">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
   }).join('');
   return `<tr><th scope="row"><div class="t">${esc(pt.label)}</div><div class="p">${prof.area.toLocaleString('en-US')} sq ft ${esc(sysLabel(prof.system))} roof, ${prof.roofAge} yrs old</div></th>${cells}</tr>`;
 }).join('\n');
@@ -80,13 +83,7 @@ ${fonts}
 :root { --red:#CD163F; --navy:#1C2B39; --green:#1A6B3C; --ink:#1C2B39; --ink-2:#44525D; --muted:#5E6A73; --faint:#6E7A84; --rule:#DCE1E4; --hair:#EBEEF0; --desk:#EEF1F3; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--desk); color: var(--ink); font: 13px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
-.bar { background: var(--navy); color: #fff; display: flex; align-items: center; gap: 14px; padding: 12px 20px; }
-.bar b { font-weight: 800; letter-spacing: .14em; font-size: 12px; }
-.bar .mk { background: var(--red); border-radius: 3px; padding: 2px 7px; font-weight: 800; font-size: 11px; letter-spacing: .08em; }
-.bar a { color: #fff; font-weight: 700; font-size: 12.5px; text-decoration: none; border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 7px 12px; }
-.bar a:hover { background: rgba(255,255,255,.08); }
-.bar { flex-wrap: wrap; }
-@media (max-width: 640px) { .bar b { display: none; } .bar a { padding: 6px 9px; font-size: 11.5px; } }
+${NAV_CSS}
 main { max-width: 1240px; margin: 0 auto; padding: 28px 16px 48px; }
 h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .lede { color: var(--ink-2); max-width: 75ch; margin: 8px 0 20px; }
@@ -103,15 +100,15 @@ td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); b
 .links { display: flex; gap: 6px; margin-top: 8px; }
 .links a { font-size: 11px; font-weight: 700; color: var(--navy); text-decoration: none; border: 1px solid var(--rule); border-radius: 5px; padding: 3px 9px; }
 .links a:hover { border-color: var(--navy); }
-.links a:focus-visible, .bar a:focus-visible { outline: 2px solid #DD971A; outline-offset: 2px; }
+.links a:focus-visible { outline: 2px solid #DD971A; outline-offset: 2px; }
 .fine { font-size: 11px; color: var(--muted); max-width: 110ch; margin-top: 16px; }
 </style>
 </head>
 <body>
-<header class="bar"><span class="mk">PAX</span><b>SERVICES GROUP</b><a href="PAX-Roof-TCO-Guide.pdf" style="margin-left:auto">User guide (PDF)</a><a href="../assumptions/index.html" style="margin-left:0">Assumptions</a><a href="../index.html" style="margin-left:0">Build a custom report</a></header>
+${navHtml('library', '../')}
 <main>
   <h1>TCO Projection Library</h1>
-  <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one opens as a two-page report with the cost curve. Use <b>Build a custom report</b> for a specific customer's roof.</p>
+  <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one opens as a two-page report with the cost curve. Use the <b>Report builder</b> for a specific customer's roof.</p>
   <div class="card">
     <table>
       <thead><tr><th>Property type &middot; typical roof</th>${markets.map((m) => `<th>${esc(D.markets[m].shortName)}</th>`).join('')}</tr></thead>

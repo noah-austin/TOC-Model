@@ -31,27 +31,53 @@
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-  /* ---------- App bar ---------- */
-  .appbar { position: sticky; top: 0; z-index: 20; background: var(--navy); color: #fff; display: flex; align-items: center; gap: 16px; padding: 10px 20px; height: 54px; }
-  .appbar .mark { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 12px; letter-spacing: .14em; white-space: nowrap; }
-  .appbar .sep { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
-  .appbar .title { font-size: 13px; font-weight: 600; color: #C5CED4; white-space: nowrap; }
-  .appbar .spacer { flex: 1; }
-  .btn { text-decoration: none; height: 34px; padding: 0 14px; border-radius: 6px; font-size: 12.5px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,.28); background: transparent; color: #fff; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
-  .btn:hover { background: rgba(255,255,255,.08); }
-  .btn.primary { background: var(--red); border-color: var(--red); }
-  .btn.primary:hover { background: var(--red-dark); }
-  .btn svg { width: 15px; height: 15px; flex: none; }
-  .toast { font-size: 12px; color: #9FD9B4; white-space: nowrap; }
-  @media (max-width: 720px) { .appbar .title, .appbar .sep, .lbl-long, .appbar .mark .word { display: none; } .appbar { padding: 10px 16px; gap: 8px; } .btn { padding: 0 11px; } }
-  @media (max-width: 1100px) { .appbar .title, .appbar .sep { display: none; } .btn:not(.primary) > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .btn:not(.primary) { padding: 0 10px; } }
+  /* ---------- Site header (scripts/nav.mjs) ---------- */
+
+  .site-bar { position: sticky; top: 0; z-index: 30; background: #1C2B39; color: #fff; display: flex; align-items: center; gap: 8px 24px; padding: 0 20px; min-height: 56px; flex-wrap: wrap; }
+  .site-brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .02em; white-space: nowrap; padding: 12px 0; }
+  .site-brand svg { display: block; flex: none; }
+  .site-brand .shared-name { display: none; letter-spacing: .14em; font-size: 12px; }
+  .site-nav { display: flex; align-items: stretch; gap: 4px; align-self: stretch; }
+  .site-nav a { display: flex; align-items: center; gap: 6px; padding: 0 12px; color: #C5CED4; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; border-bottom: 3px solid transparent; border-top: 3px solid transparent; }
+  .site-nav a:hover { color: #fff; }
+  .site-nav a[aria-current="page"] { color: #fff; border-bottom-color: #CD163F; }
+  .site-nav a .s { display: none; }
+  .site-nav a small { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; border: 1px solid rgba(255,255,255,.35); border-radius: 3px; padding: 0 4px; line-height: 15px; }
+  .site-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; padding: 10px 0; }
+  .site-actions:empty { display: none; }
+  .site-bar .btn { text-decoration: none; height: 34px; padding: 0 14px; border-radius: 6px; font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #fff; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .site-bar .btn:hover { background: rgba(255,255,255,.08); }
+  .site-bar .btn.primary { background: #CD163F; border-color: #CD163F; }
+  .site-bar .btn.primary:hover { background: #A8102F; }
+  .site-bar .btn svg { width: 15px; height: 15px; flex: none; }
+  .site-bar .toast { font-size: 12px; color: #9FD9B4; white-space: nowrap; }
+  .site-bar a:focus-visible, .site-bar button:focus-visible { outline: 2px solid #DD971A; outline-offset: 2px; }
+  @media (max-width: 860px) {
+    .site-bar { position: static; padding: 0 16px; gap: 0 12px; flex-wrap: wrap; }
+    .site-nav a .l { display: none; }
+    .site-nav a .s { display: inline; }
+    .site-nav { order: 3; flex-basis: 100%; overflow-x: auto; margin: 0 -16px; padding: 0 8px; border-top: 1px solid rgba(255,255,255,.12); scrollbar-width: none; }
+    .site-nav a { padding: 0 10px; min-height: 42px; }
+    .site-actions { padding: 8px 0; }
+    .site-bar .btn { padding: 0 11px; }
+    .site-bar .btn .opt { display: none; }
+  }
+  @media (max-width: 520px) { .site-brand .tool-name { display: none; } .site-nav { justify-content: space-between; } .site-nav a { padding: 0 8px; } }
+  /* Shared customer link: brand + report actions only. */
+  body.report-only .site-nav { display: none; }
+  body.report-only .site-brand { pointer-events: none; }
+  body.report-only .site-brand .tool-name { display: none; }
+  body.report-only .site-brand .shared-name { display: inline; }
+  @media (max-width: 520px) { body.report-only .site-brand .shared-name { display: none; } }
+  @media print { .site-bar { display: none !important; } }
+
 
   /* ---------- Layout ---------- */
   .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); align-items: start; }
   @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0, 1fr); } }
 
   /* ---------- Builder ---------- */
-  .builder { background: var(--panel); border-right: 1px solid var(--rule); position: sticky; top: 54px; height: calc(100vh - 54px); overflow: auto; }
+  .builder { background: var(--panel); border-right: 1px solid var(--rule); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
   @media (max-width: 1100px) { .builder { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--rule); } }
   .b-head { padding: 20px 20px 8px; }
   .b-head h2 { font-size: 15px; font-weight: 800; }
@@ -218,7 +244,7 @@
   @page { size: Letter; margin: 0; }
   @media print {
     body { background: #fff; }
-    .appbar, .builder, .appendix, .tip, .no-print { display: none !important; }
+    .builder, .appendix, .tip, .no-print { display: none !important; }
     .layout { display: block; }
     .desk { padding: 0; gap: 0; display: block; }
     .sheet { width: 8.5in; max-width: none; height: 11in; min-height: 0; padding: 0.45in 0.5in; box-shadow: none; break-after: page; overflow: hidden; gap: 16px; }
@@ -251,25 +277,10 @@
 </style>
 </head>
 <body>
-<header class="appbar">
-  <div class="mark">
-    <svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>
-    <span class="word">SERVICES GROUP</span>
-  </div>
-  <div class="sep"></div>
-  <div class="title">Roof Lifecycle Cost Analysis</div>
-  <div class="spacer"></div>
-  <span class="toast" id="toast" role="status"></span>
-  <a class="btn only-builder" href="assumptions/index.html" id="asmLink" title="Assumptions">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11"/><circle cx="5.5" cy="4" r="1.4" fill="currentColor"/><circle cx="10.5" cy="8" r="1.4" fill="currentColor"/><circle cx="7" cy="12" r="1.4" fill="currentColor"/></svg><span>Assumptions</span></a>
-  <a class="btn only-builder" href="library/index.html" id="libLink" title="Library">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 3h4v10h-4zM6.5 3h4v10h-4zM10.5 4l3-.8 2 9.8-3 .8"/></svg><span>Library</span></a>
-  <button type="button" class="btn only-shared" id="editBtn" title="Edit inputs">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit inputs</span></button>
-  <button type="button" class="btn only-builder" id="linkBtn" title="Copy report link">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.8 2.8 0 014 4l-1 1M9 11.5l-1 1a2.8 2.8 0 01-4-4l1-1"/></svg><span>Copy<span class="lbl-long"> report</span> link</span></button>
-  <button type="button" class="btn primary" id="printBtn">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z"/></svg><span>Print<span class="lbl-long"> / PDF</span></span></button>
+<header class="site-bar">
+  <a class="site-brand" href="index.html"><svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg><span class="tool-name">Roof Lifecycle Tool</span><span class="shared-name">SERVICES GROUP</span></a>
+  <nav class="site-nav" aria-label="Main"><a href="index.html" aria-current="page"><span class="l">Report builder</span><span class="s">Builder</span></a><a href="library/index.html">Library</a><a href="assumptions/index.html">Assumptions</a><a href="library/PAX-Roof-TCO-Guide.pdf" target="_blank" rel="noopener"><span class="l">User guide</span><span class="s">Guide</span> <small>PDF</small></a></nav>
+  <div class="site-actions"><span class="toast" id="toast" role="status"></span><button type="button" class="btn only-shared" id="editBtn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit<span class="opt"> report</span></span></button><button type="button" class="btn only-builder" id="linkBtn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.8 2.8 0 014 4l-1 1M9 11.5l-1 1a2.8 2.8 0 01-4-4l1-1"/></svg><span>Copy<span class="opt"> report</span> link</span></button><button type="button" class="btn primary" id="printBtn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z"/></svg><span>Print<span class="opt"> / PDF</span></span></button></div>
 </header>
 
 <div class="layout">
