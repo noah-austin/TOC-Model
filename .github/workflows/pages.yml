@@ -1,4 +1,5 @@
-# Builds the report, runs the engine tests, and publishes dist/ to GitHub Pages.
+# Builds the report, runs the engine tests, regenerates the sales library and user guide
+# (so an uploaded data/overrides.json updates every PDF), and publishes dist/ to GitHub Pages.
 # One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
 name: Deploy report to GitHub Pages
 
@@ -24,7 +25,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
       - run: npm test
+      - run: node scripts/build_library.mjs
+      - run: node scripts/build_guide.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

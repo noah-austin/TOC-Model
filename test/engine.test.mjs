@@ -131,3 +131,38 @@ test('a worn-out roof is replaced in year 1 even when the condition is poor', ()
   const k = E.run({ ...base, roofAge: 18, condition: 'poor' }, D).kpis;
   assert.equal(k.reactiveReplacementYear, 1);
 });
+
+// PAX overrides (data/overrides.json, edited on the Assumptions page)
+const PO = require('../src/overrides.js');
+
+test('overrides replace research defaults and are tagged as PAX adjustments', () => {
+  const d = PO.apply(D, {
+    systems: { mod_bit: { lifeYears: 18 } },
+    propertyTypes: { k12: { leakMultiplier: 1.5 } },
+    markets: { austin: { capRates: { office: 8 }, replacementCostPerSqft: { tpo: 12.5 }, stormLossPct: 0.5 } },
+    fee: { baseUsd: 1000 }, escalationPct: 4,
+  });
+  assert.equal(d.systems.mod_bit.lifeYears, 18);
+  assert.equal(d.propertyTypes.k12.leakMultiplier, 1.5);
+  assert.deepEqual(d.markets.austin.capRates.office, { value: 8, source: PO.TAG, confidence: 'pax' });
+  assert.equal(d.markets.austin.replacementCostPerSqft.tpo.value, 12.5);
+  assert.equal(d.fee.baseUsd, 1000);
+  assert.equal(d.escalationPct, 4);
+  const r = E.run({ market: 'austin', propertyType: 'office', area: 40000 }, d);
+  assert.equal(r.inputs.capRatePct, 8);
+  assert.equal(r.inputs.costPerSqft, 12.5);
+  assert.equal(r.inputs.stormLossPct, 0.5);
+  assert.equal(D.systems.mod_bit.lifeYears, 20, 'base defaults are not modified');
+});
+
+test('config overrides reach the engine, and builder overrides still win', () => {
+  const d = PO.apply(D, { config: { reactiveRepairMultiplier: 2.5 } });
+  assert.equal(E.run(base, d).config.reactiveRepairMultiplier, 2.5);
+  assert.equal(E.run(base, d, { reactiveRepairMultiplier: 4 }).config.reactiveRepairMultiplier, 4);
+});
+
+test('mixed-use cap rate re-blends when its inputs are adjusted', () => {
+  const before = D.markets.laurel.capRates.mixed_use.value;
+  const d = PO.apply(D, { markets: { laurel: { capRates: { retail: 9 } } } });
+  assert.ok(d.markets.laurel.capRates.mixed_use.value > before);
+});

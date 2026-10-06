@@ -41,6 +41,7 @@
   .btn svg { width: 15px; height: 15px; flex: none; }
   .toast { font-size: 12px; color: #9FD9B4; white-space: nowrap; }
   @media (max-width: 720px) { .appbar .title, .appbar .sep, .lbl-long, .appbar .mark .word { display: none; } .appbar { padding: 10px 16px; gap: 8px; } .btn { padding: 0 11px; } }
+  @media (max-width: 1100px) { .appbar .title, .appbar .sep { display: none; } .btn:not(.primary) > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .btn:not(.primary) { padding: 0 10px; } }
 
   /* ---------- Layout ---------- */
   .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); align-items: start; }
@@ -189,7 +190,7 @@
   .conf.high { background: #E1EFE6; color: var(--green); }
   .conf.medium { background: #FDF0D5; color: #7F5300; }
   .conf.low { background: #FBE2E7; color: var(--red-dark); }
-  .conf.rep, .conf.est, .conf.quote { background: #E5EAEE; color: var(--navy); }
+  .conf.rep, .conf.est, .conf.quote, .conf.pax { background: #E5EAEE; color: var(--navy); }
   .cta { border: 1px solid var(--rule); border-left: 4px solid var(--red); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 12px; color: var(--ink-2); break-inside: avoid; }
   .cta b { color: var(--navy); }
   .fine { font-size: 10.5px; color: var(--muted); display: grid; gap: 5px; }
@@ -256,11 +257,13 @@
   <div class="title">Roof Lifecycle Cost Analysis</div>
   <div class="spacer"></div>
   <span class="toast" id="toast" role="status"></span>
-  <a class="btn only-builder" href="library/index.html" id="libLink">
+  <a class="btn only-builder" href="assumptions/index.html" id="asmLink" title="Assumptions">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11"/><circle cx="5.5" cy="4" r="1.4" fill="currentColor"/><circle cx="10.5" cy="8" r="1.4" fill="currentColor"/><circle cx="7" cy="12" r="1.4" fill="currentColor"/></svg><span>Assumptions</span></a>
+  <a class="btn only-builder" href="library/index.html" id="libLink" title="Library">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 3h4v10h-4zM6.5 3h4v10h-4zM10.5 4l3-.8 2 9.8-3 .8"/></svg><span>Library</span></a>
-  <button type="button" class="btn only-shared" id="editBtn">
+  <button type="button" class="btn only-shared" id="editBtn" title="Edit inputs">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5l2.5 2.5L6 12.5H3.5V10z"/></svg><span>Edit inputs</span></button>
-  <button type="button" class="btn only-builder" id="linkBtn">
+  <button type="button" class="btn only-builder" id="linkBtn" title="Copy report link">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.8 2.8 0 014 4l-1 1M9 11.5l-1 1a2.8 2.8 0 01-4-4l1-1"/></svg><span>Copy<span class="lbl-long"> report</span> link</span></button>
   <button type="button" class="btn primary" id="printBtn">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 6V2.5h7V6M4.5 11.5h-2v-5h11v5h-2M4.5 9.5h7v4h-7z"/></svg><span>Print<span class="lbl-long"> / PDF</span></span></button>
@@ -852,7 +855,7 @@
     var A = [
       ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - k.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Industry life tables; maintenance adds ~' + k.lifeExtensionYears + ' yrs (NRC Canada, warranties)', 'medium'],
       ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing, 2007\u20132025', raw.escalation ? 'rep' : 'high'],
-      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : 'PAX regional median price'), repCost ? 'rep' : 'low'],
+      ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : mDefault.source === 'PAX adjustment' ? 'PAX pricing for ' + mk.shortName : 'PAX regional median price'), repCost ? 'rep' : (mDefault.confidence === 'pax' ? 'pax' : mDefault.confidence || 'low')],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '\u00d7 planned' + (inp.leakMultiplier !== 1 ? ' \u00d7 ' + inp.leakMultiplier : ''),
         'Industry estimates' + (inp.leakMultiplier !== 1 ? '; \u00d7' + inp.leakMultiplier + ' for leak damage (' + pt.noun + ')' : '') +
         '. PaxSeal fee covers half of planned repairs', 'low'],
@@ -861,7 +864,7 @@
       ['PaxSeal fee', money(inp.annualFee) + '/yr', 'Year 1, rising ' + c.feeEscalationPct + '%/yr. ' + (inp.feeIsEstimate ? 'Estimate; your proposal states the actual fee' : 'PaxSeal price for this property'), inp.feeIsEstimate ? 'est' : 'quote']
     ];
     if (raw.capRate) A.push(['Cap rate', pct(inp.capRatePct), 'Entered by rep', 'rep']);
-    else if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : (internal ? capSrc.source.replace(/^fallback: /, '').replace(/^./, function (ch) { return ch.toUpperCase(); }) : 'PAX regional median') , capSrc.confidence || 'low']);
+    else if (capSrc) A.push(['Cap rate', pct(inp.capRatePct), capSrc.source === 'market' ? mk.shortName + ' ' + pt.label.toLowerCase() + ' market reports' : capSrc.source === 'PAX adjustment' ? 'PAX adjustment for ' + mk.shortName : (internal ? capSrc.source.replace(/^fallback: /, '').replace(/^./, function (ch) { return ch.toUpperCase(); }) : 'PAX regional median') , capSrc.confidence || 'low']);
     // Confidence ratings are for internal review; customer copies show the basis only.
     $('assumeNote').textContent = internal
       ? 'Internal review copy. Confidence reflects source strength; low-confidence values need checking before customer use.'
@@ -869,7 +872,7 @@
     $('assume').innerHTML = '<thead><tr><th>Assumption</th><th>Value</th><th>Basis</th>' + (internal ? '<th>Confidence</th>' : '') + '</tr></thead><tbody>' +
       A.map(function (a) {
         return '<tr><td data-src="' + esc(a[1].replace(/<[^>]+>/g, '') + ' \u00b7 ' + a[2]) + '">' + a[0] + '</td><td>' + a[1] + '</td><td>' + esc(a[2]) + '</td>' +
-          (internal ? '<td><span class="conf ' + a[3] + '">' + ({ rep: 'Rep input', est: 'Estimate', quote: 'PAX price' }[a[3]] || a[3]) + '</span></td>' : '') + '</tr>';
+          (internal ? '<td><span class="conf ' + a[3] + '">' + ({ rep: 'Rep input', est: 'Estimate', quote: 'PAX price', pax: 'PAX adjusted' }[a[3]] || a[3]) + '</span></td>' : '') + '</tr>';
       }).join('') + '</tbody>';
 
     // next step

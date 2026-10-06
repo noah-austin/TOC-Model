@@ -12,6 +12,8 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 
 **User guide:** https://noah-austin.github.io/TOC-Model/library/PAX-Roof-TCO-Guide.pdf is a 3-page PDF explaining what the tool does, how to use it and how the numbers work. Rebuild with `npm run guide`; its example figures come from the live model.
 
+**Assumptions:** https://noah-austin.github.io/TOC-Model/assumptions/ shows every number the model uses (roof life by system, property-type factors, model settings, and each market's prices, cap rates and storm loss) with its research value, range, confidence and sources. Edit values to preview their effect, then **Download overrides.json** and upload it to `data/` on GitHub. The site, library and guide rebuild with the new numbers. Format: `src/overrides.js`.
+
 **Sales library (V1.0):** https://noah-austin.github.io/TOC-Model/library/ has a ready-made projection for every market × property type, using the typical buildings in `data/library_profiles.json`. Each one has a web view and a PDF. Regenerate with `npm run library` after changing data or the report, then commit `dist/library/`.
 
 ## Layout
@@ -23,9 +25,12 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 | `docs/research/` | Per-market research memos, cross-market evidence, and `COMPARISON.md` |
 | `data/markets/*.json`, `data/national.json` | Sourced research data (schema: `data/markets/SCHEMA.md`) |
 | `data/property_types.json` | Property-type research: leak multipliers, multi-family / medical office cap rates |
-| `data/model_defaults.json` | Generated: the values the report actually uses |
+| `data/overrides.json` | Optional PAX adjustments to the research defaults (from the Assumptions page) |
+| `data/model_defaults.json` | Generated: the values the report actually uses (research + overrides) |
 | `src/engine.js` | Calculation engine. All coefficients are in `MODEL_CONFIG` at the top. |
 | `src/report.template.html` | Report page (vanilla JS/SVG, PAX brand colors) |
+| `src/overrides.js` | Applies `data/overrides.json`; shared by the build and the Assumptions page |
+| `src/assumptions.template.html` | Assumptions page (`dist/assumptions/`) |
 | `src/fonts/` | Montserrat woff2 (SIL OFL), embedded at build time |
 | `data/library_profiles.json` | Typical building per property type for the sales library |
 | `scripts/build_library.mjs` | Generates `dist/library/` (35 PDFs + index page) |

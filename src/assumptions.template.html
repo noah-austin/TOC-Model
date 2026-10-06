@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Model Assumptions</title>
+<style>
+/*__FONTS__*/
+  :root {
+    --red: #CD163F; --navy: #1C2B39; --green: #1A6B3C; --gold-dark: #DD971A;
+    --ink: #1C2B39; --ink-2: #44525D; --muted: #5E6A73; --faint: #6E7A84;
+    --paper: #FFFFFF; --desk: #EEF1F3; --rule: #DCE1E4; --hair: #EBEEF0;
+    --changed: #FFF4D6; --adjusted: #E8F0FB;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--desk); color: var(--ink); font: 13px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { margin: 0; text-wrap: balance; }
+  button, input, select { font: inherit; }
+  :focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+  a { color: var(--navy); }
+
+  .appbar { position: sticky; top: 0; z-index: 20; background: var(--navy); color: #fff; display: flex; align-items: center; gap: 14px; padding: 10px 20px; height: 54px; }
+  .appbar .mk { background: var(--red); border-radius: 3px; padding: 2px 7px; font-weight: 800; font-size: 11px; letter-spacing: .08em; }
+  .appbar b { font-weight: 800; letter-spacing: .14em; font-size: 12px; }
+  .appbar .title { color: #C5CED4; font-weight: 600; }
+  .appbar .sp { flex: 1; }
+  .appbar a { color: #fff; font-weight: 700; font-size: 12.5px; text-decoration: none; border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 7px 12px; white-space: nowrap; }
+  .appbar a:hover { background: rgba(255,255,255,.08); }
+  @media (max-width: 760px) { .appbar .title, .appbar b { display: none; } }
+
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 16px 60px; display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
+  @media (max-width: 1080px) { .wrap { grid-template-columns: minmax(0, 1fr); } }
+  .intro h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; }
+  .intro p { color: var(--ink-2); max-width: 78ch; margin: 6px 0 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11.5px; color: var(--ink-2); margin-top: 10px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--rule); display: inline-block; }
+
+  .card { background: var(--paper); border-radius: 10px; box-shadow: 0 1px 2px rgba(28,43,57,.06), 0 8px 24px rgba(28,43,57,.05); padding: 18px 20px; margin-top: 18px; }
+  .card h2 { font-size: 16px; font-weight: 800; color: var(--navy); }
+  .card > p.sub { margin: 4px 0 12px; color: var(--muted); font-size: 12px; max-width: 90ch; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+  th { text-align: left; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 8px 8px; border-bottom: 2px solid var(--navy); white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  td.name { font-weight: 700; white-space: nowrap; }
+  td.name small { display: block; font-weight: 400; color: var(--muted); white-space: normal; max-width: 34ch; }
+  td.calc { font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+  td.res { color: var(--ink-2); white-space: nowrap; }
+  td.src { font-size: 11px; color: var(--muted); min-width: 220px; }
+  td.src a { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 340px; }
+  td.src .note { display: block; margin-top: 2px; }
+  .in { display: flex; align-items: center; gap: 6px; }
+  .in input { width: 92px; height: 32px; padding: 0 8px; border: 1px solid #C9D0D4; border-radius: 6px; text-align: right; background: #fff; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .in input:focus { outline: 2px solid var(--gold-dark); outline-offset: -1px; border-color: var(--gold-dark); }
+  .in input.adjusted { background: var(--adjusted); }
+  .in input.changed { background: var(--changed); border-color: var(--gold-dark); }
+  .in .u { font-size: 11px; color: var(--faint); white-space: nowrap; }
+  .in .rv { border: 0; background: none; padding: 0; color: var(--muted); font-size: 11px; text-decoration: underline; cursor: pointer; }
+  .conf { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+  .conf.high { background: #E1EFE6; color: var(--green); }
+  .conf.medium { background: #FDF0D5; color: #7F5300; }
+  .conf.low { background: #FBE2E7; color: #A8102F; }
+  .conf.pax { background: var(--adjusted); color: var(--navy); }
+  .conf.model { background: #E5EAEE; color: var(--navy); }
+  .mkt { border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 14px; }
+  .mkt:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+  .mkt h3 { font-size: 14px; font-weight: 800; }
+  .mkt .meta { font-size: 11.5px; color: var(--muted); margin: 2px 0 8px; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  .mkt h4 { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 10px 0 2px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+  .tabs button { border: 1px solid var(--rule); background: #fff; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 700; color: var(--ink-2); cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+  /* Side panel */
+  .side { position: sticky; top: 72px; display: grid; gap: 14px; }
+  @media (max-width: 1080px) { .side { position: static; } }
+  .panel { background: var(--paper); border-radius: 10px; box-shadow: 0 1px 2px rgba(28,43,57,.06), 0 8px 24px rgba(28,43,57,.05); padding: 16px 18px; }
+  .panel h2 { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+  .panel p { font-size: 12px; color: var(--ink-2); margin: 6px 0 0; }
+  .count { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1.1; margin-top: 6px; }
+  .count small { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .btns { display: grid; gap: 8px; margin-top: 12px; }
+  .btn { height: 36px; border-radius: 6px; font-weight: 700; font-size: 12.5px; cursor: pointer; border: 1px solid var(--navy); background: #fff; color: var(--navy); }
+  .btn:hover { background: #F4F6F7; }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  .btn.primary:hover { background: #A8102F; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .linkish { background: none; border: 0; padding: 0; color: var(--muted); font-size: 12px; text-decoration: underline; cursor: pointer; justify-self: start; }
+  .field { display: grid; gap: 3px; margin-top: 8px; }
+  .field label { font-size: 11px; font-weight: 700; color: var(--ink-2); }
+  .field select { height: 34px; border: 1px solid #C9D0D4; border-radius: 6px; padding: 0 8px; background: #fff; }
+  .imp { display: grid; grid-template-columns: auto auto auto; gap: 4px 10px; font-size: 12px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .imp .h { font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .imp .v { text-align: right; font-weight: 700; }
+  .imp .d { text-align: right; font-size: 11px; font-weight: 700; }
+  .up { color: var(--green); } .down { color: #A8102F; } .same { color: var(--faint); }
+  .steps { margin: 8px 0 0; padding-left: 18px; font-size: 12px; color: var(--ink-2); }
+  .steps li { margin-bottom: 4px; }
+  .toast { font-size: 12px; color: var(--green); min-height: 18px; margin-top: 6px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header class="appbar">
+  <span class="mk">PAX</span><b>SERVICES GROUP</b><span class="title">Model assumptions</span>
+  <span class="sp"></span>
+  <a href="../index.html">Report builder</a>
+  <a href="../library/index.html">Library</a>
+</header>
+
+<div class="wrap">
+  <main>
+    <section class="intro">
+      <h1>Model assumptions</h1>
+      <p>Every number behind the reports, with the research it came from. Edit any value to see how it moves the results on the right. When you are happy, download your changes and upload them to the project (steps on the right) to apply them to every report, the library and the guide.</p>
+      <div class="legend">
+        <span><i style="background:#fff"></i>Research default</span>
+        <span><i style="background:var(--adjusted)"></i>PAX adjustment already published</span>
+        <span><i style="background:var(--changed);border-color:var(--gold-dark)"></i>Changed here, not yet published</span>
+      </div>
+    </section>
+
+    <section class="card" id="sec-life">
+      <h2>Roof life and replacement age</h2>
+      <p class="sub">How long each roof system lasts. With PaxSeal a roof reaches its design life; with reactive repair it wears out sooner by the "life added" setting (capped at half the design life). The model replaces a roof when it reaches this age.</p>
+      <div class="scroll"><table id="t-systems"></table></div>
+    </section>
+
+    <section class="card" id="sec-types">
+      <h2>Property types</h2>
+      <p class="sub">The leak multiplier scales reactive repair costs for buildings where a leak does more damage. The typical building is what the sales library uses for that type; "replaced at" and "next new roof" show what the model does with it.</p>
+      <div class="scroll"><table id="t-types"></table></div>
+    </section>
+
+    <section class="card" id="sec-model">
+      <h2>Model settings</h2>
+      <p class="sub">The settings that apply to every report. The repair multiplier and base repair rate drive most of the savings and have no primary source, so they are the first candidates to calibrate with PAX job data.</p>
+      <div class="scroll"><table id="t-model"></table></div>
+    </section>
+
+    <section class="card" id="sec-markets">
+      <h2>Markets</h2>
+      <p class="sub">Local replacement costs, cap rates and storm loss for each market. Storm loss comes from FEMA&rsquo;s expected building loss for the county; override it only with a better local figure.</p>
+      <div class="tabs" id="mktTabs" role="group" aria-label="Market"></div>
+      <div id="mkts"></div>
+    </section>
+  </main>
+
+  <aside class="side">
+    <div class="panel">
+      <h2>Your changes</h2>
+      <div class="count" id="count">0 <small>unpublished</small></div>
+      <p id="pubNote"></p>
+      <div class="btns">
+        <button type="button" class="btn primary" id="dl" disabled>Download overrides.json</button>
+        <button type="button" class="btn" id="load">Load an overrides file</button>
+        <input type="file" id="file" accept="application/json,.json" class="sr-only" tabindex="-1">
+        <button type="button" class="linkish" id="undo">Discard unpublished changes</button>
+        <button type="button" class="linkish" id="resetAll">Set everything back to research defaults</button>
+      </div>
+      <div class="toast" id="toast" role="status"></div>
+      <h2 style="margin-top:12px">Publish</h2>
+      <ol class="steps">
+        <li>Download <b>overrides.json</b>.</li>
+        <li>Open the project&rsquo;s <a href="https://github.com/noah-austin/TOC-Model/tree/claude/trusting-mayer-4unuyq/data" target="_blank" rel="noopener">data folder on GitHub</a>.</li>
+        <li><b>Add file &rarr; Upload files</b>, drop the file in (it replaces the old one), then <b>Commit changes</b>.</li>
+        <li>The site, library and guide rebuild in a few minutes.</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <h2>Impact</h2>
+      <p>Savings for the library&rsquo;s typical building, published vs with your changes.</p>
+      <div class="field"><label for="impMarket">Market</label><select id="impMarket"></select></div>
+      <div class="field"><label for="impType">Property type</label><select id="impType"></select></div>
+      <div class="imp" id="imp"></div>
+    </div>
+  </aside>
+</div>
+
+<script>/*__DATA__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>/*__OVERRIDES_JS__*/</script>
+<script>
+(function () {
+  'use strict';
+  var X = window.PAX_DATA, E = window.PaxTCO, PO = window.PaxOverrides;
+  var BASE = X.base, RES = X.research, MC = X.modelConfig;
+  var published = clone(X.overrides || {});
+  var ov = clone(published);
+  var $ = function (id) { return document.getElementById(id); };
+  function clone(o) { return JSON.parse(JSON.stringify(o || {})); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function num(v) { return typeof v === 'number' && isFinite(v); }
+  function fmt(v) { return num(v) ? (Math.round(v * 1000) / 1000).toString() : '—'; }
+  function short(n) { var a = Math.abs(n), s = n < 0 ? '−' : ''; return a >= 1e6 ? s + '$' + (a / 1e6).toFixed(2) + 'M' : s + '$' + Math.round(a / 1e3) + 'K'; }
+
+  // ---------- path helpers ----------
+  function get(o, path) { return path.split('.').reduce(function (a, k) { return a == null ? undefined : a[k]; }, o); }
+  function set(o, path, v) {
+    var ks = path.split('.'), cur = o;
+    for (var i = 0; i < ks.length - 1; i++) { if (cur[ks[i]] == null || typeof cur[ks[i]] !== 'object') cur[ks[i]] = {}; cur = cur[ks[i]]; }
+    cur[ks[ks.length - 1]] = v;
+  }
+  function del(o, path) {
+    var ks = path.split('.'), stack = [o], cur = o;
+    for (var i = 0; i < ks.length - 1; i++) { cur = cur && cur[ks[i]]; if (!cur) return; stack.push(cur); }
+    delete cur[ks[ks.length - 1]];
+    for (var j = ks.length - 2; j >= 0; j--) { if (Object.keys(stack[j + 1]).length === 0) delete stack[j][ks[j]]; else break; }
+  }
+  // Research default for an override path.
+  function baseValue(path) {
+    var p = path.split('.');
+    if (p[0] === 'config') return get(MC, p.slice(1).join('.'));
+    if (p[0] === 'escalationPct') return BASE.escalationPct;
+    if (p[0] === 'fee') return BASE.fee[p[1]];
+    if (p[0] === 'systems') return BASE.systems[p[1]].lifeYears;
+    if (p[0] === 'propertyTypes') return BASE.propertyTypes[p[1]].leakMultiplier;
+    if (p[0] === 'libraryProfiles') { var lp = RES.libraryProfiles; return p[2] in lp.profiles[p[1]] ? lp.profiles[p[1]][p[2]] : lp.defaults[p[2]]; }
+    if (p[0] === 'markets') {
+      var m = BASE.markets[p[1]];
+      if (p[2] === 'stormLossPct') return m.nriBuildingLossPct * MC.roofDamageShare / MC.roofValueShare;
+      return m[p[2]][p[3]] && m[p[2]][p[3]].value;
+    }
+  }
+  // Nested config objects (conditionAgeShift, rangeScenarios) are overridden as a whole.
+  function setOverride(path, v) {
+    var p = path.split('.');
+    if (p[0] === 'config' && p.length > 2) {
+      var top = 'config.' + p[1];
+      var obj = clone(get(ov, top) || MC[p[1]]);
+      set(obj, p.slice(2).join('.'), v);
+      if (JSON.stringify(obj) === JSON.stringify(MC[p[1]])) del(ov, top); else set(ov, top, obj);
+      return;
+    }
+    if (v === null || v === baseValue(path)) del(ov, path); else set(ov, path, v);
+  }
+  function currentValue(path) { var v = get(ov, path); return v !== undefined ? v : baseValue(path); }
+  function publishedValue(path) { var v = get(published, path); return v !== undefined ? v : baseValue(path); }
+
+  // ---------- inputs ----------
+  function input(path, unit, step) {
+    return '<div class="in"><input type="number" step="any" inputmode="decimal" data-path="' + path + '" aria-label="' + esc(path) + '">' +
+      (unit ? '<span class="u">' + unit + '</span>' : '') + '</div>';
+  }
+  function badge(c) { return c ? '<span class="conf ' + esc(c) + '">' + esc(c) + '</span>' : ''; }
+  function sources(r) {
+    if (!r) return '';
+    var links = (r.sources || []).slice(0, 2).map(function (s) {
+      return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(s.name) + '">' + esc(s.name) + '</a>' : '<span>' + esc(s.name) + '</span>';
+    }).join('');
+    var more = (r.sources || []).length > 2 ? '<span class="note">+' + (r.sources.length - 2) + ' more in the research file</span>' : '';
+    return links + more;
+  }
+  function range(r, unit) {
+    if (!r || !num(r.value)) return '—';
+    return fmt(r.value) + (unit || '') + (num(r.low) && num(r.high) ? ' <span style="color:var(--muted);font-weight:400">(' + fmt(r.low) + '–' + fmt(r.high) + ')</span>' : '');
+  }
+
+  // ---------- section: systems ----------
+  function renderSystems(eff) {
+    var ext = (eff.config.lifeExtensionYears != null ? eff.config.lifeExtensionYears : MC.lifeExtensionYears);
+    $('t-systems').innerHTML = '<thead><tr><th>Roof system</th><th>Replaced at, with PaxSeal</th><th>Replaced at, reactive</th><th>Research</th><th>Confidence</th><th>Sources</th></tr></thead><tbody>' +
+      Object.keys(BASE.systems).map(function (s) {
+        var r = RES.systems[s], L = eff.systems[s].lifeYears;
+        return '<tr><td class="name">' + esc(BASE.systems[s].label) + '</td><td>' + input('systems.' + s + '.lifeYears', 'yrs') + '</td>' +
+          '<td class="calc" data-calc="react-' + s + '">' + fmt(L - Math.min(ext, L / 2)) + ' yrs</td>' +
+          '<td class="res">' + range(r, ' yrs') + '</td><td>' + badge(r && r.confidence) + '</td><td class="src">' + sources(r) + '</td></tr>';
+      }).join('') + '</tbody>';
+  }
+
+  // ---------- section: property types ----------
+  function renderTypes(eff) {
+    var lp = RES.libraryProfiles;
+    $('t-types').innerHTML = '<thead><tr><th>Property type</th><th>Leak multiplier</th><th>Research</th><th>Typical building (library)</th><th>Replaced at</th><th>Next new roof</th><th>Value basis</th></tr></thead><tbody>' +
+      Object.keys(BASE.propertyTypes).map(function (t) {
+        var p = BASE.propertyTypes[t], r = RES.propertyTypes[t];
+        var sys = currentValue('libraryProfiles.' + t + '.system');
+        var sysOpts = Object.keys(BASE.systems).map(function (s) { return '<option value="' + s + '"' + (s === sys ? ' selected' : '') + '>' + esc(BASE.systems[s].label) + '</option>'; }).join('');
+        return '<tr><td class="name">' + esc(p.label) + '</td>' +
+          '<td>' + input('propertyTypes.' + t + '.leakMultiplier', '×') + '</td>' +
+          '<td class="res">' + range(r, '×') + ' ' + badge(r && r.confidence) + '</td>' +
+          '<td><div class="in">' + input('libraryProfiles.' + t + '.area', 'sq ft').replace('<div class="in">', '').replace('</div>', '') +
+          '</div><div class="in" style="margin-top:4px"><select data-path="libraryProfiles.' + t + '.system" aria-label="Typical roof system" style="height:32px;border:1px solid #C9D0D4;border-radius:6px">' + sysOpts + '</select></div>' +
+          '<div class="in" style="margin-top:4px">' + input('libraryProfiles.' + t + '.roofAge', 'yrs old').replace('<div class="in">', '').replace('</div>', '') + '</div></td>' +
+          '<td class="calc" data-calc="age-' + t + '"></td><td class="calc" data-calc="next-' + t + '"></td>' +
+          '<td class="src">' + (p.capRateKey ? 'Cap rate: market ' + esc(p.capRateKey.replace('_', ' ')) : 'Owner-occupied: no cap rate; shows repair & storm savings') + '</td></tr>';
+      }).join('') + '</tbody>';
+  }
+
+  // ---------- section: model settings ----------
+  var SETTINGS = [
+    ['config.lifeExtensionYears', 'Life added by PaxSeal', 'yrs', 'How much longer a maintained roof lasts than a reactively repaired one.', RES.lifeExtension],
+    ['config.reactiveRepairMultiplier', 'Emergency repair cost', '× planned', 'Cost of a reactive repair vs fixing the same problem on a planned visit.', RES.repairMultiplier],
+    ['config.baseRepairPctOfReplacement', 'Base repair need', '% of roof cost/yr', 'Planned-visit repairs for a new 20-year roof. Grows with age; scaled down for longer-life systems.', { confidence: 'low', sources: [], note: 'Model assumption; no traceable source.' }],
+    ['config.repairAgeGrowthPct', 'Repair growth with age', '%/yr of age', 'How fast repair needs rise as the roof ages (capped at 3x).', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.feeCoversRepairShare', 'Repairs covered by the fee', 'share (0–1)', 'Share of planned repairs included in the PaxSeal fee (minor repairs up to 4 hrs per visit).', { confidence: 'low', note: 'Model assumption based on the PaxSeal proposal scope.' }],
+    ['fee.baseUsd', 'PaxSeal fee: base', '$/yr', 'Fixed part of the estimated fee (two visits, reports, annual meeting).', RES.fee && RES.fee.base_fee_usd_yr],
+    ['fee.perSqftUsd', 'PaxSeal fee: per sq ft', '$/sq ft/yr', 'Per-square-foot part of the estimated fee.', RES.fee && RES.fee.per_sqft_usd_yr],
+    ['config.feeEscalationPct', 'Fee increase', '%/yr', 'Annual cost-of-living increase on the fee.', { confidence: 'low', note: 'Model assumption (long-run CPI).' }],
+    ['escalationPct', 'Roofing cost growth', '%/yr', 'How fast roof replacement prices rise.', RES.escalation],
+    ['config.reactiveStormMultiplier', 'Storm damage if reactive', '×', 'Extra storm damage on a neglected roof.', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.roofDamageShare', 'Roof share of storm damage', 'share (0–1)', 'Converts FEMA building loss to roof loss (with the next setting).', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.roofValueShare', 'Roof share of building value', 'share (0–1)', 'Low-slope roof replacement cost as a share of building value.', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.conditionAgeShift.fair', 'Condition "Fair" adds', 'yrs of age', 'Effective extra age for a roof in fair condition.', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.conditionAgeShift.poor', 'Condition "Poor" adds', 'yrs of age', 'Effective extra age for a roof in poor condition.', { confidence: 'low', note: 'Model assumption.' }],
+    ['config.discountRatePct', 'Discount rate', '%', 'Used for "today’s dollars" and for annual NOI.', { confidence: 'medium', note: 'Typical commercial real estate rate.' }],
+    ['config.rangeScenarios.conservative.reactiveRepairMultiplier', 'Range, conservative: repair cost', '×', 'Low end of the savings range.', { confidence: 'model', note: 'Near the low end of the research range (1.8–5×).' }],
+    ['config.rangeScenarios.conservative.lifeExtensionYears', 'Range, conservative: life added', 'yrs', 'Low end of the savings range.', { confidence: 'model', note: 'Research range 3–8 yrs.' }],
+    ['config.rangeScenarios.upside.reactiveRepairMultiplier', 'Range, upside: repair cost', '×', 'High end of the savings range.', { confidence: 'model', note: 'Below the marketing-sourced 5×.' }],
+    ['config.rangeScenarios.upside.lifeExtensionYears', 'Range, upside: life added', 'yrs', 'High end of the savings range.', { confidence: 'model', note: 'Below the 8-yr high end.' }]
+  ];
+  function renderModel() {
+    $('t-model').innerHTML = '<thead><tr><th>Setting</th><th>Value</th><th>Research</th><th>Confidence</th><th>Basis</th></tr></thead><tbody>' +
+      SETTINGS.map(function (s) {
+        var r = s[4];
+        return '<tr><td class="name">' + esc(s[1]) + '<small>' + esc(s[3]) + '</small></td><td>' + input(s[0], s[2]) + '</td>' +
+          '<td class="res">' + range(r) + '</td><td>' + badge(r && r.confidence) + '</td>' +
+          '<td class="src">' + sources(r) + (r && r.note ? '<span class="note">' + esc(String(r.note).split(/(?<=\.)\s/)[0]) + '</span>' : '') + '</td></tr>';
+      }).join('') + '</tbody>';
+  }
+
+  // ---------- section: markets ----------
+  var CAP_LABELS = { industrial: 'Industrial', office: 'Office', retail: 'Retail', multifamily: 'Multi-family', medical_office: 'Medical office', mixed_use: 'Mixed use' };
+  var HAZ = { hail: 'Hail', strong_wind: 'Strong wind', tornado: 'Tornado', hurricane: 'Hurricane', winter_weather: 'Winter weather', ice_storm: 'Ice storm' };
+  var activeMkt = Object.keys(BASE.markets)[0];
+  function renderMarkets() {
+    $('mktTabs').innerHTML = Object.keys(BASE.markets).map(function (id) {
+      return '<button type="button" data-mkt="' + id + '" aria-pressed="' + (id === activeMkt) + '">' + esc(BASE.markets[id].shortName) + '</button>';
+    }).join('');
+    $('mkts').innerHTML = Object.keys(BASE.markets).map(function (id) {
+      var m = BASE.markets[id], r = RES.markets[id];
+      var rows1 = Object.keys(BASE.systems).map(function (s) {
+        var rr = r.replacementCostPerSqft[s], b = m.replacementCostPerSqft[s];
+        var basis = rr && num(rr.value) ? sources(rr) : '<span class="note">' + esc((b.source || '').replace(/^fallback: /, 'Uses ')) + '</span>';
+        return '<tr><td class="name">' + esc(BASE.systems[s].label) + '</td><td>' + input('markets.' + id + '.replacementCostPerSqft.' + s, '$/sq ft') + '</td><td class="res">' + range(rr) + '</td><td>' + badge(rr && rr.confidence || b.confidence) + '</td><td class="src">' + basis + '</td></tr>';
+      }).join('');
+      var rows2 = Object.keys(m.capRates).map(function (k) {
+        var rr = r.capRates[k], b = m.capRates[k];
+        var basis = rr && num(rr.value) ? sources(rr) : '<span class="note">' + esc((b.source || '').replace(/^fallback: /, 'Uses ')) + '</span>';
+        return '<tr><td class="name">' + esc(CAP_LABELS[k] || k) + '</td><td>' + input('markets.' + id + '.capRates.' + k, '%') + '</td><td class="res">' + range(rr, '%') + '</td><td>' + badge(rr && rr.confidence || b.confidence) + '</td><td class="src">' + basis + '</td></tr>';
+      }).join('');
+      var hz = Object.keys(HAZ).map(function (h) { var x = r.nri.hazards[h]; return x ? HAZ[h] + ': <b>' + esc(x.rating) + '</b>' : ''; }).filter(Boolean).join(' · ');
+      return '<div class="mkt" data-mkt-panel="' + id + '"' + (id === activeMkt ? '' : ' hidden') + '>' +
+        '<h3>' + esc(m.shortName) + '</h3><div class="meta">' + esc(m.name) + ' · FEMA county: ' + esc(r.nri.county) + ' (' + esc(r.nri.version || '') + ')</div>' +
+        '<h4>Replacement cost by roof system</h4><div class="scroll"><table><thead><tr><th>System</th><th>Value</th><th>Research</th><th>Confidence</th><th>Sources</th></tr></thead><tbody>' + rows1 + '</tbody></table></div>' +
+        '<h4>Cap rates</h4><div class="scroll"><table><thead><tr><th>Type</th><th>Value</th><th>Research</th><th>Confidence</th><th>Sources</th></tr></thead><tbody>' + rows2 + '</tbody></table></div>' +
+        '<h4>Storm loss</h4><div class="scroll"><table><thead><tr><th>Measure</th><th>Value</th><th>How it is derived</th></tr></thead><tbody>' +
+        '<tr><td class="name">Expected storm damage<small>Share of roof replacement cost per year, before insurance</small></td><td>' + input('markets.' + id + '.stormLossPct', '%/yr') + '</td>' +
+        '<td class="src">FEMA expected annual building loss from roof-related hazards ÷ county building value ($' + (r.nri.buildingValue / 1e9).toFixed(1) + 'B) × roof share of damage ÷ roof share of value.<span class="note">' + hz + '</span></td></tr>' +
+        '</tbody></table></div></div>';
+    }).join('');
+  }
+
+  // ---------- refresh values, highlights, computed cells, impact ----------
+  function effective(o) { return PO.apply(BASE, o); }
+  function refresh() {
+    var eff = effective(ov);
+    document.querySelectorAll('[data-path]').forEach(function (el) {
+      var path = el.getAttribute('data-path'), v = currentValue(path);
+      if (document.activeElement !== el) el.value = v == null ? '' : (el.tagName === 'SELECT' ? v : fmt(v));
+      var b = baseValue(path), pub = publishedValue(path);
+      el.classList.toggle('adjusted', pub !== b && v === pub);
+      el.classList.toggle('changed', v !== pub);
+    });
+    // computed cells
+    var ext = eff.config.lifeExtensionYears != null ? eff.config.lifeExtensionYears : MC.lifeExtensionYears;
+    Object.keys(BASE.systems).forEach(function (s) {
+      var L = eff.systems[s].lifeYears, c = document.querySelector('[data-calc="react-' + s + '"]');
+      if (c) c.textContent = fmt(L - Math.min(ext, L / 2)) + ' yrs';
+    });
+    Object.keys(BASE.propertyTypes).forEach(function (t) {
+      var prof = profile(t), L = eff.systems[prof.system].lifeYears;
+      var a = document.querySelector('[data-calc="age-' + t + '"]');
+      if (a) a.innerHTML = 'Age ' + fmt(L) + ' with PaxSeal<br>Age ' + fmt(L - Math.min(ext, L / 2)) + ' reactive';
+      var k = E.run(Object.assign({ market: $('impMarket').value || Object.keys(BASE.markets)[0], propertyType: t }, prof), eff, {}, true).kpis;
+      var n = document.querySelector('[data-calc="next-' + t + '"]');
+      if (n) n.innerHTML = 'Year ' + (k.plannedReplacementYear || '20+') + ' with PaxSeal<br>Year ' + (k.reactiveReplacementYear || '20+') + ' reactive';
+    });
+    // changes count
+    // Count edited fields (a nested setting like condition shifts counts once per field).
+    var seen = {}, changes = 0;
+    document.querySelectorAll('[data-path]').forEach(function (el) {
+      var path = el.getAttribute('data-path');
+      if (seen[path]) return; seen[path] = 1;
+      if (currentValue(path) !== publishedValue(path)) changes++;
+    });
+    $('count').innerHTML = changes + ' <small>unpublished change' + (changes === 1 ? '' : 's') + '</small>';
+    $('dl').disabled = changes === 0;
+    var nPub = 0, seenP = {};
+    document.querySelectorAll('[data-path]').forEach(function (el) {
+      var path = el.getAttribute('data-path');
+      if (seenP[path]) return; seenP[path] = 1;
+      if (publishedValue(path) !== baseValue(path)) nPub++;
+    });
+    $('pubNote').textContent = nPub ? nPub + ' PAX adjustment' + (nPub === 1 ? ' is' : 's are') + ' live' + (published.updated ? ' (updated ' + published.updated + ')' : '') + '.' : 'No PAX adjustments are live; every value is the research default.';
+    renderImpact(eff);
+  }
+  function profile(t, o) {
+    var lp = RES.libraryProfiles, src = o || ov;
+    var p = Object.assign({}, lp.defaults, lp.profiles[t]);
+    var x = get(src, 'libraryProfiles.' + t) || {};
+    Object.keys(x).forEach(function (k) { p[k] = x[k]; });
+    return p;
+  }
+  function renderImpact(eff) {
+    var market = $('impMarket').value, t = $('impType').value;
+    var a = E.run(Object.assign({ market: market, propertyType: t }, profile(t, published)), effective(published)).kpis;
+    var b = E.run(Object.assign({ market: market, propertyType: t }, profile(t)), eff).kpis;
+    function row(label, va, vb, f, better) {
+      var d = vb - va, cls = Math.abs(d) < 0.5 ? 'same' : ((d > 0) === better ? 'up' : 'down');
+      return '<span>' + label + '</span><span class="v">' + f(vb) + '</span><span class="d ' + cls + '">' + (Math.abs(d) < 0.5 ? 'no change' : (d > 0 ? '+' : '') + f(d)) + '</span>';
+    }
+    var yr = function (v) { return v ? 'yr ' + Math.round(v) : '20+'; };
+    var prof = profile(t);
+    $('imp').innerHTML = '<span class="h"></span><span class="h" style="text-align:right">Yours</span><span class="h" style="text-align:right">vs live</span>' +
+      row('Savings', a.savings, b.savings, short, true) +
+      row('Range low', a.savingsRange.low, b.savingsRange.low, short, true) +
+      row('Range high', a.savingsRange.high, b.savingsRange.high, short, true) +
+      row('Savings %', a.savingsPct * 100, b.savingsPct * 100, function (v) { return (Math.round(v * 10) / 10) + '%'; }, true) +
+      (b.assetValueProtected > 0 || a.assetValueProtected > 0 ? row('Value protected', a.assetValueProtected || 0, b.assetValueProtected || 0, short, true) : row('Repair & storm', a.unplannedSpendAvoided, b.unplannedSpendAvoided, short, true)) +
+      '<span>Next roof, PaxSeal</span><span class="v">' + yr(b.plannedReplacementYear) + '</span><span class="d same">' + (b.plannedReplacementYear === a.plannedReplacementYear ? 'no change' : 'was ' + yr(a.plannedReplacementYear)) + '</span>' +
+      '<span>Next roof, reactive</span><span class="v">' + yr(b.reactiveReplacementYear) + '</span><span class="d same">' + (b.reactiveReplacementYear === a.reactiveReplacementYear ? 'no change' : 'was ' + yr(a.reactiveReplacementYear)) + '</span>' +
+      '<span style="grid-column:1/-1;font-size:11px;color:var(--muted);margin-top:4px">' + prof.area.toLocaleString('en-US') + ' sq ft ' + esc(BASE.systems[prof.system].label) + ' roof, ' + prof.roofAge + ' yrs old.</span>';
+  }
+
+  // ---------- events ----------
+  document.addEventListener('input', function (e) {
+    var el = e.target, path = el.getAttribute && el.getAttribute('data-path');
+    if (!path) return;
+    if (el.tagName === 'SELECT') setOverride(path, el.value);
+    else { var v = el.value.trim() === '' ? null : parseFloat(el.value); if (v !== null && !isFinite(v)) return; setOverride(path, v); }
+    refresh();
+  });
+  document.addEventListener('focusout', function (e) { if (e.target.getAttribute && e.target.getAttribute('data-path')) refresh(); });
+  $('mktTabs').addEventListener('click', function (e) {
+    var id = e.target.getAttribute('data-mkt'); if (!id) return;
+    activeMkt = id;
+    document.querySelectorAll('[data-mkt]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mkt') === id)); });
+    document.querySelectorAll('[data-mkt-panel]').forEach(function (p) { p.hidden = p.getAttribute('data-mkt-panel') !== id; });
+  });
+  var toastT;
+  function toast(m) { $('toast').textContent = m; clearTimeout(toastT); toastT = setTimeout(function () { $('toast').textContent = ''; }, 3500); }
+  $('dl').addEventListener('click', function () {
+    var out = Object.assign({ note: 'PAX adjustments to the research defaults. Edit on the Assumptions page; see src/overrides.js for the format.',
+      updated: new Date().toISOString().slice(0, 10) }, clone(ov));
+    var blob = new Blob([JSON.stringify(out, null, 2) + '\n'], { type: 'application/json' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'overrides.json';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    toast('Downloaded overrides.json. Upload it to the data folder to publish.');
+  });
+  $('load').addEventListener('click', function () { $('file').click(); });
+  $('file').addEventListener('change', function () {
+    var f = this.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      try { var o = JSON.parse(rd.result); delete o.note; delete o.updated; ov = o; refresh(); toast('Loaded ' + f.name + '.'); }
+      catch (err) { toast('That file is not valid JSON. Pick an overrides.json downloaded from this page.'); }
+    };
+    rd.readAsText(f); this.value = '';
+  });
+  $('undo').addEventListener('click', function () { ov = clone(published); refresh(); toast('Unpublished changes discarded.'); });
+  $('resetAll').addEventListener('click', function () { ov = {}; refresh(); toast('Everything set to research defaults. Download and publish to apply.'); });
+  ['impMarket', 'impType'].forEach(function (id) { $(id).addEventListener('change', refresh); });
+
+  // ---------- boot ----------
+  delete published.note; var pubUpdated = published.updated; delete published.updated;
+  ov = clone(published);
+  published.updated = pubUpdated;
+  Object.keys(BASE.markets).forEach(function (id) { $('impMarket').add(new Option(BASE.markets[id].shortName, id)); });
+  Object.keys(BASE.propertyTypes).forEach(function (id) { $('impType').add(new Option(BASE.propertyTypes[id].label, id)); });
+  $('impMarket').value = 'san-antonio';
+  var eff0 = effective(ov);
+  renderSystems(eff0); renderTypes(eff0); renderModel(); renderMarkets();
+  refresh();
+})();
+</script>
+</body>
+</html>

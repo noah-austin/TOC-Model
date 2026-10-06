@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
@@ -171,7 +172,13 @@ function buildDefaults() {
   };
 }
 
-const defaults = buildDefaults();
+// Research defaults, then PAX adjustments from data/overrides.json (edited on the Assumptions page).
+const require = createRequire(import.meta.url);
+const PaxOverrides = require(join(ROOT, 'src/overrides.js'));
+const E = require(join(ROOT, 'src/engine.js'));
+const baseDefaults = buildDefaults();
+const overrides = existsSync(join(ROOT, 'data/overrides.json')) ? readJson('data/overrides.json') : {};
+const defaults = PaxOverrides.apply(baseDefaults, overrides);
 writeFileSync(join(ROOT, 'data/model_defaults.json'), JSON.stringify(defaults, null, 2) + '\n');
 
 // Montserrat (SIL OFL, from @fontsource/montserrat), embedded so the report
@@ -190,4 +197,31 @@ const html = template
   .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults).replace(/</g, '\\u003c') + ';');
 mkdirSync(join(ROOT, 'dist'), { recursive: true });
 writeFileSync(join(ROOT, 'dist/index.html'), html);
-console.log('Built data/model_defaults.json and dist/index.html');
+
+// ---------- Assumptions page: every backend number, its research basis, and an editor ----------
+const national = readJson('data/national.json');
+const research = {
+  escalation: national.cost_escalation.annual_pct_20yr,
+  fee: national.maintenance_program_pricing.recommended_paxseal_fee_formula.roof_only,
+  lifeExtension: national.maintenance_evidence.roof_life_years.life_extension_years,
+  repairMultiplier: national.maintenance_evidence.reactive_to_planned_repair_cost_multiplier,
+  systems: national.roof_life_years_by_system,
+  propertyTypes: Object.fromEntries(Object.entries(propertyResearch.types || {}).map(([k, v]) => [k, v.leak_consequence_multiplier || null])),
+  markets: Object.fromEntries(MARKET_IDS.map((id) => {
+    const m = readJson(`data/markets/${id}.json`);
+    const caps = Object.fromEntries(CAP_KEYS.map((k) => [k, m.cap_rates?.[k] ?? propertyResearch.cap_rates_by_market?.[id]?.[k] ?? null]));
+    return [id, { replacementCostPerSqft: m.replacement_cost_per_sqft || {}, capRates: caps,
+      nri: { county: m.fema_nri.county, version: m.fema_nri.nri_version, buildingValue: m.fema_nri.building_value_usd,
+        hazards: Object.fromEntries(ROOF_PERILS.map((h) => [h, m.fema_nri.hazards?.[h] || null])) } }];
+  })),
+  libraryProfiles: readJson('data/library_profiles.json'),
+};
+const page = readFileSync(join(ROOT, 'src/assumptions.template.html'), 'utf8')
+  .replace('/*__FONTS__*/', () => fonts)
+  .replace('/*__ENGINE__*/', () => engine)
+  .replace('/*__OVERRIDES_JS__*/', () => readFileSync(join(ROOT, 'src/overrides.js'), 'utf8'))
+  .replace('/*__DATA__*/', () => 'window.PAX_DATA = ' + JSON.stringify({ base: baseDefaults, overrides, research, modelConfig: E.MODEL_CONFIG }).replace(/</g, '\\u003c') + ';');
+mkdirSync(join(ROOT, 'dist/assumptions'), { recursive: true });
+writeFileSync(join(ROOT, 'dist/assumptions/index.html'), page);
+console.log('Built data/model_defaults.json, dist/index.html and dist/assumptions/index.html' +
+  (Object.keys(overrides).length ? ' (with data/overrides.json)' : ''));

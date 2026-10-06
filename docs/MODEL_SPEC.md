@@ -1,5 +1,7 @@
 # Model Spec: How the Engine Calculates
 
+Code: `src/engine.js`. **Every value below can be adjusted without code** on the Assumptions page (`/assumptions/`), which writes `data/overrides.json`; the build applies it on top of the research defaults and reports label adjusted values "PAX adjustment".
+
 Code: `src/engine.js`. Every coefficient is in the `MODEL_CONFIG` block at the top of that file. Market values come from `data/model_defaults.json`, which `scripts/build.mjs` generates from the research files. `test/engine.test.mjs` covers the rules below, including a sweep of every market × property type × roof system × age × condition.
 
 ## Inputs → resolved values

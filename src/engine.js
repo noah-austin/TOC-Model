@@ -120,7 +120,9 @@
       capRatePct: capRate,
       annualFee: fee,
       feeIsEstimate: raw.annualFee === undefined || raw.annualFee === null || raw.annualFee === '',
-      stormLossPct: market.nriBuildingLossPct * cfg.roofDamageShare / cfg.roofValueShare
+      // A PAX override (Assumptions page) replaces the FEMA-derived figure.
+      stormLossPct: typeof market.stormLossPctOverride === 'number' ? market.stormLossPctOverride
+        : market.nriBuildingLossPct * cfg.roofDamageShare / cfg.roofValueShare
     };
   }
 
@@ -221,7 +223,9 @@
   }
 
   function run(raw, defaults, configOverrides, skipRange) {
-    var cfg = merge(MODEL_CONFIG, configOverrides);
+    // Published PAX adjustments (defaults.config, from data/overrides.json) sit on top of
+    // MODEL_CONFIG; per-report overrides from the builder sit on top of those.
+    var cfg = merge(merge(MODEL_CONFIG, defaults.config), configOverrides);
     var inp = resolveInputs(raw || {}, defaults, cfg);
     var planned = simulate(inp, cfg, true);
     var reactive = simulate(inp, cfg, false);

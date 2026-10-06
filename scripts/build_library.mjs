@@ -21,7 +21,8 @@ const today = new Date().toISOString().slice(0, 10);
 
 const markets = Object.keys(D.markets);
 const types = Object.keys(D.propertyTypes).filter((t) => LIB.profiles[t]);
-const paramsFor = (market, type) => ({ market, propertyType: type, ...LIB.defaults, ...LIB.profiles[type] });
+// Typical buildings: research profile file, then PAX adjustments from the Assumptions page.
+const paramsFor = (market, type) => ({ market, propertyType: type, ...LIB.defaults, ...LIB.profiles[type], ...(D.libraryProfiles?.[type] || {}) });
 const query = (p) => new URLSearchParams({ view: 'report', date: today, ...Object.fromEntries(Object.entries(p).map(([k, v]) => [k, String(v)])) }).toString();
 
 // ---------- PDFs ----------
@@ -54,7 +55,7 @@ const short = (n) => n >= 1e6 ? '$' + (n / 1e6).toFixed(2).replace(/0$/, '') + '
 const sysLabel = (s) => D.systems[s].label.replace('Modified Bitumen', 'mod bit');
 
 const rows = types.map((type) => {
-  const pt = D.propertyTypes[type], prof = { ...LIB.defaults, ...LIB.profiles[type] };
+  const pt = D.propertyTypes[type], prof = { ...LIB.defaults, ...LIB.profiles[type], ...(D.libraryProfiles?.[type] || {}) };
   const cells = markets.map((market) => {
     const k = results[`${market}|${type}`];
     const second = k.assetValueProtected != null
@@ -84,6 +85,8 @@ body { margin: 0; background: var(--desk); color: var(--ink); font: 13px/1.5 Mon
 .bar .mk { background: var(--red); border-radius: 3px; padding: 2px 7px; font-weight: 800; font-size: 11px; letter-spacing: .08em; }
 .bar a { color: #fff; font-weight: 700; font-size: 12.5px; text-decoration: none; border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 7px 12px; }
 .bar a:hover { background: rgba(255,255,255,.08); }
+.bar { flex-wrap: wrap; }
+@media (max-width: 640px) { .bar b { display: none; } .bar a { padding: 6px 9px; font-size: 11.5px; } }
 main { max-width: 1240px; margin: 0 auto; padding: 28px 16px 48px; }
 h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .lede { color: var(--ink-2); max-width: 75ch; margin: 8px 0 20px; }
@@ -105,7 +108,7 @@ td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); b
 </style>
 </head>
 <body>
-<header class="bar"><span class="mk">PAX</span><b>SERVICES GROUP</b><a href="PAX-Roof-TCO-Guide.pdf" style="margin-left:auto">User guide (PDF)</a><a href="../index.html" style="margin-left:0">Build a custom report</a></header>
+<header class="bar"><span class="mk">PAX</span><b>SERVICES GROUP</b><a href="PAX-Roof-TCO-Guide.pdf" style="margin-left:auto">User guide (PDF)</a><a href="../assumptions/index.html" style="margin-left:0">Assumptions</a><a href="../index.html" style="margin-left:0">Build a custom report</a></header>
 <main>
   <h1>TCO Projection Library</h1>
   <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one opens as a two-page report with the cost curve. Use <b>Build a custom report</b> for a specific customer's roof.</p>
