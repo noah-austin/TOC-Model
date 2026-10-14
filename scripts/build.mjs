@@ -9,6 +9,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { NAV_CSS, navHtml } from './nav.mjs';
+import { buildGeneric } from './build_generic.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
@@ -241,3 +242,7 @@ mkdirSync(join(ROOT, 'dist/assumptions'), { recursive: true });
 writeFileSync(join(ROOT, 'dist/assumptions/index.html'), page);
 console.log('Built data/model_defaults.json, dist/index.html and dist/assumptions/index.html' +
   (Object.keys(overrides).length ? ' (with data/overrides.json)' : ''));
+
+// ---------- Generic cost curves (separate section, no inputs) ----------
+const combos = buildGeneric(fonts);
+console.log(`Built dist/generic/index.html (${combos} curves)`);

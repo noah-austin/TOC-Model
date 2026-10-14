@@ -96,11 +96,11 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: now
 <p class="lede">The tool shows a building owner what their roof will cost over the next 20 years in two scenarios: with <b>PaxSeal planned maintenance</b>, or with <b>reactive repair</b> (fixing problems only after they leak). It turns the difference into dollars, using real cost and storm data for the owner&rsquo;s market.</p>
 
 <section>
-  <h2>Three ways to use it</h2>
+  <h2>Two kinds of cost curve</h2>
   <div class="grid3">
-    <div class="card"><div class="n">1</div><b>Custom report</b><p>Enter a customer&rsquo;s roof details in the builder and get a branded two-page report to print, save as PDF, or send as a link.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '').replace(/\/$/, '')}</p></div>
-    <div class="card"><div class="n">2</div><b>Sales library</b><p>${Object.keys(D.markets).length * Object.keys(D.propertyTypes).length} ready-made reports: a typical building of each property type in each market. Open or download, no typing.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}library</p></div>
-    <div class="card"><div class="n">3</div><b>Shareable links</b><p>Every report has a link with its inputs built in. Send it to a customer or a colleague; it opens straight to the report.</p></div>
+    <div class="card"><div class="n">1</div><b>Generic cost curves</b><p>No inputs. The average cost of a roof from new to replacement, with and without PaxSeal, for every market, building type and roof type.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}generic</p></div>
+    <div class="card"><div class="n">2</div><b>Custom cost curves</b><p>Enter a customer&rsquo;s roof in the builder and get a branded two-page report to print, save as PDF, or send as a link.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '').replace(/\/$/, '')}</p></div>
+    <div class="card"><div class="n">3</div><b>Library</b><p>${Object.keys(D.markets).length * Object.keys(D.propertyTypes).length} ready-made custom reports: a typical building of each property type in each market. Open or download, no typing.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}library</p></div>
   </div>
   <p style="margin-top:10px"><b>Markets:</b> ${markets}. <b>Property types:</b> ${types}.</p>
 </section>
@@ -126,7 +126,7 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: now
 
 <section>
   <h2>Finding your way</h2>
-  <p>Every page has the same header: <b>Report builder</b>, <b>Library</b>, <b>Assumptions</b> and the <b>User guide</b>. A report link sent to a customer shows only the report, with Edit and Print. The <b>Assumptions</b> page lists every number the model uses with its source; sales ops can adjust values there and publish them by uploading the downloaded overrides.json to the project.</p>
+  <p>Every page has the same header: <b>Generic cost curves</b>, <b>Custom cost curves</b> (the report builder), <b>Library</b>, <b>Assumptions</b> and the <b>User guide</b>. The two kinds of curve are kept separate: generic curves are research averages with no inputs; custom curves are for one customer&rsquo;s roof. Every report has a link with its inputs built in. A report link sent to a customer shows only the report, with Edit and Print. The <b>Assumptions</b> page lists every number the model uses with its source; sales ops can adjust values there and publish them by uploading the downloaded overrides.json to the project.</p>
 </section>
 
 <div class="page"></div>

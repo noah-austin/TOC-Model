@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Generic Cost Curves</title>
+<style>
+/*__FONTS__*/
+:root {
+  --red: #CD163F; --navy: #1C2B39; --green: #1A6B3C; --gold: #DD971A;
+  --ink: #1C2B39; --ink-2: #44525D; --muted: #5E6A73; --faint: #6E7A84;
+  --rule: #DCE1E4; --hair: #EBEEF0; --desk: #EEF1F3; --panel: #F7F8F9;
+  --paxseal: #1A6B3C; --reactive: #CD163F; --green-wash: #EAF4EE; --gold-wash: #FFF7E6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--desk); color: var(--ink); font: 13px/1.5 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+/*__NAVCSS__*/
+main { max-width: 1180px; margin: 0 auto; padding: 28px 16px 56px; }
+h1 { font-size: 26px; font-weight: 800; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+h2 { font-size: 15px; font-weight: 800; margin: 0 0 2px; }
+.eyebrow { font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+.lede { color: var(--ink-2); max-width: 80ch; margin: 8px 0 20px; }
+.card { background: #fff; border-radius: 10px; box-shadow: 0 1px 2px rgba(28,43,57,.06), 0 8px 24px rgba(28,43,57,.06); padding: 20px 22px; margin-bottom: 16px; }
+.sub { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+
+/* Pickers */
+.pickers { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.pick { display: grid; grid-template-columns: 110px 1fr; align-items: start; gap: 10px; }
+.pick > span { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { font: inherit; font-size: 12.5px; font-weight: 600; color: var(--ink); background: #fff; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 13px; cursor: pointer; }
+.chips button:hover { border-color: var(--navy); }
+.chips button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.chips button.all { font-weight: 800; }
+.chips button .rare { font-size: 9.5px; font-weight: 700; color: var(--faint); margin-left: 4px; }
+.chips button[aria-pressed="true"] .rare { color: #C5CED4; }
+.chips button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* Result header */
+.combo { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.combo h2 { font-size: 19px; }
+.combo .meta { color: var(--muted); font-size: 12px; }
+.flag { display: none; background: var(--gold-wash); border-left: 3px solid var(--gold); padding: 8px 12px; font-size: 12px; color: var(--ink-2); margin: -4px 0 14px; border-radius: 0 6px 6px 0; }
+.flag.on { display: block; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+.kpi { background: var(--panel); border-radius: 8px; padding: 12px 14px; }
+.kpi .k { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kpi .v { font-size: 22px; font-weight: 800; letter-spacing: -.01em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.kpi .v.good { color: var(--green); }
+.kpi .d { font-size: 11.5px; color: var(--ink-2); margin-top: 2px; }
+.kpi .d b { font-weight: 700; }
+.charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.chart-box h3 { font-size: 13px; font-weight: 800; margin: 0; }
+.chart-box p { font-size: 11.5px; color: var(--muted); margin: 2px 0 6px; }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: Montserrat, Arial, sans-serif; }
+.legend { display: flex; gap: 16px; font-size: 11.5px; color: var(--ink-2); margin: 8px 0 0; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+.tip { position: absolute; pointer-events: none; background: var(--navy); color: #fff; font-size: 11px; line-height: 1.45; padding: 6px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -100%); margin-top: -8px; z-index: 2; }
+.tip b { font-weight: 700; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.breakdown { margin-top: 18px; }
+.breakdown th, .breakdown td { padding: 7px 10px; border-bottom: 1px solid var(--hair); text-align: right; font-size: 12.5px; }
+.breakdown th:first-child, .breakdown td:first-child { text-align: left; }
+.breakdown thead th { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); }
+.breakdown tr.total td { font-weight: 800; border-top: 1px solid var(--navy); }
+.breakdown tr.hl td { font-weight: 800; background: var(--green-wash); }
+.breakdown td.s { color: var(--green); font-weight: 700; }
+.breakdown .u { color: var(--muted); font-weight: 400; font-size: 11px; }
+
+/* Matrix */
+.mx-wrap { overflow-x: auto; }
+.matrix { min-width: 820px; }
+.matrix th, .matrix td { padding: 9px 10px; border-bottom: 1px solid var(--hair); font-size: 12px; text-align: center; }
+.matrix thead th { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); white-space: nowrap; }
+.matrix tbody th { text-align: left; font-weight: 700; white-space: nowrap; }
+.matrix td { border-left: 1px solid var(--hair); cursor: pointer; }
+.matrix td:hover { background: var(--panel); }
+.matrix td.on { outline: 2px solid var(--navy); outline-offset: -2px; background: var(--green-wash); }
+.matrix td .p { font-size: 15px; font-weight: 800; color: var(--green); }
+.matrix td .p.neg { color: var(--red); }
+.matrix td .s { font-size: 10.5px; color: var(--muted); }
+.matrix tr.avg th, .matrix tr.avg td, .matrix td.avgc, .matrix th.avgc { background: var(--panel); }
+.matrix td:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.mx-tabs { margin-bottom: 12px; }
+
+/* Method */
+.method { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; font-size: 12.5px; color: var(--ink-2); }
+.method h3 { font-size: 12.5px; font-weight: 800; color: var(--ink); margin: 0 0 2px; }
+.method p { margin: 0 0 6px; }
+.lives th, .lives td { padding: 6px 8px; border-bottom: 1px solid var(--hair); font-size: 12px; text-align: right; }
+.lives th:first-child, .lives td:first-child { text-align: left; }
+.lives thead th { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); }
+.conf { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 3px; padding: 1px 5px; background: var(--hair); color: var(--ink-2); }
+.conf.low { background: #FBE9EC; color: #8E0F2C; }
+.conf.medium { background: var(--gold-wash); color: #8A5A00; }
+.sources { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; padding-left: 18px; }
+.sources li { margin-bottom: 3px; }
+.sources a { color: var(--navy); }
+.fine { font-size: 11px; color: var(--muted); margin-top: 10px; max-width: 120ch; }
+
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .charts, .method { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .pick { grid-template-columns: 1fr; gap: 4px; }
+  .pick > span { padding-top: 0; }
+  .card { padding: 16px; }
+  .kpi .v { font-size: 19px; }
+}
+
+/* Print: the selected curve on one Letter page. */
+@page { size: letter; margin: 0.45in; }
+@media print {
+  body { background: #fff; font-size: 11px; }
+  main { padding: 0; max-width: none; }
+  .no-print, .site-bar { display: none !important; }
+  .card { box-shadow: none; padding: 0; margin-bottom: 10px; }
+  .print-head { display: flex !important; }
+  .kpi { padding: 8px 10px; }
+  .kpi .v { font-size: 17px; }
+  .charts { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .breakdown th, .breakdown td { padding: 4px 8px; font-size: 10.5px; }
+  .breakdown { margin-top: 10px; }
+  .flag { margin: 0 0 8px; }
+}
+.print-head { display: none; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 6px; margin-bottom: 10px; }
+.print-head b { font-size: 12px; letter-spacing: .12em; }
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main>
+  <div class="no-print">
+    <div class="eyebrow">Generic cost curves</div>
+    <h1>What a commercial roof costs, new to replacement</h1>
+    <p class="lede">The average cost of one roof over its whole life, with repairs only when it leaks versus PaxSeal planned maintenance. There is nothing to enter: pick a market, building type and roof type and every figure is a research average for that combination. Use <b>Custom cost curves</b> for a specific customer's roof.</p>
+  </div>
+
+  <section class="card no-print" aria-label="Choose a curve">
+    <div class="pickers">
+      <div class="pick"><span id="lbl-m">Market</span><div class="chips" id="pick-m" role="group" aria-labelledby="lbl-m"></div></div>
+      <div class="pick"><span id="lbl-t">Building type</span><div class="chips" id="pick-t" role="group" aria-labelledby="lbl-t"></div></div>
+      <div class="pick"><span id="lbl-s">Roof type</span><div class="chips" id="pick-s" role="group" aria-labelledby="lbl-s"></div></div>
+    </div>
+  </section>
+
+  <section class="card" id="result" aria-live="polite">
+    <div class="print-head"><span><svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true" style="vertical-align:middle"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg> <b>SERVICES GROUP</b></span><span>Generic cost curve</span></div>
+    <div class="combo"><h2 id="combo-title"></h2><span class="meta" id="combo-meta"></span></div>
+    <div class="flag" id="flag"></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="charts">
+      <div class="chart-box">
+        <h3>Total cost of one roof, new to replacement</h3>
+        <p>Running total per sq ft of roof: the new roof, then every repair, storm and fee until it is replaced.</p>
+        <div class="chart" id="c-cum"></div>
+      </div>
+      <div class="chart-box">
+        <h3>Yearly cost as the roof ages</h3>
+        <p>Cost per sq ft each year. Repairs climb as the roof wears; PaxSeal keeps the climb flatter and later.</p>
+        <div class="chart" id="c-year"></div>
+      </div>
+    </div>
+    <div class="legend"><span><i style="background:var(--reactive)"></i>Repair when it leaks</span><span><i style="background:var(--paxseal)"></i>PaxSeal planned maintenance</span></div>
+    <table class="breakdown" id="breakdown"></table>
+    <p class="fine" id="fine"></p>
+  </section>
+
+  <section class="card no-print">
+    <h2>Compare every combination</h2>
+    <p class="sub">PaxSeal's saving per year of roof life, as a share of the reactive cost. Click any cell to open its curve.</p>
+    <div class="chips mx-tabs" id="mx-s" role="group" aria-label="Roof type for the table"></div>
+    <div class="mx-wrap"><table class="matrix" id="matrix"></table></div>
+  </section>
+
+  <section class="card no-print" id="method">
+    <h2>How these curves are built</h2>
+    <p class="sub">Every number below is a research average. Sources and confidence are listed so they can be checked and replaced with PAX job data.</p>
+    <div class="method" id="method-body"></div>
+    <h3 style="font-size:12.5px;margin:16px 0 6px">Roof life by roof type</h3>
+    <div class="mx-wrap"><table class="lives" id="lives"></table></div>
+    <ol class="sources" id="sources"></ol>
+  </section>
+</main>
+<script>/*__ENGINE__*/</script>
+<script>/*__DATA__*/</script>
+<script>
+(function () {
+  'use strict';
+  var D = window.GENERIC_DATA, G = window.PaxGeneric;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var label = function (list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; };
+  var money = function (n) { var a = Math.abs(n), s = n < 0 ? '−$' : '$'; return a >= 1e6 ? s + (a / 1e6).toFixed(2) + 'M' : a >= 1e4 ? s + Math.round(a / 1e3) + 'K' : s + Math.round(a).toLocaleString('en-US'); };
+  var psf = function (n, d) { return (n < 0 ? '−$' : '$') + Math.abs(n).toFixed(d == null ? 2 : d); };
+  var pct = function (x) { return Math.round(x * 100) + '%'; };
+
+  var params = new URLSearchParams(location.search);
+  var pickId = function (list, v) { return v && (v === 'all' || label(list, v)) ? v : 'all'; };
+  var state = { m: pickId(D.markets, params.get('market')), t: pickId(D.types, params.get('type')), s: pickId(D.systems, params.get('roof')) };
+  var mxSystem = state.s;
+
+  function commonness(t, s) { return t === 'all' || s === 'all' ? 'common' : (D.commonness[t] && D.commonness[t][s]) || 'common'; }
+
+  function chips(el, list, key, allLabel) {
+    var html = '<button type="button" class="all" data-v="all">' + allLabel + '</button>';
+    list.forEach(function (o) {
+      var rare = key === 's' && state.t !== 'all' && commonness(state.t, o.id) === 'rare' ? '<span class="rare">RARE</span>' : '';
+      html += '<button type="button" data-v="' + o.id + '">' + esc(o.label) + rare + '</button>';
+    });
+    el.innerHTML = html;
+    Array.prototype.forEach.call(el.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === state[key]));
+      b.onclick = function () { state[key] = b.getAttribute('data-v'); if (key === 's') mxSystem = state.s; render(); };
+    });
+  }
+
+  // ---------- SVG charts ----------
+  var W = 520, H = 290, M = { l: 52, r: 18, t: 18, b: 38 };
+  function niceMax(v) { var p = Math.pow(10, Math.floor(Math.log10(v || 1))), f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+  function axes(xMax, yMax, yFmt, xTitle) {
+    var g = '', iw = W - M.l - M.r, ih = H - M.t - M.b;
+    for (var i = 0; i <= 5; i++) {
+      var y = M.t + ih - ih * i / 5;
+      g += '<line x1="' + M.l + '" x2="' + (W - M.r) + '" y1="' + y + '" y2="' + y + '" stroke="' + (i ? '#EBEEF0' : '#8C979F') + '"/>';
+      g += '<text x="' + (M.l - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10.5" fill="#5E6A73">' + yFmt(yMax * i / 5) + '</text>';
+    }
+    var step = xMax > 30 ? 10 : 5;
+    for (var a = 0; a <= xMax; a += step) {
+      var x = M.l + iw * a / xMax;
+      g += '<text x="' + x + '" y="' + (H - M.b + 16) + '" text-anchor="middle" font-size="10.5" fill="#5E6A73">' + a + '</text>';
+    }
+    g += '<text x="' + (M.l + iw / 2) + '" y="' + (H - 4) + '" text-anchor="middle" font-size="10.5" font-weight="700" fill="#44525D">' + xTitle + '</text>';
+    return g;
+  }
+  function path(pts) { return pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(''); }
+
+  function chartCumulative(el, r, area) {
+    var xMax = Math.ceil((r.paxseal.life + 1) / 5) * 5;
+    var yMax = niceMax(Math.max(r.reactive.lifetime, r.paxseal.lifetime) / area * 1.08);
+    var iw = W - M.l - M.r, ih = H - M.t - M.b;
+    var X = function (a) { return M.l + iw * a / xMax; }, Y = function (v) { return M.t + ih - ih * v / yMax; };
+    var svg = axes(xMax, yMax, function (v) { return '$' + (yMax < 10 ? v.toFixed(1) : Math.round(v)); }, 'Roof age (years)');
+    [['reactive', '#CD163F'], ['paxseal', '#1A6B3C']].forEach(function (sc) {
+      var s = r[sc[0]], pts = s.cumulative.map(function (v, a) { return [X(a), Y(v / area)]; });
+      svg += '<path d="' + path(pts) + '" fill="none" stroke="' + sc[1] + '" stroke-width="2.6" stroke-linejoin="round"/>';
+      var end = pts[pts.length - 1];
+      svg += '<circle cx="' + end[0] + '" cy="' + end[1] + '" r="4.5" fill="#fff" stroke="' + sc[1] + '" stroke-width="2.4"/>';
+      // Curves rise to the right, so above-left of the end point is always clear.
+      svg += '<text x="' + (end[0] - 6) + '" y="' + (end[1] - 10) + '" text-anchor="end" font-size="10.5" font-weight="700" fill="' + sc[1] + '">Replaced at yr ' + s.life + '</text>';
+    });
+    svg += '<circle cx="' + X(0) + '" cy="' + Y(r.reactive.install / area) + '" r="3.5" fill="#1C2B39"/>';
+    svg += '<text x="' + (X(0) + 4) + '" y="' + (Y(r.reactive.install / area) - 10) + '" font-size="10.5" font-weight="700" fill="#44525D">New roof ' + psf(r.reactive.install / area) + '</text>';
+    draw(el, svg, xMax, X, function (a) {
+      var rows = [];
+      if (a <= r.reactive.life) rows.push('<span style="color:#F4A3B4">Reactive</span> <b>' + psf(r.reactive.cumulative[a] / area) + '</b>');
+      else rows.push('<span style="color:#F4A3B4">Reactive</span> replaced at yr ' + r.reactive.life);
+      if (a <= r.paxseal.life) rows.push('<span style="color:#9FD9B4">PaxSeal</span> <b>' + psf(r.paxseal.cumulative[a] / area) + '</b>');
+      return 'Age ' + a + ' · total per sq ft<br>' + rows.join('<br>');
+    }, r.paxseal.life);
+  }
+
+  function chartYearly(el, r, area) {
+    var xMax = Math.ceil((r.paxseal.life + 1) / 5) * 5;
+    var all = r.reactive.years.concat(r.paxseal.years).map(function (y) { return y.total / area; });
+    var yMax = niceMax(Math.max.apply(null, all) * 1.1);
+    var iw = W - M.l - M.r, ih = H - M.t - M.b;
+    var X = function (a) { return M.l + iw * a / xMax; }, Y = function (v) { return M.t + ih - ih * v / yMax; };
+    var svg = axes(xMax, yMax, function (v) { return '$' + v.toFixed(yMax < 1 ? 2 : 1); }, 'Roof age (years)');
+    [['reactive', '#CD163F'], ['paxseal', '#1A6B3C']].forEach(function (sc) {
+      var s = r[sc[0]], pts = s.years.map(function (y) { return [X(y.age - 0.5), Y(y.total / area)]; });
+      var area0 = 'M' + pts[0][0] + ',' + Y(0) + path(pts).replace(/^M/, 'L') + 'L' + pts[pts.length - 1][0] + ',' + Y(0) + 'Z';
+      svg += '<path d="' + area0 + '" fill="' + sc[1] + '" opacity=".07"/>';
+      svg += '<path d="' + path(pts) + '" fill="none" stroke="' + sc[1] + '" stroke-width="2.6" stroke-linejoin="round"/>';
+      var end = pts[pts.length - 1];
+      svg += '<line x1="' + end[0] + '" x2="' + end[0] + '" y1="' + end[1] + '" y2="' + Y(0) + '" stroke="' + sc[1] + '" stroke-dasharray="3 3"/>';
+    });
+    draw(el, svg, xMax, X, function (a) {
+      var f = function (s, n, c) { var y = s.years[a - 1]; return y ? '<span style="color:' + c + '">' + n + '</span> <b>' + psf(y.total / area) + '</b>' + (y.fee ? ' (fee ' + psf(y.fee / area) + ')' : '') : '<span style="color:' + c + '">' + n + '</span> replaced'; };
+      return 'Year ' + a + ' · cost per sq ft<br>' + f(r.reactive, 'Reactive', '#F4A3B4') + '<br>' + f(r.paxseal, 'PaxSeal', '#9FD9B4');
+    }, r.paxseal.life, 1);
+  }
+
+  // Shared hover: a guide line and tooltip that follow the pointer by roof age.
+  function draw(el, inner, xMax, X, tipFor, maxAge, minAge) {
+    el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img">' + inner +
+      '<line class="guide" y1="' + M.t + '" y2="' + (H - M.b) + '" stroke="#1C2B39" stroke-width="1" opacity="0"/>' +
+      '<rect x="' + M.l + '" y="' + M.t + '" width="' + (W - M.l - M.r) + '" height="' + (H - M.t - M.b) + '" fill="transparent"/></svg><div class="tip" hidden></div>';
+    var svg = el.querySelector('svg'), tip = el.querySelector('.tip'), guide = el.querySelector('.guide');
+    function show(evt) {
+      var b = svg.getBoundingClientRect(), sx = (evt.clientX - b.left) * W / b.width;
+      var a = Math.round((sx - M.l) / (W - M.l - M.r) * xMax);
+      a = Math.max(minAge || 0, Math.min(maxAge, a));
+      guide.setAttribute('x1', X(a)); guide.setAttribute('x2', X(a)); guide.setAttribute('opacity', '.25');
+      tip.innerHTML = tipFor(a); tip.hidden = false;
+      tip.style.left = Math.min(Math.max(X(a) * b.width / W, 90), b.width - 90) + 'px';
+      tip.style.top = (M.t * b.height / H) + 'px';
+    }
+    svg.addEventListener('pointermove', show);
+    svg.addEventListener('pointerleave', function () { tip.hidden = true; guide.setAttribute('opacity', '0'); });
+  }
+
+  // ---------- Render ----------
+  function key(m, t, s) { return m + '|' + t + '|' + s; }
+  function resultFor(m, t, s) { return G.curve(D.params[key(m, t, s)]); }
+
+  function render() {
+    chips($('pick-m'), D.markets, 'm', 'All markets');
+    chips($('pick-t'), D.types, 't', 'All building types');
+    chips($('pick-s'), D.systems, 's', 'All roof types');
+    var url = new URL(location.href);
+    url.search = new URLSearchParams({ market: state.m, type: state.t, roof: state.s }).toString();
+    history.replaceState(null, '', url);
+
+    var p = D.params[key(state.m, state.t, state.s)], r = G.curve(p), k = r.kpis, A = p.area;
+    var mL = state.m === 'all' ? 'All PAX markets' : label(D.markets, state.m).label;
+    var tL = state.t === 'all' ? 'All building types' : label(D.types, state.t).label;
+    var sL = state.s === 'all' ? 'All roof types' : label(D.systems, state.s).label;
+    $('combo-title').textContent = sL + ' · ' + tL + ' · ' + mL;
+    $('combo-meta').textContent = 'Typical roof ' + (Math.round(A / 1000) * 1000).toLocaleString('en-US') + ' sq ft · new roof ' + psf(p.costPerSqft) + '/sq ft · today’s dollars';
+    document.title = 'Generic Cost Curve: ' + sL + ', ' + tL + ', ' + mL;
+
+    var c = commonness(state.t, state.s), flag = $('flag');
+    flag.className = 'flag' + (c !== 'common' ? ' on' : '');
+    flag.textContent = c === 'rare' ? 'This roof type is rare on this kind of building. The curve is shown for completeness; use it with care.'
+      : c === 'less' ? 'This roof type is less common on this kind of building.' : '';
+
+    var good = k.savingPerYear > 0;
+    $('kpis').innerHTML =
+      kpi('Roof life', k.lifeReactive + ' → ' + k.lifePaxseal + ' yrs', 'PaxSeal adds <b>' + k.lifeAdded + ' years</b> before replacement', true) +
+      kpi('Cost per year of roof life', psf(r.paxseal.perSqftYear) + '<span style="font-size:13px;font-weight:700;color:var(--muted)">/sq ft</span>', 'vs <b>' + psf(r.reactive.perSqftYear) + '</b> repairing only when it leaks') +
+      kpi(good ? 'Saving per year' : 'Extra cost per year', pct(Math.abs(k.savingPct)), psf(Math.abs(k.savingPerSqftYear)) + '/sq ft a year, ' + money(Math.abs(k.savingPerYear)) + ' for this roof', good) +
+      kpi('Over one PaxSeal roof life', money(k.savingOverPaxsealLife), (good ? 'saved over ' : 'more over ') + k.lifePaxseal + ' years on a ' + (Math.round(A / 1000) * 1000).toLocaleString('en-US') + ' sq ft roof', good);
+
+    chartCumulative($('c-cum'), r, A);
+    chartYearly($('c-year'), r, A);
+
+    var R = r.reactive, P = r.paxseal;
+    var row = function (n, a, b, cls) { return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td>' + n + '</td><td>' + a + '</td><td>' + b + '</td></tr>'; };
+    var both = function (x, y) { return [money(x) + ' <span class="u">' + psf(x / A) + '</span>', money(y) + ' <span class="u">' + psf(y / A) + '</span>']; };
+    var b;
+    var html = '<thead><tr><th>One roof, new to replacement</th><th>Repair when it leaks</th><th>PaxSeal</th></tr></thead><tbody>';
+    b = both(R.install, P.install); html += row('New roof', b[0], b[1]);
+    b = both(R.repairs, P.repairs); html += row('Repairs', b[0], b[1]);
+    b = both(R.storm, P.storm); html += row('Storm damage to the roof', b[0], b[1]);
+    b = both(R.fees, P.fees); html += row('PaxSeal fee', '—', b[1]);
+    b = both(R.lifetime, P.lifetime); html += row('Total for one roof', b[0], b[1], 'total');
+    html += row('Years of service', R.life + ' yrs', P.life + ' yrs');
+    b = both(R.perYear, P.perYear); html += row('Cost per year of roof life', b[0], b[1], 'hl');
+    html += '</tbody>';
+    $('breakdown').innerHTML = html;
+    $('fine').innerHTML = 'A roof under PaxSeal lasts longer, so it can cost more in total and still cost less per year of service; cost per year is the fair comparison. ' +
+      'Today’s dollars, no inflation. The fee is PAX’s estimate for a roof this size ($' + D.fee.baseUsd + ' + $' + D.fee.perSqftUsd.toFixed(2) + '/sq ft a year). ' +
+      'Averages for a typical building, not a quote. Research as of ' + esc(D.researchedOn) + '; see “How these curves are built” on the web page.';
+
+    renderMatrix();
+  }
+
+  function kpi(k, v, d, good) { return '<div class="kpi"><div class="k">' + k + '</div><div class="v' + (good ? ' good' : '') + '">' + v + '</div><div class="d">' + d + '</div></div>'; }
+
+  function renderMatrix() {
+    var el = $('mx-s'), html = '<button type="button" class="all" data-v="all">All roof types</button>';
+    D.systems.forEach(function (o) { html += '<button type="button" data-v="' + o.id + '">' + esc(o.label) + '</button>'; });
+    el.innerHTML = html;
+    Array.prototype.forEach.call(el.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === mxSystem));
+      b.onclick = function () { mxSystem = b.getAttribute('data-v'); renderMatrix(); };
+    });
+    var cols = D.markets.map(function (m) { return m.id; }).concat(['all']);
+    var rows = D.types.map(function (t) { return t.id; }).concat(['all']);
+    var t = '<thead><tr><th>Building type</th>' + cols.map(function (m) { return '<th' + (m === 'all' ? ' class="avgc"' : '') + '>' + (m === 'all' ? 'All markets' : esc(label(D.markets, m).label)) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    rows.forEach(function (ty) {
+      t += '<tr' + (ty === 'all' ? ' class="avg"' : '') + '><th>' + (ty === 'all' ? 'All building types' : esc(label(D.types, ty).label)) + '</th>';
+      cols.forEach(function (m) {
+        var k = resultFor(m, ty, mxSystem).kpis, on = m === state.m && ty === state.t && mxSystem === state.s;
+        var rare = commonness(ty, mxSystem) === 'rare' ? ' · rare' : '';
+        t += '<td tabindex="0" data-m="' + m + '" data-t="' + ty + '" class="' + (on ? 'on ' : '') + (m === 'all' ? 'avgc' : '') + '" title="Open this curve"><div class="p' + (k.savingPct < 0 ? ' neg' : '') + '">' + pct(k.savingPct) + '</div><div class="s">' + psf(k.savingPerSqftYear) + '/sq ft/yr · +' + k.lifeAdded + ' yrs' + rare + '</div></td>';
+      });
+      t += '</tr>';
+    });
+    $('matrix').innerHTML = t + '</tbody>';
+    Array.prototype.forEach.call($('matrix').querySelectorAll('td'), function (td) {
+      var go = function () { state.m = td.getAttribute('data-m'); state.t = td.getAttribute('data-t'); state.s = mxSystem; render(); $('result').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+      td.onclick = go;
+      td.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+    });
+  }
+
+  function renderMethod() {
+    $('method-body').innerHTML = D.method.map(function (m) { return '<div><h3>' + esc(m.title) + '</h3><p>' + m.html + '</p></div>'; }).join('');
+    var t = '<thead><tr><th>Roof type</th><th>Life, repair when it leaks</th><th>Range</th><th>Years PaxSeal adds</th>' + D.markets.map(function (m) { return '<th>' + esc(m.label) + '</th>'; }).join('') + '<th>Confidence</th></tr></thead><tbody>';
+    D.systems.forEach(function (s) {
+      var x = D.lives[s.id];
+      t += '<tr><td>' + esc(s.label) + '</td><td>' + x.lifeReactive + ' yrs</td><td>' + x.low + '–' + x.high + '</td><td>+' + x.lifeAdded + '</td>' +
+        D.markets.map(function (m) { var v = D.marketLifeAdjustPct[m.id][s.id]; return '<td>' + (v ? (v > 0 ? '+' : '') + v + '%' : '—') + '</td>'; }).join('') +
+        '<td><span class="conf ' + x.confidence + '">' + x.confidence + '</span></td></tr>';
+    });
+    $('lives').innerHTML = t + '</tbody>';
+    $('sources').innerHTML = D.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url.replace(/^https?:\/\//, '').slice(0, 70)) + '</a>' : '') + '</li>'; }).join('');
+  }
+
+  var copy = document.getElementById('copy-link');
+  if (copy) copy.onclick = function () {
+    var done = function () { var t = document.getElementById('toast'); if (t) { t.textContent = 'Link copied'; setTimeout(function () { t.textContent = ''; }, 1800); } };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done); else done();
+  };
+  var pr = document.getElementById('print'); if (pr) pr.onclick = function () { window.print(); };
+
+  renderMethod();
+  render();
+})();
+</script>
+</body>
+</html>

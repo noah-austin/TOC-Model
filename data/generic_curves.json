@@ -1,0 +1,20 @@
+{
+  "researchedOn": "2026-10-14",
+  "note": "PROVISIONAL - replaced once research lands.",
+  "typicalArea": { "industrial": 100000, "office": 40000, "retail": 30000, "multifamily": 30000, "mixed": 25000, "medical": 60000, "k12": 120000 },
+  "systems": {
+    "tpo": { "label": "TPO", "lifeReactive": 17, "low": 12, "high": 25, "lifeAdded": 5, "confidence": "medium" },
+    "epdm": { "label": "EPDM", "lifeReactive": 20, "low": 15, "high": 30, "lifeAdded": 5, "confidence": "medium" },
+    "mod_bit": { "label": "Modified Bitumen", "lifeReactive": 17, "low": 12, "high": 22, "lifeAdded": 5, "confidence": "low" },
+    "bur": { "label": "Built-Up (BUR)", "lifeReactive": 18, "low": 15, "high": 25, "lifeAdded": 5, "confidence": "medium" },
+    "metal": { "label": "Metal", "lifeReactive": 35, "low": 25, "high": 45, "lifeAdded": 7, "confidence": "medium" },
+    "coating_restoration": { "label": "Coating / Restoration", "lifeReactive": 12, "low": 10, "high": 20, "lifeAdded": 5, "confidence": "low" }
+  },
+  "marketLifeAdjustPct": { "austin": {}, "san-antonio": {}, "hampton-roads": {}, "laurel": {}, "culbertson": {} },
+  "commonness": {},
+  "systemWeights": { "tpo": 40, "epdm": 15, "mod_bit": 15, "bur": 10, "metal": 12, "coating_restoration": 8 },
+  "repair": { "basePct": 1.0, "growthPct": 5, "cap": 3, "reactiveMultiplier": 3, "feeCovers": 0.5, "stormReactiveMultiplier": 1.5 },
+  "storm": { "roofDamageShare": 0.6, "roofValueShare": 0.05 },
+  "method": [],
+  "sources": []
+}

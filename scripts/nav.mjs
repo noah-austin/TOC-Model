@@ -1,8 +1,10 @@
 // One header for every page of the site, so navigation is the same everywhere.
 //
-//   [PAX] Roof Lifecycle Tool   Report builder · Library · Assumptions · User guide    [page actions]
+//   [PAX] Roof Lifecycle Tool   Generic cost curves · Custom cost curves · Library · Assumptions · User guide    [page actions]
 //
-// - The four destinations always appear, in the same order; the current one is marked.
+// - Generic cost curves (research averages, no inputs) and Custom cost curves (the report
+//   builder for one customer's roof) are separate sections and never share a page.
+// - The destinations always appear, in the same order; the current one is marked.
 // - Page actions (Copy link, Print) sit on the right and only on pages that have them.
 // - A shared customer link (report page with ?view=report) hides the internal
 //   navigation: the report page sets body.report-only, and the CSS below handles it.
@@ -51,13 +53,14 @@ export const NAV_CSS = `
 const PAX_MARK = '<svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>';
 
 const PAGES = [
-  ['builder', 'index.html', '<span class="l">Report builder</span><span class="s">Builder</span>'],
+  ['generic', 'generic/index.html', '<span class="l">Generic cost curves</span><span class="s">Generic</span>'],
+  ['builder', 'index.html', '<span class="l">Custom cost curves</span><span class="s">Custom</span>'],
   ['library', 'library/index.html', 'Library'],
   ['assumptions', 'assumptions/index.html', 'Assumptions'],
   ['guide', 'library/PAX-Roof-TCO-Guide.pdf', '<span class="l">User guide</span><span class="s">Guide</span> <small>PDF</small>'],
 ];
 
-// active: 'builder' | 'library' | 'assumptions'; prefix: '' at the site root, '../' one level down.
+// active: 'generic' | 'builder' | 'library' | 'assumptions'; prefix: '' at the site root, '../' one level down.
 export function navHtml(active, prefix, actions = '') {
   const links = PAGES.map(([id, href, label]) =>
     `<a href="${prefix}${href}"${id === active ? ' aria-current="page"' : ''}${id === 'guide' ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`).join('');

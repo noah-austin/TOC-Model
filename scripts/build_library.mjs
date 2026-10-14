@@ -108,7 +108,7 @@ td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); b
 ${navHtml('library', '../')}
 <main>
   <h1>TCO Projection Library</h1>
-  <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one opens as a two-page report with the cost curve. Use the <b>Report builder</b> for a specific customer's roof.</p>
+  <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one is a custom cost curve for a typical building and opens as a two-page report. Use <b>Custom cost curves</b> for a specific customer's roof, or <b>Generic cost curves</b> for research averages from new roof to replacement.</p>
   <div class="card">
     <table>
       <thead><tr><th>Property type &middot; typical roof</th>${markets.map((m) => `<th>${esc(D.markets[m].shortName)}</th>`).join('')}</tr></thead>
