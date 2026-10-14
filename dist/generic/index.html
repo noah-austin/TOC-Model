@@ -121,21 +121,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 .breakdown td.s { color: var(--green); font-weight: 700; }
 .breakdown .u { color: var(--muted); font-weight: 400; font-size: 11px; }
 
-/* Matrix */
 .mx-wrap { overflow-x: auto; }
-.matrix { min-width: 820px; }
-.matrix th, .matrix td { padding: 9px 10px; border-bottom: 1px solid var(--hair); font-size: 12px; text-align: center; }
-.matrix thead th { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); white-space: nowrap; }
-.matrix tbody th { text-align: left; font-weight: 700; white-space: nowrap; }
-.matrix td { border-left: 1px solid var(--hair); cursor: pointer; }
-.matrix td:hover { background: var(--panel); }
-.matrix td.on { outline: 2px solid var(--navy); outline-offset: -2px; background: var(--green-wash); }
-.matrix td .p { font-size: 15px; font-weight: 800; color: var(--green); }
-.matrix td .p.neg { color: var(--red); }
-.matrix td .s { font-size: 10.5px; color: var(--muted); }
-.matrix tr.avg th, .matrix tr.avg td, .matrix td.avgc, .matrix th.avgc { background: var(--panel); }
-.matrix td:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
-.mx-tabs { margin-bottom: 12px; }
 
 /* Method */
 .method { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; font-size: 12.5px; color: var(--ink-2); }
@@ -150,6 +136,14 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 .sources { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; padding-left: 18px; }
 .sources li { margin-bottom: 3px; }
 .sources a { color: var(--navy); overflow-wrap: anywhere; }
+.src-drop { margin-top: 16px; border: 1px solid var(--rule); border-radius: 8px; }
+.src-drop summary { cursor: pointer; padding: 10px 14px; font-size: 12.5px; font-weight: 700; color: var(--navy); list-style: none; display: flex; align-items: center; gap: 6px; }
+.src-drop summary::-webkit-details-marker { display: none; }
+.src-drop summary::before { content: '▸'; font-size: 11px; transition: transform .15s; }
+.src-drop[open] summary::before { transform: rotate(90deg); }
+.src-drop summary span { color: var(--muted); font-weight: 600; }
+.src-drop summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 8px; }
+.src-drop .sources { margin: 0; padding: 0 16px 12px 34px; }
 .fine { font-size: 11px; color: var(--muted); margin-top: 10px; max-width: 120ch; }
 
 @media (max-width: 900px) {
@@ -267,13 +261,6 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
     <p class="fine" id="fine"></p>
   </section>
 
-  <section class="card no-print">
-    <h2>Compare every combination</h2>
-    <p class="sub">PaxSeal's saving per year of roof life, as a share of the reactive cost. Click any cell to open its curve.</p>
-    <div class="chips mx-tabs" id="mx-s" role="group" aria-label="Roof type for the table"></div>
-    <div class="mx-wrap"><table class="matrix" id="matrix"></table></div>
-  </section>
-
   <section class="card no-print" id="method">
     <h2>How these curves are built</h2>
     <p class="sub">Every number below is a research average. Sources and confidence are listed so they can be checked and replaced with PAX job data.</p>
@@ -282,7 +269,7 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
     <div class="mx-wrap"><table class="lives" id="lives"></table></div>
     <h3 style="font-size:12.5px;margin:16px 0 6px">Building types</h3>
     <div class="mx-wrap"><table class="lives" id="types"></table></div>
-    <ol class="sources" id="sources"></ol>
+    <details class="src-drop"><summary>Sources <span id="src-count"></span></summary><ol class="sources" id="sources"></ol></details>
   </section>
 </main>
 <div class="sheets" id="sheets" aria-label="Customer PDF"></div>
@@ -426,7 +413,6 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
   var params = new URLSearchParams(location.search);
   var pickId = function (list, v) { return v && (v === 'all' || label(list, v)) ? v : 'all'; };
   var state = { m: pickId(D.markets, params.get('market')), t: pickId(D.types, params.get('type')), s: pickId(D.systems, params.get('roof')) };
-  var mxSystem = state.s;
 
   function commonness(t, s) { return t === 'all' || s === 'all' ? 'common' : (D.commonness[t] && D.commonness[t][s]) || 'common'; }
 
@@ -439,7 +425,7 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
     el.innerHTML = html;
     Array.prototype.forEach.call(el.querySelectorAll('button'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === state[key]));
-      b.onclick = function () { state[key] = b.getAttribute('data-v'); if (key === 's') mxSystem = state.s; render(); };
+      b.onclick = function () { state[key] = b.getAttribute('data-v'); render(); };
     });
   }
 
@@ -534,7 +520,6 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
 
   // ---------- Render ----------
   function key(m, t, s) { return m + '|' + t + '|' + s; }
-  function resultFor(m, t, s) { return G.curve(D.params[key(m, t, s)]); }
 
   function render() {
     chips($('pick-m'), D.markets, 'm', 'All markets');
@@ -585,7 +570,6 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
       'Today’s dollars, no inflation. The fee is PAX’s estimate for a roof this size ($' + D.fee.baseUsd + ' + $' + D.fee.perSqftUsd.toFixed(2) + '/sq ft a year). ' +
       'Averages for a typical building, not a quote. Research as of ' + esc(D.researchedOn) + '; see “How these curves are built” on the web page.';
 
-    renderMatrix();
     var L = sheetLabels(p);
     renderSheet(p, r, L);
     var dl = document.getElementById('download');
@@ -593,34 +577,6 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
   }
 
   function kpi(k, v, d, good) { return '<div class="kpi"><div class="k">' + k + '</div><div class="v' + (good ? ' good' : '') + '">' + v + '</div><div class="d">' + d + '</div></div>'; }
-
-  function renderMatrix() {
-    var el = $('mx-s'), html = '<button type="button" class="all" data-v="all">All roof types</button>';
-    D.systems.forEach(function (o) { html += '<button type="button" data-v="' + o.id + '">' + esc(o.label) + '</button>'; });
-    el.innerHTML = html;
-    Array.prototype.forEach.call(el.querySelectorAll('button'), function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === mxSystem));
-      b.onclick = function () { mxSystem = b.getAttribute('data-v'); renderMatrix(); };
-    });
-    var cols = D.markets.map(function (m) { return m.id; }).concat(['all']);
-    var rows = D.types.map(function (t) { return t.id; }).concat(['all']);
-    var t = '<thead><tr><th>Building type</th>' + cols.map(function (m) { return '<th' + (m === 'all' ? ' class="avgc"' : '') + '>' + (m === 'all' ? 'All markets' : esc(label(D.markets, m).label)) + '</th>'; }).join('') + '</tr></thead><tbody>';
-    rows.forEach(function (ty) {
-      t += '<tr' + (ty === 'all' ? ' class="avg"' : '') + '><th>' + (ty === 'all' ? 'All building types' : esc(label(D.types, ty).label)) + '</th>';
-      cols.forEach(function (m) {
-        var k = resultFor(m, ty, mxSystem).kpis, on = m === state.m && ty === state.t && mxSystem === state.s;
-        var rare = commonness(ty, mxSystem) === 'rare' ? ' · rare' : '';
-        t += '<td tabindex="0" data-m="' + m + '" data-t="' + ty + '" class="' + (on ? 'on ' : '') + (m === 'all' ? 'avgc' : '') + '" title="Open this curve"><div class="p' + (k.savingPct < 0 ? ' neg' : '') + '">' + pct(k.savingPct) + '</div><div class="s">' + psf(k.savingPerSqftYear) + '/sq ft/yr · +' + k.lifeAdded + ' yrs' + rare + '</div></td>';
-      });
-      t += '</tr>';
-    });
-    $('matrix').innerHTML = t + '</tbody>';
-    Array.prototype.forEach.call($('matrix').querySelectorAll('td'), function (td) {
-      var go = function () { state.m = td.getAttribute('data-m'); state.t = td.getAttribute('data-t'); state.s = mxSystem; render(); $('result').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-      td.onclick = go;
-      td.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
-    });
-  }
 
   function renderMethod() {
     $('method-body').innerHTML = D.method.map(function (m) { return '<div><h3>' + esc(m.title) + '</h3><p>' + m.html + '</p></div>'; }).join('');
@@ -638,6 +594,7 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
       u += '<tr><td>' + esc(ty.label) + '</td><td>' + Math.round(p.area).toLocaleString('en-US') + ' sq ft</td><td>' + f.repairBurden.toFixed(2) + '×</td><td>' + f.leakMultiplier.toFixed(2) + '×</td><td>' + (f.lifeAdjustPct ? f.lifeAdjustPct + '%' : '—') + '</td></tr>';
     });
     $('types').innerHTML = u + '</tbody>';
+    $('src-count').textContent = '(' + D.sources.length + ')';
     $('sources').innerHTML = D.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url.replace(/^https?:\/\//, '').slice(0, 70)) + '</a>' : '') + '</li>'; }).join('');
   }
 
@@ -731,7 +688,7 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
   }
 
   // Exposed for scripts/build_generic_pdfs.mjs: render one combination and return its file name.
-  window.showCombo = function (m, t, s) { state.m = m; state.t = t; state.s = s; mxSystem = s; render(); return pdfName(); };
+  window.showCombo = function (m, t, s) { state.m = m; state.t = t; state.s = s; render(); return pdfName(); };
   function pdfName() { return state.m + '--' + state.t + '--' + state.s + '.pdf'; }
   function downloadName(L) { return ('PAX Cost Curve - ' + L.combo.replace(/ · /g, ' - ')).replace(/[\/\\:*?"<>|]/g, '') + '.pdf'; }
 
