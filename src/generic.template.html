@@ -112,23 +112,62 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
   .kpi .v { font-size: 19px; }
 }
 
-/* Print: the selected curve on one Letter page. */
-@page { size: letter; margin: 0.45in; }
+/* ---------- Customer sheet: two US Letter pages, printed and exported as PDF ---------- */
+.sheets { display: none; }
+body.sheet-view { background: #DDE2E6; }
+body.sheet-view main { display: none; }
+body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
+.sheet { width: 816px; height: 1056px; margin: 0 auto 24px; background: #fff; box-shadow: 0 2px 12px rgba(28,43,57,.15); padding: 44px 52px 0; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+.sh-mast { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 3px solid var(--navy); }
+.sh-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 12px; letter-spacing: .16em; }
+.sh-doc { text-align: right; font-size: 10.5px; color: var(--muted); line-height: 1.35; }
+.sh-doc b { display: block; color: var(--ink); font-size: 12px; letter-spacing: .02em; }
+.sh-eyebrow { margin: 20px 0 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+.sh-title { font-size: 25px; line-height: 1.18; font-weight: 800; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.sh-title em { font-style: normal; color: var(--green); }
+.sh-lede { font-size: 12px; color: var(--ink-2); margin: 8px 0 16px; max-width: 92%; }
+.sh-kpis { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.sh-kpi { padding: 11px 13px; border-left: 1px solid var(--rule); }
+.sh-kpi:first-child { border-left: 0; }
+.sh-kpi .k { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sh-kpi .v { font-size: 21px; font-weight: 800; letter-spacing: -.01em; margin: 3px 0 1px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sh-kpi .v small { font-size: 11px; font-weight: 700; color: var(--muted); }
+.sh-kpi .v.good { color: var(--green); }
+.sh-kpi .d { font-size: 10px; color: var(--ink-2); line-height: 1.35; }
+.sh-kpi.hero { background: var(--green-wash); }
+.sh-h { font-size: 13px; font-weight: 800; margin: 18px 0 1px; }
+.sh-sub { font-size: 10.5px; color: var(--muted); margin: 0 0 4px; }
+.sh-chart svg { display: block; width: 100%; height: auto; }
+.sh-legend { display: flex; gap: 18px; font-size: 10.5px; color: var(--ink-2); margin-top: 6px; }
+.sh-legend i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+.sh-foot { margin-top: auto; display: flex; justify-content: space-between; font-size: 9.5px; color: var(--faint); border-top: 1px solid var(--rule); padding: 9px 0 20px; }
+.sh-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 6px; }
+.sh-table th, .sh-table td { padding: 4px 10px; border-bottom: 1px solid var(--hair); font-size: 11.5px; text-align: right; }
+.sh-table th:first-child, .sh-table td:first-child { text-align: left; }
+.sh-table thead th { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); }
+.sh-table .u { display: block; font-size: 9px; color: var(--muted); line-height: 1.2; }
+.sh-table tr.total td { font-weight: 800; border-top: 1px solid var(--navy); }
+.sh-table tr.hl td { font-weight: 800; background: var(--green-wash); }
+.sh-table td.g { color: var(--green); font-weight: 700; }
+.sh-why { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.sh-why div { background: var(--panel); border-radius: 8px; padding: 9px 12px; font-size: 10.5px; color: var(--ink-2); line-height: 1.45; border-top: 3px solid var(--green); }
+.sh-why b { display: block; color: var(--ink); font-size: 12px; margin-bottom: 2px; }
+.sh-how { margin: 6px 0 0; padding-left: 16px; font-size: 10.5px; color: var(--ink-2); line-height: 1.5; }
+.sh-how li { margin-bottom: 3px; }
+.sh-next { margin-top: 12px; display: flex; gap: 16px; align-items: center; background: var(--navy); color: #fff; border-radius: 8px; padding: 14px 18px; }
+.sh-next b { display: block; font-size: 13.5px; margin-bottom: 2px; }
+.sh-next p { margin: 0; font-size: 11px; color: #C5CED4; line-height: 1.45; }
+.sh-next .tag { flex: none; background: var(--red); font-size: 10px; font-weight: 800; letter-spacing: .1em; padding: 6px 10px; border-radius: 4px; }
+.sh-fine { font-size: 9px; color: var(--faint); line-height: 1.45; margin: 12px 0 0; }
+
+@page { size: letter; margin: 0; }
 @media print {
-  body { background: #fff; font-size: 11px; }
-  main { padding: 0; max-width: none; }
-  .no-print, .site-bar { display: none !important; }
-  .card { box-shadow: none; padding: 0; margin-bottom: 10px; }
-  .print-head { display: flex !important; }
-  .kpi { padding: 8px 10px; }
-  .kpi .v { font-size: 17px; }
-  .charts { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .breakdown th, .breakdown td { padding: 4px 8px; font-size: 10.5px; }
-  .breakdown { margin-top: 10px; }
-  .flag { margin: 0 0 8px; }
+  body, body.sheet-view { background: #fff; }
+  main, .site-bar { display: none !important; }
+  .sheets, body.sheet-view .sheets { display: block; padding: 0; }
+  .sheet { margin: 0; box-shadow: none; break-after: page; }
+  .sheet:last-child { break-after: auto; }
 }
-.print-head { display: none; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 6px; margin-bottom: 10px; }
-.print-head b { font-size: 12px; letter-spacing: .12em; }
 </style>
 </head>
 <body>
@@ -149,7 +188,6 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
   </section>
 
   <section class="card" id="result" aria-live="polite">
-    <div class="print-head"><span><svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true" style="vertical-align:middle"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg> <b>SERVICES GROUP</b></span><span>Generic cost curve</span></div>
     <div class="combo"><h2 id="combo-title"></h2><span class="meta" id="combo-meta"></span></div>
     <div class="flag" id="flag"></div>
     <div class="kpis" id="kpis"></div>
@@ -188,6 +226,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
     <ol class="sources" id="sources"></ol>
   </section>
 </main>
+<div class="sheets" id="sheets" aria-label="Customer PDF"></div>
 <script>/*__ENGINE__*/</script>
 <script>/*__DATA__*/</script>
 <script>
@@ -222,7 +261,9 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
   }
 
   // ---------- SVG charts ----------
-  var W = 520, H = 290, M = { l: 52, r: 18, t: 18, b: 38 };
+  // Chart size; the customer sheet draws larger, static copies by swapping SIZE.
+  var SCREEN = { w: 520, h: 290 }, SIZE = SCREEN, W = SIZE.w, H = SIZE.h, M = { l: 52, r: 18, t: 18, b: 38 };
+  function withSize(size, fn) { var prev = SIZE; SIZE = size; W = size.w; H = size.h; try { fn(); } finally { SIZE = prev; W = prev.w; H = prev.h; } }
   function niceMax(v) { var p = Math.pow(10, Math.floor(Math.log10(v || 1))), f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
   function axes(xMax, yMax, yFmt, xTitle) {
     var g = '', iw = W - M.l - M.r, ih = H - M.t - M.b;
@@ -289,6 +330,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 
   // Shared hover: a guide line and tooltip that follow the pointer by roof age.
   function draw(el, inner, xMax, X, tipFor, maxAge, minAge) {
+    var W = SIZE.w, H = SIZE.h;
     el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img">' + inner +
       '<line class="guide" y1="' + M.t + '" y2="' + (H - M.b) + '" stroke="#1C2B39" stroke-width="1" opacity="0"/>' +
       '<rect x="' + M.l + '" y="' + M.t + '" width="' + (W - M.l - M.r) + '" height="' + (H - M.t - M.b) + '" fill="transparent"/></svg><div class="tip" hidden></div>';
@@ -302,6 +344,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
       tip.style.left = Math.min(Math.max(X(a) * b.width / W, 90), b.width - 90) + 'px';
       tip.style.top = (M.t * b.height / H) + 'px';
     }
+    if (SIZE.static) return;
     svg.addEventListener('pointermove', show);
     svg.addEventListener('pointerleave', function () { tip.hidden = true; guide.setAttribute('opacity', '0'); });
   }
@@ -360,6 +403,10 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
       'Averages for a typical building, not a quote. Research as of ' + esc(D.researchedOn) + '; see “How these curves are built” on the web page.';
 
     renderMatrix();
+    var L = sheetLabels(p);
+    renderSheet(p, r, L);
+    var dl = document.getElementById('download');
+    if (dl) { dl.href = 'pdf/' + pdfName(); dl.setAttribute('download', downloadName(L)); }
   }
 
   function kpi(k, v, d, good) { return '<div class="kpi"><div class="k">' + k + '</div><div class="v' + (good ? ' good' : '') + '">' + v + '</div><div class="d">' + d + '</div></div>'; }
@@ -411,6 +458,100 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
     $('sources').innerHTML = D.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url.replace(/^https?:\/\//, '').slice(0, 70)) + '</a>' : '') + '</li>'; }).join('');
   }
 
+  // ---------- Customer sheet (Print and the PDF downloads) ----------
+  var PAX_MARK = '<svg width="44" height="22" viewBox="0 0 40 20" aria-hidden="true"><rect width="40" height="20" rx="3" fill="#CD163F"/><text x="20" y="14.2" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="1">PAX</text></svg>';
+  var MONTH = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+  function renderSheet(p, r, L) {
+    var k = r.kpis, R = r.reactive, P = r.paxseal, A = p.area, good = k.savingPerYear > 0;
+    var sqft = (Math.round(A / 1000) * 1000).toLocaleString('en-US');
+    var foot = function (n) { return '<div class="sh-foot"><span>PAX Services Group · Roof lifecycle cost curve · ' + esc(L.combo) + '</span><span>Page ' + n + ' of 2</span></div>'; };
+    var mast = '<header class="sh-mast"><div class="sh-brand">' + PAX_MARK + 'SERVICES GROUP</div><div class="sh-doc"><b>Roof Lifecycle Cost Curve</b>' + esc(MONTH) + '</div></header>';
+    var title = good
+      ? 'With PaxSeal, this roof lasts <em>' + k.lifeAdded + ' years longer</em> and costs <em>' + pct(k.savingPct) + ' less</em> for every year it’s in service.'
+      : 'With PaxSeal, this roof lasts <em>' + k.lifeAdded + ' years longer</em> before it needs replacing.';
+
+    var p1 = '<section class="sheet">' + mast +
+      '<div class="sh-eyebrow">' + esc(L.combo) + '</div>' +
+      '<h1 class="sh-title">' + title + '</h1>' +
+      '<p class="sh-lede">The industry-average cost of ' + esc(L.roofPhrase) + ' on ' + esc(L.buildingPhrase) + ' ' + esc(L.marketPhrase) + ', from the day it is installed to the day it must be replaced: repairing it only when it leaks, compared with PaxSeal planned maintenance.</p>' +
+      '<div class="sh-kpis">' +
+        '<div class="sh-kpi"><div class="k">Roof life</div><div class="v">' + k.lifeReactive + ' → ' + k.lifePaxseal + ' <small>yrs</small></div><div class="d">' + k.lifeAdded + ' more years before the next new roof</div></div>' +
+        '<div class="sh-kpi"><div class="k">Cost per year of life</div><div class="v">' + psf(P.perSqftYear) + ' <small>/sq ft</small></div><div class="d">with PaxSeal, vs ' + psf(R.perSqftYear) + ' repairing only when it leaks</div></div>' +
+        '<div class="sh-kpi' + (good ? ' hero' : '') + '"><div class="k">' + (good ? 'Saved every year' : 'Extra cost per year') + '</div><div class="v' + (good ? ' good' : '') + '">' + money(Math.abs(k.savingPerYear)) + '</div><div class="d">on a typical ' + sqft + ' sq ft roof (' + psf(Math.abs(k.savingPerSqftYear)) + '/sq ft)</div></div>' +
+        '<div class="sh-kpi' + (good ? ' hero' : '') + '"><div class="k">Over one roof life</div><div class="v' + (good ? ' good' : '') + '">' + money(Math.abs(k.savingOverPaxsealLife)) + '</div><div class="d">' + (good ? 'saved' : 'more') + ' across ' + k.lifePaxseal + ' years of service</div></div>' +
+      '</div>' +
+      '<h2 class="sh-h">Total cost of one roof, new to replacement</h2><p class="sh-sub">Running total per sq ft: the new roof, then every repair, storm repair and PaxSeal fee until the roof must be replaced.</p>' +
+      '<div class="sh-chart" id="sh-cum"></div>' +
+      '<h2 class="sh-h">Yearly cost as the roof ages</h2><p class="sh-sub">Cost per sq ft each year. Without maintenance, repairs climb steeply as the roof wears out; PaxSeal keeps the climb flatter and pushes it later.</p>' +
+      '<div class="sh-chart" id="sh-year"></div>' +
+      '<div class="sh-legend"><span><i style="background:var(--reactive)"></i>Repair only when it leaks</span><span><i style="background:var(--paxseal)"></i>PaxSeal planned maintenance</span><span style="margin-left:auto;color:var(--faint)">Today’s dollars</span></div>' +
+      foot(1) + '</section>';
+
+    var row = function (n, a, b, cls) {
+      var d = a == null ? '' : a - b;
+      var cell = function (v) { return v == null ? '—' : money(v) + '<span class="u">' + psf(v / A) + '/sq ft</span>'; };
+      return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td>' + n + '</td><td>' + cell(a) + '</td><td>' + cell(b) + '</td><td class="g">' + (a == null || Math.abs(d) < 0.5 ? '—' : (d >= 0 ? '' : '+') + money(Math.abs(d))) + '</td></tr>';
+    };
+    var table = '<table class="sh-table"><thead><tr><th>One roof, new to replacement</th><th>Repair when it leaks</th><th>PaxSeal</th><th>Difference</th></tr></thead><tbody>' +
+      row('New roof', R.install, P.install) +
+      row('Repairs', R.repairs, P.repairs) +
+      row('Storm damage to the roof', R.storm, P.storm) +
+      '<tr><td>PaxSeal planned maintenance</td><td>—</td><td>' + money(P.fees) + '<span class="u">' + psf(P.fees / A) + '/sq ft</span></td><td class="g" style="color:var(--muted)">+' + money(P.fees) + '</td></tr>' +
+      row('Total for one roof', R.lifetime, P.lifetime, 'total') +
+      '<tr><td>Years of service</td><td>' + R.life + ' years</td><td>' + P.life + ' years</td><td class="g">+' + (P.life - R.life) + ' years</td></tr>' +
+      row('Cost per year of service', R.perYear, P.perYear, 'hl') +
+      '</tbody></table>';
+
+    var why = [
+      ['Leaks caught early', 'Over the roof’s life, repairs come to ' + money(P.repairs) + ' with PaxSeal against ' + money(R.repairs) + ' without. A problem found on a planned visit costs about a third of an emergency repair.'],
+      ['A roof that lasts longer', 'Regular inspections and upkeep add about ' + k.lifeAdded + ' years, so the next ' + money(R.install) + ' roof is ' + k.lifeAdded + ' years further away and its cost is spread over ' + P.life + ' years instead of ' + R.life + '.'],
+      ['Less storm damage', 'A maintained roof holds up better in hail and high winds, and its records support insurance claims: about ' + money(P.storm / P.life) + ' a year in storm damage instead of ' + money(R.storm / R.life) + '.'],
+      L.story ? [L.story.replace(/<b>(.*?)<\/b>.*/, '$1').replace(/\.$/, ''), L.story.replace(/<b>.*?<\/b>\s*/, '')]
+              : ['A predictable budget', 'A fixed yearly fee replaces surprise repair bills, so roof spending can be planned years ahead instead of found in an emergency.']
+    ];
+    var p2 = '<section class="sheet">' + mast +
+      '<h2 class="sh-h" style="margin-top:20px">Where the money goes</h2><p class="sh-sub">One roof on a typical ' + sqft + ' sq ft ' + esc(L.noun) + ', from installation to replacement, in today’s dollars.</p>' + table +
+      '<h2 class="sh-h">Why the PaxSeal curve stays lower</h2>' +
+      '<div class="sh-why">' + why.map(function (w) { return '<div><b>' + esc(w[0]) + '</b>' + esc(w[1]) + '</div>'; }).join('') + '</div>' +
+      '<h2 class="sh-h">How these figures are built</h2>' +
+      '<ul class="sh-how">' +
+        '<li><b>Roof life</b> comes from lender useful-life tables and industry studies for ' + esc(L.roofPlural) + ', adjusted for ' + esc(L.climate) + '. Planned maintenance adds about ' + k.lifeAdded + ' years, in line with National Research Council of Canada findings and manufacturers’ warranty extensions for maintained roofs.</li>' +
+        '<li><b>Repairs</b> follow a wear-out curve: small while the roof is new, rising steeply near the end of its life, averaging about 1% of the roof’s cost a year (Johns Manville owner’s manual). Repairs made only after a leak cost about three times as much' + (L.leaky ? ', and more in buildings where a leak does more harm' : '') + '.</li>' +
+        '<li><b>Storm damage</b> uses FEMA’s National Risk Index for ' + esc(L.marketShort) + '. <b>Costs</b> are installed prices for ' + esc(L.marketShort) + ' (' + psf(p.costPerSqft) + '/sq ft for a new roof) and an estimated PaxSeal fee of ' + money(p.fee) + ' a year, all in today’s dollars.</li>' +
+      '</ul>' +
+      '<div class="sh-next"><span class="tag">NEXT STEP</span><div><b>See the curve for your own roof</b><p>These are averages for a typical building. Your PAX representative can build a custom cost curve from your roof’s size, age, condition and a real PaxSeal proposal.</p></div></div>' +
+      '<p class="sh-fine">Industry averages for illustration, not a quote, warranty or guarantee of future costs. Actual costs depend on the roof’s condition, design, use, weather and pricing at the time of work. Sources include Fannie Mae and ASTM E2018 useful-life tables, NRC Canada roof life-cycle research, NRCA, Johns Manville, the EPDM Roofing Association, FEMA National Risk Index (December 2025) and published commercial roofing cost surveys. Research current as of ' + esc(D.researchedOn) + '.</p>' +
+      foot(2) + '</section>';
+
+    $('sheets').innerHTML = p1 + p2;
+    withSize({ w: 712, h: 262, static: true }, function () { chartCumulative($('sh-cum'), r, A); });
+    withSize({ w: 712, h: 205, static: true }, function () { chartYearly($('sh-year'), r, A); });
+  }
+
+  function sheetLabels(p) {
+    var m = state.m === 'all' ? null : label(D.markets, state.m), t = state.t === 'all' ? null : label(D.types, state.t), s = state.s === 'all' ? null : label(D.systems, state.s);
+    var roofName = s ? (s.id === 'coating_restoration' ? 'coating restoration' : s.id === 'mod_bit' ? 'modified bitumen' : s.id === 'bur' ? 'built-up' : s.id === 'metal' ? 'metal' : s.label) : null;
+    var texas = m && (m.id === 'austin' || m.id === 'san-antonio'), coast = m && m.id === 'hampton-roads';
+    return {
+      combo: (s ? s.label + ' roof' : 'Commercial roof') + ' · ' + (t ? t.label : 'All building types') + ' · ' + (m ? m.label : 'PAX markets'),
+      roofPhrase: s ? (/^[aeiou]/i.test(roofName) ? 'an ' : 'a ') + roofName + ' roof' : 'a typical commercial roof',
+      roofPlural: s ? roofName + ' roofs' : 'each roof type',
+      buildingPhrase: t ? (/^[aeiou]/i.test(t.noun) ? 'an ' : 'a ') + t.noun : 'a typical commercial building',
+      noun: t ? t.noun : 'commercial building',
+      marketPhrase: m ? 'in the ' + m.label + ' area' : 'across PAX’s markets',
+      marketShort: m ? 'the ' + m.label + ' area' : 'each PAX market',
+      climate: texas ? 'Central Texas heat, sun and hail' : coast ? 'coastal wind and salt air in Hampton Roads' : m ? 'the Mid-Atlantic climate' : 'the climate in each PAX market',
+      story: t ? t.story : null,
+      leaky: !t || (D.typeFactors[t.id] && D.typeFactors[t.id].leakMultiplier > 1)
+    };
+  }
+
+  // Exposed for scripts/build_generic_pdfs.mjs: render one combination and return its file name.
+  window.showCombo = function (m, t, s) { state.m = m; state.t = t; state.s = s; mxSystem = s; render(); return pdfName(); };
+  function pdfName() { return state.m + '--' + state.t + '--' + state.s + '.pdf'; }
+  function downloadName(L) { return ('PAX Cost Curve - ' + L.combo.replace(/ · /g, ' - ')).replace(/[\/\\:*?"<>|]/g, '') + '.pdf'; }
+
   var copy = document.getElementById('copy-link');
   if (copy) copy.onclick = function () {
     var done = function () { var t = document.getElementById('toast'); if (t) { t.textContent = 'Link copied'; setTimeout(function () { t.textContent = ''; }, 1800); } };
@@ -418,6 +559,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
   };
   var pr = document.getElementById('print'); if (pr) pr.onclick = function () { window.print(); };
 
+  if (params.get('view') === 'sheet') document.body.classList.add('sheet-view');
   renderMethod();
   render();
 })();

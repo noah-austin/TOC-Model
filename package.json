@@ -6,7 +6,8 @@
     "build": "node scripts/build.mjs",
     "test": "node scripts/build.mjs && node --test test/*.test.mjs",
     "library": "node scripts/build.mjs && node scripts/build_library.mjs",
-    "guide": "node scripts/build.mjs && node scripts/build_guide.mjs"
+    "guide": "node scripts/build.mjs && node scripts/build_guide.mjs",
+    "generic-pdfs": "node scripts/build.mjs && node scripts/build_generic_pdfs.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0"

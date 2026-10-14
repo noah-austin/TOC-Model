@@ -31,6 +31,7 @@ jobs:
       - run: npm test
       - run: node scripts/build_library.mjs
       - run: node scripts/build_guide.mjs
+      - run: node scripts/build_generic_pdfs.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

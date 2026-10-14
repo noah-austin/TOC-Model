@@ -65,7 +65,7 @@ export function buildGeneric(fonts) {
     researchedOn: R.researchedOn,
     fee: D.fee,
     markets: markets.map((id) => ({ id, label: D.markets[id].shortName.replace(' (N. Virginia)', '') })),
-    types: types.map((id) => ({ id, label: D.propertyTypes[id].label })),
+    types: types.map((id) => ({ id, label: D.propertyTypes[id].label, noun: D.propertyTypes[id].noun, story: D.propertyTypes[id].story || null })),
     systems: systems.map((id) => ({ id, label: R.systems[id].label })),
     params,
     commonness: R.commonness,
@@ -79,7 +79,8 @@ export function buildGeneric(fonts) {
   };
   const ICON_LINK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1-1a2.5 2.5 0 013.5 3.5l-1 1M9 11.5l-1 1A2.5 2.5 0 014.5 9l1-1"/></svg>';
   const ICON_PRINT = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6V2h8v4M4 12H2.5V6.5h11V12H12M4 9.5h8V14H4z"/></svg>';
-  const actions = `<span class="toast" id="toast" role="status"></span><button type="button" class="btn" id="copy-link">${ICON_LINK}<span class="opt">Copy link</span></button><button type="button" class="btn primary" id="print">${ICON_PRINT}<span class="opt">Print</span></button>`;
+  const ICON_DOWN = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2.5v8M4.5 7L8 10.5 11.5 7M3 13.5h10"/></svg>';
+  const actions = `<span class="toast" id="toast" role="status"></span><button type="button" class="btn" id="copy-link">${ICON_LINK}<span class="opt">Copy link</span></button><button type="button" class="btn" id="print">${ICON_PRINT}<span class="opt">Print</span></button><a class="btn primary" id="download" href="pdf/all--all--all.pdf" download>${ICON_DOWN}<span>PDF</span></a>`;
   const html = readFileSync(join(ROOT, 'src/generic.template.html'), 'utf8')
     .replace('/*__FONTS__*/', () => fonts)
     .replace('/*__NAVCSS__*/', () => NAV_CSS)

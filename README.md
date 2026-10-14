@@ -4,7 +4,7 @@ A sales tool for PAX Services Group. A rep enters a customer's roof details and 
 
 The site has two separate kinds of cost curve:
 
-- **Generic cost curves:** https://noah-austin.github.io/TOC-Model/generic/ has no inputs. For every market × building type × roof type (plus "All" averages), it shows the average cost of one roof from new to replacement, repairing only when it leaks vs PaxSeal. Values: `data/generic_curves.json` (research in `docs/research/generic-curves.md`); engine `src/generic.js`; build `scripts/build_generic.mjs` (run by `npm run build`). Links take `?market=&type=&roof=`.
+- **Generic cost curves:** https://noah-austin.github.io/TOC-Model/generic/ has no inputs. For every market × building type × roof type (plus "All" averages), it shows the average cost of one roof from new to replacement, repairing only when it leaks vs PaxSeal. Values: `data/generic_curves.json` (research in `docs/research/generic-curves.md`); engine `src/generic.js`; build `scripts/build_generic.mjs` (run by `npm run build`). Links take `?market=&type=&roof=`. **Customer PDF:** the page's PDF button downloads a two-page, customer-ready PDF for the selected curve (`dist/generic/pdf/`, all 336 generated on every deploy by `scripts/build_generic_pdfs.mjs`, or locally with `npm run generic-pdfs`); Print prints the same sheet, and `&view=sheet` previews it.
 - **Custom cost curves (live report):** https://noah-austin.github.io/TOC-Model/ is the report builder for one customer's roof (published by `.github/workflows/pages.yml` on every push).
 
 The same page is `dist/index.html`: one self-contained file with no internet dependencies, so it also works as an email attachment.
