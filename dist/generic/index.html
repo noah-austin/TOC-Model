@@ -130,9 +130,6 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 .lives th, .lives td { padding: 6px 8px; border-bottom: 1px solid var(--hair); font-size: 12px; text-align: right; }
 .lives th:first-child, .lives td:first-child { text-align: left; }
 .lives thead th { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--navy); }
-.conf { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 3px; padding: 1px 5px; background: var(--hair); color: var(--ink-2); }
-.conf.low { background: #FBE9EC; color: #8E0F2C; }
-.conf.medium { background: var(--gold-wash); color: #8A5A00; }
 .sources { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; padding-left: 18px; }
 .sources li { margin-bottom: 3px; }
 .sources a { color: var(--navy); overflow-wrap: anywhere; }
@@ -263,7 +260,7 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
 
   <section class="card no-print" id="method">
     <h2>How these curves are built</h2>
-    <p class="sub">Every number below is a research average. Sources and confidence are listed so they can be checked and replaced with PAX job data.</p>
+    <p class="sub">Every number below is a research average. Sources are listed so they can be checked and replaced with PAX job data.</p>
     <div class="method" id="method-body"></div>
     <h3 style="font-size:12.5px;margin:16px 0 6px">Roof life by roof type <span style="font-weight:400;color:var(--muted)">(market columns: climate change to life)</span></h3>
     <div class="mx-wrap"><table class="lives" id="lives"></table></div>
@@ -580,12 +577,12 @@ body.sheet-view .sheets { display: block; padding: 24px 0 48px; }
 
   function renderMethod() {
     $('method-body').innerHTML = D.method.map(function (m) { return '<div><h3>' + esc(m.title) + '</h3><p>' + m.html + '</p></div>'; }).join('');
-    var t = '<thead><tr><th>Roof type</th><th>Life, repair when it leaks</th><th>Range</th><th>Years PaxSeal adds</th>' + D.markets.map(function (m) { return '<th title="Climate adjustment to life">' + esc(m.label) + '</th>'; }).join('') + '<th>Confidence</th></tr></thead><tbody>';
+    var t = '<thead><tr><th>Roof type</th><th>Life, repair when it leaks</th><th>Range</th><th>Years PaxSeal adds</th>' + D.markets.map(function (m) { return '<th title="Climate adjustment to life">' + esc(m.label) + '</th>'; }).join('') + '</tr></thead><tbody>';
     D.systems.forEach(function (s) {
       var x = D.lives[s.id];
       t += '<tr><td>' + esc(s.label) + '</td><td>' + x.lifeReactive + ' yrs</td><td>' + x.low + '–' + x.high + '</td><td>+' + x.lifeAdded + '</td>' +
         D.markets.map(function (m) { var v = D.marketLifeAdjustPct[m.id][s.id]; return '<td>' + (v ? (v > 0 ? '+' : '') + v + '%' : '—') + '</td>'; }).join('') +
-        '<td><span class="conf ' + x.confidence + '">' + x.confidence + '</span></td></tr>';
+        '</tr>';
     });
     $('lives').innerHTML = t + '</tbody>';
     var u = '<thead><tr><th>Building type</th><th>Typical roof</th><th>Repair need</th><th>Cost of a leak</th><th>Life</th></tr></thead><tbody>';
