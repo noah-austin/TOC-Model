@@ -13,6 +13,8 @@
 //   the report page sets body.report-only, and the CSS below handles it.
 // - The header scrolls away with the page, so side panels can stick to the top.
 
+import { readFileSync as readIcon } from 'node:fs';
+
 export const NAV_CSS = `
   .site-bar { background: #1C2B39; color: #fff; display: flex; align-items: stretch; gap: 0 28px; padding: 0 20px; min-height: 52px; flex-wrap: wrap; }
   .site-brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 800; font-size: 13px; letter-spacing: .02em; white-space: nowrap; padding: 12px 0; }
@@ -104,4 +106,13 @@ export function navHtml(page, prefix, actions = '') {
   <nav class="site-nav" aria-label="Main">${MAIN.map((m) => link(m, m[0] === section)).join('')}</nav>
   <nav class="site-util" aria-label="Help and admin">${UTIL.map((u) => link(u, u[0] === section)).join('')}</nav>
 </header>${sub}`;
+}
+
+// Browser-tab icon (red PAX square with a white P), embedded so every page stays self-contained.
+// src/favicon-32.png for tabs, src/favicon-180.png for phone home screens.
+const icon = (size) => 'data:image/png;base64,' + readIcon(new URL(`../src/favicon-${size}.png`, import.meta.url)).toString('base64');
+const ICON_LINKS = `<link rel="icon" type="image/png" sizes="32x32" href="${icon(32)}"><link rel="apple-touch-icon" href="${icon(180)}">`;
+export function withFavicon(html) {
+  if (!html.includes('<meta charset="utf-8">')) throw new Error('withFavicon: page has no <meta charset="utf-8">');
+  return html.replace('<meta charset="utf-8">', () => '<meta charset="utf-8">\n' + ICON_LINKS);
 }

@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
-import { NAV_CSS, navHtml } from './nav.mjs';
+import { NAV_CSS, navHtml, withFavicon } from './nav.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
@@ -88,6 +88,6 @@ export function buildGeneric(fonts) {
     .replace('/*__ENGINE__*/', () => readFileSync(join(ROOT, 'src/generic.js'), 'utf8'))
     .replace('/*__DATA__*/', () => 'window.GENERIC_DATA = ' + JSON.stringify(data).replace(/</g, '\\u003c') + ';');
   mkdirSync(join(ROOT, 'dist/generic'), { recursive: true });
-  writeFileSync(join(ROOT, 'dist/generic/index.html'), html);
+  writeFileSync(join(ROOT, 'dist/generic/index.html'), withFavicon(html));
   return Object.keys(params).length;
 }

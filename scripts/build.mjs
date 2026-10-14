@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
-import { NAV_CSS, navHtml } from './nav.mjs';
+import { NAV_CSS, navHtml, withFavicon } from './nav.mjs';
 import { buildGeneric } from './build_generic.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -212,13 +212,13 @@ const html = template
   // Escape '<' so research text can never close the <script> tag early.
   .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults).replace(/</g, '\\u003c') + ';');
 mkdirSync(join(ROOT, 'dist/custom'), { recursive: true });
-writeFileSync(join(ROOT, 'dist/custom/index.html'), html);
+writeFileSync(join(ROOT, 'dist/custom/index.html'), withFavicon(html));
 
 // Home page: the two tools. Old shared links (/?market=...) redirect to /custom/.
-writeFileSync(join(ROOT, 'dist/index.html'), readFileSync(join(ROOT, 'src/home.template.html'), 'utf8')
+writeFileSync(join(ROOT, 'dist/index.html'), withFavicon(readFileSync(join(ROOT, 'src/home.template.html'), 'utf8')
   .replace('/*__FONTS__*/', () => fonts)
   .replace('/*__NAVCSS__*/', () => NAV_CSS)
-  .replace('<!--__NAV__-->', () => navHtml('home', '')));
+  .replace('<!--__NAV__-->', () => navHtml('home', ''))));
 
 // ---------- Assumptions page: every backend number, its research basis, and an editor ----------
 const national = readJson('data/national.json');
@@ -246,7 +246,7 @@ const page = readFileSync(join(ROOT, 'src/assumptions.template.html'), 'utf8')
   .replace('/*__OVERRIDES_JS__*/', () => readFileSync(join(ROOT, 'src/overrides.js'), 'utf8'))
   .replace('/*__DATA__*/', () => 'window.PAX_DATA = ' + JSON.stringify({ base: baseDefaults, overrides, research, modelConfig: E.MODEL_CONFIG }).replace(/</g, '\\u003c') + ';');
 mkdirSync(join(ROOT, 'dist/assumptions'), { recursive: true });
-writeFileSync(join(ROOT, 'dist/assumptions/index.html'), page);
+writeFileSync(join(ROOT, 'dist/assumptions/index.html'), withFavicon(page));
 console.log('Built data/model_defaults.json, dist/index.html (home), dist/custom/index.html and dist/assumptions/index.html' +
   (Object.keys(overrides).length ? ' (with data/overrides.json)' : ''));
 

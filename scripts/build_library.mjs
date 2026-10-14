@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { chromium } from 'playwright';
-import { NAV_CSS, navHtml } from './nav.mjs';
+import { NAV_CSS, navHtml, withFavicon } from './nav.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -122,5 +122,5 @@ ${rows}
 </body>
 </html>
 `;
-writeFileSync(join(OUT, 'index.html'), html);
+writeFileSync(join(OUT, 'index.html'), withFavicon(html));
 console.log(`Built ${markets.length * types.length} PDFs and dist/library/index.html`);
