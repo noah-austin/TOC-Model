@@ -108,7 +108,8 @@
       market: market,
       marketId: market.id,
       system: system,
-      systemLife: defaults.systems[system].lifeYears,
+      // Rep can set the roof's life with maintenance for one report; otherwise the system's design life.
+      systemLife: num(raw.life, defaults.systems[system].lifeYears),
       propertyType: propType,
       leakMultiplier: num(pt.leakMultiplier, 1),
       area: area,

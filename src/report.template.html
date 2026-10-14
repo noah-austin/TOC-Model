@@ -308,6 +308,8 @@
       <summary><span class="step">4</span><span class="gt">Model assumptions</span><span class="chev"></span></summary>
       <div class="g-body">
         <div class="hint" style="margin:0">For sales ops. Changes apply to this report only and are saved in its link.</div>
+        <div class="field"><label for="life">Roof life with PaxSeal</label><div class="unit"><input id="life" name="life" type="number" step="any" min="5" max="60"><span>yrs</span></div>
+          <div class="hint">Age at which a maintained roof is replaced. Reactive roofs last this many years minus "life added".</div></div>
         <div class="row2">
           <div class="field"><label for="ext">Life added by PaxSeal</label><div class="unit"><input id="ext" name="ext" type="number" step="any" min="0" max="10"><span>yrs</span></div></div>
           <div class="field"><label for="mult">Emergency repair cost</label><div class="unit"><input id="mult" name="mult" type="number" step="any" min="1" max="10"><span>&times;</span></div></div>
@@ -410,7 +412,7 @@
   var D = window.PAX_DEFAULTS, E = window.PaxTCO, CFG = E.MODEL_CONFIG;
   var FIELDS = ['customer', 'property', 'city', 'contact', 'preparedBy', 'date', 'market', 'propertyType',
     'area', 'roofAge', 'system', 'condition', 'costPerSqft', 'replacementCost', 'annualFee', 'escalation', 'capRate',
-    'ext', 'mult', 'repair', 'warranty', 'leaks', 'internal', 'repPhone', 'repEmail'];
+    'ext', 'mult', 'repair', 'life', 'warranty', 'leaks', 'internal', 'repPhone', 'repEmail'];
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
   var C = { planned: '#1A6B3C', reactive: '#CD163F', reference: '#8C979F', ink: '#1C2B39', muted: '#5E6A73', grid: '#EBEEF0', axis: '#C3CBD0', wash: '#EAF4EE' };
@@ -463,7 +465,7 @@
     if (el.type === 'checkbox') el.checked = v === '1'; else el.value = v;
   });
   applyDefaults();
-  if (['ext', 'mult', 'repair', 'internal'].some(function (f) { return params.has(f); })) $('advanced').open = true;
+  if (['ext', 'mult', 'repair', 'life', 'internal'].some(function (f) { return params.has(f); })) $('advanced').open = true;
   if (params.get('view') === 'report') document.body.classList.add('report-only');
 
   function readForm() {
@@ -681,6 +683,7 @@
     form.elements.replacementCost.placeholder = Math.round(inp.area * inp.costPerSqft).toLocaleString('en-US');
     form.elements.annualFee.placeholder = Math.round(D.fee.baseUsd + D.fee.perSqftUsd * inp.area).toLocaleString('en-US');
     form.elements.escalation.placeholder = D.escalationPct.toFixed(1);
+    form.elements.life.placeholder = D.systems[inp.system].lifeYears;
     var capDef = pt.capRateKey && mk.capRates[pt.capRateKey] && mk.capRates[pt.capRateKey].value;
     form.elements.capRate.placeholder = capDef ? capDef.toFixed(2) : 'n/a';
     var mob = mk.capRates.medical_office && mk.capRates.medical_office.value;
@@ -822,7 +825,7 @@
     var capSrc = pt.capRateKey ? mk.capRates[pt.capRateKey] : null;
     var repCost = raw.costPerSqft || raw.replacementCost;
     var A = [
-      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - k.lifeExtensionYears) + ' yrs', 'Maintained / reactive. Industry life tables; maintenance adds ~' + k.lifeExtensionYears + ' yrs (NRC Canada, warranties)', 'medium'],
+      ['Roof life', inp.systemLife + ' / ' + (inp.systemLife - k.lifeExtensionYears) + ' yrs', raw.life ? 'Maintained / reactive. Maintained life entered by rep; maintenance adds ~' + k.lifeExtensionYears + ' yrs' : 'Maintained / reactive. Industry life tables; maintenance adds ~' + k.lifeExtensionYears + ' yrs (NRC Canada, warranties)', raw.life ? 'rep' : 'medium'],
       ['Roof cost growth', pct(inp.escalationPct) + '/yr', raw.escalation ? 'Entered by rep' : 'BLS Producer Price Index, nonresidential roofing, 2007\u20132025', raw.escalation ? 'rep' : 'high'],
       ['Replacement cost', '$' + inp.costPerSqft.toFixed(2) + '/sq ft', repCost ? 'Entered by rep' : (mDefault.source === 'market' ? mk.shortName + ' contractor price ranges' : mDefault.source === 'PAX adjustment' ? 'PAX pricing for ' + mk.shortName : 'PAX regional median price'), repCost ? 'rep' : (mDefault.confidence === 'pax' ? 'pax' : mDefault.confidence || 'low')],
       ['Reactive repair cost', c.reactiveRepairMultiplier + '\u00d7 planned' + (inp.leakMultiplier !== 1 ? ' \u00d7 ' + inp.leakMultiplier : ''),
@@ -852,7 +855,7 @@
       (raw.property ? esc(raw.property) : 'this building') + '. ' + contact;
 
     // fine print + footers
-    var custom = Object.keys(overrides(raw)).length;
+    var custom = Object.keys(overrides(raw)).length || raw.life;
     var placeholders = [];
     if (!repCost && mDefault.source !== 'market') placeholders.push(sys + ' price uses ' + mDefault.source.replace(/^fallback: /, ''));
     if (!raw.capRate && capSrc && capSrc.source !== 'market') placeholders.push(pt.label.toLowerCase() + ' cap rate uses ' + capSrc.source.replace(/^fallback: /, ''));

@@ -166,3 +166,10 @@ test('mixed-use cap rate re-blends when its inputs are adjusted', () => {
   const d = PO.apply(D, { markets: { laurel: { capRates: { retail: 9 } } } });
   assert.ok(d.markets.laurel.capRates.mixed_use.value > before);
 });
+
+test('a rep-entered roof life sets the maintained life for that report', () => {
+  const r = E.run({ market: 'hampton-roads', propertyType: 'k12', area: 100000, roofAge: 0, system: 'mod_bit', life: 25 }, D);
+  assert.equal(r.inputs.systemLife, 25);
+  assert.equal(r.kpis.plannedReplacementYear, null);   // new roof lasts past year 20
+  assert.equal(r.kpis.reactiveReplacementYear, null);  // 20-yr reactive life: replaced in year 21, past the horizon
+});
