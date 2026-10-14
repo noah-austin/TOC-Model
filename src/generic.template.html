@@ -98,7 +98,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 .conf.medium { background: var(--gold-wash); color: #8A5A00; }
 .sources { font-size: 11.5px; color: var(--muted); margin: 12px 0 0; padding-left: 18px; }
 .sources li { margin-bottom: 3px; }
-.sources a { color: var(--navy); }
+.sources a { color: var(--navy); overflow-wrap: anywhere; }
 .fine { font-size: 11px; color: var(--muted); margin-top: 10px; max-width: 120ch; }
 
 @media (max-width: 900px) {
@@ -181,8 +181,10 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
     <h2>How these curves are built</h2>
     <p class="sub">Every number below is a research average. Sources and confidence are listed so they can be checked and replaced with PAX job data.</p>
     <div class="method" id="method-body"></div>
-    <h3 style="font-size:12.5px;margin:16px 0 6px">Roof life by roof type</h3>
+    <h3 style="font-size:12.5px;margin:16px 0 6px">Roof life by roof type <span style="font-weight:400;color:var(--muted)">(market columns: climate change to life)</span></h3>
     <div class="mx-wrap"><table class="lives" id="lives"></table></div>
+    <h3 style="font-size:12.5px;margin:16px 0 6px">Building types</h3>
+    <div class="mx-wrap"><table class="lives" id="types"></table></div>
     <ol class="sources" id="sources"></ol>
   </section>
 </main>
@@ -392,7 +394,7 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 
   function renderMethod() {
     $('method-body').innerHTML = D.method.map(function (m) { return '<div><h3>' + esc(m.title) + '</h3><p>' + m.html + '</p></div>'; }).join('');
-    var t = '<thead><tr><th>Roof type</th><th>Life, repair when it leaks</th><th>Range</th><th>Years PaxSeal adds</th>' + D.markets.map(function (m) { return '<th>' + esc(m.label) + '</th>'; }).join('') + '<th>Confidence</th></tr></thead><tbody>';
+    var t = '<thead><tr><th>Roof type</th><th>Life, repair when it leaks</th><th>Range</th><th>Years PaxSeal adds</th>' + D.markets.map(function (m) { return '<th title="Climate adjustment to life">' + esc(m.label) + '</th>'; }).join('') + '<th>Confidence</th></tr></thead><tbody>';
     D.systems.forEach(function (s) {
       var x = D.lives[s.id];
       t += '<tr><td>' + esc(s.label) + '</td><td>' + x.lifeReactive + ' yrs</td><td>' + x.low + '–' + x.high + '</td><td>+' + x.lifeAdded + '</td>' +
@@ -400,6 +402,12 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
         '<td><span class="conf ' + x.confidence + '">' + x.confidence + '</span></td></tr>';
     });
     $('lives').innerHTML = t + '</tbody>';
+    var u = '<thead><tr><th>Building type</th><th>Typical roof</th><th>Repair need</th><th>Cost of a leak</th><th>Life</th></tr></thead><tbody>';
+    D.types.forEach(function (ty) {
+      var f = D.typeFactors[ty.id], p = D.params['all|' + ty.id + '|all'];
+      u += '<tr><td>' + esc(ty.label) + '</td><td>' + Math.round(p.area).toLocaleString('en-US') + ' sq ft</td><td>' + f.repairBurden.toFixed(2) + '×</td><td>' + f.leakMultiplier.toFixed(2) + '×</td><td>' + (f.lifeAdjustPct ? f.lifeAdjustPct + '%' : '—') + '</td></tr>';
+    });
+    $('types').innerHTML = u + '</tbody>';
     $('sources').innerHTML = D.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url.replace(/^https?:\/\//, '').slice(0, 70)) + '</a>' : '') + '</li>'; }).join('');
   }
 

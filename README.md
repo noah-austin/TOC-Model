@@ -2,7 +2,10 @@
 
 A sales tool for PAX Services Group. A rep enters a customer's roof details and gets a branded, printable report. The report compares 20-year roof costs with PaxSeal planned maintenance against reactive maintenance, for the customer's market.
 
-**Live report:** https://noah-austin.github.io/TOC-Model/ (published by `.github/workflows/pages.yml` on every push).
+The site has two separate kinds of cost curve:
+
+- **Generic cost curves:** https://noah-austin.github.io/TOC-Model/generic/ has no inputs. For every market × building type × roof type (plus "All" averages), it shows the average cost of one roof from new to replacement, repairing only when it leaks vs PaxSeal. Values: `data/generic_curves.json` (research in `docs/research/generic-curves.md`); engine `src/generic.js`; build `scripts/build_generic.mjs` (run by `npm run build`). Links take `?market=&type=&roof=`.
+- **Custom cost curves (live report):** https://noah-austin.github.io/TOC-Model/ is the report builder for one customer's roof (published by `.github/workflows/pages.yml` on every push).
 
 The same page is `dist/index.html`: one self-contained file with no internet dependencies, so it also works as an email attachment.
 
@@ -32,6 +35,7 @@ The same page is `dist/index.html`: one self-contained file with no internet dep
 | `src/overrides.js` | Applies `data/overrides.json`; shared by the build and the Assumptions page |
 | `src/assumptions.template.html` | Assumptions page (`dist/assumptions/`) |
 | `src/fonts/` | Montserrat woff2 (SIL OFL), embedded at build time |
+| `data/generic_curves.json` | Generic cost curves: roof life by system, climate adjustments, repair curve, building-type factors, sources |
 | `data/library_profiles.json` | Typical building per property type for the sales library |
 | `scripts/build_library.mjs` | Generates `dist/library/` (35 PDFs + index page) |
 | `scripts/build_guide.mjs` | Generates the user guide PDF in `dist/library/` |

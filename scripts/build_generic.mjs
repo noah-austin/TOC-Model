@@ -32,7 +32,7 @@ export function genericParams() {
 
   const one = (mk, ty, sy) => {
     const m = D.markets[mk], sys = R.systems[sy], area = R.typicalArea[ty];
-    const adj = (R.marketLifeAdjustPct[mk] || {})[sy] || 0;
+    const adj = ((R.marketLifeAdjustPct[mk] || {})[sy] || 0) + (R.types[ty]?.lifeAdjustPct || 0);
     return {
       area,
       costPerSqft: m.replacementCostPerSqft[sy].value,
@@ -40,6 +40,7 @@ export function genericParams() {
       lifeAdded: sys.lifeAdded,
       fee: D.fee.baseUsd + D.fee.perSqftUsd * area,
       leakMultiplier: D.propertyTypes[ty].leakMultiplier || 1,
+      repairBurden: R.types[ty]?.repairBurden || 1,
       stormPct: storm(m),
       repair: { ...R.repair },
     };
@@ -69,6 +70,9 @@ export function buildGeneric(fonts) {
     params,
     commonness: R.commonness,
     lives: Object.fromEntries(systems.map((s) => [s, R.systems[s]])),
+    typeFactors: Object.fromEntries(types.map((t) => [t, { ...R.types[t], leakMultiplier: D.propertyTypes[t].leakMultiplier || 1 }])),
+    repair: R.repair,
+    systemWeights: R.systemWeights,
     marketLifeAdjustPct: R.marketLifeAdjustPct,
     method: R.method,
     sources: R.sources,

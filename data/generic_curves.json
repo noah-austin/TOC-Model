@@ -1,20 +1,376 @@
 {
   "researchedOn": "2026-10-14",
-  "note": "PROVISIONAL - replaced once research lands.",
-  "typicalArea": { "industrial": 100000, "office": 40000, "retail": 30000, "multifamily": 30000, "mixed": 25000, "medical": 60000, "k12": 120000 },
-  "systems": {
-    "tpo": { "label": "TPO", "lifeReactive": 17, "low": 12, "high": 25, "lifeAdded": 5, "confidence": "medium" },
-    "epdm": { "label": "EPDM", "lifeReactive": 20, "low": 15, "high": 30, "lifeAdded": 5, "confidence": "medium" },
-    "mod_bit": { "label": "Modified Bitumen", "lifeReactive": 17, "low": 12, "high": 22, "lifeAdded": 5, "confidence": "low" },
-    "bur": { "label": "Built-Up (BUR)", "lifeReactive": 18, "low": 15, "high": 25, "lifeAdded": 5, "confidence": "medium" },
-    "metal": { "label": "Metal", "lifeReactive": 35, "low": 25, "high": 45, "lifeAdded": 7, "confidence": "medium" },
-    "coating_restoration": { "label": "Coating / Restoration", "lifeReactive": 12, "low": 10, "high": 20, "lifeAdded": 5, "confidence": "low" }
+  "note": "Model values for the Generic cost curves section. Research basis, reasoning and confidence: docs/research/generic-curves.md (raw values in data/generic_research.json). Every value is low confidence until checked against PAX job data. Edit here and rebuild.",
+  "typicalArea": {
+    "industrial": 100000,
+    "office": 40000,
+    "retail": 30000,
+    "multifamily": 30000,
+    "mixed": 25000,
+    "medical": 60000,
+    "k12": 120000
   },
-  "marketLifeAdjustPct": { "austin": {}, "san-antonio": {}, "hampton-roads": {}, "laurel": {}, "culbertson": {} },
-  "commonness": {},
-  "systemWeights": { "tpo": 40, "epdm": 15, "mod_bit": 15, "bur": 10, "metal": 12, "coating_restoration": 8 },
-  "repair": { "basePct": 1.0, "growthPct": 5, "cap": 3, "reactiveMultiplier": 3, "feeCovers": 0.5, "stormReactiveMultiplier": 1.5 },
-  "storm": { "roofDamageShare": 0.6, "roofValueShare": 0.05 },
-  "method": [],
-  "sources": []
+  "systems": {
+    "tpo": {
+      "label": "TPO",
+      "lifeReactive": 16,
+      "low": 12,
+      "high": 22,
+      "lifeAdded": 5,
+      "confidence": "low",
+      "note": "EUL 20 treated as maintained life. NRCA 15-35 by grade. UFC 3-110-03 Ch.1 limits TPO to roofs with an anticipated life of 10 yrs or less."
+    },
+    "epdm": {
+      "label": "EPDM",
+      "lifeReactive": 19,
+      "low": 15,
+      "high": 25,
+      "lifeAdded": 5,
+      "confidence": "low",
+      "note": "EUL 20 (15 dead-level per Florida Housing). ERA 38 yr is a maintained best case and is not the default."
+    },
+    "mod_bit": {
+      "label": "Modified Bitumen",
+      "lifeReactive": 16,
+      "low": 10,
+      "high": 20,
+      "lifeAdded": 5,
+      "confidence": "low",
+      "note": ""
+    },
+    "bur": {
+      "label": "Built-Up (BUR)",
+      "lifeReactive": 18,
+      "low": 15,
+      "high": 22,
+      "lifeAdded": 5,
+      "confidence": "low",
+      "note": "Cash 1997 mean of 17.4 yrs (survey of 400+ contractors, not split by maintenance) used as the reactive proxy."
+    },
+    "metal": {
+      "label": "Metal",
+      "lifeReactive": 32,
+      "low": 25,
+      "high": 40,
+      "lifeAdded": 8,
+      "confidence": "low",
+      "note": "Fannie Mae 40 treated as maintained life. +8 from PM is a judgment (fasteners, sealants, rust spots)."
+    },
+    "coating_restoration": {
+      "label": "Coating / Restoration",
+      "lifeReactive": 12,
+      "low": 8,
+      "high": 15,
+      "lifeAdded": 3,
+      "confidence": "low",
+      "note": "Life of a coating restoration before a recoat or replacement is needed. A recoat on a dry substrate adds 10-15 yrs and is modeled as a separate event. No ASTM, NRCA or RCMA standard maps mils to years."
+    }
+  },
+  "marketLifeAdjustPct": {
+    "austin": {
+      "tpo": -15,
+      "epdm": -10,
+      "mod_bit": -15,
+      "bur": -15,
+      "metal": -5,
+      "coating_restoration": -15
+    },
+    "san-antonio": {
+      "tpo": -15,
+      "epdm": -10,
+      "mod_bit": -15,
+      "bur": -15,
+      "metal": -5,
+      "coating_restoration": -15
+    },
+    "hampton-roads": {
+      "tpo": -5,
+      "epdm": -5,
+      "mod_bit": -5,
+      "bur": -5,
+      "metal": -15,
+      "coating_restoration": -5
+    },
+    "laurel": {
+      "tpo": 0,
+      "epdm": 0,
+      "mod_bit": -5,
+      "bur": -5,
+      "metal": 0,
+      "coating_restoration": -5
+    },
+    "culbertson": {
+      "tpo": 0,
+      "epdm": 0,
+      "mod_bit": -5,
+      "bur": -5,
+      "metal": 0,
+      "coating_restoration": -5
+    }
+  },
+  "types": {
+    "industrial": {
+      "repairBurden": 0.9,
+      "lifeAdjustPct": 0,
+      "note": "Few penetrations and little traffic. CBECS: metal dominant (662k of warehouse buildings), then synthetic/rubber (131k), then built-up (59k)."
+    },
+    "office": {
+      "repairBurden": 1.1,
+      "lifeAdjustPct": 0,
+      "note": "More RTUs and penetrations; HVAC technician traffic. CBECS: synthetic/rubber 180k, built-up 160k, metal 207k (much of it steep-slope)."
+    },
+    "retail": {
+      "repairBurden": 1.0,
+      "lifeAdjustPct": 0,
+      "note": "Moderate RTU density; tenant signage and food-tenant exhaust penetrations. CBECS mercantile: synthetic/rubber 136k, metal 135k."
+    },
+    "multifamily": {
+      "repairBurden": 1.1,
+      "lifeAdjustPct": 0,
+      "note": "Many condensers and vents per sq ft; amenity traffic on podium roofs. Not covered by CBECS. Garden-style steep-slope roofs are out of scope."
+    },
+    "mixed": {
+      "repairBurden": 1.15,
+      "lifeAdjustPct": 0,
+      "note": "Residential penetration density plus retail exhausts; amenity decks."
+    },
+    "medical": {
+      "repairBurden": 1.3,
+      "lifeAdjustPct": -5,
+      "note": "Densest heavy equipment and technician traffic. Healthcare all-systems maintenance runs $4.50-10/sf vs office $1.60-3.20 (single vendor source)."
+    },
+    "k12": {
+      "repairBurden": 1.15,
+      "lifeAdjustPct": 0,
+      "note": "GAO-20-494: about 28,000 schools need roofing updates; districts patch to defer replacement. NCES 2012-13: roofs fair/poor in about 25% of permanent buildings and 42% of portables. Deferral belongs in the maintenance-regime input."
+    }
+  },
+  "commonness": {
+    "industrial": {
+      "tpo": "common",
+      "epdm": "common",
+      "mod_bit": "less",
+      "bur": "less",
+      "metal": "common",
+      "coating_restoration": "common"
+    },
+    "office": {
+      "tpo": "common",
+      "epdm": "common",
+      "mod_bit": "common",
+      "bur": "common",
+      "metal": "less",
+      "coating_restoration": "less"
+    },
+    "retail": {
+      "tpo": "common",
+      "epdm": "common",
+      "mod_bit": "less",
+      "bur": "less",
+      "metal": "common",
+      "coating_restoration": "common"
+    },
+    "multifamily": {
+      "tpo": "common",
+      "epdm": "less",
+      "mod_bit": "common",
+      "bur": "less",
+      "metal": "rare",
+      "coating_restoration": "less"
+    },
+    "mixed": {
+      "tpo": "common",
+      "epdm": "less",
+      "mod_bit": "common",
+      "bur": "less",
+      "metal": "rare",
+      "coating_restoration": "rare"
+    },
+    "medical": {
+      "tpo": "common",
+      "epdm": "less",
+      "mod_bit": "common",
+      "bur": "common",
+      "metal": "rare",
+      "coating_restoration": "less"
+    },
+    "k12": {
+      "tpo": "common",
+      "epdm": "common",
+      "mod_bit": "common",
+      "bur": "common",
+      "metal": "less",
+      "coating_restoration": "less"
+    }
+  },
+  "systemWeights": {
+    "tpo": 40,
+    "epdm": 15,
+    "mod_bit": 15,
+    "bur": 10,
+    "metal": 12,
+    "coating_restoration": 8
+  },
+  "systemWeightsNote": "Judgment: rough share of low-slope commercial roofs by system, used only for the 'All roof types' average. CBECS 2018 does not split TPO, EPDM and mod bit.",
+  "repair": {
+    "base": 0.003,
+    "peakAdd": 0.027,
+    "beta": 3,
+    "xCap": 1.5,
+    "reactiveMultiplier": 3,
+    "feeCovers": 0.5,
+    "stormReactiveMultiplier": 1.5
+  },
+  "storm": {
+    "roofDamageShare": 0.6,
+    "roofValueShare": 0.05
+  },
+  "method": [
+    {
+      "title": "One roof, new to replacement",
+      "html": "Each curve starts the day a new roof goes on (its installed cost for the market and roof type) and adds every year&rsquo;s repairs, storm damage and, with PaxSeal, the fee, until the roof needs replacing. All figures are today&rsquo;s dollars."
+    },
+    {
+      "title": "How long the roof lasts",
+      "html": "Life with repairs only when it leaks comes from lender useful-life tables (Fannie Mae, ASTM E2018), which assume routine upkeep, set 4&ndash;5 years shorter. PaxSeal adds 5 years (NRC Canada: 3&ndash;5; Carlisle and Johns Manville add 5 years of warranty for maintained roofs). Metal gets 8 and a coating 3. Each market then adjusts life for its climate: Texas heat, UV and hail shorten membranes by 10&ndash;15%, and Hampton Roads&rsquo; salt air shortens metal by 15%."
+    },
+    {
+      "title": "How repairs grow with age",
+      "html": "Yearly repair need follows a wear-out curve: about 0.3% of the roof&rsquo;s cost when new, 0.6% at mid-life, 1.4% at three-quarters and 3% at the end. It averages about 1% a year over the roof&rsquo;s life, in line with the Johns Manville owner&rsquo;s manual (1&ndash;3%) and published maintenance cost surveys. PaxSeal stretches the same curve over a longer life, so the climb comes later and flatter."
+    },
+    {
+      "title": "Repair when it leaks vs PaxSeal",
+      "html": "A repair found after it leaks costs about 3 times as much as the same defect caught on a planned visit, and more where a leak does more harm (schools, hospitals, apartments). PaxSeal&rsquo;s visits cover about half of the minor repairs. Storm damage uses FEMA&rsquo;s National Risk Index for each market and is 1.5 times higher on a neglected roof."
+    },
+    {
+      "title": "Building types",
+      "html": "Building type changes the typical roof size, how much repair it needs (rooftop equipment, technician traffic) and how much a leak costs. Medical roofs also wear about 5% faster. Combinations that are rare in practice, such as metal on a hospital, are flagged."
+    },
+    {
+      "title": "How sure are these numbers?",
+      "html": "Every value is an average from public research, and many are judgments with stated reasons. None has yet been checked against PAX job data. NRCA itself says there is no reliable, unbiased data on roof service life. Treat the curves as a fair picture of the typical roof, not a quote; full notes are in <i>docs/research/generic-curves.md</i>."
+    }
+  ],
+  "sources": [
+    {
+      "name": "Fannie Mae Form 4099.F EUL tables (BUR/EPDM/TPO 20)",
+      "url": "https://multifamily.fanniemae.com/media/35621/display"
+    },
+    {
+      "name": "Florida Housing CNA Appendix F (thermoplastic 20)",
+      "url": "https://www.floridahousing.org/docs/default-source/programs/competitive/capital-needs-assessment-guide/appendix-f---estimated-useful-life-(eul)-tables.pdf?sfvrsn=8227cf7b_1"
+    },
+    {
+      "name": "Professional Roofing, A study of longevity (2014)",
+      "url": "https://www.professionalroofing.net/Articles/A-study-of-longevity--02-01-2014/2406"
+    },
+    {
+      "name": "UFC 3-110-03 Roofing, Change 1",
+      "url": "https://www.wbdg.org/api/documents/media/70d1eb51-68d2-4bb9-aee5-d009062b4901/file"
+    },
+    {
+      "name": "NRC Canada, Effective Roof Management (3-5 yr extension)",
+      "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"
+    },
+    {
+      "name": "EPDM Roofing Association 2025 survey (38 yrs)",
+      "url": "https://epdmroofs.org/resource/new-survey-and-research-confirm-epdm-roof-membranes-last-at-least-38-years"
+    },
+    {
+      "name": "GAF commercial roof lifespan blog (SBS 10-30, APP 10-20)",
+      "url": "https://www.gaf.com/en-us/blog/commercial-roofing/what-is-the-lifespan-of-a-commercial-roof-understanding-how-roofs-age-over-time-281474980497101"
+    },
+    {
+      "name": "Berman Wright rules of thumb (mod bit 20)",
+      "url": "https://www.bermanwright.com/built-to-last-general-rules-of-thumb-for-estimating-the-useful-life-of-your-building-envelope/"
+    },
+    {
+      "name": "IIBEC 2015 CTS, Ten Life Cycle Indicators (BUR 20)",
+      "url": "https://iibec.org/publication-post/2015-cts-dickson/"
+    },
+    {
+      "name": "ArmorThane citing Gaco specs (18/26/34 mils = 10/15/20 yr warranty)",
+      "url": "https://www.armorthane.com/silicone-roof-coating/"
+    },
+    {
+      "name": "PM Silicone, Recoating silicone",
+      "url": "https://pmsilicone.com/recoating-silicone/"
+    },
+    {
+      "name": "The Roofing Brief, coating restoration (no standard maps mils to years)",
+      "url": "https://theroofingbrief.com/flat-roof-coating-restoration/"
+    },
+    {
+      "name": "Facilitiesnet, moisture survey before recoating (>25% wet not worth coating)",
+      "url": "https://facilitiesnet.com/roofing/article.aspx?id=14705"
+    },
+    {
+      "name": "Risk & Insurance on Nearmap 2026 roof-age study",
+      "url": "https://riskandinsurance.com/climate-stress-is-cutting-roof-lifespans-across-the-u-s-with-widening-implications-for-property-risk/"
+    },
+    {
+      "name": "Roofing Contractor on Nearmap study",
+      "url": "https://www.roofingcontractor.com/articles/102387-climate-stress-is-shortening-roof-lifespans"
+    },
+    {
+      "name": "IIBEC TA-012-2016 TPO performance and service life",
+      "url": "https://iibec.org/publication-post/iibec-technical-advisory-no-012-2016-tpo-single-ply-roof-system-performance-and-service-life/"
+    },
+    {
+      "name": "CIB W083 service life prediction of flat roofs (Arrhenius)",
+      "url": "https://www.irbnet.de/daten/iconda/CIB2039.pdf"
+    },
+    {
+      "name": "Construction Specifier, EPDM hail testing",
+      "url": "https://www.constructionspecifier.com/the-proven-durability-of-epdm-roof-assemblies/3/"
+    },
+    {
+      "name": "IJCSI 2022 review (55% Al-Zn: 35 yr rural vs 28 yr marine)",
+      "url": "https://ijcsi.pro/wp-content/uploads/2022/08/ijcsi-2022_v11-n3-p20.pdf"
+    },
+    {
+      "name": "Sheffield Metals warranty coastal exclusions",
+      "url": "https://sheffieldmetals.com/learning-center/metal-roof-warranty-types/"
+    },
+    {
+      "name": "Johns Manville Owner's Manual (maintenance 1-3% of replacement cost/yr)",
+      "url": "https://www.jm.com/content/dam/jm/global/en/commercial-roofing/brochures/JM-Owners-Manual.pdf"
+    },
+    {
+      "name": "Grussing et al. 2006, Weibull condition prediction (BUILDER)",
+      "url": "https://www.researchgate.net/publication/268595115_Condition_and_Reliability_Prediction_Models_Using_the_Weibull_Probability_Distribution"
+    },
+    {
+      "name": "MicroROOFER deterioration curves",
+      "url": "https://www.researchgate.net/publication/245282006_Computer_Assistance_in_Managing_the_Maintenance_of_Low-Slope_Roofs"
+    },
+    {
+      "name": "Commercial Roof Guide (reserve $0.10-0.12/sf yrs 1-5; $0.14-0.18 yrs 5-15)",
+      "url": "https://commercialroofguide.com/guides/roof-maintenance/"
+    },
+    {
+      "name": "IIBEC LCCA using roofing coatings (1997 surveys $0.09-0.19/sf)",
+      "url": "https://iibec.org/publication-post/life-cycle-cost-analysis-using-roofing-coatings/"
+    },
+    {
+      "name": "Roofing Contractor, flashings and penetrations (~80% of leaks)",
+      "url": "https://www.roofingcontractor.com/articles/88167-technical-details-flashings-and-penetrations-for-metal-roofs"
+    },
+    {
+      "name": "GAO-20-494",
+      "url": "https://www.gao.gov/assets/gao-20-494.pdf"
+    },
+    {
+      "name": "NCES 2014-022 Condition of America's Public School Facilities",
+      "url": "https://nces.ed.gov/pubs2014/2014022.pdf"
+    },
+    {
+      "name": "AF Building Care facility maintenance cost by type",
+      "url": "https://www.afbuildingcare.com/how-much-does-facility-maintenance-cost/"
+    },
+    {
+      "name": "EIA CBECS 2018 Table B11",
+      "url": "https://www.eia.gov/consumption/commercial/data/2018/bc/html/b11.php"
+    }
+  ]
 }

@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "researched": "2026-10-14",
+    "memo": "docs/research/generic-curves.md",
+    "access_note": "All figures read from search-engine extracts; direct fetches were blocked. No value is high confidence. 'judgment' marks modeling choices.",
+    "life_definition": "lifeReactive = expected service life with reactive (leak-driven) repairs only; maintained life = lifeReactive + lifeAddedPlanned. Lender EULs (ASTM E2018) assume routine maintenance and are treated as approximately the maintained life."
+  },
+  "systems": {
+    "tpo": {
+      "lifeReactive": 16, "lifeReactiveLow": 12, "lifeReactiveHigh": 22, "lifeAddedPlanned": 5,
+      "confidence": "low",
+      "note": "EUL 20 treated as maintained life. NRCA 15-35 by grade. UFC 3-110-03 Ch.1 limits TPO to roofs with an anticipated life of 10 yrs or less.",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F EUL tables (BUR/EPDM/TPO 20)", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "Florida Housing CNA Appendix F (thermoplastic 20)", "url": "https://www.floridahousing.org/docs/default-source/programs/competitive/capital-needs-assessment-guide/appendix-f---estimated-useful-life-(eul)-tables.pdf?sfvrsn=8227cf7b_1"},
+        {"name": "Professional Roofing, A study of longevity (2014)", "url": "https://www.professionalroofing.net/Articles/A-study-of-longevity--02-01-2014/2406"},
+        {"name": "UFC 3-110-03 Roofing, Change 1", "url": "https://www.wbdg.org/api/documents/media/70d1eb51-68d2-4bb9-aee5-d009062b4901/file"},
+        {"name": "NRC Canada, Effective Roof Management (3-5 yr extension)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"}
+      ]
+    },
+    "epdm": {
+      "lifeReactive": 19, "lifeReactiveLow": 15, "lifeReactiveHigh": 25, "lifeAddedPlanned": 5,
+      "confidence": "low",
+      "note": "EUL 20 (15 dead-level per Florida Housing). ERA 38 yr is a maintained best case and is not the default.",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F EUL tables", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "Florida Housing CNA Appendix F (EPDM flat 15 / sloped 20)", "url": "https://www.floridahousing.org/docs/default-source/programs/competitive/capital-needs-assessment-guide/appendix-f---estimated-useful-life-(eul)-tables.pdf?sfvrsn=8227cf7b_1"},
+        {"name": "EPDM Roofing Association 2025 survey (38 yrs)", "url": "https://epdmroofs.org/resource/new-survey-and-research-confirm-epdm-roof-membranes-last-at-least-38-years"}
+      ]
+    },
+    "mod_bit": {
+      "lifeReactive": 16, "lifeReactiveLow": 10, "lifeReactiveHigh": 20, "lifeAddedPlanned": 5,
+      "confidence": "low",
+      "sources": [
+        {"name": "Florida Housing CNA Appendix F (torched flat 10 / sloped 15; 2-ply mopped 15/20)", "url": "https://www.floridahousing.org/docs/default-source/programs/competitive/capital-needs-assessment-guide/appendix-f---estimated-useful-life-(eul)-tables.pdf?sfvrsn=8227cf7b_1"},
+        {"name": "GAF commercial roof lifespan blog (SBS 10-30, APP 10-20)", "url": "https://www.gaf.com/en-us/blog/commercial-roofing/what-is-the-lifespan-of-a-commercial-roof-understanding-how-roofs-age-over-time-281474980497101"},
+        {"name": "Berman Wright rules of thumb (mod bit 20)", "url": "https://www.bermanwright.com/built-to-last-general-rules-of-thumb-for-estimating-the-useful-life-of-your-building-envelope/"}
+      ]
+    },
+    "bur": {
+      "lifeReactive": 18, "lifeReactiveLow": 15, "lifeReactiveHigh": 22, "lifeAddedPlanned": 5,
+      "confidence": "low",
+      "note": "Cash 1997 mean of 17.4 yrs (survey of 400+ contractors, not split by maintenance) used as the reactive proxy.",
+      "sources": [
+        {"name": "NRC Canada citing Cash 1997 (17.4 yr)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"},
+        {"name": "Fannie Mae Form 4099.F EUL tables (20)", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "IIBEC 2015 CTS, Ten Life Cycle Indicators (BUR 20)", "url": "https://iibec.org/publication-post/2015-cts-dickson/"}
+      ]
+    },
+    "metal": {
+      "lifeReactive": 32, "lifeReactiveLow": 25, "lifeReactiveHigh": 40, "lifeAddedPlanned": 8,
+      "confidence": "low",
+      "note": "Fannie Mae 40 treated as maintained life. +8 from PM is a judgment (fasteners, sealants, rust spots).",
+      "sources": [
+        {"name": "Fannie Mae Form 4099.F EUL tables (metal 40)", "url": "https://multifamily.fanniemae.com/media/35621/display"},
+        {"name": "Berman Wright rules of thumb (metal 40-70)", "url": "https://www.bermanwright.com/built-to-last-general-rules-of-thumb-for-estimating-the-useful-life-of-your-building-envelope/"}
+      ]
+    },
+    "coating_restoration": {
+      "lifeReactive": 12, "lifeReactiveLow": 8, "lifeReactiveHigh": 15, "lifeAddedPlanned": 3,
+      "recoatExtensionYears": 12, "recoatExtensionLow": 10, "recoatExtensionHigh": 15,
+      "eligibilityMaxWetAreaPct": 25,
+      "confidence": "low",
+      "note": "Life of a coating restoration before a recoat or replacement is needed. A recoat on a dry substrate adds 10-15 yrs and is modeled as a separate event. No ASTM, NRCA or RCMA standard maps mils to years.",
+      "sources": [
+        {"name": "ArmorThane citing Gaco specs (18/26/34 mils = 10/15/20 yr warranty)", "url": "https://www.armorthane.com/silicone-roof-coating/"},
+        {"name": "PM Silicone, Recoating silicone", "url": "https://pmsilicone.com/recoating-silicone/"},
+        {"name": "The Roofing Brief, coating restoration (no standard maps mils to years)", "url": "https://theroofingbrief.com/flat-roof-coating-restoration/"},
+        {"name": "Facilitiesnet, moisture survey before recoating (>25% wet not worth coating)", "url": "https://facilitiesnet.com/roofing/article.aspx?id=14705"}
+      ]
+    }
+  },
+  "marketLifeAdjustPct": {
+    "_note": "Percent change to the national baseline life. All values are judgment, low confidence. Reasoning: Nearmap 2026 shows ~19-23% shorter cycles in hot-humid and high temperature-swing counties (upper bound); Texas hail is FEMA NRI Very High; Arrhenius heat aging affects TPO and bitumen; Galvalume marine-air life is about -20%; mid-Atlantic freeze-thaw affects bitumen and coatings.",
+    "austin":        {"tpo": -15, "epdm": -10, "mod_bit": -15, "bur": -15, "metal": -5,  "coating_restoration": -15},
+    "san-antonio":   {"tpo": -15, "epdm": -10, "mod_bit": -15, "bur": -15, "metal": -5,  "coating_restoration": -15},
+    "hampton-roads": {"tpo": -5,  "epdm": -5,  "mod_bit": -5,  "bur": -5,  "metal": -15, "coating_restoration": -5, "_metalWithinQuarterMileSaltWater": -25},
+    "laurel":        {"tpo": 0,   "epdm": 0,   "mod_bit": -5,  "bur": -5,  "metal": 0,   "coating_restoration": -5},
+    "culbertson":    {"tpo": 0,   "epdm": 0,   "mod_bit": -5,  "bur": -5,  "metal": 0,   "coating_restoration": -5},
+    "sources": [
+      {"name": "Risk & Insurance on Nearmap 2026 roof-age study", "url": "https://riskandinsurance.com/climate-stress-is-cutting-roof-lifespans-across-the-u-s-with-widening-implications-for-property-risk/"},
+      {"name": "Roofing Contractor on Nearmap study", "url": "https://www.roofingcontractor.com/articles/102387-climate-stress-is-shortening-roof-lifespans"},
+      {"name": "IIBEC TA-012-2016 TPO performance and service life", "url": "https://iibec.org/publication-post/iibec-technical-advisory-no-012-2016-tpo-single-ply-roof-system-performance-and-service-life/"},
+      {"name": "CIB W083 service life prediction of flat roofs (Arrhenius)", "url": "https://www.irbnet.de/daten/iconda/CIB2039.pdf"},
+      {"name": "Construction Specifier, EPDM hail testing", "url": "https://www.constructionspecifier.com/the-proven-durability-of-epdm-roof-assemblies/3/"},
+      {"name": "IJCSI 2022 review (55% Al-Zn: 35 yr rural vs 28 yr marine)", "url": "https://ijcsi.pro/wp-content/uploads/2022/08/ijcsi-2022_v11-n3-p20.pdf"},
+      {"name": "Sheffield Metals warranty coastal exclusions", "url": "https://sheffieldmetals.com/learning-center/metal-roof-warranty-types/"}
+    ],
+    "confidence": "low"
+  },
+  "repairCurve": {
+    "form": "repairPctOfReplacement(x) = base + peakAdd * x^beta, where x = age / expectedLife (capped at xCap)",
+    "base": 0.003,
+    "peakAdd": 0.027,
+    "beta": 3,
+    "betaLow": 2,
+    "betaHigh": 4,
+    "xCap": 1.5,
+    "optionalHardCapPct": 0.06,
+    "meanOverLife": 0.00975,
+    "checkpoints": {"x0.25": 0.0034, "x0.5": 0.0064, "x0.75": 0.0144, "x1.0": 0.030, "x1.25": 0.0557, "x1.5": 0.0941},
+    "applyReactiveMultiplierTo": "level, not shape (see data/national.json A4)",
+    "plannedMaintenanceEffect": "lengthens expectedLife, which lowers x at each age",
+    "confidence": "low",
+    "note": "Right half-bathtub: early defects are absorbed by warranties. The cubic exponent is a judgment (a typical Weibull wear-out beta); the CERL coefficients were not obtained. The ~1%/yr mean matches the JM 1-3% figure and the $0.09-0.19/sf survey range at $12-15/sf replacement.",
+    "sources": [
+      {"name": "NRC Canada, Effective Roof Management (maintenance cost rises in final years; leaks more frequent)", "url": "https://nrc-publications.canada.ca/eng/view/supplement/?id=49c7996a-27aa-4c44-bcaa-5f6df2ea4f1b&dp=120"},
+      {"name": "Johns Manville Owner's Manual (maintenance 1-3% of replacement cost/yr)", "url": "https://www.jm.com/content/dam/jm/global/en/commercial-roofing/brochures/JM-Owners-Manual.pdf"},
+      {"name": "Grussing et al. 2006, Weibull condition prediction (BUILDER)", "url": "https://www.researchgate.net/publication/268595115_Condition_and_Reliability_Prediction_Models_Using_the_Weibull_Probability_Distribution"},
+      {"name": "MicroROOFER deterioration curves", "url": "https://www.researchgate.net/publication/245282006_Computer_Assistance_in_Managing_the_Maintenance_of_Low-Slope_Roofs"},
+      {"name": "Commercial Roof Guide (reserve $0.10-0.12/sf yrs 1-5; $0.14-0.18 yrs 5-15)", "url": "https://commercialroofguide.com/guides/roof-maintenance/"},
+      {"name": "IIBEC LCCA using roofing coatings (1997 surveys $0.09-0.19/sf)", "url": "https://iibec.org/publication-post/life-cycle-cost-analysis-using-roofing-coatings/"}
+    ]
+  },
+  "typeNotes": {
+    "_note": "repairBurdenMult scales the repair-curve level; lifeAdjustPct is applied in addition to the market adjustment. All values are judgment, low confidence, based on ~70-80% of leaks occurring at flashings and penetrations (Roofing Contractor) and USACE's observation that rooftop equipment drives flashing complexity and roof traffic.",
+    "industrial":  {"repairBurdenMult": 0.9,  "lifeAdjustPct": 0,  "note": "Few penetrations and little traffic. CBECS: metal dominant (662k of warehouse buildings), then synthetic/rubber (131k), then built-up (59k)."},
+    "office":      {"repairBurdenMult": 1.1,  "lifeAdjustPct": 0,  "note": "More RTUs and penetrations; HVAC technician traffic. CBECS: synthetic/rubber 180k, built-up 160k, metal 207k (much of it steep-slope)."},
+    "retail":      {"repairBurdenMult": 1.0,  "lifeAdjustPct": 0,  "note": "Moderate RTU density; tenant signage and food-tenant exhaust penetrations. CBECS mercantile: synthetic/rubber 136k, metal 135k."},
+    "multifamily": {"repairBurdenMult": 1.1,  "lifeAdjustPct": 0,  "note": "Many condensers and vents per sq ft; amenity traffic on podium roofs. Not covered by CBECS. Garden-style steep-slope roofs are out of scope."},
+    "mixed":       {"repairBurdenMult": 1.15, "lifeAdjustPct": 0,  "note": "Residential penetration density plus retail exhausts; amenity decks."},
+    "medical":     {"repairBurdenMult": 1.3,  "lifeAdjustPct": -5, "note": "Densest heavy equipment and technician traffic. Healthcare all-systems maintenance runs $4.50-10/sf vs office $1.60-3.20 (single vendor source)."},
+    "k12":         {"repairBurdenMult": 1.15, "lifeAdjustPct": 0,  "note": "GAO-20-494: about 28,000 schools need roofing updates; districts patch to defer replacement. NCES 2012-13: roofs fair/poor in about 25% of permanent buildings and 42% of portables. Deferral belongs in the maintenance-regime input."},
+    "sources": [
+      {"name": "Roofing Contractor, flashings and penetrations (~80% of leaks)", "url": "https://www.roofingcontractor.com/articles/88167-technical-details-flashings-and-penetrations-for-metal-roofs"},
+      {"name": "GAO-20-494", "url": "https://www.gao.gov/assets/gao-20-494.pdf"},
+      {"name": "NCES 2014-022 Condition of America's Public School Facilities", "url": "https://nces.ed.gov/pubs2014/2014022.pdf"},
+      {"name": "AF Building Care facility maintenance cost by type", "url": "https://www.afbuildingcare.com/how-much-does-facility-maintenance-cost/"},
+      {"name": "EIA CBECS 2018 Table B11", "url": "https://www.eia.gov/consumption/commercial/data/2018/bc/html/b11.php"}
+    ]
+  },
+  "commonness": {
+    "_note": "Judgment flags from CBECS 2018 Table B11 (warehouse, office, mercantile, education; synthetic/rubber is not split into TPO/EPDM; no mod-bit category; metal includes steep-slope) and property-types.md section 4 (medical, multifamily, mixed).",
+    "industrial":  {"tpo": "common", "epdm": "common",      "mod_bit": "less common", "bur": "less common", "metal": "common",      "coating_restoration": "common"},
+    "office":      {"tpo": "common", "epdm": "common",      "mod_bit": "common",      "bur": "common",      "metal": "less common", "coating_restoration": "less common"},
+    "retail":      {"tpo": "common", "epdm": "common",      "mod_bit": "less common", "bur": "less common", "metal": "common",      "coating_restoration": "common"},
+    "multifamily": {"tpo": "common", "epdm": "less common", "mod_bit": "common",      "bur": "less common", "metal": "rare",        "coating_restoration": "less common"},
+    "mixed":       {"tpo": "common", "epdm": "less common", "mod_bit": "common",      "bur": "less common", "metal": "rare",        "coating_restoration": "rare"},
+    "medical":     {"tpo": "common", "epdm": "less common", "mod_bit": "common",      "bur": "common",      "metal": "rare",        "coating_restoration": "less common"},
+    "k12":         {"tpo": "common", "epdm": "common",      "mod_bit": "common",      "bur": "common",      "metal": "less common", "coating_restoration": "less common"},
+    "cbecs2018_B11_thousand_buildings": {
+      "metal_surfacing":     {"all": 2198, "warehouse": 662, "office": 207, "service": 499, "mercantile": 135, "public_assembly": 162, "religious": 94, "education": 111},
+      "synthetic_or_rubber": {"all": 940,  "warehouse": 131, "office": 180, "mercantile": 136, "education": 103},
+      "built_up":            {"all": 708,  "warehouse": 59,  "office": 160, "education": 79},
+      "confidence": "low-medium (search extract; column order inferred)"
+    }
+  },
+  "endOfLife": {
+    "tearOffDisposalAdderPerSf": {"low": 1.0, "high": 2.0},
+    "recoverSavingsPctVsTearOff": {"low": 15, "high": 30},
+    "maxRoofCoverings": 2,
+    "rule": "First replacement may be a recover if the roof is dry (wet area under ~25%) and has one existing covering; the next replacement must be a tear-off.",
+    "confidence": "low",
+    "sources": [
+      {"name": "Commercial Roof Guide, cost", "url": "https://commercialroofguide.com/guides/commercial-roof-cost/"},
+      {"name": "Durable Rooftop Solutions, replacement cost", "url": "https://www.durablerooftopsolutions.com/learn/commercial-roofing/cost-to-replace-commercial-roof"}
+    ]
+  }
+}

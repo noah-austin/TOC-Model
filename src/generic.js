@@ -25,25 +25,30 @@
    *   fee             PaxSeal fee per year, $ (flat in today's dollars)
    *   leakMultiplier  cost of a leak in this building type vs a warehouse
    *   stormPct        expected storm damage to the roof per year, % of its cost
-   *   repair: { basePct, growthPct, cap, reactiveMultiplier, feeCovers, stormReactiveMultiplier }
+   *   repairBurden    repair need for this building type vs average (rooftop equipment, traffic)
+   *   repair: { base, peakAdd, beta, xCap, reactiveMultiplier, feeCovers, stormReactiveMultiplier }
    * }
    *
-   * Wear follows each roof's own clock: a maintained roof ages more slowly, so its
-   * repair curve is stretched over its longer life. Need per year = cost x basePct x
-   * (20 / reference life) x min((1 + growth)^(20 x age / life), cap).
+   * Repair need per year, as a share of the roof's cost, follows a wear-out curve on
+   * the roof's own clock (x = age / life): base + peakAdd * x^beta. Low while new, rising
+   * steeply near end of life (data/generic_curves.json, from docs/research/generic-curves.md).
+   * PaxSeal stretches the same curve over a longer life, so at any age it sits lower.
+   * Reactive repairs cost reactiveMultiplier times more (emergency call-outs, damage
+   * spreading before it is found) and more again where a leak does more harm.
    */
   function scenario(p, planned) {
     var R = p.repair;
     var C = p.area * p.costPerSqft;
     var life = Math.max(1, Math.round(planned ? p.lifeReactive + p.lifeAdded : p.lifeReactive));
-    // Base repair rate is quoted for a 20-year roof; longer-lived systems need less per year.
-    var base = C * (R.basePct / 100) * (20 / Math.max(5, p.lifeReactive));
+    // The curve's level is calibrated on roofs that last about 20 years; a 35-year metal
+    // roof spreads its repairs over more years, a 10-year coating over fewer.
+    var lifeScale = Math.min(1.5, Math.max(0.5, 20 / p.lifeReactive));
     var years = [];
     var cum = [C];
     var run = C;
     for (var a = 1; a <= life; a++) {
-      var wear = Math.min(Math.pow(1 + R.growthPct / 100, 20 * (a - 0.5) / life), R.cap);
-      var need = base * wear;
+      var x = Math.min((a - 0.5) / life, R.xCap);
+      var need = C * (R.base + R.peakAdd * Math.pow(x, R.beta)) * p.repairBurden * lifeScale;
       var y = {
         age: a,
         fee: planned ? p.fee : 0,
@@ -109,6 +114,7 @@
       lifeAdded: avg(function (p) { return p.lifeAdded; }),
       fee: avg(function (p) { return p.fee; }),
       leakMultiplier: avg(function (p) { return p.leakMultiplier; }),
+      repairBurden: avg(function (p) { return p.repairBurden; }),
       stormPct: avg(function (p) { return p.stormPct; }),
       repair: repair
     };
