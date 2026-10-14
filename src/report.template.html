@@ -36,7 +36,7 @@
   @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0, 1fr); } }
 
   /* ---------- Builder ---------- */
-  .builder { background: var(--panel); border-right: 1px solid var(--rule); position: sticky; top: 56px; height: calc(100vh - 56px); overflow: auto; }
+  .builder { background: var(--panel); border-right: 1px solid var(--rule); position: sticky; top: 0; height: 100vh; overflow: auto; }
   @media (max-width: 1100px) { .builder { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--rule); } }
   .b-head { padding: 20px 20px 8px; }
   .b-head h2 { font-size: 15px; font-weight: 800; }
@@ -241,31 +241,12 @@
 <div class="layout">
   <form class="builder" id="form" autocomplete="off" novalidate onsubmit="return false">
     <div class="b-head">
-      <h2>Custom cost curve</h2>
-      <p>Blank fields use the market default shown in gray. The report updates as you type.</p>
+      <h2>Customer and roof</h2>
+      <p>Start with the roof. Blank fields use the market default shown in gray, and the report updates as you type.</p>
     </div>
 
     <details class="group" open>
-      <summary><span class="step">1</span><span class="gt">Customer</span><span class="chev"></span></summary>
-      <div class="g-body">
-        <div class="field"><label for="customer">Customer / account</label><input id="customer" name="customer" placeholder="Acme Logistics"></div>
-        <div class="field"><label for="property">Property name</label><input id="property" name="property" placeholder="Distribution Center 2"></div>
-        <div class="row2">
-          <div class="field"><label for="city">City</label><input id="city" name="city"></div>
-          <div class="field"><label for="contact">Contact</label><input id="contact" name="contact"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="preparedBy">Prepared by</label><input id="preparedBy" name="preparedBy"></div>
-          <div class="field"><label for="date">Report date</label><input id="date" name="date" type="date"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="repPhone">Your phone</label><input id="repPhone" name="repPhone" type="tel" autocomplete="tel"></div>
-          <div class="field"><label for="repEmail">Your email</label><input id="repEmail" name="repEmail" type="email" autocomplete="email"></div>
-        </div>
-      </div>
-    </details>
-    <details class="group" open>
-      <summary><span class="step">2</span><span class="gt">Roof</span><span class="chev"></span></summary>
+      <summary><span class="step">1</span><span class="gt">Roof</span><span class="chev"></span></summary>
       <div class="g-body">
         <div class="field"><label for="market">PAX market</label><select id="market" name="market"></select></div>
         <div class="field"><label for="propertyType">Property type</label><select id="propertyType" name="propertyType"></select></div>
@@ -285,10 +266,8 @@
         </div>
       </div>
     </details>
-
-
     <details class="group" open>
-      <summary><span class="step">3</span><span class="gt">Costs</span><span class="chev"></span></summary>
+      <summary><span class="step">2</span><span class="gt">Costs <small style="font-weight:600;color:var(--muted);letter-spacing:0;text-transform:none">optional</small></span><span class="chev"></span></summary>
       <div class="g-body">
         <div class="row2">
           <div class="field"><label for="costPerSqft">Replacement cost</label><div class="unit"><input id="costPerSqft" name="costPerSqft" type="number" inputmode="decimal" step="any" min="0"><span>$/sq ft</span></div></div>
@@ -303,9 +282,30 @@
         <div class="hint" id="capHint" style="margin-top:-4px" hidden></div>
       </div>
     </details>
+    <details class="group" open>
+      <summary><span class="step">3</span><span class="gt">Customer and rep</span><span class="chev"></span></summary>
+      <div class="g-body">
+        <div class="field"><label for="customer">Customer / account</label><input id="customer" name="customer" placeholder="Acme Logistics"></div>
+        <div class="field"><label for="property">Property name</label><input id="property" name="property" placeholder="Distribution Center 2"></div>
+        <div class="row2">
+          <div class="field"><label for="city">City</label><input id="city" name="city"></div>
+          <div class="field"><label for="contact">Contact</label><input id="contact" name="contact"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="preparedBy">Prepared by</label><input id="preparedBy" name="preparedBy"></div>
+          <div class="field"><label for="date">Report date</label><input id="date" name="date" type="date"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="repPhone">Your phone</label><input id="repPhone" name="repPhone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="repEmail">Your email</label><input id="repEmail" name="repEmail" type="email" autocomplete="email"></div>
+        </div>
+      </div>
+    </details>
+
+
 
     <details class="group" id="advanced">
-      <summary><span class="step">4</span><span class="gt">Model assumptions</span><span class="chev"></span></summary>
+      <summary><span class="step">4</span><span class="gt">Advanced <small style="font-weight:600;color:var(--muted);letter-spacing:0;text-transform:none">sales ops</small></span><span class="chev"></span></summary>
       <div class="g-body">
         <div class="hint" style="margin:0">For sales ops. Changes apply to this report only and are saved in its link.</div>
         <div class="field"><label for="life">Roof life with PaxSeal</label><div class="unit"><input id="life" name="life" type="number" step="any" min="5" max="60"><span>yrs</span></div>

@@ -1,6 +1,7 @@
 // Build step:
 //   1. data/markets/*.json + data/national.json  ->  data/model_defaults.json
-//   2. src/report.template.html + src/engine.js + defaults + fonts  ->  dist/index.html
+//   2. src/report.template.html + src/engine.js + defaults + fonts  ->  dist/custom/index.html
+//      (src/home.template.html -> dist/index.html, the site's home page)
 //      (one self-contained file, no CDN, safe to email or host on Azure SWA)
 //
 // Usage: node scripts/build.mjs
@@ -206,12 +207,18 @@ const engine = readFileSync(join(ROOT, 'src/engine.js'), 'utf8');
 const html = template
   .replace('/*__FONTS__*/', () => fonts)
   .replace('/*__NAVCSS__*/', () => NAV_CSS)
-  .replace('<!--__NAV__-->', () => navHtml('builder', '', reportActions))
+  .replace('<!--__NAV__-->', () => navHtml('builder', '../', reportActions))
   .replace('/*__ENGINE__*/', () => engine)
   // Escape '<' so research text can never close the <script> tag early.
   .replace('/*__DEFAULTS__*/', () => 'window.PAX_DEFAULTS = ' + JSON.stringify(defaults).replace(/</g, '\\u003c') + ';');
-mkdirSync(join(ROOT, 'dist'), { recursive: true });
-writeFileSync(join(ROOT, 'dist/index.html'), html);
+mkdirSync(join(ROOT, 'dist/custom'), { recursive: true });
+writeFileSync(join(ROOT, 'dist/custom/index.html'), html);
+
+// Home page: the two tools. Old shared links (/?market=...) redirect to /custom/.
+writeFileSync(join(ROOT, 'dist/index.html'), readFileSync(join(ROOT, 'src/home.template.html'), 'utf8')
+  .replace('/*__FONTS__*/', () => fonts)
+  .replace('/*__NAVCSS__*/', () => NAV_CSS)
+  .replace('<!--__NAV__-->', () => navHtml('home', '')));
 
 // ---------- Assumptions page: every backend number, its research basis, and an editor ----------
 const national = readJson('data/national.json');
@@ -240,7 +247,7 @@ const page = readFileSync(join(ROOT, 'src/assumptions.template.html'), 'utf8')
   .replace('/*__DATA__*/', () => 'window.PAX_DATA = ' + JSON.stringify({ base: baseDefaults, overrides, research, modelConfig: E.MODEL_CONFIG }).replace(/</g, '\\u003c') + ';');
 mkdirSync(join(ROOT, 'dist/assumptions'), { recursive: true });
 writeFileSync(join(ROOT, 'dist/assumptions/index.html'), page);
-console.log('Built data/model_defaults.json, dist/index.html and dist/assumptions/index.html' +
+console.log('Built data/model_defaults.json, dist/index.html (home), dist/custom/index.html and dist/assumptions/index.html' +
   (Object.keys(overrides).length ? ' (with data/overrides.json)' : ''));
 
 // ---------- Generic cost curves (separate section, no inputs) ----------

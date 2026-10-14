@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>PAX Roof Lifecycle Tool</title>
+<script>
+  // Report links shared before the site had a home page (/?market=...&view=report) still
+  // open the report: anything with report inputs goes straight to the custom builder.
+  (function () {
+    var q = location.search;
+    if (/[?&](market|customer|propertyType|area|roofAge|system|view|property)=/.test(q)) location.replace('custom/index.html' + q + location.hash);
+  })();
+</script>
+<style>
+/*__FONTS__*/
+:root { --red: #CD163F; --navy: #1C2B39; --green: #1A6B3C; --ink: #1C2B39; --ink-2: #44525D; --muted: #5E6A73; --rule: #DCE1E4; --desk: #EEF1F3; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--desk); color: var(--ink); font: 14px/1.55 Montserrat, Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+/*__NAVCSS__*/
+main { max-width: 1040px; margin: 0 auto; padding: 44px 16px 56px; }
+.eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+h1 { font-size: 32px; line-height: 1.15; font-weight: 800; letter-spacing: -.02em; margin: 6px 0 10px; text-wrap: balance; }
+.lede { color: var(--ink-2); max-width: 64ch; margin: 0 0 28px; font-size: 15px; }
+.tools { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tool { background: #fff; border-radius: 12px; box-shadow: 0 1px 2px rgba(28,43,57,.06), 0 10px 28px rgba(28,43,57,.08); padding: 26px 26px 22px; display: flex; flex-direction: column; border-top: 4px solid var(--navy); }
+.tool.generic { border-top-color: var(--green); }
+.tool .tag { font-size: 10.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.tool h2 { font-size: 21px; font-weight: 800; margin: 4px 0 8px; letter-spacing: -.01em; }
+.tool p { margin: 0 0 12px; color: var(--ink-2); }
+.tool ul { margin: 0 0 18px; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+.tool li { margin-bottom: 4px; }
+.tool .when { font-size: 12.5px; background: #F7F8F9; border-radius: 8px; padding: 10px 12px; margin-bottom: 18px; color: var(--ink-2); }
+.tool .when b { color: var(--ink); }
+.actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 7px; font-weight: 700; font-size: 13.5px; text-decoration: none; border: 1px solid var(--rule); color: var(--navy); background: #fff; }
+.btn:hover { border-color: var(--navy); }
+.btn.primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.btn.primary:hover { background: #2A3E50; }
+.generic .btn.primary { background: var(--green); border-color: var(--green); }
+.generic .btn.primary:hover { background: #145530; }
+.btn:focus-visible { outline: 2px solid #DD971A; outline-offset: 2px; }
+.help { margin-top: 22px; display: flex; gap: 8px 24px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.help a { color: var(--navy); font-weight: 700; }
+@media (max-width: 760px) { .tools { grid-template-columns: 1fr; } h1 { font-size: 26px; } main { padding-top: 28px; } }
+</style>
+</head>
+<body>
+<!--__NAV__-->
+<main>
+  <div class="eyebrow">PAX Services Group</div>
+  <h1>Show owners what their roof really costs, and what PaxSeal saves</h1>
+  <p class="lede">Two tools. Start with a generic cost curve when you don&rsquo;t have the roof&rsquo;s details yet; build a custom report when you do.</p>
+
+  <div class="tools">
+    <section class="tool generic">
+      <div class="tag">Nothing to enter</div>
+      <h2>Generic cost curves</h2>
+      <p>The average cost of a roof from new to replacement, with and without PaxSeal.</p>
+      <ul>
+        <li>Every market, building type and roof type</li>
+        <li>Roof life, cost per year and savings at a glance</li>
+        <li>A two-page customer PDF for each one</li>
+      </ul>
+      <div class="when"><b>Use for:</b> first meetings, lunch-and-learns, mailers.</div>
+      <div class="actions"><a class="btn primary" href="generic/index.html">Open generic curves</a></div>
+    </section>
+
+    <section class="tool custom">
+      <div class="tag">One customer&rsquo;s roof</div>
+      <h2>Custom cost curve</h2>
+      <p>A 20-year projection for a specific building, branded for the customer.</p>
+      <ul>
+        <li>Enter roof size, age, roof type and condition</li>
+        <li>Add the real replacement cost and PaxSeal price if you have them</li>
+        <li>Print, save as PDF, or send as a link</li>
+      </ul>
+      <div class="when"><b>Use for:</b> proposals and follow-ups once you&rsquo;ve seen the roof.</div>
+      <div class="actions"><a class="btn primary" href="custom/index.html">Build a report</a><a class="btn" href="library/index.html">Ready-made reports</a></div>
+    </section>
+  </div>
+
+  <div class="help"><span>New here? <a href="library/PAX-Roof-TCO-Guide.pdf" target="_blank" rel="noopener">Read the 3-page user guide</a></span><span>Sales ops: <a href="assumptions/index.html">Assumptions</a> holds every number behind the custom reports.</span></div>
+</main>
+</body>
+</html>

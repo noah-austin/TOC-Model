@@ -36,7 +36,7 @@ for (const f of readdirSync(OUT)) if (ours.has(f)) rmSync(join(OUT, f));
 const local = '/opt/pw-browsers/chromium';
 const browser = await chromium.launch(existsSync(local) ? { executablePath: local } : {});
 const page = await browser.newPage();
-const reportUrl = pathToFileURL(join(ROOT, 'dist/index.html')).href;
+const reportUrl = pathToFileURL(join(ROOT, 'dist/custom/index.html')).href;
 const results = {};
 for (const market of markets) {
   for (const type of types) {
@@ -66,7 +66,7 @@ const rows = types.map((type) => {
       : `${short(k.unplannedSpendAvoided)} emergency costs cut`;
     const range = k.savingsRange ? `<div class="range">Range ${short(k.savingsRange.low)}&ndash;${short(k.savingsRange.high)}</div>` : '';
     return `<td><div class="save">${short(k.savings)}</div>${range}<div class="sub">${Math.round(k.savingsPct * 100)}% less than reactive<br>${second}</div>
-      <div class="links"><a href="../index.html?${esc(openQuery(paramsFor(market, type)))}" title="Open in the report builder to adjust or share">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
+      <div class="links"><a href="../custom/index.html?${esc(openQuery(paramsFor(market, type)))}" title="Open in the report builder to adjust or share">Open</a><a href="${market}-${type}.pdf">PDF</a></div></td>`;
   }).join('');
   return `<tr><th scope="row"><div class="t">${esc(pt.label)}</div><div class="p">${prof.area.toLocaleString('en-US')} sq ft ${esc(sysLabel(prof.system))} roof, ${prof.roofAge} yrs old</div></th>${cells}</tr>`;
 }).join('\n');
@@ -77,7 +77,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>TCO Projection Library</title>
+<title>Ready-Made Reports</title>
 <style>
 ${fonts}
 :root { --red:#CD163F; --navy:#1C2B39; --green:#1A6B3C; --ink:#1C2B39; --ink-2:#44525D; --muted:#5E6A73; --faint:#6E7A84; --rule:#DCE1E4; --hair:#EBEEF0; --desk:#EEF1F3; }
@@ -107,8 +107,8 @@ td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--hair); b
 <body>
 ${navHtml('library', '../')}
 <main>
-  <h1>TCO Projection Library</h1>
-  <p class="lede">Twenty-year roof cost projections for a typical building of each type in each PAX market, comparing PaxSeal planned maintenance with reactive repair. Each one is a custom cost curve for a typical building and opens as a two-page report. Use <b>Custom cost curves</b> for a specific customer's roof, or <b>Generic cost curves</b> for research averages from new roof to replacement.</p>
+  <h1>Ready-made reports</h1>
+  <p class="lede">A finished custom report for a typical building of each type in each PAX market: 20 years with PaxSeal vs reactive repair. Download the PDF as is, or click <b>Open</b> to load it into <b>Build a report</b> and change the details for a real customer.</p>
   <div class="card">
     <table>
       <thead><tr><th>Property type &middot; typical roof</th>${markets.map((m) => `<th>${esc(D.markets[m].shortName)}</th>`).join('')}</tr></thead>

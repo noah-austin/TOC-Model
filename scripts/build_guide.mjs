@@ -34,7 +34,7 @@ const shot = await browser.newPage({ viewport: { width: 816, height: 1056 }, dev
 await shot.emulateMedia({ media: 'print' });
 const q = new URLSearchParams({ view: 'report', customer: 'Acme Logistics', property: 'Distribution Center 2', city: 'San Antonio',
   preparedBy: 'Your Name', ...Object.fromEntries(Object.entries(ex).map(([a, b]) => [a, String(b)])) });
-await shot.goto(pathToFileURL(join(ROOT, 'dist/index.html')).href + '?' + q);
+await shot.goto(pathToFileURL(join(ROOT, 'dist/custom/index.html')).href + '?' + q);
 const png = (await shot.locator('.sheet').first().screenshot()).toString('base64');
 await shot.close();
 
@@ -99,21 +99,21 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: now
   <h2>Two kinds of cost curve</h2>
   <div class="grid3">
     <div class="card"><div class="n">1</div><b>Generic cost curves</b><p>No inputs. The average cost of a roof from new to replacement, with and without PaxSeal, for every market, building type and roof type.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}generic</p></div>
-    <div class="card"><div class="n">2</div><b>Custom cost curves</b><p>Enter a customer&rsquo;s roof in the builder and get a branded two-page report to print, save as PDF, or send as a link.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '').replace(/\/$/, '')}</p></div>
-    <div class="card"><div class="n">3</div><b>Library</b><p>${Object.keys(D.markets).length * Object.keys(D.propertyTypes).length} ready-made custom reports: a typical building of each property type in each market. Open or download, no typing.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}library</p></div>
+    <div class="card"><div class="n">2</div><b>Custom cost curve</b><p>Enter a customer&rsquo;s roof under <b>Build a report</b> and get a branded two-page report to print, save as PDF, or send as a link.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}custom</p></div>
+    <div class="card"><div class="n">3</div><b>Ready-made reports</b><p>${Object.keys(D.markets).length * Object.keys(D.propertyTypes).length} finished custom reports, a typical building of each property type in each market (a tab under Custom cost curve). Download, or open one to adjust.</p><p class="url" style="margin-top:6px">${SITE.replace(/^https:\/\//, '')}library</p></div>
   </div>
   <p style="margin-top:10px"><b>Markets:</b> ${markets}. <b>Property types:</b> ${types}.</p>
 </section>
 
 <section>
-  <h2>Make a customer report in two minutes</h2>
+  <h2>Make a customer report in two minutes (Custom cost curve &rsaquo; Build a report)</h2>
   <ol class="steps">
-    <li><b>Customer.</b> Customer name, property, city and contact. Add your name, phone and email; they print in the report&rsquo;s &ldquo;Next step&rdquo; box.</li>
     <li><b>Roof.</b> Pick the market and property type, then roof area, age, roof system and condition. Add warranty years left and active leaks if you know them.</li>
     <li><b>Costs (optional).</b> Leave blank to use market defaults (shown in gray). Enter the real replacement cost, the PaxSeal price from your proposal, or a cap rate if you have them; the report recalculates instantly.</li>
+    <li><b>Customer and rep.</b> Customer name, property, city and contact. Add your name, phone and email; they print in the report&rsquo;s &ldquo;Next step&rdquo; box.</li>
     <li><b>Share.</b> <b>Print / PDF</b> saves the two-page report. <b>Copy report link</b> gives a link that opens the finished report without the input form.</li>
   </ol>
-  <p><b>Customer copy vs internal copy.</b> Reports are customer-ready by default. Under <b>Model assumptions</b>, &ldquo;Show source confidence&rdquo; makes an <b>internal review copy</b> that rates each data source and is marked &ldquo;Internal review copy&rdquo; on every page. Don&rsquo;t send that version to customers. The Model assumptions section is for sales ops only.</p>
+  <p><b>Customer copy vs internal copy.</b> Reports are customer-ready by default. Under <b>Advanced</b>, &ldquo;Show source confidence&rdquo; makes an <b>internal review copy</b> that rates each data source and is marked &ldquo;Internal review copy&rdquo; on every page. Don&rsquo;t send that version to customers. The Advanced section, including &ldquo;Roof life with PaxSeal&rdquo;, is for sales ops and special cases.</p>
 </section>
 
 <section>
@@ -126,7 +126,7 @@ td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: now
 
 <section>
   <h2>Finding your way</h2>
-  <p>Every page has the same header: <b>Generic cost curves</b>, <b>Custom cost curves</b> (the report builder), <b>Library</b>, <b>Assumptions</b> and the <b>User guide</b>. The two kinds of curve are kept separate: generic curves are research averages with no inputs; custom curves are for one customer&rsquo;s roof. Every report has a link with its inputs built in. A report link sent to a customer shows only the report, with Edit and Print. The <b>Assumptions</b> page lists every number the model uses with its source; sales ops can adjust values there and publish them by uploading the downloaded overrides.json to the project.</p>
+  <p>The site opens on a <b>Home</b> page with the two tools. The dark bar at the top is the same on every page: <b>Home</b>, <b>Generic cost curves</b> and <b>Custom cost curve</b>, with the <b>User guide</b> and <b>Assumptions</b> (admin) on the right. Under it, a white bar shows the section you are in, its tabs (Custom has <b>Build a report</b> and <b>Ready-made reports</b>) and that page&rsquo;s buttons, such as Copy link and Print. A report link sent to a customer shows only the report, with Edit and Print. Sales ops can adjust the model&rsquo;s numbers on the <b>Assumptions</b> page.</p>
 </section>
 
 <div class="page"></div>
